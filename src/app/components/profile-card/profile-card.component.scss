@@ -1,0 +1,16 @@
+@import "global";
+@import "material-you";
+
+.profile-card {
+	@include material-basic--primary;
+	width: 20rem;
+    overflow: hidden;
+    display: flex;
+	flex-direction: column;
+	border-radius: $container-border-radius;
+
+	&__cover {
+		width: 100%;
+		border-radius: $container-border-radius;
+	}
+}

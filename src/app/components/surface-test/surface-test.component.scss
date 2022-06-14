@@ -1,0 +1,34 @@
+@import "material-you";
+
+.surfaces {
+	display: flex;
+	padding: 2rem;
+
+	&__toggle {
+		@include material-container--primary;
+		@include material-button;
+		font-weight: bold;
+		text-transform: uppercase;
+		margin-right: 2rem;
+	}
+
+	&__surface {
+		@include material-container;
+
+		&--material-colored-primary {
+			@include material-colored--primary;
+		}
+
+		&--material-basic-primary {
+			@include material-basic--primary;
+		}
+
+		&--material-container-primary {
+			@include material-container--primary;
+		}
+
+		&--material-inverted-primary {
+			@include material-inverted--primary;
+		}
+	}
+}

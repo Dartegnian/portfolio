@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "fonts/font-poppins";
+@import "./assets/css/material-you.css";
 
 ::-webkit-scrollbar {
     width: 4px;
@@ -20,5 +21,9 @@ html, body {
 	@include font-poppins;
 	margin: 0;
 	min-height: 100vh;
+	background-color: #f7f8f7;
 }
 
+body.dark-theme {
+	background-color: #001d36;
+}

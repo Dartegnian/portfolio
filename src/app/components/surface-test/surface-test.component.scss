@@ -12,6 +12,23 @@
 		margin-right: 2rem;
 	}
 
+	&__toggle-icon {
+		margin-right: 0.5rem;
+	}
+
+	&__surface-list {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+	}
+
+	&__surface-group {
+		display: grid;
+		width: 100%;
+		grid-auto-columns: minmax(0, 1fr);
+		grid-auto-flow: column;
+	}
+
 	&__surface {
 		@include material-container;
 
@@ -29,6 +46,38 @@
 
 		&--material-inverted-primary {
 			@include material-inverted--primary;
+		}
+
+		&--material-colored-secondary {
+			@include material-colored--secondary;
+		}
+
+		&--material-basic-secondary {
+			@include material-basic--secondary;
+		}
+
+		&--material-container-secondary {
+			@include material-container--secondary;
+		}
+
+		&--material-inverted-secondary {
+			@include material-inverted--secondary;
+		}
+
+		&--material-colored-tertiary {
+			@include material-colored--tertiary;
+		}
+
+		&--material-basic-tertiary {
+			@include material-basic--tertiary;
+		}
+
+		&--material-container-tertiary {
+			@include material-container--tertiary;
+		}
+
+		&--material-inverted-tertiary {
+			@include material-inverted--tertiary;
 		}
 	}
 }

@@ -7,11 +7,27 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SurfaceTestComponent implements OnInit {
 	themeMode: "dark" | "light" = "light";
-	surfaces: string[] = [
-		"material-colored-primary",
-		"material-basic-primary",
-		"material-container-primary",
-		"material-inverted-primary",
+	surfaces: Array<Array<String>> = [
+		[
+			"material-colored-primary",
+			"material-basic-primary",
+			"material-container-primary",
+			"material-inverted-primary",
+		],
+
+		[
+			"material-colored-secondary",
+			"material-basic-secondary",
+			"material-container-secondary",
+			"material-inverted-secondary",
+		],
+
+		[
+			"material-colored-tertiary",
+			"material-basic-tertiary",
+			"material-container-tertiary",
+			"material-inverted-tertiary",
+		],
 	];
 
 	constructor() { }

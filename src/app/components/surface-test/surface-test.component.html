@@ -1,6 +1,15 @@
 <div class="surfaces">
-	<button (click)="toggleThemeMode()" class="surfaces__toggle">Toggle Theme</button>
-	<article *ngFor="let surface of surfaces" [ngClass]="'surfaces__surface surfaces__surface--' + surface">
+	<button (click)="toggleThemeMode()" class="surfaces__toggle">
+		<span class="material-symbols-rounded surfaces__toggle-icon">
+			<ng-container  *ngIf="themeMode === 'light'; else lightMode">
+				dark_mode
+			</ng-container>
+			<ng-template #lightMode>
+				light_mode
+			</ng-template>
+		</span>
+		Toggle Theme
+	</button>
 		<h1>Surface</h1>
 		<p>This is a surface test.</p>
 		<p><em>{{ surface }}</em></p>

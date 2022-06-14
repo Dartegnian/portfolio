@@ -1,1 +1,29 @@
 /* You can add global styles to this file, and also import other style files */
+@import "fonts/font-poppins";
+@import "./assets/css/material-you.css";
+
+::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+    background: #f7f8f7;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #0099ff;
+    background: linear-gradient(to bottom,#0099ff 0%,#19c1fc);
+    -webkit-border-radius: 0px;
+}
+::selection {
+    background: transparent;
+    color: #0099ff;
+}
+
+html, body {
+	@include font-poppins;
+	margin: 0;
+	min-height: 100vh;
+	background-color: #f7f8f7;
+}
+
+body.dark-theme {
+	background-color: #001d36;
+}

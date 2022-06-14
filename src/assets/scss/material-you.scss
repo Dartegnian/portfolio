@@ -1,12 +1,17 @@
 @import "global";
 @import "material-you/primary";
+@import "material-you/secondary";
+@import "material-you/tertiary";
 
 @mixin material-container {
+	@include theme-transition;
 	padding: $container-padding;
 	border-radius: $container-border-radius;
+	
 }
 
 @mixin material-button {
+	@include theme-transition;
 	display: flex;
 	align-items: center;
 	justify-content: center;

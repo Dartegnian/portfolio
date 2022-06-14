@@ -1,0 +1,19 @@
+@mixin material-colored--secondary {
+	color: #{var(--md-sys-color-on-secondary)};
+	background-color: #{var(--md-sys-color-secondary)};
+}
+
+@mixin material-basic--secondary {
+	color: #{var(--md-sys-color-secondary)};
+	background-color: #{var(--md-sys-color-on-secondary)};
+}
+
+@mixin material-container--secondary {
+	color: #{var(--md-sys-color-on-secondary-container)};
+	background-color: #{var(--md-sys-color-secondary-container)};
+}
+
+@mixin material-inverted--secondary {
+	color: #{var(--md-sys-color-secondary-container)};
+	background-color: #{var(--md-sys-color-on-secondary-container)};
+}

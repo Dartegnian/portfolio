@@ -2,6 +2,7 @@
 @import "material-you";
 
 .profile-card {
+	@include theme-transition;
 	@include material-basic--primary;
 	width: 20rem;
     overflow: hidden;

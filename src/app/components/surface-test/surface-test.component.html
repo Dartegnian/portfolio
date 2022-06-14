@@ -10,8 +10,27 @@
 		</span>
 		Toggle Theme
 	</button>
-		<h1>Surface</h1>
-		<p>This is a surface test.</p>
-		<p><em>{{ surface }}</em></p>
-	</article>
+	<section class="surfaces__surface-list">
+		<div class="surfaces__surface-group">
+			<article *ngFor="let surface of surfaces[0]" [ngClass]="'surfaces__surface surfaces__surface--' + surface">
+				<h1>Surface</h1>
+				<p>This is a surface test for my portfolio.</p>
+				<p><em>{{ surface }}</em></p>
+			</article>
+		</div>
+		<div class="surfaces__surface-group">
+			<article *ngFor="let surface of surfaces[1]" [ngClass]="'surfaces__surface surfaces__surface--' + surface">
+				<h1>Surface</h1>
+				<p>This is a surface test for my portfolio.</p>
+				<p><em>{{ surface }}</em></p>
+			</article>
+		</div>
+		<div class="surfaces__surface-group">
+			<article *ngFor="let surface of surfaces[2]" [ngClass]="'surfaces__surface surfaces__surface--' + surface">
+				<h1>Surface</h1>
+				<p>This is a surface test for my portfolio.</p>
+				<p><em>{{ surface }}</em></p>
+			</article>
+		</div>
+	</section>
 </div>

@@ -1,0 +1,13 @@
+<article class="accent-switcher">
+	<picture
+		class="accent-switcher__picture"
+		*ngFor="let image of images; index as i"
+		[class.accent-switcher__picture--selected]="selected == image"
+		(click)="changeAccent(i)"
+	>
+		<img
+			class="accent-switcher__image"
+			[src]="'/assets/img/' + image + '-min.jpg'"
+		/>
+	</picture>
+</article>

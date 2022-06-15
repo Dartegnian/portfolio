@@ -24,6 +24,7 @@
 	&__text-container {
 		display: flex;
 		flex-direction: column;
+		width: 40%;
 	}
 
 	&__header {
@@ -44,7 +45,16 @@
 		position: absolute;
 		width: 100%;
 		z-index: -1;
-		-webkit-mask: linear-gradient(to right,transparent,#000);
-		mask: linear-gradient(to right,transparent,#000);
+		-webkit-mask: linear-gradient(to right, transparent 45%, #000);
+		mask: linear-gradient(to right, transparent 45%,#000);
+		transition: opacity $theme-transition-speed ease;
+
+		&--first-image-disabled {
+			opacity: 0;
+		}
+
+		&--second-image-disabled {
+			opacity: 0;
+		}
 	}
 }

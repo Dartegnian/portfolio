@@ -8,15 +8,18 @@
 ::-webkit-scrollbar {
     width: 4px;
     height: 4px;
-    background: #f7f8f7;
+    background: #2a1700;
+    background: var(--md-sys-color-inverse-on-surface-dark);
 }
 ::-webkit-scrollbar-thumb {
-    background-color: #0099ff;
-    background: linear-gradient(to bottom,#0099ff 0%,#19c1fc);
+    background-color: #ffddba;
+    background-color: var(--md-sys-color-inverse-surface-dark);
 }
 ::selection {
-    background: transparent;
-    color: #0099ff;
+    background: #2a1700;
+    color: #ffddba;
+    background: var(--md-sys-color-inverse-on-surface-dark);
+    color: var(--md-sys-color-inverse-surface-dark);
 }
 
 body {

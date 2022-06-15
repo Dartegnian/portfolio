@@ -3,7 +3,7 @@
 @import "material-you";
 @import "fonts/font-poppins";
 @import "fonts/font-material-symbols";
-@import "./assets/css/material-you.css";
+// @import "./assets/css/material-you--main.css";
 
 ::-webkit-scrollbar {
     width: 4px;
@@ -23,11 +23,8 @@ body {
 	@include font-poppins;
 	margin: 0;
 	min-height: 100vh;
-	background-color: #f7f8f7;
-
-	&.dark-theme {
-		background-color: #001d36;
-	}
+	background-color: var(--md-sys-color-background);
+	padding: 2rem;
 }
 
 .material-symbols-rounded {

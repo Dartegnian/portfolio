@@ -1,0 +1,50 @@
+@import "global";
+@import "material-you";
+
+:host {
+	flex-grow: 1;
+	display: flex;
+	align-items: stretch;
+}
+
+.hero-banner {
+	@include theme-transition;
+	@include material-container--primary;
+
+	display: flex;
+	padding: $container-padding;
+	border-radius: $container-border-radius;
+	margin-bottom: 2rem;
+	position: relative;
+	overflow: hidden;
+	flex-grow: 1;
+	clip-path: inset(0 round $container-border-radius);
+    min-height: 20vh;
+
+	&__text-container {
+		display: flex;
+		flex-direction: column;
+	}
+
+	&__header {
+		font-weight: 500;
+		font-size: 4rem;
+		margin: 1rem 0rem;
+		margin-bottom: 0.5rem;
+	}
+
+	&__subheader {
+		font-weight: normal;
+		font-size: 1.1rem;
+	}
+
+	&__img {
+		top: 0;
+		left: 0;
+		position: absolute;
+		width: 100%;
+		z-index: -1;
+		-webkit-mask: linear-gradient(to right,transparent,#000);
+		mask: linear-gradient(to right,transparent,#000);
+	}
+}

@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./surface-test.component.scss']
 })
 export class SurfaceTestComponent implements OnInit {
-	themeMode: "dark" | "light" = "light";
 	surfaces: Array<Array<String>> = [
 		[
 			"material-colored-primary",
@@ -28,23 +27,22 @@ export class SurfaceTestComponent implements OnInit {
 			"material-container-tertiary",
 			"material-inverted-tertiary",
 		],
+
+		[
+			"material-inverted-primary",
+			"material-inverted-secondary",
+			"material-inverted-tertiary",
+		],
+
+		[
+			"material-container-secondary",
+			"material-container-tertiary",
+		],
 	];
 
 	constructor() { }
 
 	ngOnInit(): void {
-	}
-
-	toggleThemeMode() {
-		if (this.themeMode === "light") {
-			document.body.classList.toggle("dark-theme", true);
-			document.body.classList.toggle("light-theme", false);
-			this.themeMode = "dark";
-		} else {
-			document.body.classList.toggle("dark-theme", false);
-			document.body.classList.toggle("light-theme", true);
-			this.themeMode = "light";
-		}
 	}
 
 }

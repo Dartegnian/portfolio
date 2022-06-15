@@ -1,32 +1,7 @@
 <div class="surfaces">
-	<button (click)="toggleThemeMode()" class="surfaces__toggle">
-		<span class="material-symbols-rounded surfaces__toggle-icon">
-			<ng-container  *ngIf="themeMode === 'light'; else lightMode">
-				dark_mode
-			</ng-container>
-			<ng-template #lightMode>
-				light_mode
-			</ng-template>
-		</span>
-		Toggle Theme
-	</button>
 	<section class="surfaces__surface-list">
-		<div class="surfaces__surface-group">
-			<article *ngFor="let surface of surfaces[0]" [ngClass]="'surfaces__surface surfaces__surface--' + surface">
-				<h1>Surface</h1>
-				<p>This is a surface test for my portfolio.</p>
-				<p><em>{{ surface }}</em></p>
-			</article>
-		</div>
-		<div class="surfaces__surface-group">
-			<article *ngFor="let surface of surfaces[1]" [ngClass]="'surfaces__surface surfaces__surface--' + surface">
-				<h1>Surface</h1>
-				<p>This is a surface test for my portfolio.</p>
-				<p><em>{{ surface }}</em></p>
-			</article>
-		</div>
-		<div class="surfaces__surface-group">
-			<article *ngFor="let surface of surfaces[2]" [ngClass]="'surfaces__surface surfaces__surface--' + surface">
+		<div class="surfaces__surface-group"  *ngFor="let surface of surfaces; index as i">
+			<article *ngFor="let surface of surfaces[i]" [ngClass]="'surfaces__surface surfaces__surface--' + surface">
 				<h1>Surface</h1>
 				<p>This is a surface test for my portfolio.</p>
 				<p><em>{{ surface }}</em></p>

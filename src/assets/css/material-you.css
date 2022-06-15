@@ -275,7 +275,7 @@
 	--md-sys-color-inverse-surface: var(--md-sys-color-inverse-surface-dark);
 	--md-sys-color-inverse-on-surface: var(--md-sys-color-inverse-on-surface-dark);
   }
-},
+}
 @media (prefers-color-scheme: dark) {
   .material-theme {
 	--md-sys-color-primary: var(--md-sys-color-primary-dark);

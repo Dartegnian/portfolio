@@ -9,6 +9,7 @@ import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switch
 import { ProfileInfoComponent } from './components/profile-info/profile-info.component';
 import { ActiveColorSchemeComponent } from './components/active-color-scheme/active-color-scheme.component';
 import { HeroBannerComponent } from './components/hero-banner/hero-banner.component';
+import { AccentSwitcherComponent } from './components/accent-switcher/accent-switcher.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HeroBannerComponent } from './components/hero-banner/hero-banner.compon
     ThemeSwitcherComponent,
     ProfileInfoComponent,
     ActiveColorSchemeComponent,
-    HeroBannerComponent
+    HeroBannerComponent,
+    AccentSwitcherComponent
   ],
   imports: [
     BrowserModule,

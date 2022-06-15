@@ -1,7 +1,17 @@
 <article class="hero-banner">
 	<section class="hero-banner__text-container">
 		<h1 class="hero-banner__header">Dartegnian's Portfolio</h1>
-		<h4 class="hero-banner__subheader">An interactive porfolio website with Material You implementation.</h4>
+		<h4 class="hero-banner__subheader">An interactive porfolio website with Material You implementation. Colors dynamically adjust to a selected theme. Choose one below to get started.</h4>
+		<accent-switcher></accent-switcher>
 	</section>
-	<img src="/assets/img/paintings-min.jpg" class="hero-banner__img"/>
+	<img
+		[src]="'/assets/img/' + heroImage + '-min.jpg'"
+		class="hero-banner__img hero-banner__img--first-image"
+		[class.hero-banner__img--first-image-disabled]="isSecondHeroImageActive"
+	/>
+	<img
+		[src]="'/assets/img/' + secondHeroImage + '-min.jpg'"
+		class="hero-banner__img hero-banner__img--second-image"
+		[class.hero-banner__img--second-image-disabled]="!isSecondHeroImageActive"
+	/>
 </article>

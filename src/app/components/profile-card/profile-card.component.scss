@@ -3,7 +3,9 @@
 
 .profile-card {
 	@include theme-transition;
-	@include material-basic--primary;
+	@include material-colored--primary;
+	// @include material-outline;
+
 	width: 20rem;
     overflow: hidden;
     display: flex;
@@ -13,5 +15,26 @@
 	&__cover {
 		width: 100%;
 		border-radius: $container-border-radius;
+	}
+
+	&__text {
+		padding: $container-padding;
+		display: flex;
+		flex-direction: column;
+		text-align: center;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__name {
+		font-size: 1.25rem;
+	}
+
+	&__tagline {
+		margin-bottom: 1.5rem;
+	}
+
+	&__contact {
+		@include material-button--tonal-primary;
 	}
 }

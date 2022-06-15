@@ -2,19 +2,7 @@
 
 .surfaces {
 	display: flex;
-	padding: 2rem;
-
-	&__toggle {
-		@include material-container--primary;
-		@include material-button;
-		font-weight: bold;
-		text-transform: uppercase;
-		margin-right: 2rem;
-	}
-
-	&__toggle-icon {
-		margin-right: 0.5rem;
-	}
+	padding: 2rem 0rem;
 
 	&__surface-list {
 		display: flex;
@@ -27,6 +15,12 @@
 		width: 100%;
 		grid-auto-columns: minmax(0, 1fr);
 		grid-auto-flow: column;
+		grid-gap: 1rem;
+		margin-bottom: 1rem;
+
+		&:last-child {
+			margin-bottom: 0rem;
+		}
 	}
 
 	&__surface {

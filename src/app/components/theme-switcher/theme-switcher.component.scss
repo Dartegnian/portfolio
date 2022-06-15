@@ -1,0 +1,18 @@
+@import "global";
+@import "material-you";
+
+:host {
+	position: absolute;
+	right: 2rem;
+	z-index: 1;
+}
+
+.theme-switcher {
+	@include material-button--filled-secondary;
+	font-weight: bold;
+	box-shadow: $elevated-shadow;
+
+	&__toggle-icon {
+		margin-right: 0.5rem;
+	}
+}

@@ -10,7 +10,9 @@
 
 .theme-switcher {
 	@include material-button--filled-secondary;
-	font-weight: bold;
+	border-radius: 14px;
+    height: 3.5rem;
+	font-weight: 500;
 	box-shadow: $elevated-shadow;
 
 	&__toggle-icon {

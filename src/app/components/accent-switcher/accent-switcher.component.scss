@@ -17,6 +17,7 @@
 		overflow: hidden;
 		border-radius: 2.5rem;
 		transition: border-radius $theme-transition-speed ease;
+		border: transparent solid 2px;
 
 		&--selected {
 			border: #{var(--md-sys-color-primary)} solid 2px;

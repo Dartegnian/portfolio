@@ -10,7 +10,7 @@ export class ProfileInfoComponent implements OnInit {
 	contactLinks = [
 		{
 			icon: "mail",
-			link: "contact@dartegnian.com",
+			link: "mailto:contact@dartegnian.com",
 			text: "contact@dartegnian.com"
 		}
 	];

@@ -14,7 +14,9 @@
 
 	&__cover {
 		width: 100%;
+    	height: auto;
 		border-radius: $container-border-radius;
+		user-select: none;
 	}
 
 	&__text {

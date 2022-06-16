@@ -24,7 +24,7 @@
 	&__text-container {
 		display: flex;
 		flex-direction: column;
-		width: 40%;
+		width: 45%;
 	}
 
 	&__header {
@@ -44,10 +44,14 @@
 		left: 0;
 		position: absolute;
 		width: 100%;
+		height: 100%;
 		z-index: -1;
 		-webkit-mask: linear-gradient(to right, transparent 45%, #000);
 		mask: linear-gradient(to right, transparent 45%,#000);
 		transition: opacity $theme-transition-speed ease;
+		user-select: none;
+		object-position: top;
+		object-fit: cover;
 
 		&--first-image-disabled {
 			opacity: 0;

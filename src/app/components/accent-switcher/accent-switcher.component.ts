@@ -19,8 +19,10 @@ export class AccentSwitcherComponent implements OnInit {
 	ngOnInit(): void {
 	}
 
-	changeAccent(image: number): void {
-		this.selected = this.images[image];
-		this.accent.setAccent(image);
+	changeAccent(image: number, imageName: string): void {
+		if (imageName !== this.selected) {
+			this.selected = this.images[image];
+			this.accent.setAccent(image);
+		}
 	}
 }

@@ -8,12 +8,14 @@
 		[src]="'/assets/img/' + heroImage + '-min.jpg'"
 		class="hero-banner__img hero-banner__img--first-image"
 		[class.hero-banner__img--first-image-disabled]="isSecondHeroImageActive"
-		alt="First hero banner image"
+		[alt]="'First hero banner ' + heroImage + ' image'"
+		draggable="false"
 	/>
 	<img
 		[src]="'/assets/img/' + secondHeroImage + '-min.jpg'"
 		class="hero-banner__img hero-banner__img--second-image"
 		[class.hero-banner__img--second-image-disabled]="!isSecondHeroImageActive"
-		alt="Second hero banner image"
+		[alt]="'Second hero banner ' + heroImage + ' image'"
+		draggable="false"
 	/>
 </article>

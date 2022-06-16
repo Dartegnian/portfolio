@@ -4,11 +4,13 @@
 		*ngFor="let image of images; index as i"
 		[class.accent-switcher__picture--selected]="selected == image"
 		(click)="changeAccent(i, image)"
+		role="button" tabindex="0"
 	>
 		<img
 			class="accent-switcher__image"
 			[src]="'/assets/img/' + image + '-min.jpg'"
-			alt="Theme image preview"
+			[alt]="'Image preview ' + image + ' theme'"
+			draggable="false"
 		/>
 	</picture>
 </article>

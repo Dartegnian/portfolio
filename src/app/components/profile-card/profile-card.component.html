@@ -1,5 +1,14 @@
 <article class="profile-card">
-	<img src="/assets/img/cover-min.jpg" class="profile-card__cover" alt="Profile cover" width="320" height="105" draggable="false"/>
+	<header class="profile-card__header">
+		<picture class="profile-card__cover-container">
+			<img src="/assets/img/cover-min.jpg" class="profile-card__cover" alt="Profile cover" width="320" height="105" draggable="false"/>
+		</picture>
+		<div class="profile-card__photo-container">
+			<picture class="profile-card__profile-photo">
+				<img src="/assets/img/me-min.jpg" class="profile-card__photo" alt="Profile picture" height="10" width="100" draggable="false"/>
+			</picture>
+		</div>
+	</header>
 	<section class="profile-card__text">
 		<h1 class="profile-card__name">{{ name }}</h1>
 		<span class="profile-card__tagline">{{ tagline }}</span>

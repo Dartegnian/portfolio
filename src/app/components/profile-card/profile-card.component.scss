@@ -1,10 +1,14 @@
+@import "~bootstrap/scss/bootstrap-grid.scss";
 @import "global";
 @import "material-you";
+
+:host {
+	display: flex;
+}
 
 .profile-card {
 	@include theme-transition;
 	@include material-colored--primary;
-	// @include material-outline;
 
 	width: 20rem;
     overflow: hidden;
@@ -12,11 +16,60 @@
 	flex-direction: column;
 	border-radius: $container-border-radius;
 
+	@include media-breakpoint-down(md) {
+		width: 100%;
+	}
+
+	&__header {
+		position: relative;
+		display: flex;
+		justify-content: center;
+
+		@include media-breakpoint-only(md) {
+			margin-bottom: 8rem;
+		}
+
+		@include media-breakpoint-down(md) {
+			margin-bottom: 21%;
+		}
+	}
+
 	&__cover {
 		width: 100%;
     	height: auto;
 		border-radius: $container-border-radius;
 		user-select: none;
+	}
+
+	&__photo-container {
+		display: flex;
+		justify-content: center;
+		position: absolute;
+		bottom: -50%;
+
+		@include media-breakpoint-down(md) {
+			bottom: -60%;
+		}
+	}
+
+	&__profile-photo {
+		@include material-mask--jagged-circle;
+
+		padding: 0.5rem;
+		object-fit: contain;
+		border-radius: 50%;
+		background-color: #{var(--md-sys-color-secondary-container)};
+	}
+
+	&__photo {
+		@include material-mask--jagged-circle;
+		width: 8rem;
+		height: 100%;
+		user-select: none;
+
+		@include media-breakpoint-down(md) {
+			width: 9.5rem;
+		}
 	}
 
 	&__text {
@@ -26,10 +79,12 @@
 		text-align: center;
 		justify-content: center;
 		align-items: center;
+		flex-grow: 1;
 	}
 
 	&__name {
 		font-size: 1.25rem;
+		font-weight: bold;
 	}
 
 	&__tagline {

@@ -8,12 +8,14 @@ export class AccentService {
 	images = [
 		"paintings",
 		"beach",
-		"diner"
+		"diner",
+		"field"
 	];
 	materialSchemes: Array<string> = [
 		"paint",
 		"beach",
-		"diner"
+		"diner",
+		"field"
 	];
 	accentSubscription: Subject<number>;
 

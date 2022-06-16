@@ -11,15 +11,21 @@
 			<span class="material-symbols-rounded">person_add</span>
 			Contact
 		</header>
-		<ng-container *ngTemplateOutlet="links"></ng-container>
+		<div class="profile-info__links">
+			<ng-container *ngTemplateOutlet="links"></ng-container>
+		</div>
 	</section>
 </article>
 
 <ng-template #links>
 	<a *ngFor="let link of contactLinks" href="{{ link.link }}" class="profile-info__link">
-		<span class="material-symbols-rounded theme-swticher__toggle-icon">
-			{{ link.icon }}
-		</span>
-		{{ link.text }}
+		<div class="profile-info__link-wrapper">
+			<span class="material-symbols-rounded theme-swticher__toggle-icon">
+				{{ link.icon }}
+			</span>
+			<span class="profile-info__link-text">
+				{{ link.text }}
+			</span>
+		</div>
 	</a>
 </ng-template>

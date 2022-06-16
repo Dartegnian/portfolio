@@ -42,6 +42,11 @@
 	@include material-inverted--primary;
 	@include material-button;
 }
+@mixin material-button--outlined-primary {
+	@include material-container--primary;
+	@include material-button;
+	@include material-outline;
+}
 
 @mixin material-button--filled-secondary {
 	@include material-colored--secondary;
@@ -54,4 +59,36 @@
 @mixin material-button--tonal-secondary-inverted {
 	@include material-inverted--secondary;
 	@include material-button;
+}
+@mixin material-button--outlined-secondary {
+	@include material-container--secondary;
+	@include material-button;
+	@include material-outline;
+}
+
+@mixin material-button--filled-tertiary {
+	@include material-colored--tertiary;
+	@include material-button;
+}
+@mixin material-button--tonal-tertiary {
+	@include material-container--tertiary;
+	@include material-button;
+}
+@mixin material-button--tonal-tertiary-inverted {
+	@include material-inverted--tertiary;
+	@include material-button;
+}
+@mixin material-button--outlined-tertiary {
+	@include material-container--tertiary;
+	@include material-button;
+	@include material-outline;
+}
+
+@mixin material-mask--jagged-circle {
+	-webkit-mask-image: url(/assets/svg/m3-jagged-circle.svg);
+	-webkit-mask-repeat: no-repeat;
+	-webkit-mask-size: 100%;
+	mask-image: url(/assets/svg/m3-jagged-circle.svg);
+	mask-repeat: no-repeat;
+	mask-size: 100%;
 }

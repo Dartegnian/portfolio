@@ -22,9 +22,11 @@
 		display: flex;
 		align-items: center;
 		font-size: 1.5rem;
+		font-weight: 500;
+		margin-bottom: 1rem;
 
 		& > .material-symbols-rounded {
-			margin-right: 0.75rem;
+			margin-right: 0.5rem;
 			font-size: inherit;
 		}
 	}
@@ -33,6 +35,10 @@
 		&:first-of-type {
 			margin-bottom: 2rem;
 		}
+	}
+
+	&__description {
+		margin: 0rem;
 	}
 
 	&__description {

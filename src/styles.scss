@@ -3,23 +3,22 @@
 @import "material-you";
 @import "fonts/font-poppins";
 @import "fonts/font-material-symbols";
-// @import "./assets/css/material-you--main.css";
 
 ::-webkit-scrollbar {
     width: 4px;
     height: 4px;
     background: #2a1700;
-    background: var(--md-sys-color-inverse-on-surface-dark);
+    background: #{var(--md-sys-color-inverse-on-surface-dark)};
 }
 ::-webkit-scrollbar-thumb {
     background-color: #ffddba;
-    background-color: var(--md-sys-color-inverse-surface-dark);
+    background-color: #{var(--md-sys-color-inverse-surface-dark)};
 }
 ::selection {
     background: #2a1700;
     color: #ffddba;
-    background: var(--md-sys-color-inverse-on-surface-dark);
-    color: var(--md-sys-color-inverse-surface-dark);
+    background: #{var(--md-sys-color-inverse-on-surface-dark)};
+    color: #{var(--md-sys-color-inverse-surface-dark)};
 }
 
 body {
@@ -32,6 +31,7 @@ body {
 
 .material-symbols-rounded {
 	@include material-symbols-rounded;
+	user-select: none;
 }
 
 .light-theme, .dark-theme {

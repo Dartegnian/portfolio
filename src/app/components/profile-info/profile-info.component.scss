@@ -1,3 +1,4 @@
+@import "~bootstrap/scss/bootstrap-grid.scss";
 @import "global";
 @import "material-you";
 
@@ -9,7 +10,7 @@
 
 .profile-info {
 	@include theme-transition;
-	@include material-basic--primary;
+	@include material-container--secondary;
 	@include material-outline;
 
 	display: flex;
@@ -37,6 +38,31 @@
 		}
 	}
 
+	&__links {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		grid-template-rows: repeat(2, minmax(0, 1fr));
+		grid-auto-flow: column;
+		grid-gap: 2rem 2rem;
+
+		@include media-breakpoint-down(lg) {
+			grid-auto-flow: initial;		
+			grid-template-columns: repeat(1, minmax(0, 1fr));
+			grid-template-rows: repeat(2, minmax(0, 1fr));
+		}
+	}
+
+	&__link-wrapper {
+		display: flex;
+		justify-content: left;
+		align-items: center;
+		overflow: hidden;
+
+		& > .material-symbols-rounded {
+			margin-right: 0.5rem;
+		}
+	}
+
 	&__description {
 		margin: 0rem;
 	}
@@ -46,6 +72,11 @@
 	}
 
 	&__link {
-		@include material-button--tonal-primary-inverted;
+		@include material-button--tonal-secondary-inverted;
+	}
+
+	&__link-text {
+		flex-grow: 1;
+		text-align: center;
 	}
 }

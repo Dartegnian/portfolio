@@ -1,4 +1,10 @@
+@import "~bootstrap/scss/bootstrap-grid.scss";
+
 .profile-intro {
 	display: flex;
 	gap: 2rem;
+
+	@include media-breakpoint-down(md) {
+		flex-direction: column-reverse;
+	}
 }

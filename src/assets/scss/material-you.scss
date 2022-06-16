@@ -3,19 +3,8 @@
 @import "material-you/secondary";
 @import "material-you/tertiary";
 
-@media (prefers-color-scheme: light) {
-	.material-theme, .light-theme {
-		--md-sys-color-primary-background: var(--md-sys-color-primary-background-light);
-	}
-}
-@media (prefers-color-scheme: dark) {
-	.material-theme, .dark-theme {
-		--md-sys-color-primary-background: var(--md-sys-color-primary-background-dark);
-	}
-}
-
 @mixin material-outline {
-    border: var(--md-sys-color-outline) solid 1px;
+    border: #{var(--md-sys-color-outline)} solid 2px;
 }
 
 @mixin material-container {

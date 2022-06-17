@@ -5,12 +5,11 @@
 @import "fonts/font-material-symbols";
 
 ::-webkit-scrollbar {
-    width: 4px;
-    height: 4px;
     background: #2a1700;
     background: #{var(--md-sys-color-inverse-on-surface-dark)};
 }
 ::-webkit-scrollbar-thumb {
+    border-radius: 32px;
     background-color: #ffddba;
     background-color: #{var(--md-sys-color-inverse-surface-dark)};
 }
@@ -25,8 +24,7 @@ body {
 	@include font-poppins;
 	margin: 0;
 	min-height: 100vh;
-	background-color: var(--md-sys-color-background);
-	padding: 2rem;
+	background-color: #{var(--md-sys-color-background)};
 }
 
 .material-symbols-rounded {

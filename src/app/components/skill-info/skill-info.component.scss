@@ -1,0 +1,72 @@
+@import "~bootstrap/scss/bootstrap-grid.scss";
+@import "global";
+@import "material-you";
+
+:host {
+	display: flex;
+	align-items: center;
+    justify-content: center;
+	flex-grow: 1;
+    justify-content: left;
+}
+
+.skill-info {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+	flex-direction: column;
+	max-width: 90%;
+
+	& > * {
+		margin-bottom: 2rem;
+
+		&:last-child {
+			margin-bottom: 0rem;
+		}
+	}
+
+	&__header-block {
+		display: inline-flex;
+		align-items: center;
+	}
+
+	&__header-text {
+		margin: 0;
+		margin-right: 1rem;
+
+		&:first-of-type {
+			display: flex;
+			// margin: 0;
+		}
+
+		&--highlighted {
+			@include theme-transition;
+			@include material-inverted--primary;
+			border-radius: $container-border-radius;
+			padding: 1rem;
+		}
+	}
+
+	&__header-text-icon {
+		margin: 0;
+		font-size: 3rem;
+	}
+
+	&__text {
+		& > :last-child {
+			margin-bottom: 0rem;
+		}
+	}
+
+	&__buttons {
+		display: flex;
+
+		& > :first-child {
+			margin-right: 1rem;
+		}
+	}
+
+	&__button {
+		@include material-button--outlined-primary;
+	}
+}

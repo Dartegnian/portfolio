@@ -4,7 +4,7 @@
 @import "material-you/tertiary";
 
 @mixin material-outline {
-    border: #{var(--md-sys-color-outline)} solid 2px;
+    border: #{var(--md-sys-color-outline)} solid 3px;
 }
 
 @mixin material-container {
@@ -26,7 +26,7 @@
 	line-height: $button-line-height;
 	
 	& > .material-symbols-rounded {
-		margin-right: 0.25rem;
+		margin-right: $icon-margin-right;
 	}
 }
 
@@ -90,5 +90,13 @@
 	-webkit-mask-size: 100%;
 	mask-image: url(/assets/svg/m3-jagged-circle.svg);
 	mask-repeat: no-repeat;
-	mask-size: 100%;
+	mask-size: contain;
+}
+@mixin material-mask--octagonal-circle {
+	-webkit-mask-image: url(/assets/svg/m3-octagonal-circle.svg);
+	-webkit-mask-repeat: no-repeat;
+	-webkit-mask-size: 100%;
+	mask-image: url(/assets/svg/m3-octagonal-circle.svg);
+	mask-repeat: no-repeat;
+	mask-size: contain;
 }

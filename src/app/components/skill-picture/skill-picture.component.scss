@@ -46,7 +46,12 @@ $title-position: -5%;
 		height: $image-size;
 		overflow: hidden;
 		border-radius: $container-border-radius;
-		justify-content: center;	
+		justify-content: center;
+
+		@include media-breakpoint-down(lg) {
+			width: $image-size - 8;
+			height: $image-size - 8;
+		}
 	}
 
 	&__since {

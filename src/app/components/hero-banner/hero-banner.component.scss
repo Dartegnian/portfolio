@@ -51,11 +51,11 @@
 	}
 
 	&__img {
-		top: 0;
-		left: 0;
+		top: -5%;
+		left: -5%;
 		position: absolute;
-		width: 100%;
-		height: 100%;
+		width: 105%;
+		height: 105%;
 		z-index: -1;
 		-webkit-mask: linear-gradient(to right, transparent 45%, #000);
 		mask: linear-gradient(to right, transparent 45%,#000);
@@ -63,6 +63,8 @@
 		user-select: none;
 		object-position: top;
 		object-fit: cover;
+		filter: blur(7.5px);
+		opacity: 40%;
 
 		&--first-image-disabled {
 			opacity: 0;

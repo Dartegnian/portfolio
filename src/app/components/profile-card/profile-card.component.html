@@ -1,7 +1,20 @@
 <article class="profile-card">
 	<header class="profile-card__header">
 		<picture class="profile-card__cover-container">
-			<img src="/assets/img/cover-min.jpg" class="profile-card__cover" alt="Profile cover" width="320" height="105" draggable="false"/>
+			<img
+				[src]="'/assets/img/' + coverImage + '-min.jpg'"
+				class="profile-card__cover profile-card__cover--first-image"
+				[class.profile-card__cover--first-image-disabled]="isSecondCoverImageActive"
+				[alt]="'First hero banner ' + coverImage + ' image'"
+				draggable="false"
+			/>
+			<img
+				[src]="'/assets/img/' + secondCoverImage + '-min.jpg'"
+				class="profile-card__cover profile-card__cover--second-image"
+				[class.profile-card__cover--second-image-disabled]="!isSecondCoverImageActive"
+				[alt]="'Second hero banner ' + secondCoverImage + ' image'"
+				draggable="false"
+			/>
 		</picture>
 		<div class="profile-card__photo-container">
 			<picture class="profile-card__profile-photo">

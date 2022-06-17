@@ -13,14 +13,14 @@
 	@include material-container--primary;
 
 	display: flex;
-	padding: $container-padding;
-	border-radius: $container-border-radius;
+	padding: $full-container-padding;
+	border-radius: 0rem;
 	margin-bottom: 2rem;
 	position: relative;
 	overflow: hidden;
 	flex-grow: 1;
-	clip-path: inset(0 round $container-border-radius);
-    min-height: 20vh;
+	clip-path: inset(0 round 0rem 0rem  $container-border-radius $container-border-radius);
+    min-height: 50vh;
 
 	&__text-container {
 		display: flex;
@@ -36,7 +36,7 @@
 		font-weight: 500;
 		font-size: 4rem;
 		margin: 1rem 0rem;
-		margin-bottom: 0.5rem;
+		margin-bottom: 1.5rem;
 
 		@include media-breakpoint-down(lg) {
 			font-size: 3rem;
@@ -47,6 +47,7 @@
 	&__subheader {
 		font-weight: normal;
 		font-size: 1.1rem;
+		margin-bottom: auto;
 	}
 
 	&__img {

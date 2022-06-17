@@ -25,6 +25,10 @@
 		}
 	}
 
+	@include media-breakpoint-down(md) {
+		max-width: 100%;
+	}
+
 	&__header-block {
 		display: inline-flex;
 		align-items: center;
@@ -44,6 +48,10 @@
 			@include material-inverted--primary;
 			border-radius: $container-border-radius;
 			padding: 1rem;
+		}
+
+		@include media-breakpoint-down(md) {
+			font-size: 1.3rem;
 		}
 	}
 
@@ -68,5 +76,9 @@
 
 	&__button {
 		@include material-button--outlined-primary;
+
+		@include media-breakpoint-down(md) {
+			font-size: 0.8rem;
+		}
 	}
 }

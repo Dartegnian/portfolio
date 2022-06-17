@@ -10,6 +10,8 @@ import { ProfileInfoComponent } from './components/profile-info/profile-info.com
 import { ActiveColorSchemeComponent } from './components/active-color-scheme/active-color-scheme.component';
 import { HeroBannerComponent } from './components/hero-banner/hero-banner.component';
 import { AccentSwitcherComponent } from './components/accent-switcher/accent-switcher.component';
+import { SkillPictureComponent } from './components/skill-picture/skill-picture.component';
+import { SkillInfoComponent } from './components/skill-info/skill-info.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +22,9 @@ import { AccentSwitcherComponent } from './components/accent-switcher/accent-swi
     ProfileInfoComponent,
     ActiveColorSchemeComponent,
     HeroBannerComponent,
-    AccentSwitcherComponent
+    AccentSwitcherComponent,
+    SkillPictureComponent,
+    SkillInfoComponent
   ],
   imports: [
     BrowserModule,

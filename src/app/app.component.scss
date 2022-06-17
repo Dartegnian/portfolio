@@ -1,10 +1,42 @@
 @import "~bootstrap/scss/bootstrap-grid.scss";
+@import "global";
+@import "material-you";
 
 .profile-intro {
 	display: flex;
 	gap: 2rem;
+	padding: 0rem 2rem;
 
 	@include media-breakpoint-down(md) {
 		flex-direction: column-reverse;
+	}
+}
+
+.profile-body {
+	padding: 2rem;
+	padding-top: 0rem;
+
+	&--themed {
+		@include theme-transition;
+		@include material-container--primary;
+		padding: 0rem;
+		margin: 2rem 0rem;
+		min-height: 100vh;
+		border-radius: $container-border-radius;
+		margin-bottom: 2rem;
+	}
+}
+
+.skill-section {
+	display: flex;
+    overflow: hidden;
+	padding: $full-container-padding;
+
+	@include media-breakpoint-down(lg) {
+		flex-direction: column;
+	}
+
+	& > * {
+		flex: 1;
 	}
 }

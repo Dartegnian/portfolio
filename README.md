@@ -1,4 +1,8 @@
-# Portfolio.Dartegnian.Com
+![Portfolio website banner](banner.jpg?raw=true "Material You portfolio banner")
+
+# Dartegnian's Portfolio
+
+An interactive portfolio website with Material You color schemes.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.1.
 

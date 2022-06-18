@@ -42,7 +42,8 @@ export class LifeAtAGlanceComponent implements OnInit {
 			icon: "pets",
 			link: "https://www.reddit.com/r/cats/",
 			shortDescription: "I never expected myself to be a cat person. Turns out, I prefer them over dogs, sorry.",
-			description: ["My sister and I currently take care of a Persian/Siamese cat named Milktea. He's really cute and the fluffiest cat I've ever owned. In the future, I want to name all my cats' names after drinks, like Sprite or Pepsi.", "Cats are really cute uwu. "]
+			description: ["My sister and I currently take care of a Persian/Siamese cat named Milktea. He's really cute and the fluffiest cat I've ever owned. In the future, I want to name all my cats' names after drinks, like Sprite or Pepsi.", "Cats are really cute uwu. "],
+			isNew: true
 		},
 		{
 			title: "Music",

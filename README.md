@@ -1,4 +1,4 @@
-![Portfolio website banner](banner.jpg?raw=true "Material You portfolio banner")
+![Portfolio website banner](src/assets/img/banner.jpg?raw=true "Material You portfolio banner")
 
 # Dartegnian's Portfolio
 

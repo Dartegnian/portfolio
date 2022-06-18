@@ -37,10 +37,10 @@
 	&__header-text {
 		margin: 0;
 		margin-right: 1rem;
+		font-weight: bold;
 
 		&:first-of-type {
 			display: flex;
-			// margin: 0;
 		}
 
 		&--highlighted {

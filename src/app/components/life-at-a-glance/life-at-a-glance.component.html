@@ -14,15 +14,15 @@
 		</section>
 		<section class="life-at-a-glance__feature">
 			<div class="life-at-a-glance__feature-actions">
-				<a [href]="features[featureIndex]['link']" target="_blank" class="life-at-a-glance__action"><span class="material-symbols-rounded life-at-a-glance__action-icon">link</span></a>
+				<a [href]="features[featureIndex]['link']" target="_blank" class="life-at-a-glance__action" role="button" tabindex="0"><span class="material-symbols-rounded life-at-a-glance__action-icon">link</span></a>
 				<div class="life-at-a-glance__action life-at-a-glance__action--empty"></div>
-				<div (click)="shuffleFeature()" class="life-at-a-glance__action"><span class="material-symbols-rounded life-at-a-glance__action-icon">shuffle</span></div>
+				<div (click)="shuffleFeature()" class="life-at-a-glance__action" role="button" tabindex="0"><span class="material-symbols-rounded life-at-a-glance__action-icon">shuffle</span></div>
 				<div class="life-at-a-glance__action life-at-a-glance__action--empty"></div>
 				<div class="life-at-a-glance__action life-at-a-glance__action--center"><span class="material-symbols-rounded life-at-a-glance__action-icon">{{ features[featureIndex]["icon"] }}</span></div>
 				<div class="life-at-a-glance__action life-at-a-glance__action--empty"></div>
-				<div (click)="skipFeature('previous')" class="life-at-a-glance__action"><span class="material-symbols-rounded life-at-a-glance__action-icon">skip_previous</span></div>
+				<div (click)="skipFeature('previous')" class="life-at-a-glance__action" [class.life-at-a-glance__action--disabled]="featureIndex === 1 || featureIndex === 0" role="button" tabindex="0"><span class="material-symbols-rounded life-at-a-glance__action-icon">skip_previous</span></div>
 				<div class="life-at-a-glance__action life-at-a-glance__action--empty"></div>
-				<div (click)="skipFeature('next')" class="life-at-a-glance__action"><span class="material-symbols-rounded life-at-a-glance__action-icon">skip_next</span></div>
+				<div (click)="skipFeature('next')" class="life-at-a-glance__action" [class.life-at-a-glance__action--disabled]="featureIndex === features.length - 1" role="button" tabindex="0"><span class="material-symbols-rounded life-at-a-glance__action-icon">skip_next</span></div>
 			</div>
 		</section>
 	</header>
@@ -40,8 +40,10 @@
 			*ngIf="i !== 0"
 			(click)="setFeature(i)"
 			class="life-at-a-glance__card"
+			[class.life-at-a-glance__card--selected]="featureIndex === i"
 		>
 			<header class="life-at-a-glance__card-header">
+				<span *ngIf="feature.isNew" class="life-at-a-glance__card-title-new">New</span>
 				<div class="life-at-a-glance__card-title-thumb">{{ feature.title.charAt(0) }}</div>
 				<h2>{{ feature.title }}</h2>
 			</header>

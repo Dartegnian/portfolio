@@ -1,4 +1,4 @@
-# Portfolio.Dartegnian.Com
+![Portfolio website banner](src/assets/img/banner.jpg?raw=true "Material You portfolio banner")
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.1.
 

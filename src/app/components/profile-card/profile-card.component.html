@@ -5,14 +5,16 @@
 				[src]="'/assets/img/' + coverImage + '-min.jpg'"
 				class="profile-card__cover profile-card__cover--first-image"
 				[class.profile-card__cover--first-image-disabled]="isSecondCoverImageActive"
-				[alt]="'First hero banner ' + coverImage + ' image'"
+				[alt]="'First cover photo, ' + coverImage + ' image'"
+				width="320" height="180"
 				draggable="false"
 			/>
 			<img
 				[src]="'/assets/img/' + secondCoverImage + '-min.jpg'"
 				class="profile-card__cover profile-card__cover--second-image"
 				[class.profile-card__cover--second-image-disabled]="!isSecondCoverImageActive"
-				[alt]="'Second hero banner ' + secondCoverImage + ' image'"
+				[alt]="'Second cover photo, ' + secondCoverImage + ' image'"
+				width="320" height="180"
 				draggable="false"
 			/>
 		</picture>

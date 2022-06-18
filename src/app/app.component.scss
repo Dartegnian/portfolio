@@ -17,7 +17,6 @@
 	padding-top: 0rem;
 
 	&--themed {
-		@include theme-transition;
 		@include material-container--primary;
 		padding: 0rem;
 		margin: 2rem 0rem;
@@ -25,6 +24,10 @@
 		border-radius: $container-border-radius;
 		margin-bottom: 2rem;
 	}
+}
+
+.at-a-glance {
+	padding: 2rem;
 }
 
 .skill-section {

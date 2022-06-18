@@ -54,6 +54,12 @@ $title-position: -5%;
 		}
 	}
 
+	&__img {
+		user-select: none;
+		width: 100%;
+		height: 100%;
+	}
+
 	&__since {
 		@include material-mask--octagonal-circle;
 		@include material-basic--secondary;

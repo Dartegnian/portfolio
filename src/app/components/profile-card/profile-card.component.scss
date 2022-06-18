@@ -7,7 +7,6 @@
 }
 
 .profile-card {
-	@include theme-transition;
 	@include material-colored--primary;
 
 	width: 20rem;
@@ -30,16 +29,14 @@
 		display: flex;
 		justify-content: center;
 		flex-direction: column;
-		justify-content: center;
-		margin-bottom: 3rem;
 
 		@include media-breakpoint-only(md) {
 			margin-bottom: 8rem;
 		}
 
 		@include media-breakpoint-down(md) {
-			padding-bottom: 56%;
-    		margin-bottom: 4rem;
+			padding-bottom: 20%;
+			margin-bottom: 4rem;
 			align-items: center;
 		}
 	}
@@ -47,6 +44,8 @@
 	&__cover-container {
 		height: 100%;
 		width: 100%;
+		min-height: 11rem;
+		margin-bottom: 4rem;
 	}
 
 	&__cover {
@@ -70,7 +69,7 @@
 		display: flex;
 		justify-content: center;
 		position: absolute;
-		bottom: -40%;
+		bottom: 0;
 		left: 28%;
 
 		@include media-breakpoint-down(md) {

@@ -1,19 +1,25 @@
+@import "global";
+
 @mixin material-colored--primary {
+	@include theme-transition();
 	color: #{var(--md-sys-color-on-primary)};
 	background-color: #{var(--md-sys-color-primary)};
 }
 
 @mixin material-basic--primary {
+	@include theme-transition();
 	color: #{var(--md-sys-color-primary)};
 	background-color: #{var(--md-sys-color-on-primary)};
 }
 
 @mixin material-container--primary {
+	@include theme-transition();
 	color: #{var(--md-sys-color-on-primary-container)};
 	background-color: #{var(--md-sys-color-primary-container)};
 }
 
 @mixin material-inverted--primary {
+	@include theme-transition();
 	color: #{var(--md-sys-color-primary-container)};
 	background-color: #{var(--md-sys-color-on-primary-container)};
 }

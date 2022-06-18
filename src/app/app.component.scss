@@ -17,7 +17,6 @@
 	padding-top: 0rem;
 
 	&--themed {
-		@include theme-transition;
 		@include material-container--primary;
 		padding: 0rem;
 		margin: 2rem 0rem;

@@ -8,14 +8,14 @@
 }
 
 @mixin material-container {
-	@include theme-transition;
+	@include theme-transition();
 	padding: $container-padding;
 	border-radius: $container-border-radius;
 	
 }
 
 @mixin material-button {
-	@include theme-transition;
+	@include theme-transition();
 	display: flex;
 	align-items: center;
 	justify-content: center;

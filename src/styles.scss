@@ -33,5 +33,5 @@ body {
 }
 
 .light-theme, .dark-theme {
-	@include theme-transition;
+	@include theme-transition();
 }

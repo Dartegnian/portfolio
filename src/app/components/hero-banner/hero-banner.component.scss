@@ -9,7 +9,6 @@
 }
 
 .hero-banner {
-	@include theme-transition;
 	@include material-container--primary;
 
 	display: flex;
@@ -25,7 +24,7 @@
 	&__text-container {
 		display: flex;
 		flex-direction: column;
-		width: 45%;
+		width: 50%;
 
 		@include media-breakpoint-down(lg) {
 			width: 75%;

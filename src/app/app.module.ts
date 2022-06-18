@@ -12,6 +12,7 @@ import { HeroBannerComponent } from './components/hero-banner/hero-banner.compon
 import { AccentSwitcherComponent } from './components/accent-switcher/accent-switcher.component';
 import { SkillPictureComponent } from './components/skill-picture/skill-picture.component';
 import { SkillInfoComponent } from './components/skill-info/skill-info.component';
+import { LifeAtAGlanceComponent } from './components/life-at-a-glance/life-at-a-glance.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SkillInfoComponent } from './components/skill-info/skill-info.component
     HeroBannerComponent,
     AccentSwitcherComponent,
     SkillPictureComponent,
-    SkillInfoComponent
+    SkillInfoComponent,
+    LifeAtAGlanceComponent
   ],
   imports: [
     BrowserModule,

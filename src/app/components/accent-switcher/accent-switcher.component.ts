@@ -8,12 +8,13 @@ import { AccentService } from 'src/app/services/accent-service.service';
 })
 export class AccentSwitcherComponent implements OnInit {
 	images: Array<string>;
-	selected = "paintings";
+	selected: string;
 
 	constructor(
 		private accent: AccentService
 	) {
 		this.images = this.accent.images;
+		this.selected = this.images[0];
 	}
 
 	ngOnInit(): void {

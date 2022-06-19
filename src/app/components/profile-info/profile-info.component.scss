@@ -10,7 +10,6 @@
 
 .profile-info {
 	@include material-container--secondary;
-	@include material-outline;
 
 	display: flex;
 	padding: $container-padding;

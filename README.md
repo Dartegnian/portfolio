@@ -2,7 +2,7 @@
 
 # Dartegnian's Portfolio
 
-An interactive portfolio website with Material You color schemes.
+An interactive portfolio website with [Material You color](https://m3.material.io/) schemes.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.1.
 

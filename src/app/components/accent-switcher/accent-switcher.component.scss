@@ -1,3 +1,4 @@
+@import "~bootstrap/scss/bootstrap-grid.scss";
 @import "global";
 @import "material-you";
 
@@ -10,6 +11,10 @@
     margin: 2rem 0rem;
     height: 8rem;
 	gap: 2rem;
+
+	@include media-breakpoint-down(lg) {
+		max-width: 100%;
+	}
 
 	&__picture {
 		user-select: none;

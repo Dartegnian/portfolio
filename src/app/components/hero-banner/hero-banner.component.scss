@@ -29,6 +29,10 @@
 		@include media-breakpoint-down(lg) {
 			width: 75%;
 		}
+
+		@include media-breakpoint-down(md) {
+			width: 100%;
+		}
 	}
 
 	&__header {

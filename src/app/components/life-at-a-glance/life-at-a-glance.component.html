@@ -41,6 +41,7 @@
 			(click)="setFeature(i)"
 			class="life-at-a-glance__card"
 			[class.life-at-a-glance__card--selected]="featureIndex === i"
+			role="button" tabindex="0"
 		>
 			<header class="life-at-a-glance__card-header">
 				<span *ngIf="feature.isNew" class="life-at-a-glance__card-title-new">New</span>

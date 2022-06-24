@@ -115,7 +115,8 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/robots.txt"
             ],
             "styles": [
 			  "node_modules/bootstrap/dist/css/bootstrap.css",

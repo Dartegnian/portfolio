@@ -5,17 +5,17 @@
 @import "fonts/font-material-symbols";
 
 ::-webkit-scrollbar {
-    background: #2a1700;
+    background: #23005c;
     background: #{var(--md-sys-color-inverse-on-surface-dark)};
 }
 ::-webkit-scrollbar-thumb {
     border-radius: 32px;
-    background-color: #ffddba;
+    background-color: #e9ddff;
     background-color: #{var(--md-sys-color-inverse-surface-dark)};
 }
 ::selection {
-    background: #2a1700;
-    color: #ffddba;
+    background: #23005c;
+    color: #e9ddff;
     background: #{var(--md-sys-color-inverse-on-surface-dark)};
     color: #{var(--md-sys-color-inverse-surface-dark)};
 }

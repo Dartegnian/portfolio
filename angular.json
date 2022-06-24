@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/portfolio.dartegnian.com",
+            "outputPath": "dist",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -29,7 +29,8 @@
               "src/robots.txt"
             ],
             "styles": [
-			  "node_modules/bootstrap/dist/css/bootstrap.css",
+			  "node_modules/bootstrap/dist/css/bootstrap-reboot.min.css",
+			  "node_modules/bootstrap/dist/css/bootstrap-grid.min.css",
               "src/styles.scss"
             ],
 			"stylePreprocessorOptions": {
@@ -37,9 +38,7 @@
 					"src/assets/scss"
 				]
 			},
-            "scripts": [
-				"node_modules/bootstrap/dist/js/bootstrap.js"
-			]
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -120,12 +119,11 @@
               "src/robots.txt"
             ],
             "styles": [
-			  "node_modules/bootstrap/dist/css/bootstrap.css",
+			  "node_modules/bootstrap/dist/css/bootstrap-reboot.min.css",
+			  "node_modules/bootstrap/dist/css/bootstrap-grid.min.css",
               "src/styles.scss"
             ],
-            "scripts": [
-				"node_modules/bootstrap/dist/js/bootstrap.js"
-			]
+            "scripts": []
           }
         }
       }

@@ -2,6 +2,15 @@
 @import "global";
 @import "material-you";
 
+@keyframes blink {
+	from, to { 
+		background-color: transparent 
+	}
+	50% { 
+		background-color: #{var(--md-sys-color-primary-container)};
+	}
+}
+
 :host {
 	display: flex;
 	align-items: center;
@@ -48,6 +57,8 @@
 			@include material-inverted--primary;
 			border-radius: $container-border-radius;
 			padding: 1rem;
+			display: flex;
+			align-items: center;
 		}
 
 		@include media-breakpoint-down(md) {
@@ -64,6 +75,17 @@
 		& > :last-child {
 			margin-bottom: 0rem;
 		}
+	}
+
+	&__cursor {
+		@include theme-transition;
+		display: inline-block;
+		vertical-align: middle;
+		width: 5px;
+		height: 3rem;
+		margin-left: 0.5rem;
+		background-color: #{var(--md-sys-color-primary-container)};
+		animation: blink .75s step-end infinite;
 	}
 
 	&__buttons {

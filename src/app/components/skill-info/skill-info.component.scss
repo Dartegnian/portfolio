@@ -2,12 +2,12 @@
 @import "global";
 @import "material-you";
 
-@keyframes blink {
+@keyframes cursor-blink {
 	from, to { 
-		background-color: transparent 
+		opacity: 0;
 	}
 	50% { 
-		background-color: #{var(--md-sys-color-primary-container)};
+		opacity: 1;
 	}
 }
 
@@ -53,7 +53,6 @@
 		}
 
 		&--highlighted {
-			@include theme-transition;
 			@include material-inverted--primary;
 			border-radius: $container-border-radius;
 			padding: 1rem;
@@ -78,18 +77,10 @@
 	}
 
 	&__cursor {
-		@include theme-transition;
-		display: inline-block;
-		vertical-align: middle;
-		width: 5px;
-		height: 3rem;
 		margin-left: 0.5rem;
-		background-color: #{var(--md-sys-color-primary-container)};
-		animation: blink .75s step-end infinite;
+		animation: cursor-blink .75s step-end infinite;
 
 		@include media-breakpoint-down(md) {
-			width: 3px;
-			height: 2rem;
 			margin-left: 0.25rem;
 		}
 	}

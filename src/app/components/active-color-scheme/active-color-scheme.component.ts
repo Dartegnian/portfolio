@@ -25,6 +25,7 @@ export class ActiveColorSchemeComponent implements OnInit, OnDestroy {
 		this.defaultScheme = this.materialSchemes[0];
 
 		this.cssPath = `/assets/css/material-you--${this.defaultScheme}.css`;
+		this.safeCssPath = this.sanitizer.bypassSecurityTrustResourceUrl(this.cssPath as string);
 
 		this.accentSubscription = this.accent.accentSubscription.subscribe(
 			(index: number) => {

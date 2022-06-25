@@ -2,7 +2,6 @@
 @import "~bootstrap/scss/bootstrap-grid.scss";
 @import "global";
 @import "material-you";
-@import "fonts/font-poppins";
 @import "fonts/font-material-symbols";
 
 ::-webkit-scrollbar {
@@ -22,7 +21,7 @@
 }
 
 body {
-	@include font-poppins;
+	font-family: "Poppins", $system-fallback-fonts;
 	margin: 0;
 	min-height: 100vh;
 	background-color: #{var(--md-sys-color-background)};

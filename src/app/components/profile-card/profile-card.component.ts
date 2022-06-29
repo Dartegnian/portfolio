@@ -27,7 +27,9 @@ export class ProfileCardComponent implements OnInit {
 
 		this.accentSubscription = this.accent.accentSubscription.subscribe(
 			(index: number) => {
-				this.setCoverImage(index);
+				setTimeout(() =>
+					this.setCoverImage(index)
+				, 25);
 			}
 		);
 	}

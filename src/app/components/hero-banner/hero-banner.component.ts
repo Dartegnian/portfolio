@@ -24,7 +24,9 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 
 		this.accentSubscription = this.accent.accentSubscription.subscribe(
 			(index: number) => {
-				this.setHeroImage(index);
+				setTimeout(() =>
+					this.setHeroImage(index)
+				, 25);
 			}
 		);
 	}

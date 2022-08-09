@@ -6,12 +6,12 @@
 
 ::-webkit-scrollbar {
     background: #23005c;
-    background: #{var(--md-sys-color-inverse-on-surface-dark)};
+    background: #{var(--md-sys-color-background)};
 }
 ::-webkit-scrollbar-thumb {
     border-radius: 32px;
     background-color: #e9ddff;
-    background-color: #{var(--md-sys-color-inverse-surface-dark)};
+    background-color: #{var(--md-sys-color-inverse-surface)};
 }
 ::selection {
     background: #23005c;

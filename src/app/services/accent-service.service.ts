@@ -6,16 +6,16 @@ import { Observable, Subject } from 'rxjs';
 })
 export class AccentService {
 	images = [
-		"diner",
-		"paintings",
-		"beach",
-		"field"
+		"primary",
+		"secondary",
+		"tertiary",
+		"quaternary"
 	];
 	materialSchemes: Array<string> = [
-		"diner",
-		"paint",
-		"beach",
-		"field"
+		"primary",
+		"secondary",
+		"tertiary",
+		"quaternary"
 	];
 	accentSubscription: Subject<number>;
 

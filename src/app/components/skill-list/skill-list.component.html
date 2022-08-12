@@ -1,0 +1,65 @@
+<article class="skill-list">
+	<header class="skill-list__header">
+		<div class="skill-list__header-container">
+			<h1 class="skill-list__header-text">I am primarily a </h1>
+			<h1 class="skill-list__header-text skill-list__header-text--highlighted">DevOps engineer</h1>
+		</div>
+		<h2 class="skill-list__subheading">Who has helped in the development of 8 websites so far. Here are the technologies I am familiar with.</h2>
+	</header>
+	<section class="skill-list__area">
+		<h3 class="skill-list__area-header">DevOps</h3>
+		<div class="skill-list__stack">
+			<ng-container
+				*ngFor="let stackItem of devOpsStack"
+				[ngTemplateOutlet]="stackItemElement"
+				[ngTemplateOutletContext]="{stackItem:stackItem}"
+			></ng-container>
+		</div>
+	</section>
+	<section class="skill-list__area">
+		<h3 class="skill-list__area-header">Front-end Web</h3>
+		<div class="skill-list__stack">
+			<ng-container
+				*ngFor="let stackItem of feWebStack"
+				[ngTemplateOutlet]="stackItemElement"
+				[ngTemplateOutletContext]="{stackItem:stackItem}"
+			></ng-container>
+		</div>
+	</section>
+	<section class="skill-list__area">
+		<h3 class="skill-list__area-header">Back-end Web</h3>
+		<div class="skill-list__stack">
+			<ng-container
+				*ngFor="let stackItem of beWebStack"
+				[ngTemplateOutlet]="stackItemElement"
+				[ngTemplateOutletContext]="{stackItem:stackItem}"
+			></ng-container>
+		</div>
+	</section>
+	<section class="skill-list__area">
+		<h3 class="skill-list__area-header">General Development</h3>
+		<div class="skill-list__stack">
+			<ng-container
+				*ngFor="let stackItem of generalStack"
+				[ngTemplateOutlet]="stackItemElement"
+				[ngTemplateOutletContext]="{stackItem:stackItem}"
+			></ng-container>
+		</div>
+	</section>
+</article>
+
+<ng-template #stackItemElement let-stackItem="stackItem">
+	<span
+		class="iconify skill-list__stack-item"
+	>
+		<div class="skill-list__stack-icon-container">
+			<i
+				class="iconify skill-list__stack-icon"
+				[attr.data-icon]="stackItem.icon"
+			></i>
+		</div>
+		<span class="skill-list__stack-text">
+			{{ stackItem.text }}
+		</span>
+	</span>
+</ng-template>

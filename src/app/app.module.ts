@@ -13,6 +13,8 @@ import { AccentSwitcherComponent } from './components/accent-switcher/accent-swi
 import { SkillPictureComponent } from './components/skill-picture/skill-picture.component';
 import { SkillInfoComponent } from './components/skill-info/skill-info.component';
 import { LifeAtAGlanceComponent } from './components/life-at-a-glance/life-at-a-glance.component';
+import { SkillListComponent } from './components/skill-list/skill-list.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -26,11 +28,13 @@ import { LifeAtAGlanceComponent } from './components/life-at-a-glance/life-at-a-
     AccentSwitcherComponent,
     SkillPictureComponent,
     SkillInfoComponent,
-    LifeAtAGlanceComponent
+    LifeAtAGlanceComponent,
+    SkillListComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+	CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

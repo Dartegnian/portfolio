@@ -1,0 +1,123 @@
+@import "~bootstrap/scss/bootstrap-grid.scss";
+@import "global";
+@import "material-you";
+
+$icon-size: 2rem;
+
+.skill-list {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	&__header {
+		display: flex;
+		flex-direction: column;
+		max-width: 75%;
+		text-align: center;
+		margin-bottom: 4rem;
+
+		@include media-breakpoint-down(md) {
+			max-width: 100%;
+		}
+	}
+
+	&__header-container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		margin-bottom: 2rem;
+	}
+
+	&__header-text {
+		margin: 0;
+		font-weight: bold;
+		font-size: 2.75rem;
+
+		&:first-of-type {
+			display: flex;
+			margin-right: 1rem;
+		}
+
+		&--highlighted {
+			@include material-inverted--primary;
+			border-radius: $container-border-radius;
+			padding: 1rem;
+			display: flex;
+			align-items: center;
+		}
+
+		@include media-breakpoint-down(md) {
+			font-size: 1.3rem;
+		}
+	}
+
+	&__subheading {
+		font-size: 1.25rem;
+	}
+
+	&__area {
+		display: flex;
+		flex-direction: column;
+		justify-items: center;
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		max-width: 75%;
+		margin-bottom: 4rem;
+
+		&:last-of-type {
+			margin-bottom: 0rem;
+		}
+	}
+
+	&__area-header {
+		@include material-inverted--primary;
+		border-radius: $container-border-radius;
+		margin-bottom: 2rem;
+		font-weight: bold;
+		font-size: 3rem;
+		padding: 1rem;
+	}
+
+	&__stack {
+		display: flex;
+		grid-gap: 2rem;
+		width: 100%;
+		flex-flow: wrap;
+		align-items: center;
+		justify-content: center;
+	}
+
+	&__stack-item {
+		display: flex;
+		align-items: center;
+		max-width: max-content;
+	}
+
+	&__stack-icon-container {
+		@include material-mask--octagonal-circle;
+		@include material-colored--primary;
+		border-radius: $container-border-radius;
+		display: flex;
+		align-items: center;
+		padding: 1rem;
+	}
+
+	&__stack-icon {
+		width: $icon-size;
+		height: $icon-size
+	}
+
+	&__stack-text {
+		@include material-basic--primary;
+		border-radius: $container-border-radius;
+		display: flex;
+		align-items: center;
+		padding: 0.5rem 1.5rem;
+		padding-left: 2.25rem;
+		margin: 0 auto;
+		margin-left: -1.5rem;
+		font-weight: 500;
+	}
+}

@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'email-cta',
-  templateUrl: './email-cta.component.html',
-  styleUrls: ['./email-cta.component.scss']
+  selector: 'resume-request',
+  templateUrl: './resume-request.component.html',
+  styleUrls: ['./resume-request.component.scss']
 })
 export class EmailCtaComponent implements OnInit {
 

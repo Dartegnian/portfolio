@@ -2,7 +2,7 @@
 @import "global";
 @import "material-you";
 
-.email-cta {
+.resume-request {
 	@include material-inverted--tertiary;
 	border-radius: $container-border-radius;
 	display: flex;
@@ -19,9 +19,11 @@
 		flex-direction: column;
 		justify-content: center;
 		padding: 2rem;
+		padding-right: 0rem;
 		max-width: 40%;
 
 		@include media-breakpoint-down(lg) {
+			padding-right: 2rem;
 			max-width: 100%;
 		}
 

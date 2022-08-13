@@ -15,7 +15,7 @@ import { SkillInfoComponent } from './components/skill-info/skill-info.component
 import { LifeAtAGlanceComponent } from './components/life-at-a-glance/life-at-a-glance.component';
 import { SkillListComponent } from './components/skill-list/skill-list.component';
 import { CommonModule } from '@angular/common';
-import { EmailCtaComponent } from './components/email-cta/email-cta.component';
+import { EmailCtaComponent } from './components/resume-request/resume-request.component';
 
 @NgModule({
   declarations: [

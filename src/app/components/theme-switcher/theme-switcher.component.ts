@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { IdbService } from '@services/idb.service';
 
 @Component({
 	selector: 'theme-switcher',
@@ -9,8 +10,10 @@ export class ThemeSwitcherComponent implements OnInit {
 	themeMode: "dark" | "light" = "light";
 	prefersDarkScheme: MediaQueryList;
 	isDarkMode: boolean;
+	prefersDarkSchemeFromIdb: "dark" | "light" = "light";
 
-	constructor() {
+
+	constructor(private idb: IdbService) {
 		this.prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 		this.isDarkMode = this.prefersDarkScheme.matches;
 
@@ -21,7 +24,13 @@ export class ThemeSwitcherComponent implements OnInit {
 		}
 	}
 
-	ngOnInit(): void {
+	async ngOnInit(): Promise<void> {
+		this.idb.connectToIDB();
+		this.prefersDarkSchemeFromIdb = (await this.idb.getData("Material You", "preferredColorScheme"))["value"] || "light";
+
+		if (this.prefersDarkSchemeFromIdb !== this.themeMode) {
+			this.toggleThemeMode();
+		}
 	}
 
 	toggleThemeMode() {
@@ -34,6 +43,10 @@ export class ThemeSwitcherComponent implements OnInit {
 			document.body.classList.toggle("light-theme", true);
 			this.themeMode = "light";
 		}
+
+		this.idb.writeToTheme("Material You", {
+			preferredColorScheme: this.themeMode,
+		});
 	}
 
 }

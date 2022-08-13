@@ -8,6 +8,11 @@
 	display: flex;
 	align-items: center;
 	justify-content: center;
+    padding: 1.5rem 1.3rem;
+
+	@include media-breakpoint-down(lg) {
+		flex-direction: column;
+	}
 
 	&__text {
 		display: flex;
@@ -15,6 +20,10 @@
 		justify-content: center;
 		padding: 2rem;
 		max-width: 40%;
+
+		@include media-breakpoint-down(lg) {
+			max-width: 100%;
+		}
 
 		& > :first-child {
 			margin-bottom: 1rem;
@@ -30,6 +39,12 @@
 		display: flex;
 		justify-content: center;
 		align-items: center;
+
+		@include media-breakpoint-down(lg) {
+			margin-top: 2rem;
+			width: 7.5rem;
+			height: 7.5rem;
+		}
 	}
 
 	&__icon {
@@ -40,5 +55,9 @@
 		@include material-button--tonal-tertiary;
 		margin-top: 1rem;
 		width: max-content;
+
+		@include media-breakpoint-down(lg) {
+			width: 100%;
+		}
 	}
 }

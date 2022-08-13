@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { EmailCtaComponent } from './email-cta.component';
+import { EmailCtaComponent } from './resume-request.component';
 
 describe('EmailCtaComponent', () => {
   let component: EmailCtaComponent;

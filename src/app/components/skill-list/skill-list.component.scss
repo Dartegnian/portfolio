@@ -94,6 +94,8 @@ $icon-size: 2rem;
 
 	&__area-header {
 		@include material-inverted--primary;
+		display: flex;
+		align-items: center;
 		border-radius: $container-border-radius;
 		margin-bottom: 2rem;
 		font-weight: bold;
@@ -103,6 +105,11 @@ $icon-size: 2rem;
 		@include media-breakpoint-down(lg) {
 			font-size: 1.3rem;
 		}
+	}
+
+	&__area-header-icon {
+		font-size: 3rem;
+		margin-right: 1rem;
 	}
 
 	&__stack {

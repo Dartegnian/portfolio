@@ -19,7 +19,7 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 		private accent: AccentService
 	) {
 		this.images = this.accent.images;
-		this.heroImage = this.images[0];
+		this.heroImage = this.images[this.accent.activeIndex];
 		this.secondHeroImage = this.heroImage;
 
 		this.accentSubscription = this.accent.accentSubscription.subscribe(

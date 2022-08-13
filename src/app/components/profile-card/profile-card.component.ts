@@ -22,7 +22,7 @@ export class ProfileCardComponent implements OnInit {
 		private accent: AccentService
 	) {
 		this.images = this.accent.images;
-		this.coverImage = this.images[0];
+		this.coverImage = this.images[this.accent.activeIndex];
 		this.secondCoverImage = this.coverImage;
 
 		this.accentSubscription = this.accent.accentSubscription.subscribe(

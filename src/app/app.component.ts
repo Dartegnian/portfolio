@@ -17,7 +17,7 @@ export class AppComponent implements OnInit {
 
 	async ngOnInit() {
 		this.idb.connectToIDB();
-		const accentIndex = (await this.idb.getData("Material You", "themeIndex"))["value"] || 0;
+		const accentIndex = (await this.idb.getData("Material You", "themeIndex")) || 0;
 		this.accent.setAccent(accentIndex)
 	}
 }

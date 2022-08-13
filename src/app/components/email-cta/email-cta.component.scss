@@ -1,0 +1,44 @@
+@import "~bootstrap/scss/bootstrap-grid.scss";
+@import "global";
+@import "material-you";
+
+.email-cta {
+	@include material-inverted--tertiary;
+	border-radius: $container-border-radius;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	&__text {
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		padding: 2rem;
+		max-width: 40%;
+
+		& > :first-child {
+			margin-bottom: 1rem;
+		}
+	}
+
+	&__icon-container {
+		@include material-mask--jagged-circle;
+		@include material-basic--tertiary;
+		padding: 1rem;
+		width: 9rem;
+		height: 9rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+
+	&__icon {
+		font-size: 3rem;
+	}
+
+	&__email-button {
+		@include material-button--tonal-tertiary;
+		margin-top: 1rem;
+		width: max-content;
+	}
+}

@@ -65,7 +65,7 @@ export class IdbService {
 			const tx = db.transaction(target, 'readonly');
 			const store = tx.objectStore(target);
 			const data = await store.get(key);
-			return data;
+			return data["value"];
 		});
 	}
 

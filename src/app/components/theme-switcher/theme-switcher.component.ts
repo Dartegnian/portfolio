@@ -26,7 +26,7 @@ export class ThemeSwitcherComponent implements OnInit {
 
 	async ngOnInit(): Promise<void> {
 		this.idb.connectToIDB();
-		this.prefersDarkSchemeFromIdb = (await this.idb.getData("Material You", "preferredColorScheme"))["value"] || "light";
+		this.prefersDarkSchemeFromIdb = (await this.idb.getData("Material You", "preferredColorScheme")) || "light";
 
 		if (this.prefersDarkSchemeFromIdb !== this.themeMode) {
 			this.toggleThemeMode();

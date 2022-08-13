@@ -27,6 +27,15 @@ $icon-size: 2rem;
 		align-items: center;
 		justify-content: center;
 		margin-bottom: 2rem;
+
+		@include media-breakpoint-down(lg) {
+			flex-direction: column;
+			justify-content: center;
+
+			& > :first-child {
+				margin-bottom: 1rem;
+			}
+		}
 	}
 
 	&__header-text {
@@ -37,6 +46,10 @@ $icon-size: 2rem;
 		&:first-of-type {
 			display: flex;
 			margin-right: 1rem;
+
+			@include media-breakpoint-down(lg) {
+				margin-right: 0rem;
+			}
 		}
 
 		&--highlighted {
@@ -54,6 +67,10 @@ $icon-size: 2rem;
 
 	&__subheading {
 		font-size: 1.25rem;
+
+		@include media-breakpoint-down(lg) {
+			font-size: 1.1rem;
+		}
 	}
 
 	&__area {
@@ -65,6 +82,10 @@ $icon-size: 2rem;
 		text-align: center;
 		max-width: 75%;
 		margin-bottom: 4rem;
+
+		@include media-breakpoint-down(lg) {
+			max-width: 100%;
+		}
 
 		&:last-of-type {
 			margin-bottom: 0rem;
@@ -78,6 +99,10 @@ $icon-size: 2rem;
 		font-weight: bold;
 		font-size: 3rem;
 		padding: 1rem;
+
+		@include media-breakpoint-down(lg) {
+			font-size: 1.3rem;
+		}
 	}
 
 	&__stack {
@@ -87,6 +112,10 @@ $icon-size: 2rem;
 		flex-flow: wrap;
 		align-items: center;
 		justify-content: center;
+
+		@include media-breakpoint-down(lg) {
+			grid-gap: 1.25rem;
+		}
 	}
 
 	&__stack-item {

@@ -22,7 +22,7 @@ export class ActiveColorSchemeComponent implements OnInit, OnDestroy {
 		private accent: AccentService
 	) {
 		this.materialSchemes = this.accent.materialSchemes;
-		this.defaultScheme = this.materialSchemes[0];
+		this.defaultScheme = this.materialSchemes[this.accent.activeIndex];
 
 		this.cssPath = `/assets/css/material-you--${this.defaultScheme}.css`;
 		this.safeCssPath = this.sanitizer.bypassSecurityTrustResourceUrl(this.cssPath as string);

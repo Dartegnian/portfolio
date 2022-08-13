@@ -86,6 +86,14 @@ export class SkillListComponent implements OnInit {
 				text: "WordPress"
 			},
 			{
+				icon: "cib:sass-alt",
+				text: "Sass"
+			},
+			{
+				icon: "file-icons:bem",
+				text: "B.E.M."
+			},
+			{
 				icon: "fa-brands:html5",
 				text: "HTML5"
 			},
@@ -150,6 +158,10 @@ export class SkillListComponent implements OnInit {
 			{
 				icon: "cib:confluence",
 				text: "Confluence"
+			},
+			{
+				icon: "simple-icons:clickup",
+				text: "ClickUp"
 			},
 			{
 				icon: "tabler:seo",

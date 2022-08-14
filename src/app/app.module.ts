@@ -16,6 +16,7 @@ import { LifeAtAGlanceComponent } from './components/life-at-a-glance/life-at-a-
 import { SkillListComponent } from './components/skill-list/skill-list.component';
 import { CommonModule } from '@angular/common';
 import { EmailCtaComponent } from './components/resume-request/resume-request.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { EmailCtaComponent } from './components/resume-request/resume-request.co
     SkillInfoComponent,
     LifeAtAGlanceComponent,
     SkillListComponent,
-    EmailCtaComponent
+    EmailCtaComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

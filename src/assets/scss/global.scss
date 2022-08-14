@@ -1,7 +1,10 @@
 $container-padding: 1.5rem 1.3rem;
 $container-border-radius: 2rem;
 
-$full-container-padding: 5rem 2.25rem;
+$upper-bottom-container-padding: 5rem;
+$side-container-padding: 2.25rem;
+
+$full-container-padding: $upper-bottom-container-padding $side-container-padding;
 
 $button-padding: 0rem 1.5rem;
 $button-border-radius: 100px;

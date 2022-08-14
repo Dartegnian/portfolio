@@ -63,7 +63,7 @@ $title-position: -5%;
 
 	&__since {
 		@include material-mask--octagonal-circle;
-		@include material-basic--secondary;
+		@include material-basic--primary;
 
 		position: absolute;
 		display: flex;

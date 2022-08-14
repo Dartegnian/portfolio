@@ -24,6 +24,10 @@
 		border-radius: $container-border-radius;
 		margin-bottom: 2rem;
 	}
+	
+	&--themed-secondary {
+		@include material-container--secondary;
+	}
 }
 
 .at-a-glance {

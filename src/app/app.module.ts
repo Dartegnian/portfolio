@@ -17,6 +17,8 @@ import { SkillListComponent } from './components/skill-list/skill-list.component
 import { CommonModule } from '@angular/common';
 import { EmailCtaComponent } from './components/resume-request/resume-request.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,13 @@ import { FooterComponent } from './components/footer/footer.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-	CommonModule
+	CommonModule,
+ ServiceWorkerModule.register('ngsw-worker.js', {
+   enabled: environment.production,
+   // Register the ServiceWorker as soon as the application is stable
+   // or after 30 seconds (whichever comes first).
+   registrationStrategy: 'registerWhenStable:30000'
+ })
   ],
   providers: [],
   bootstrap: [AppComponent]

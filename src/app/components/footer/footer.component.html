@@ -1,0 +1,21 @@
+<footer class="footer">
+	<header class="footer__scroll-header">
+		<a class="footer__scroll-to-top-container" href="#hero-banner">
+			<span class="footer__scroll-icon material-symbols-rounded">
+				keyboard_double_arrow_up
+			</span>
+		</a>
+	</header>
+	<section class="footer__links">
+		<a *ngFor="let link of footerLinks" href="{{ link.link }}" class="footer__link" title="{{ link.text }}" target="_blank">
+			<div class="footer__link-wrapper">
+				<span class="material-symbols-rounded theme-swticher__toggle-icon">
+					{{ link.icon }}
+				</span>
+			</div>
+		</a>
+	</section>
+	<section class="footer__text">
+		<p>Developed and designed by <span class="footer__author">Dartegnian</span></p>
+	</section>
+</footer>

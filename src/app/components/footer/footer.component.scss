@@ -1,0 +1,90 @@
+@import "~bootstrap/scss/bootstrap-grid.scss";
+@import "global";
+@import "material-you";
+
+:host {
+	flex-grow: 1;
+	display: flex;
+	align-items: stretch;
+}
+
+.footer {
+	@include material-container--primary;
+	border-radius: $container-border-radius $container-border-radius 0 0;
+	display: flex;
+	flex-direction: column;
+	padding: 0rem $side-container-padding;
+	padding-bottom: $upper-bottom-container-padding / 2;
+	margin-top: 4rem;
+	position: relative;
+	flex-grow: 1;
+    min-height: 10vh;
+	align-items: center;
+	justify-content: center;
+
+	&__scroll-header {
+		margin-top: -3.5rem;
+		margin-bottom: 2rem;
+	}
+
+	&__scroll-to-top-container {
+		@include theme-transition;
+		@include material-colored--primary;
+		@include material-mask--zany-square;
+		width: 7rem;
+		height: 7rem;
+		padding: 1rem;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		text-decoration: none;
+
+		@include media-breakpoint-down(md) {
+			width: 5rem;
+			height: 5rem;
+			padding: 0.75rem;
+		}
+	}
+
+	&__scroll-icon {
+		font-size: 2.5rem;
+
+		@include media-breakpoint-down(md) {
+			font-size: 2.25rem;
+		}
+	}
+
+	&__links {
+		display: flex;
+		grid-gap: 1rem;
+		margin-bottom: 2rem;
+	}
+
+	&__link {
+		@include material-basic--primary;
+
+		padding: 10px;
+		width: 48px;
+		height: 48px;
+		border-radius: 32px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		line-height: 0;
+	}
+
+	&__text {
+		display: flex;
+		align-items: center;
+		text-align: center;
+	}
+
+	&__author {
+		@include material-inverted--primary;
+		border-radius: $container-border-radius / 2;
+		padding: 0.5rem;
+		display: inline-flex;
+		align-items: center;
+		font-weight: bold;
+	}
+}

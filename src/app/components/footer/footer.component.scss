@@ -14,7 +14,7 @@
 	display: flex;
 	flex-direction: column;
 	padding: 0rem $side-container-padding;
-	padding-bottom: $upper-bottom-container-padding / 2;
+	padding-bottom: calc($upper-bottom-container-padding / 2);
 	margin-top: 4rem;
 	position: relative;
 	flex-grow: 1;
@@ -25,6 +25,10 @@
 	&__scroll-header {
 		margin-top: -3.5rem;
 		margin-bottom: 2rem;
+
+		@include media-breakpoint-down(md) {
+			margin-top: -3rem;
+		}
 	}
 
 	&__scroll-to-top-container {
@@ -40,8 +44,8 @@
 		text-decoration: none;
 
 		@include media-breakpoint-down(md) {
-			width: 5rem;
-			height: 5rem;
+			width: 5.5rem;
+			height: 5.5rem;
 			padding: 0.75rem;
 		}
 	}
@@ -81,7 +85,7 @@
 
 	&__author {
 		@include material-inverted--primary;
-		border-radius: $container-border-radius / 2;
+		border-radius: calc($container-border-radius / 2);
 		padding: 0.5rem;
 		display: inline-flex;
 		align-items: center;

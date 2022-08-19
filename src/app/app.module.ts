@@ -20,7 +20,6 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { RouterModule } from '@angular/router';
-import { ScullyLibModule } from '@scullyio/ng-lib';
 
 @NgModule({
   declarations: [
@@ -50,8 +49,7 @@ import { ScullyLibModule } from '@scullyio/ng-lib';
    // registrationStrategy: 'registerWhenStable:30000'
    registrationStrategy: 'registerImmediately'
  }),
- RouterModule,
- ScullyLibModule
+ RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,7 +9,7 @@
     "test": "ng test",
     "dev:ssr": "ng run portfolio.dartegnian.com:serve-ssr",
     "serve:ssr": "node dist/portfolio.dartegnian.com/server/main.js",
-    "build:ssr": "ng build && ng run portfolio.dartegnian.com:server",
+    "build:ssr": "ng build --configuration production && ng run portfolio.dartegnian.com:server",
     "prerender": "ng run portfolio.dartegnian.com:prerender",
 	"vercel-build": "npm run build:ssr"
   },

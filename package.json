@@ -4,13 +4,14 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build-dev": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "dev:ssr": "ng run portfolio.dartegnian.com:serve-ssr",
     "serve:ssr": "node dist/portfolio.dartegnian.com/server/main.js",
     "build:ssr": "ng build && ng run portfolio.dartegnian.com:server",
-    "prerender": "ng run portfolio.dartegnian.com:prerender"
+    "prerender": "ng run portfolio.dartegnian.com:prerender",
+	"vercel-build": "npm run build:ssr"
   },
   "private": true,
   "dependencies": {

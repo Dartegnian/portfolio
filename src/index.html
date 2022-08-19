@@ -55,10 +55,11 @@
 	<link rel="icon" type="image/png" sizes="96x96" href="/assets/img/icons/favicon-96x96.png">
 	<link rel="icon" type="image/png" sizes="16x16" href="/assets/img/icons/favicon-16x16.png">
 
-	<link href="/assets/css/material-you--secondary.css" rel="preload" as="style"/>
-	<link href="/assets/css/material-you--tertiary.css" rel="preload" as="style"/>
-	<link href="/assets/css/material-you--quaternary.css" rel="preload" as="style"/>
-	<link href="/assets/css/material-you--primary.css" rel="stylesheet"/>
+	<link href="/assets/css/material-you--secondary.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<link href="/assets/css/material-you--tertiary.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<link href="/assets/css/material-you--quaternary.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<link href="/assets/css/material-you--primary.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+	<noscript><link rel="stylesheet" href="/assets/css/material-you--primary.css"></noscript>
   <link rel="manifest" href="manifest.webmanifest">
 </head>
 

@@ -3,11 +3,14 @@
 	"public": true,
 	"name": "portfolio.dartegnian.com",
 	"rewrites": [
-	  { "source": "/(.*)", "destination": "/api" }
+		{
+			"source": "/(.*)",
+			"destination": "/api"
+		}
 	],
 	"functions": {
-	  "api/index.js": {
-		"includeFiles": "dist/portfolio.dartegnian.com/browser/**"
-	  }
+		"api/index.js": {
+			"includeFiles": "dist/portfolio.dartegnian.com/browser/**"
+		}
 	}
-  }
+}

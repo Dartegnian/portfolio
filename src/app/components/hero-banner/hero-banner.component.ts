@@ -1,4 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AccentService } from 'src/app/services/accent-service.service';
 
@@ -14,13 +15,16 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 	accentSubscription: Subscription;
 	isSecondHeroImageActive = false;
 
+	isBrowser: boolean = false;
 
 	constructor(
-		private accent: AccentService
+		private accent: AccentService,
+		@Inject(PLATFORM_ID) private platformId: Object
 	) {
 		this.images = this.accent.images;
 		this.heroImage = this.images[this.accent.activeIndex];
 		this.secondHeroImage = this.heroImage;
+		this.isBrowser = isPlatformBrowser(this.platformId);
 
 		this.accentSubscription = this.accent.accentSubscription.subscribe(
 			(index: number) => {

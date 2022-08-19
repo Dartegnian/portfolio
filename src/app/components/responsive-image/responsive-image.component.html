@@ -1,0 +1,15 @@
+<picture *ngIf="imageName" class="responsive-image">
+	<ng-container *ngFor="let format of imageFormats">
+		<ng-container *ngFor="let imgSize of imageSizes">
+			<source
+				srcset="assets/img/{{ imageName }}-{{ imgSize }}.{{ format }}"
+				media="(max-width: {{ imgSize }}px)"
+				type="image/{{ format }}"
+				[attr.width]="imageWidth"
+				[attr.height]="imageHeight"
+			/>
+		</ng-container>
+	</ng-container>
+	<!-- original -->
+	<img src="assets/img/{{ imageName }}-1024.webp" class="responsive-image__fallback-img" [attr.width]="imageWidth" [attr.height]="imageHeight" />
+</picture>

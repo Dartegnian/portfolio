@@ -102,10 +102,10 @@
 			cursor :default;
 		}
 
-		&--disabled {
+		&--disabled > .material-symbols-rounded {
 			cursor: not-allowed;
 			opacity: 0.8;
-			filter: grayscale();
+			filter: grayscale(1);
 		}
 
 		&--center {

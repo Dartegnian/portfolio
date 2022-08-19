@@ -95,16 +95,17 @@
 		justify-content: center;
 		align-items: center;
 		text-decoration: none;
-		transition: opacity $theme-transition-speed ease, color $theme-transition-speed ease, background-color $theme-transition-speed ease,;
+		transition: opacity $theme-transition-speed ease, color $theme-transition-speed ease, background-color $theme-transition-speed ease, filter $theme-transition-speed ease;
 		cursor: pointer;
 
 		&--empty {
 			cursor :default;
 		}
 
-		&--disabled {
+		&--disabled > .material-symbols-rounded {
 			cursor: not-allowed;
-			opacity: 0.5;
+			opacity: 0.8;
+			filter: grayscale(1);
 		}
 
 		&--center {

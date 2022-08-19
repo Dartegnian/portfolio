@@ -1,6 +1,6 @@
 {
-  "name": "portfolio.dartegnian.com",
-  "short_name": "portfolio.dartegnian.com",
+  "name": "dartegnians-portfolio",
+  "short_name": "dartegnians-portfolio",
   "theme_color": "#1976d2",
   "background_color": "#cde5ff",
   "display": "standalone",

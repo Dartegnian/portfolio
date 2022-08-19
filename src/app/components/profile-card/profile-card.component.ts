@@ -1,4 +1,5 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AccentService } from 'src/app/services/accent-service.service';
 
@@ -17,19 +18,24 @@ export class ProfileCardComponent implements OnInit {
 	accentSubscription: Subscription;
 	isSecondCoverImageActive = false;
 
+	isBrowser: boolean = false;
 
 	constructor(
-		private accent: AccentService
+		private accent: AccentService,
+		@Inject(PLATFORM_ID) private platformId: Object
 	) {
 		this.images = this.accent.images;
 		this.coverImage = this.images[this.accent.activeIndex];
 		this.secondCoverImage = this.coverImage;
+		this.isBrowser = isPlatformBrowser(this.platformId);
 
 		this.accentSubscription = this.accent.accentSubscription.subscribe(
 			(index: number) => {
-				setTimeout(() =>
-					this.setCoverImage(index)
-				, 25);
+				if (this.isBrowser) {
+					setTimeout(() =>
+						this.setCoverImage(index)
+					, 25);
+				}
 			}
 		);
 	}

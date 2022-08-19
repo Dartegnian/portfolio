@@ -1,5 +1,5 @@
 <main class="portfolio-body">
-	<theme-switcher></theme-switcher>
+	<theme-switcher *ngIf="isBrowser"></theme-switcher>
 	<hero-banner></hero-banner>
 	<section class="profile-intro">
 		<profile-card></profile-card>
@@ -24,4 +24,4 @@
 <app-footer></app-footer>
 
 <router-outlet></router-outlet>
-<active-color-scheme></active-color-scheme>
+<active-color-scheme *ngIf="isBrowser"></active-color-scheme>

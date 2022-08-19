@@ -1,0 +1,12 @@
+identifier: l57400d571tah904
+appPort: 1864
+staticPort: 1668
+reloadPort: 2667
+hostName: localhost
+projectName: dartegnians-portfolio
+homeFolder: /home/dartegnian/SYGtech/piranha-prototype/portfolio.dartegnian.com
+distFolder: dist/dartegnians-portfolio/browser
+outDir: >-
+  /home/dartegnian/SYGtech/piranha-prototype/portfolio.dartegnian.com/dist/static
+handle404: ''
+allowErrorCollect: false

@@ -1,5 +1,5 @@
 {
-  "name": "portfolio.dartegnian.com",
+  "name": "dartegnians-portfolio",
   "version": "1.1.0",
   "scripts": {
     "ng": "ng",
@@ -7,11 +7,11 @@
     "build-dev": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "dev:ssr": "ng run portfolio.dartegnian.com:serve-ssr",
-    "serve:ssr": "node dist/portfolio.dartegnian.com/server/main.js",
-    "build:ssr": "ng build --configuration production && ng run portfolio.dartegnian.com:server",
-    "prerender": "ng run portfolio.dartegnian.com:prerender",
-	"vercel-build": "npm run build:ssr"
+    "dev:ssr": "ng run dartegnians-portfolio:serve-ssr",
+    "serve:ssr": "node dist/dartegnians-portfolio/server/main.js",
+    "build:ssr": "ng build --configuration production && ng run dartegnians-portfolio:server",
+    "prerender": "ng run dartegnians-portfolio:prerender",
+    "vercel-build": "npm run build:ssr"
   },
   "private": true,
   "dependencies": {
@@ -26,6 +26,7 @@
     "@angular/router": "^14.0.0",
     "@angular/service-worker": "^14.0.0",
     "@nguniversal/express-engine": "^14.1.0",
+    "@scullyio/scully-plugin-puppeteer": "^2.1.36",
     "bootstrap": "^5.1.3",
     "express": "^4.15.2",
     "idb": "^7.0.2",

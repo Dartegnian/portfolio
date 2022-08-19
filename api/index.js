@@ -1,3 +1,3 @@
-const server = require('../dist/portfolio.dartegnian.com/server/main');
+const server = require('../dist/dartegnians-portfolio/server/main');
 
 module.exports = server.app();

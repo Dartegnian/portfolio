@@ -4,18 +4,16 @@
 		<h2 class="hero-banner__subheader">An interactive portfolio website with Material You implementation. Colors dynamically adjust to a selected theme. Choose one below to get started.</h2>
 		<accent-switcher></accent-switcher>
 	</section>
-	<img
-		[src]="'/assets/img/' + heroImage + '-min.jpg'"
+	<responsive-image
+		[imageName]="heroImage + '-min'"
 		class="hero-banner__img hero-banner__img--first-image"
 		[class.hero-banner__img--first-image-disabled]="isSecondHeroImageActive"
-		[alt]="'First hero banner ' + heroImage + ' image'"
-		draggable="false"
-	/>
-	<img
-		[src]="'/assets/img/' + secondHeroImage + '-min.jpg'"
+		[imageAlt]="'First hero banner ' + heroImage + ' image'"
+	></responsive-image>
+	<responsive-image
+		[imageName]="secondHeroImage + '-min'"
 		class="hero-banner__img hero-banner__img--second-image"
 		[class.hero-banner__img--second-image-disabled]="!isSecondHeroImageActive"
-		[alt]="'Second hero banner ' + heroImage + ' image'"
-		draggable="false"
-	/>
+		[imageAlt]="'Second hero banner ' + heroImage + ' image'"
+	></responsive-image>
 </article>

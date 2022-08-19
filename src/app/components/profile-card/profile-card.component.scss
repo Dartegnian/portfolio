@@ -58,6 +58,7 @@
 		user-select: none;
 		position: absolute;
 		transition: opacity 0.25s ease;
+		overflow: hidden;
 
 		&--first-image-disabled {
 			opacity: 0;

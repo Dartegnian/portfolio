@@ -55,10 +55,9 @@
 
 	&__img {
 		top: -5%;
-		left: -5%;
 		position: fixed;
-		width: 105%;
-		height: 105%;
+		width: 100vw;
+		aspect-ratio: 16/9;
 		z-index: -1;
 		-webkit-mask: linear-gradient(to right, transparent 45%, #000);
 		mask: linear-gradient(to right, transparent 45%,#000);

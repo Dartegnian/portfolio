@@ -1,0 +1,13 @@
+{
+	"version": 2,
+	"public": true,
+	"name": "portfolio.dartegnian.com",
+	"rewrites": [
+	  { "source": "/(.*)", "destination": "/api" }
+	],
+	"functions": {
+	  "api/index.js": {
+		"includeFiles": "dist/portfolio.dartegnian.com/browser/**"
+	  }
+	}
+  }

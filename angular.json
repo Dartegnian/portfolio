@@ -196,6 +196,23 @@
             }
           },
           "defaultConfiguration": "production"
+        },
+        "app-shell": {
+          "builder": "@angular-devkit/build-angular:app-shell",
+          "options": {
+            "route": "shell"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "portfolio.dartegnian.com:build:production",
+              "serverTarget": "portfolio.dartegnian.com:server:production"
+            },
+            "development": {
+              "browserTarget": "portfolio.dartegnian.com:build:development",
+              "serverTarget": "portfolio.dartegnian.com:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

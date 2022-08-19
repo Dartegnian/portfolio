@@ -2,7 +2,7 @@
   "name": "portfolio.dartegnian.com",
   "short_name": "portfolio.dartegnian.com",
   "theme_color": "#1976d2",
-  "background_color": "#fafafa",
+  "background_color": "#cde5ff",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",

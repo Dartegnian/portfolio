@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 
 @Component({
 	selector: 'skill-info',
@@ -17,11 +18,18 @@ export class SkillInfoComponent implements OnInit {
 	webAttributeCharacter = 0;
 	webAttribute = this.webAttributes[this.webAttributeIndex];
 	cursorInterval: ReturnType<typeof setTimeout> | undefined;
+	isBrowser: boolean = false;
 
-	constructor() { }
+	constructor(
+		@Inject(PLATFORM_ID) private platformId: Object
+	) {
+		this.isBrowser = isPlatformBrowser(this.platformId);
+	}
 
 	ngOnInit(): void {
-		this.cursorInterval = setInterval(() => this.writeType(), 100);
+		if (this.isBrowser) { 
+			this.cursorInterval = setInterval(() => this.writeType(), 100);
+		}
 	}
 
 	writeType() {

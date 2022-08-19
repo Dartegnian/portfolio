@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist",
+            "outputPath": "dist/portfolio.dartegnian.com/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -129,6 +129,90 @@
             ],
             "scripts": []
           }
+        },
+        "server": {
+          "builder": "@angular-devkit/build-angular:server",
+          "options": {
+            "outputPath": "dist/portfolio.dartegnian.com/server",
+            "main": "server.ts",
+            "tsConfig": "tsconfig.server.json",
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/assets/scss"
+              ]
+            },
+            "inlineStyleLanguage": "scss"
+          },
+          "configurations": {
+            "production": {
+              "outputHashing": "media",
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "sourceMap": false,
+              "extractLicenses": true
+            },
+            "development": {
+              "optimization": false,
+              "sourceMap": true,
+              "extractLicenses": false
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve-ssr": {
+          "builder": "@nguniversal/builders:ssr-dev-server",
+          "configurations": {
+            "development": {
+              "browserTarget": "portfolio.dartegnian.com:build:development",
+              "serverTarget": "portfolio.dartegnian.com:server:development"
+            },
+            "production": {
+              "browserTarget": "portfolio.dartegnian.com:build:production",
+              "serverTarget": "portfolio.dartegnian.com:server:production"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "prerender": {
+          "builder": "@nguniversal/builders:prerender",
+          "options": {
+            "routes": [
+              "/"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "portfolio.dartegnian.com:build:production",
+              "serverTarget": "portfolio.dartegnian.com:server:production"
+            },
+            "development": {
+              "browserTarget": "portfolio.dartegnian.com:build:development",
+              "serverTarget": "portfolio.dartegnian.com:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "app-shell": {
+          "builder": "@angular-devkit/build-angular:app-shell",
+          "options": {
+            "route": "shell"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "portfolio.dartegnian.com:build:production",
+              "serverTarget": "portfolio.dartegnian.com:server:production"
+            },
+            "development": {
+              "browserTarget": "portfolio.dartegnian.com:build:development",
+              "serverTarget": "portfolio.dartegnian.com:server:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

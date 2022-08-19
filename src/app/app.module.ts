@@ -38,7 +38,7 @@ import { environment } from '../environments/environment';
     FooterComponent
   ],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
 	CommonModule,
  ServiceWorkerModule.register('ngsw-worker.js', {

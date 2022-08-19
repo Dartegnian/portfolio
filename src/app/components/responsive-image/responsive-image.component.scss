@@ -1,0 +1,19 @@
+:host {
+	display: flex;
+	flex-grow: 1;
+	justify-content: center;
+}
+
+.responsive-image {
+	display: flex;
+	flex-grow: 1;
+	justify-content: center;
+
+	&__fallback-img,
+	&__responsive-img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		flex-grow: 1;
+	}
+}

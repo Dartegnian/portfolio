@@ -19,6 +19,7 @@ import { EmailCtaComponent } from './components/resume-request/resume-request.co
 import { FooterComponent } from './components/footer/footer.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ResponsiveImageComponent } from './components/responsive-image/responsive-image.component';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -36,7 +37,8 @@ import { RouterModule } from '@angular/router';
     LifeAtAGlanceComponent,
     SkillListComponent,
     EmailCtaComponent,
-    FooterComponent
+    FooterComponent,
+    ResponsiveImageComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

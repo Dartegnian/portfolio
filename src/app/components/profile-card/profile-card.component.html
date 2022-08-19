@@ -1,27 +1,30 @@
 <article class="profile-card">
 	<header class="profile-card__header">
-		<picture class="profile-card__cover-container">
-			<img
-				[src]="'/assets/img/' + coverImage + '-min.jpg'"
+		<div class="profile-card__cover-container">
+			<responsive-image
+				[imageName]="coverImage + '-min'"
 				class="profile-card__cover profile-card__cover--first-image"
 				[class.profile-card__cover--first-image-disabled]="isSecondCoverImageActive"
-				[alt]="'First cover photo, ' + coverImage + ' image'"
-				width="320" height="180"
-				draggable="false"
-			/>
-			<img
-				[src]="'/assets/img/' + secondCoverImage + '-min.jpg'"
-				class="profile-card__cover profile-card__cover--second-image"
-				[class.profile-card__cover--second-image-disabled]="!isSecondCoverImageActive"
-				[alt]="'Second cover photo, ' + secondCoverImage + ' image'"
-				width="320" height="180"
-				draggable="false"
-			/>
-		</picture>
+				[imageAlt]="'First cover photo, ' + coverImage + ' image'"
+				[imageWidth]="320" [imageHeight]="180"
+			></responsive-image>
+			<responsive-image
+				[imageName]="secondCoverImage + '-min'"
+				class="profile-card__cover profile-card__cover--first-image"
+				[class.profile-card__cover--first-image-disabled]="!isSecondCoverImageActive"
+				[imageAlt]="'First cover photo, ' + secondCoverImage + ' image'"
+				[imageWidth]="320" [imageHeight]="180"
+			></responsive-image>
+		</div>
 		<div class="profile-card__photo-container">
-			<picture class="profile-card__profile-photo">
-				<img src="/assets/img/me-min.jpg" class="profile-card__photo" alt="Profile picture" height="10" width="100" draggable="false"/>
-			</picture>
+			<div class="profile-card__profile-photo">
+				<responsive-image
+					imageName="me-min"
+					class="profile-card__photo"
+					imageAlt="Profile picture"
+					[imageWidth]="120" [imageHeight]="120"
+				></responsive-image>
+			</div>
 		</div>
 	</header>
 	<section class="profile-card__text">

@@ -7,9 +7,10 @@
 				type="image/{{ format }}"
 				[attr.width]="imageWidth"
 				[attr.height]="imageHeight"
+				[attr.alt]="imageAlt"
 			/>
 		</ng-container>
 	</ng-container>
 	<!-- original -->
-	<img src="assets/img/{{ imageName }}-1024.webp" class="responsive-image__fallback-img" [attr.width]="imageWidth" [attr.height]="imageHeight" />
+	<img src="assets/img/{{ imageName }}-1024.jpg" class="responsive-image__fallback-img" [attr.width]="imageWidth" [attr.height]="imageHeight" [attr.alt]="imageAlt" />
 </picture>

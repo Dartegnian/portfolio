@@ -3,10 +3,11 @@
 		class="accent-switcher__picture"
 		*ngFor="let image of images; index as i"
 		(click)="changeAccent(i, image)"
-		role="button" tabindex="0"
+		role="button" tabindex="0" [attr.aria-label]="'Image preview ' + image + ' theme'"
 
 		[imageName]="image + '-min'"
 		[class.accent-switcher__picture--selected]="selected == image"
 		[imageAlt]="'Image preview ' + image + ' theme'"
+		[imageHeight]="128" [imageWidth]="227.56"
 	></responsive-image>
 </article>

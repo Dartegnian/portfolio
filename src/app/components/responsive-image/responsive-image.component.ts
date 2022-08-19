@@ -12,9 +12,9 @@ export class ResponsiveImageComponent implements OnInit {
 	@Input() imageHeight?: number | undefined = undefined;
 
 	imageSizes = [
-		1024,
+		256,
 		512,
-		256
+		1024
 	];
 	imageFormats = [
 		"avif",

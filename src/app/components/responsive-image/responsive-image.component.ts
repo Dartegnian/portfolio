@@ -8,8 +8,8 @@ import { Component, Input, OnInit } from '@angular/core';
 export class ResponsiveImageComponent implements OnInit {
 	@Input() imageName: string = "";
 	@Input() imageAlt: string = "";
-	@Input() imageWidth?: number | undefined = undefined;
-	@Input() imageHeight?: number | undefined = undefined;
+	@Input() imageWidth: number | undefined = undefined;
+	@Input() imageHeight: number | undefined = undefined;
 
 	imageSizes = [
 		256,

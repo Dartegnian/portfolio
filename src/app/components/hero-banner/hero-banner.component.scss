@@ -19,7 +19,7 @@
 	overflow: hidden;
 	flex-grow: 1;
 	clip-path: inset(0 round 0rem 0rem  $container-border-radius $container-border-radius);
-    min-height: 50vh;
+	min-height: 50vh;
 
 	&__text-container {
 		display: flex;
@@ -54,10 +54,11 @@
 	}
 
 	&__img {
-		top: -5%;
+		top: 0;
+		right: 0;
 		position: fixed;
-		width: 100vw;
-		height: max-content;
+		width: auto;
+		height: 39rem;
 		aspect-ratio: 16/9;
 		z-index: -1;
 		-webkit-mask: linear-gradient(to right, transparent 45%, #000);

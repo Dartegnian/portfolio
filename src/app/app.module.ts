@@ -19,8 +19,8 @@ import { EmailCtaComponent } from './components/resume-request/resume-request.co
 import { FooterComponent } from './components/footer/footer.component';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ResponsiveImageComponent } from './components/responsive-image/responsive-image.component';
 import { RouterModule } from '@angular/router';
-import { ScullyLibModule } from '@scullyio/ng-lib';
 
 @NgModule({
   declarations: [
@@ -37,7 +37,8 @@ import { ScullyLibModule } from '@scullyio/ng-lib';
     LifeAtAGlanceComponent,
     SkillListComponent,
     EmailCtaComponent,
-    FooterComponent
+    FooterComponent,
+    ResponsiveImageComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
@@ -50,8 +51,7 @@ import { ScullyLibModule } from '@scullyio/ng-lib';
    // registrationStrategy: 'registerWhenStable:30000'
    registrationStrategy: 'registerImmediately'
  }),
- RouterModule,
- ScullyLibModule
+ RouterModule
   ],
   providers: [],
   bootstrap: [AppComponent]

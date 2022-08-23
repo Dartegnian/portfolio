@@ -10,6 +10,7 @@ export class ResponsiveImageComponent implements OnInit {
 	@Input() imageAlt: string = "";
 	@Input() imageWidth: number | undefined = undefined;
 	@Input() imageHeight: number | undefined = undefined;
+	@Input() imageBoundary?: number | undefined = undefined;
 
 	imageSizes = [
 		256,

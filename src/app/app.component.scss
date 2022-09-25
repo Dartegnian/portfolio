@@ -16,11 +16,15 @@
 	padding: 2rem;
 	padding-top: 0rem;
 
+	&--standalone {
+		margin: 4rem 0rem;
+		margin-bottom: 2rem;
+	}
+
 	&--themed {
 		@include material-container--primary;
 		padding: 0rem;
 		margin: 2rem 0rem;
-		min-height: 100vh;
 		border-radius: $container-border-radius;
 		margin-bottom: 2rem;
 	}

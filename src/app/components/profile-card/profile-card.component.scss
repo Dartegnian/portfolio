@@ -31,34 +31,30 @@
 		flex-direction: column;
 
 		@include media-breakpoint-only(md) {
-			margin-bottom: 8rem;
+			margin-bottom: 1rem;
 		}
 
 		@include media-breakpoint-down(md) {
-			margin-bottom: 4rem;
+			margin-bottom: 1rem;
 			align-items: center;
 		}
 	}
 
 	&__cover-container {
-		height: 100%;
+		display: flex;
 		width: 100%;
-		min-height: 11rem;
 		margin-bottom: 4rem;
-
-		@include media-breakpoint-down(md) {
-			min-height: 43vw;
-		}
+		aspect-ratio: 16/9;
 	}
 
 	&__cover {
+		display: flex;
 		width: 100%;
-    	height: auto;
-		border-radius: $container-border-radius;
-		user-select: none;
 		position: absolute;
 		transition: opacity 0.25s ease;
 		overflow: hidden;
+		border-radius: $container-border-radius;
+		aspect-ratio: 16/9;
 
 		&--first-image-disabled {
 			opacity: 0;
@@ -72,34 +68,37 @@
 	&__photo-container {
 		display: flex;
 		justify-content: center;
-		position: absolute;
-		bottom: 0;
-		left: 28%;
+		margin-top: -8rem;
+		// position: absolute;
+		// bottom: 0;
+		// left: 28%;
 
-		@include media-breakpoint-down(md) {
-			bottom: -20%;
-			left: auto;
-		}
+		// @include media-breakpoint-down(md) {
+		// 	bottom: -20%;
+		// 	left: auto;
+		// }
 	}
 
 	&__profile-photo {
 		@include material-mask--jagged-circle;
-
+		width: 128px;
 		padding: 0.5rem;
-		object-fit: contain;
-		border-radius: 50%;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		justify-self: center;
+
+		// padding: 0.5rem;
+		// object-fit: contain;
+		// border-radius: 50%;
 		background-color: #{var(--md-sys-color-secondary-container)};
 	}
 
 	&__photo {
 		@include material-mask--jagged-circle;
-		width: 8rem;
-		height: 100%;
 		user-select: none;
-
-		@include media-breakpoint-down(md) {
-			width: 9.5rem;
-		}
+		width: 100%;
+		aspect-ratio: 1/1;
 	}
 
 	&__text {

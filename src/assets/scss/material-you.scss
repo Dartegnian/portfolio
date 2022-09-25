@@ -83,6 +83,14 @@
 	@include material-button;
 	@include material-outline;
 }
+@mixin material-button--basic-tertiary {
+	@include material-basic--tertiary;
+	@include material-button;
+
+	&:hover {
+		@include material-inverted--tertiary;
+	}
+}
 
 @mixin material-mask--jagged-circle {
 	-webkit-mask-image: url(/assets/svg/m3-jagged-circle.svg);

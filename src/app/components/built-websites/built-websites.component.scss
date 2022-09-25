@@ -72,12 +72,19 @@
 	}
 
 	&__site-content {
+		display: flex;
+		flex-grow: 1;
+		flex-direction: column;
 		padding: 1.5rem 1.3rem;
 	}
 
+	&__site-description {
+		margin-bottom: 2rem;
+	}
+
 	&__link {
-		margin-top: 2rem;
-		@include material-button--filled-tertiary;
+		@include material-button--basic-tertiary;
+		margin-top: auto;
 		max-width: max-content;
 	}
 }

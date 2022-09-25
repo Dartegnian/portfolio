@@ -26,7 +26,7 @@ export class BuiltWebsitesComponent implements OnInit {
 				name: "Allianz Touch",
 				link: "https://touch.allianzpnblife.ph",
 				image: "allianz-touch",
-				description: "Allianz Touch is a consumer-facing portal where they can manage their active insurance plans."
+				description: "Allianz Touch is a consumer-facing portal where users can manage their active insurance plans."
 			},
 			{
 				name: "Allianz Assist",

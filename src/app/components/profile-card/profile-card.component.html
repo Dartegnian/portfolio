@@ -6,14 +6,12 @@
 				class="profile-card__cover profile-card__cover--first-image"
 				[class.profile-card__cover--first-image-disabled]="isSecondCoverImageActive"
 				[imageAlt]="'First cover photo, ' + coverImage + ' image'"
-				[imageWidth]="320" [imageHeight]="180"
 			></responsive-image>
 			<responsive-image
 				[imageName]="secondCoverImage + '-min'"
 				class="profile-card__cover profile-card__cover--first-image"
 				[class.profile-card__cover--first-image-disabled]="!isSecondCoverImageActive"
 				[imageAlt]="'First cover photo, ' + secondCoverImage + ' image'"
-				[imageWidth]="320" [imageHeight]="180"
 			></responsive-image>
 		</div>
 		<div class="profile-card__photo-container">

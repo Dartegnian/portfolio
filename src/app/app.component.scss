@@ -13,20 +13,13 @@
 }
 
 .profile-body {
-	padding: 2rem;
-	padding-top: 0rem;
-
-	&--standalone {
-		margin: 4rem 0rem;
-		margin-bottom: 2rem;
-	}
+	margin: 2rem;
 
 	&--themed {
+		margin: 2rem 0rem;
 		@include material-container--primary;
 		padding: 0rem;
-		margin: 2rem 0rem;
 		border-radius: $container-border-radius;
-		margin-bottom: 2rem;
 	}
 	
 	&--themed-secondary {
@@ -35,7 +28,7 @@
 }
 
 .at-a-glance {
-	padding: 2rem;
+	margin: 0rem 2rem;
 }
 
 .skill-section {

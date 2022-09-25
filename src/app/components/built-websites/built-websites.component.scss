@@ -5,7 +5,8 @@
 .built-websites {
 	&__header {
 		@include material-colored--tertiary;
-		max-width: fit-content;
+		// max-width: fit-content;
+		width: 100%;
 		border-radius: $container-border-radius;
 		padding: 4rem 2rem;
 	}
@@ -26,10 +27,9 @@
 	}
 
 	&__sites {
-		margin-top: 1rem;
+		margin-top: 2rem;
 		display: grid;
 		grid-template-columns: repeat(3, minmax(0, 1fr));
-		// grid-auto-flow: column;
 		grid-auto-flow: row;
 		gap: 2rem;
 

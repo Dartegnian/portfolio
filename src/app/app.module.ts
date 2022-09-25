@@ -21,6 +21,7 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ResponsiveImageComponent } from './components/responsive-image/responsive-image.component';
 import { RouterModule } from '@angular/router';
+import { BuiltWebsitesComponent } from './components/built-websites/built-websites.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { RouterModule } from '@angular/router';
     SkillListComponent,
     EmailCtaComponent,
     FooterComponent,
-    ResponsiveImageComponent
+    ResponsiveImageComponent,
+    BuiltWebsitesComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

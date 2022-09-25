@@ -1,0 +1,30 @@
+<article class="built-websites">
+	<header class="built-websites__header">
+		<h1 class="built-websites__heading">Websites built with <span class="built-websites__header-icon material-symbols-rounded">favorite</span></h1>
+
+		<p class="built-websites__tagline">Public-facing websites I've built or helped deploy during the several sprints and projects that I've been put on.</p>
+	</header>
+	<section class="built-websites__sites">
+		<article *ngFor="let website of builtWebsites" class="built-websites__site">
+			<div>
+				<responsive-image
+					[imageName]="website.image + '-min'"
+					class="built-websites__image"
+					[imageAlt]="website.name + ' website screenshot'"
+				></responsive-image>
+			</div>
+			<header class="built-websites__site-header">
+				<a [href]="website.link" class="built-websites__site-heading" target="_blank">{{ website.name }}</a>
+			</header>
+			<section class="built-websites__site-content">
+				{{ website.description }}
+				<a [href]="website.link" class="built-websites__link" target="_blank">
+					<span class="material-symbols-rounded skill-info__button-icon">
+						open_in_new
+					</span>
+					Visit site
+				</a>
+			</section>
+		</article>
+	</section>
+</article>

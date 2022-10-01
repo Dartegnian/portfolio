@@ -8,11 +8,4 @@
 	display: flex;
 	flex-grow: 1;
 	justify-content: center;
-
-	&__fallback-img,
-	&__responsive-img {
-		height: 100%;
-		object-fit: cover;
-		flex-grow: 1;
-	}
 }

@@ -103,10 +103,6 @@
 	}
 
 	&__button {
-		@include material-button--outlined-secondary;
-
-		@include media-breakpoint-down(md) {
-			font-size: 0.8rem;
-		}
+		@include material-button--basic-secondary;
 	}
 }

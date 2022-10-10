@@ -43,6 +43,9 @@
 		align-items: center;
 		text-decoration: none;
 
+		&:hover {
+			@include material-inverted--tertiary;
+		}
 		@include media-breakpoint-down(md) {
 			width: 5.5rem;
 			height: 5.5rem;
@@ -75,6 +78,10 @@
 		justify-content: center;
 		align-items: center;
 		line-height: 0;
+
+		&:hover {
+			@include material-inverted--primary;
+		}
 	}
 
 	&__text {

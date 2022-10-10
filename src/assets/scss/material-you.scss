@@ -33,50 +33,102 @@
 @mixin material-button--filled-primary {
 	@include material-colored--primary;
 	@include material-button;
+
+	&:hover {
+		@include material-inverted--primary;
+	}
 }
 @mixin material-button--tonal-primary {
 	@include material-container--primary;
 	@include material-button;
+
+	&:hover {
+		@include material-inverted--primary;
+	}
 }
 @mixin material-button--tonal-primary-inverted {
 	@include material-inverted--primary;
 	@include material-button;
+
+	&:hover {
+		@include material-basic--primary;
+	}
 }
 @mixin material-button--outlined-primary {
 	@include material-container--primary;
 	@include material-button;
 	@include material-outline;
 }
+@mixin material-button--basic-primary {
+	@include material-basic--primary;
+	@include material-button;
+
+	&:hover {
+		@include material-inverted--primary;
+	}
+}
 
 @mixin material-button--filled-secondary {
 	@include material-colored--secondary;
 	@include material-button;
+
+	&:hover {
+		@include material-inverted--secondary;
+	}
 }
 @mixin material-button--tonal-secondary {
 	@include material-container--secondary;
 	@include material-button;
+
+	&:hover {
+		@include material-inverted--secondary;
+	}
 }
 @mixin material-button--tonal-secondary-inverted {
 	@include material-inverted--secondary;
 	@include material-button;
+
+	&:hover {
+		@include material-basic--secondary;
+	}
 }
 @mixin material-button--outlined-secondary {
 	@include material-container--secondary;
 	@include material-button;
 	@include material-outline;
 }
+@mixin material-button--basic-secondary {
+	@include material-basic--secondary;
+	@include material-button;
+
+	&:hover {
+		@include material-inverted--secondary;
+	}
+}
 
 @mixin material-button--filled-tertiary {
 	@include material-colored--tertiary;
 	@include material-button;
+
+	&:hover {
+		@include material-inverted--tertiary;
+	}
 }
 @mixin material-button--tonal-tertiary {
 	@include material-container--tertiary;
 	@include material-button;
+
+	&:hover {
+		@include material-inverted--tertiary;
+	}
 }
 @mixin material-button--tonal-tertiary-inverted {
 	@include material-inverted--tertiary;
 	@include material-button;
+
+	&:hover {
+		@include material-basic--tertiary;
+	}
 }
 @mixin material-button--outlined-tertiary {
 	@include material-container--tertiary;

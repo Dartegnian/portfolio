@@ -44,3 +44,7 @@ Thumbs.db
 docs/CNAME
 
 *.avif
+*.webp
+
+/src/assets/img/*.jpeg
+/src/assets/img/*.jpg

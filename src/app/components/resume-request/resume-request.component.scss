@@ -54,7 +54,7 @@
 	}
 
 	&__email-button {
-		@include material-button--tonal-tertiary;
+		@include material-button--basic-secondary;
 		margin-top: 1rem;
 		width: max-content;
 

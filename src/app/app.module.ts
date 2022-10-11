@@ -21,7 +21,6 @@ import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { ResponsiveImageComponent } from './components/responsive-image/responsive-image.component';
 import { RouterModule } from '@angular/router';
-import { BuiltWebsitesComponent } from './components/built-websites/built-websites.component';
 import { OtherSitesComponent } from './components/other-sites/other-sites.component';
 
 @NgModule({
@@ -41,7 +40,6 @@ import { OtherSitesComponent } from './components/other-sites/other-sites.compon
     EmailCtaComponent,
     FooterComponent,
     ResponsiveImageComponent,
-    BuiltWebsitesComponent,
 	OtherSitesComponent
   ],
   imports: [

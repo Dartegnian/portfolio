@@ -4,7 +4,7 @@
 
 .other-sites {
 	&__header {
-		@include material-colored--secondary;
+		@include material-colored--tertiary;
 		// max-width: fit-content;
 		width: 100%;
 		border-radius: $container-border-radius;
@@ -45,7 +45,7 @@
 	}
 
 	&__site {
-		@include material-container--secondary;
+		@include material-container--tertiary;
 		display: flex;
 		flex-direction: column;
 		overflow: hidden;
@@ -83,7 +83,7 @@
 	}
 
 	&__link {
-		@include material-button--basic-secondary;
+		@include material-button--basic-tertiary;
 		margin-top: auto;
 		max-width: max-content;
 	}

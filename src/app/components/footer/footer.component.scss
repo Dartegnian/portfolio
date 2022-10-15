@@ -44,7 +44,7 @@
 		text-decoration: none;
 
 		&:hover {
-			@include material-inverted--tertiary;
+			@include material-inverted--primary;
 		}
 		@include media-breakpoint-down(md) {
 			width: 5.5rem;

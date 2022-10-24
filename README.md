@@ -1,10 +1,10 @@
 ![Portfolio website banner](src/assets/img/banner.jpg?raw=true "Material You portfolio banner")
 
-![Portfolio website screenshot standard theme](src/assets/img/screenshot.png1?raw=true "Material You portfolio site screenshot 1")
+![Portfolio website screenshot standard theme](src/assets/img/screenshot1.png?raw=true "Material You portfolio site screenshot 1")
 
-![Portfolio website screenshot green theme](src/assets/img/screenshot.png1?raw=true "Material You portfolio site screenshot 2")
+![Portfolio website screenshot green theme](src/assets/img/screensho2.png?raw=true "Material You portfolio site screenshot 2")
 
-![Portfolio website screenshot dark purple theme](src/assets/img/screenshot.png1?raw=true "Material You portfolio site screenshot 3")
+![Portfolio website screenshot dark purple theme](src/assets/img/screenshot3.png?raw=true "Material You portfolio site screenshot 3")
 
 # Dartegnian's Portfolio
 

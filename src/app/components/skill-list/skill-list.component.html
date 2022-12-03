@@ -7,63 +7,107 @@
 		<h2 class="skill-list__subheading">Who has helped in the development of 8 websites so far. Here are the technologies I am familiar with.</h2>
 	</header>
 	<section class="skill-list__area">
-		<h3 class="skill-list__area-header">
-			<span class="skill-list__area-header-icon material-symbols-rounded">
-				all_inclusive
-			</span>
-			DevOps
-		</h3>
-		<div class="skill-list__stack">
-			<ng-container
-				*ngFor="let stackItem of devOpsStack"
-				[ngTemplateOutlet]="stackItemElement"
-				[ngTemplateOutletContext]="{stackItem:stackItem}"
-			></ng-container>
+		<div class="skill-list__photo-container">
+			<responsive-image
+				[imageName]="'pexels-kevin-ku-577585'"
+				class="skill-list__photo"
+				[imageAlt]="'Skill picture stock image'"
+				[imageHeight]="432" [imageWidth]="768"
+			></responsive-image>
+		</div>
+		<div>
+			<h3 class="skill-list__area-header">
+				<span class="skill-list__area-header-icon material-symbols-rounded">
+					all_inclusive
+				</span>
+				DevOps
+			</h3>
+			<p class="skill-list__description">DevOps is my main focus.</p>
+			<div class="skill-list__stack">
+				<ng-container
+					*ngFor="let stackItem of devOpsStack"
+					[ngTemplateOutlet]="stackItemElement"
+					[ngTemplateOutletContext]="{stackItem:stackItem}"
+				></ng-container>
+			</div>
+		</div>
+	</section>
+	<section class="skill-list__area skill-list__area--alt">
+		<div class="skill-list__photo-container">
+			<responsive-image
+				[imageName]="'pexels-kevin-ku-577585'"
+				class="skill-list__photo"
+				[imageAlt]="'Skill picture stock image'"
+				[imageHeight]="432" [imageWidth]="768"
+			></responsive-image>
+		</div>
+		<div>
+			<h3 class="skill-list__area-header">
+				<span class="skill-list__area-header-icon material-symbols-rounded">
+					language
+				</span>
+				Front-end Web
+			</h3>
+			<p class="skill-list__description">DevOps is my main focus.</p>
+			<div class="skill-list__stack">
+				<ng-container
+					*ngFor="let stackItem of feWebStack"
+					[ngTemplateOutlet]="stackItemElement"
+					[ngTemplateOutletContext]="{stackItem:stackItem}"
+				></ng-container>
+			</div>
 		</div>
 	</section>
 	<section class="skill-list__area">
-		<h3 class="skill-list__area-header">
-			<span class="skill-list__area-header-icon material-symbols-rounded">
-				language
-			</span>
-			Front-end Web
-		</h3>
-		<div class="skill-list__stack">
-			<ng-container
-				*ngFor="let stackItem of feWebStack"
-				[ngTemplateOutlet]="stackItemElement"
-				[ngTemplateOutletContext]="{stackItem:stackItem}"
-			></ng-container>
+		<div class="skill-list__photo-container">
+			<responsive-image
+				[imageName]="'pexels-kevin-ku-577585'"
+				class="skill-list__photo"
+				[imageAlt]="'Skill picture stock image'"
+				[imageHeight]="432" [imageWidth]="768"
+			></responsive-image>
+		</div>
+		<div>
+			<h3 class="skill-list__area-header">
+				<span class="skill-list__area-header-icon material-symbols-rounded">
+					dns
+				</span>
+				Back-end Web
+			</h3>
+			<p class="skill-list__description">DevOps is my main focus.</p>
+			<div class="skill-list__stack">
+				<ng-container
+					*ngFor="let stackItem of beWebStack"
+					[ngTemplateOutlet]="stackItemElement"
+					[ngTemplateOutletContext]="{stackItem:stackItem}"
+				></ng-container>
+			</div>
 		</div>
 	</section>
-	<section class="skill-list__area">
-		<h3 class="skill-list__area-header">
-			<span class="skill-list__area-header-icon material-symbols-rounded">
-				dns
-			</span>
-			Back-end Web
-		</h3>
-		<div class="skill-list__stack">
-			<ng-container
-				*ngFor="let stackItem of beWebStack"
-				[ngTemplateOutlet]="stackItemElement"
-				[ngTemplateOutletContext]="{stackItem:stackItem}"
-			></ng-container>
+	<section class="skill-list__area skill-list__area--alt">
+		<div class="skill-list__photo-container">
+			<responsive-image
+				[imageName]="'pexels-kevin-ku-577585'"
+				class="skill-list__photo"
+				[imageAlt]="'Skill picture stock image'"
+				[imageHeight]="432" [imageWidth]="768"
+			></responsive-image>
 		</div>
-	</section>
-	<section class="skill-list__area">
-		<h3 class="skill-list__area-header">
-			<span class="skill-list__area-header-icon material-symbols-rounded">
-				code
-			</span>
-			General Development
-		</h3>
-		<div class="skill-list__stack">
-			<ng-container
-				*ngFor="let stackItem of generalStack"
-				[ngTemplateOutlet]="stackItemElement" 
-				[ngTemplateOutletContext]="{stackItem:stackItem}"
-			></ng-container>
+		<div>
+			<h3 class="skill-list__area-header">
+				<span class="skill-list__area-header-icon material-symbols-rounded">
+					code
+				</span>
+				General Development
+			</h3>
+			<p class="skill-list__description">DevOps is my main focus.</p>
+			<div class="skill-list__stack">
+				<ng-container
+					*ngFor="let stackItem of generalStack"
+					[ngTemplateOutlet]="stackItemElement" 
+					[ngTemplateOutletContext]="{stackItem:stackItem}"
+				></ng-container>
+			</div>
 		</div>
 	</section>
 </article>

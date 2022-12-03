@@ -2,6 +2,7 @@
 @import "global";
 @import "material-you";
 
+$image-size: 27rem;
 $icon-size: 2rem;
 
 .skill-list {
@@ -74,14 +75,29 @@ $icon-size: 2rem;
 	}
 
 	&__area {
+		width: 75%;
+		display: flex;
+		flex-direction: row;
+		gap: 2rem;
+		margin-bottom: 8rem;
+
+		&:last-of-type {
+			margin-bottom: 0rem;
+		}
+
+		&--alt {
+			flex-direction: row-reverse;
+		}
+	}
+
+	&__area-content {
 		display: flex;
 		flex-direction: column;
 		justify-items: center;
 		justify-content: center;
 		align-items: center;
 		text-align: center;
-		max-width: 75%;
-		margin-bottom: 4rem;
+		max-width: 100%;
 
 		@include media-breakpoint-down(lg) {
 			max-width: 100%;
@@ -101,6 +117,7 @@ $icon-size: 2rem;
 		font-weight: bold;
 		font-size: 3rem;
 		padding: 1rem;
+		max-width: fit-content;
 
 		@include media-breakpoint-down(lg) {
 			font-size: 1.3rem;
@@ -114,7 +131,7 @@ $icon-size: 2rem;
 
 	&__stack {
 		display: flex;
-		grid-gap: 2rem;
+		grid-gap: 1rem;
 		width: 100%;
 		flex-flow: wrap;
 		align-items: center;
@@ -155,5 +172,23 @@ $icon-size: 2rem;
 		margin: 0 auto;
 		margin-left: -1.5rem;
 		font-weight: 500;
+	}
+
+	&__photo {
+		display: flex;
+		width: $image-size;
+		height: $image-size;
+		overflow: hidden;
+		border-radius: $container-border-radius;
+		justify-content: center;
+
+		@include media-breakpoint-down(lg) {
+			width: $image-size - 8;
+			height: $image-size - 8;
+		}
+	}
+
+	&__description {
+		margin-bottom: 2rem;
 	}
 }

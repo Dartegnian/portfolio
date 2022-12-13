@@ -9,12 +9,18 @@ export class OtherSitesComponent implements OnInit {
 	otherSites: any[];
 
 	constructor() {
-		this.otherSites = [
+		this.otherSites = [,
+			{
+				name: "Dartegnian.com",
+				link: "https://dartegnian.com",
+				image: "main",
+				description: "My main website and landing page. This essentially features basic information about me as a person and the things I like."
+			},
 			{
 				name: "Portfolio",
 				link: "https://portfolio.dartegnian.com",
 				image: "portfolio",
-				description: "You're already here, but if you want to know more, this is essentially my online web portfolio."
+				description: "This is essentially my online web portfolio. All my work and career-related info can be found here, as well as my core competencies as a developer."
 			},
 			{
 				name: "Blog",
@@ -33,12 +39,6 @@ export class OtherSitesComponent implements OnInit {
 				link: "https://projects.dartegnian.com",
 				image: "projects",
 				description: "A self-hosted instance of Taiga for the SCRUM management of my own projects and ideas."
-			},
-			{
-				name: "Dartegnian.com",
-				link: "https://dartegnian.com",
-				image: "main",
-				description: "My main website and landing page. Will be updated and removed in favor of a static landing page containing info about my other sites."
 			}
 		];
 	}

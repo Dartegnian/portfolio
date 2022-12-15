@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AccentService } from '@services/accent-service.service';
 import { IdbService } from '@services/idb.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class ThemeSwitcherComponent implements OnInit {
 	prefersDarkSchemeFromIdb: "dark" | "light" = "light";
 
 
-	constructor(private idb: IdbService) {
+	constructor(private idb: IdbService, private accent: AccentService) {
 		this.prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 		this.isDarkMode = this.prefersDarkScheme.matches;
 
@@ -43,6 +44,7 @@ export class ThemeSwitcherComponent implements OnInit {
 			document.body.classList.toggle("light-theme", true);
 			this.themeMode = "light";
 		}
+		this.accent.setThemeMode(this.themeMode);
 
 		this.idb.writeToTheme("Material You", {
 			preferredColorScheme: this.themeMode,

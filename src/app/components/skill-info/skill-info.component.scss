@@ -1,4 +1,4 @@
-@import "~bootstrap/scss/bootstrap-grid.scss";
+@import "node_modules/bootstrap/scss/bootstrap-grid.scss";
 @import "global";
 @import "material-you";
 
@@ -14,7 +14,7 @@
 :host {
 	display: flex;
 	align-items: center;
-    justify-content: center;
+	justify-content: center;
 	flex-grow: 1;
     justify-content: left;
 }

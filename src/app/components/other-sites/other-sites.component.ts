@@ -9,7 +9,7 @@ export class OtherSitesComponent implements OnInit {
 	otherSites: any[];
 
 	constructor() {
-		this.otherSites = [,
+		this.otherSites = [
 			{
 				name: "Dartegnian.com",
 				link: "https://dartegnian.com",

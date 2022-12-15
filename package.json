@@ -13,7 +13,7 @@
     "build:ssr": "ng build --configuration production && ng run dartegnians-portfolio:server",
     "prerender": "gulp compress && ng run dartegnians-portfolio:prerender",
     "vercel-build": "npm run build:ssr",
-	"scully-build": "ng build --configuration production && npx scully --noPrompt --project dartegnians-portfolio --scanRoutes"
+    "scully-build": "ng build --configuration production && npx scully --noPrompt --project dartegnians-portfolio --scanRoutes"
   },
   "private": true,
   "dependencies": {

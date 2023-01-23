@@ -25,7 +25,13 @@
     "paths": {
       "@services/*": [
         "src/app/services/*"
-      ]
+      ],
+      "@data/*": [
+        "src/app/data/*"
+      ],
+      "@interfaces/*": [
+        "src/app/interfaces/*"
+      ],
     },
     "useDefineForClassFields": false
   },

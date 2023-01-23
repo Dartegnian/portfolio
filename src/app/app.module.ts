@@ -22,6 +22,7 @@ import { environment } from '../environments/environment';
 import { ResponsiveImageComponent } from './components/responsive-image/responsive-image.component';
 import { RouterModule } from '@angular/router';
 import { OtherSitesComponent } from './components/other-sites/other-sites.component';
+import { WorkExperienceComponent } from './components/work-experience/work-experience.component';
 
 @NgModule({
   declarations: [
@@ -40,7 +41,8 @@ import { OtherSitesComponent } from './components/other-sites/other-sites.compon
     EmailCtaComponent,
     FooterComponent,
     ResponsiveImageComponent,
-	OtherSitesComponent
+	OtherSitesComponent,
+ WorkExperienceComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),

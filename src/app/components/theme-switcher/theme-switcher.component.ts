@@ -27,23 +27,38 @@ export class ThemeSwitcherComponent implements OnInit {
 
 	async ngOnInit(): Promise<void> {
 		this.idb.connectToIDB();
-		this.prefersDarkSchemeFromIdb = (await this.idb.getData("Material You", "preferredColorScheme")) || "light";
+		this.prefersDarkSchemeFromIdb = (await this.idb.getData("Material You", "preferredColorScheme"));
 
-		if (this.prefersDarkSchemeFromIdb !== this.themeMode) {
-			this.toggleThemeMode();
+		if (this.prefersDarkSchemeFromIdb) {
+			this.themeMode = this.prefersDarkSchemeFromIdb;
+			this.setThemeMode(this.themeMode);
 		}
 	}
 
 	toggleThemeMode() {
 		if (this.themeMode === "light") {
-			document.body.classList.toggle("dark-theme", true);
-			document.body.classList.toggle("light-theme", false);
-			this.themeMode = "dark";
+			this.setThemeMode("dark");
 		} else {
-			document.body.classList.toggle("dark-theme", false);
-			document.body.classList.toggle("light-theme", true);
-			this.themeMode = "light";
+			this.setThemeMode("light");
 		}
+	}
+
+	setThemeMode(mode: "light" | "dark") {
+		switch (mode) {
+			case "light":
+				document.body.classList.toggle("dark-theme", false);
+				document.body.classList.toggle("light-theme", true);
+				this.themeMode = "light";
+				break;
+			case "dark":
+				document.body.classList.toggle("dark-theme", true);
+				document.body.classList.toggle("light-theme", false);
+				this.themeMode = "dark";
+				break;
+			default:
+				console.error("Invalid theme");
+		}
+
 		this.accent.setThemeMode(this.themeMode);
 
 		this.idb.writeToTheme("Material You", {

@@ -19,9 +19,9 @@ export class ThemeSwitcherComponent implements OnInit {
 		this.isDarkMode = this.prefersDarkScheme.matches;
 
 		if (this.isDarkMode) {
-			this.themeMode = "dark";
+			this.setThemeMode("dark");
 		} else {
-			this.themeMode = "light";
+			this.setThemeMode("light");
 		}
 	}
 

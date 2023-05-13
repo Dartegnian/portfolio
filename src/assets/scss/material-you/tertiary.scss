@@ -1,5 +1,3 @@
-@import "global";
-
 @mixin material-colored--tertiary {
 	@include theme-transition();
 	color: #{var(--md-sys-color-on-tertiary)};

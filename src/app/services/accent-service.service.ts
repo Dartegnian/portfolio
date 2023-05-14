@@ -43,6 +43,7 @@ export class AccentService {
 	}
 
 	public setAccent(index: number) {
+		index = Number(index);
 		this.activeIndex = index;
 		this.accentSubscription.next(index);
 		this.setThemeInIdb(index);

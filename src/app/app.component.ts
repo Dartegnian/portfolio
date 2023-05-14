@@ -2,6 +2,7 @@ import { isPlatformBrowser } from '@angular/common';
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { AccentService } from '@services/accent-service.service';
 import { IdbService } from '@services/idb.service';
+import { UpdateService } from '@services/update.service';
 
 @Component({
 	selector: 'app-root',
@@ -15,9 +16,11 @@ export class AppComponent implements OnInit {
 	constructor(
 		private idb: IdbService,
 		private accent: AccentService,
-		@Inject(PLATFORM_ID) private platformId: Object
+		@Inject(PLATFORM_ID) private platformId: Object,
+		private sw: UpdateService
 	) {
 		this.isBrowser = isPlatformBrowser(this.platformId);
+		this.sw.checkForUpdates();
 	}
 
 	async ngOnInit() {

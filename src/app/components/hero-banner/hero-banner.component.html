@@ -10,6 +10,7 @@
 		[class.hero-banner__img--first-image-disabled]="isSecondHeroImageActive"
 		[imageAlt]="'First hero banner ' + heroImage + ' image'"
 		[imageHeight]="576" [imageWidth]="1024"
+		[isLazyLoaded]="false"
 	></responsive-image>
 	<responsive-image
 		[imageName]="secondHeroImage + '-min'"
@@ -17,5 +18,6 @@
 		[class.hero-banner__img--second-image-disabled]="!isSecondHeroImageActive"
 		[imageAlt]="'Second hero banner ' + heroImage + ' image'"
 		[imageHeight]="576" [imageWidth]="1024"
+		[isLazyLoaded]="false"
 	></responsive-image>
 </article>

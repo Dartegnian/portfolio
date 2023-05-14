@@ -11,6 +11,8 @@ export class ResponsiveImageComponent implements OnInit {
 	@Input() imageWidth: number | undefined = undefined;
 	@Input() imageHeight: number | undefined = undefined;
 	@Input() imageBoundary?: number | undefined = undefined;
+	@Input() itemProp?: string | undefined = undefined;
+	@Input() isLazyLoaded?: boolean | undefined = true;
 
 	imageSizes = [
 		256,

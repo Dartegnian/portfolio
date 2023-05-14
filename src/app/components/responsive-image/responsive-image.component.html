@@ -4,16 +4,28 @@
 			<ng-container *ngIf="imageBoundary ? (imgSize > imageBoundary ? false : true) : true">
 				<source
 					srcset="assets/img/{{ imageName }}-{{ imgSize }}.{{ format }}"
-					[attr.media]="imgSize === 1024 ? null :  '(max-width: ' + imgSize + 'px)'"
+					[attr.media]="imgSize === 1024 || imgSize === imageBoundary ? null :  '(max-width: ' + imgSize + 'px)'"
 					type="image/{{ format }}"
 					[attr.width]="imageWidth"
 					[attr.height]="imageHeight"
 					[attr.alt]="imageAlt"
+					[attr.itemprop]="itemProp ? itemProp : null"
 					class="responsive-image__responsive-img"
+					[attr.loading]="isLazyLoaded ? 'lazy' : 'eager'"
+					[attr.decoding]="isLazyLoaded ? 'async' : 'sync'"
 				/>
 			</ng-container>
 		</ng-container>
 	</ng-container>
 	<!-- original -->
-	<img src="assets/img/{{ imageName }}-{{ imageBoundary ? imageBoundary : '1024' }}.jpg" class="responsive-image__fallback-img" [attr.width]="imageWidth" [attr.height]="imageHeight" [attr.alt]="imageAlt" />
+	<img
+		src="assets/img/{{ imageName }}-{{ imageBoundary ? imageBoundary : '1024' }}.jpg"
+		class="responsive-image__fallback-img"
+		[attr.width]="imageWidth"
+		[attr.height]="imageHeight"
+		[attr.alt]="imageAlt"
+		[attr.itemprop]="itemProp ? itemProp : null"
+		[attr.loading]="isLazyLoaded ? 'lazy' : 'eager'"
+    	[attr.decoding]="isLazyLoaded ? 'async' : 'sync'"
+	/>
 </picture>

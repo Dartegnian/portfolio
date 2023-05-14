@@ -8,6 +8,7 @@
 				[imageAlt]="'First cover photo, ' + coverImage + ' image'"
 			></responsive-image>
 			<responsive-image
+				*ngIf="secondCoverImage"
 				[imageName]="secondCoverImage + '-min'"
 				class="profile-card__cover profile-card__cover--first-image"
 				[class.profile-card__cover--first-image-disabled]="!isSecondCoverImageActive"

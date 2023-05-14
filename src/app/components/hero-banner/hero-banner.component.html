@@ -13,6 +13,7 @@
 		[isLazyLoaded]="false"
 	></responsive-image>
 	<responsive-image
+		*ngIf="secondHeroImage"
 		[imageName]="secondHeroImage + '-min'"
 		class="hero-banner__img hero-banner__img--second-image"
 		[class.hero-banner__img--second-image-disabled]="!isSecondHeroImageActive"

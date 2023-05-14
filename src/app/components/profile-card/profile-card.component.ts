@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AccentService } from 'src/app/services/accent-service.service';
 
@@ -19,8 +19,7 @@ export class ProfileCardComponent implements OnInit {
 	activeIndex: number;
 
 	constructor(
-		private accent: AccentService,
-		@Inject(PLATFORM_ID) private platformId: Object
+		private accent: AccentService
 	) {
 		this.images = this.accent.images;
 		this.coverImage = this.images[this.accent.activeIndex];
@@ -34,6 +33,7 @@ export class ProfileCardComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+		this.accentSubscription.unsubscribe();
 	}
 
 	setCoverImage(index: number) {

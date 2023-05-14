@@ -1,5 +1,4 @@
-import { isPlatformBrowser } from '@angular/common';
-import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AccentService } from 'src/app/services/accent-service.service';
 
@@ -11,26 +10,23 @@ import { AccentService } from 'src/app/services/accent-service.service';
 export class HeroBannerComponent implements OnInit, OnDestroy {
 	images: Array<string>;
 	heroImage: string;
-	secondHeroImage: string;
+	secondHeroImage: string | undefined;
 	accentSubscription: Subscription;
 	isSecondHeroImageActive = false;
+	activeIndex: number;
 
 	isBrowser: boolean = false;
 
 	constructor(
-		private accent: AccentService,
-		@Inject(PLATFORM_ID) private platformId: Object
+		private accent: AccentService
 	) {
 		this.images = this.accent.images;
 		this.heroImage = this.images[this.accent.activeIndex];
-		this.secondHeroImage = this.heroImage;
-		this.isBrowser = isPlatformBrowser(this.platformId);
+		this.activeIndex = Number(this.accent.activeIndex);
 
 		this.accentSubscription = this.accent.accentSubscription.subscribe(
 			(index: number) => {
-				setTimeout(() =>
-					this.setHeroImage(index)
-				, 25);
+				this.setHeroImage(index)
 			}
 		);
 	}
@@ -43,12 +39,15 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 	}
 
 	setHeroImage(index: number) {
-		if (!this.isSecondHeroImageActive) {
-			this.secondHeroImage = this.images[index];
-			this.isSecondHeroImageActive = true;
-		} else {
-			this.heroImage = this.images[index];
-			this.isSecondHeroImageActive = false;
+		if (this.activeIndex !== index) {
+			if (this.isSecondHeroImageActive) {
+				this.heroImage = this.images[index];
+				this.isSecondHeroImageActive = false;
+			} else {
+				this.secondHeroImage = this.images[index];
+				this.isSecondHeroImageActive = true;
+			}
+			this.activeIndex = index;
 		}
 	}
 }

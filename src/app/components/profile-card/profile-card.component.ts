@@ -1,5 +1,4 @@
-import { isPlatformBrowser } from '@angular/common';
-import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AccentService } from 'src/app/services/accent-service.service';
 
@@ -14,42 +13,39 @@ export class ProfileCardComponent implements OnInit {
 
 	images: Array<string>;
 	coverImage: string;
-	secondCoverImage: string;
+	secondCoverImage: string | undefined;
 	accentSubscription: Subscription;
 	isSecondCoverImageActive = false;
-
-	isBrowser: boolean = false;
+	activeIndex: number;
 
 	constructor(
-		private accent: AccentService,
-		@Inject(PLATFORM_ID) private platformId: Object
+		private accent: AccentService
 	) {
 		this.images = this.accent.images;
 		this.coverImage = this.images[this.accent.activeIndex];
-		this.secondCoverImage = this.coverImage;
-		this.isBrowser = isPlatformBrowser(this.platformId);
+		this.activeIndex = Number(this.accent.activeIndex);
 
 		this.accentSubscription = this.accent.accentSubscription.subscribe(
 			(index: number) => {
-				if (this.isBrowser) {
-					setTimeout(() =>
-						this.setCoverImage(index)
-					, 25);
-				}
+				this.setCoverImage(index)
 			}
 		);
 	}
 
 	ngOnInit(): void {
+		this.accentSubscription.unsubscribe();
 	}
 
 	setCoverImage(index: number) {
-		if (!this.isSecondCoverImageActive) {
-			this.secondCoverImage = this.images[index];
-			this.isSecondCoverImageActive = true;
-		} else {
-			this.coverImage = this.images[index];
-			this.isSecondCoverImageActive = false;
+		if (this.activeIndex !== index) {
+			if (this.isSecondCoverImageActive) {
+				this.coverImage = this.images[index];
+				this.isSecondCoverImageActive = false;
+			} else {
+				this.secondCoverImage = this.images[index];
+				this.isSecondCoverImageActive = true;
+			}
 		}
+		this.activeIndex = index;
 	}
 }

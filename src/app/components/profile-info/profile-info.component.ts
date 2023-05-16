@@ -14,14 +14,14 @@ export class ProfileInfoComponent implements OnInit {
 			text: "contact@dartegnian.com"
 		},
 		{
-			icon: "public",
-			link: "https://dartegnian.com/",
-			text: "https://dartegnian.com"
-		},
-		{
 			icon: "code",
 			link: "https://github.com/dartegnian",
 			text: "github.com/dartegnian"
+		},
+		{
+			icon: "edit",
+			link: "https://blog.dartegnian.com/",
+			text: "https://blog.dartegnian.com"
 		},
 		{
 			icon: "work",

@@ -63,16 +63,16 @@
 		margin: 0rem;
 	}
 
-	&__description {
-		color: #{var(--md-sys-color-on-background)};
-	}
-
 	&__link {
-		@include material-button--tonal-tertiary-inverted;
+		@include material-button--filled-secondary;
 	}
 
 	&__link-text {
 		flex-grow: 1;
 		text-align: center;
+	}
+
+	&__contact-icon {
+		font-size: 1rem;
 	}
 }

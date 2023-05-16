@@ -115,6 +115,10 @@
 	}
 
 	&__contact {
-		@include material-button--basic-secondary;
+		@include material-button--basic-primary;
+	}
+
+	&__contact-icon {
+		font-size: 1rem;
 	}
 }

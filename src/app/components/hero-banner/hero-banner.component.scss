@@ -66,6 +66,7 @@
 		object-position: top;
 		object-fit: cover;
 		opacity: 40%;
+		max-width: 100%;
 
 		&--first-image-disabled {
 			opacity: 0;

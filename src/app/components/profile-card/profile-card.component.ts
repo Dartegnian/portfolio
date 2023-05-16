@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AccentService } from 'src/app/services/accent-service.service';
 
@@ -7,7 +7,7 @@ import { AccentService } from 'src/app/services/accent-service.service';
 	templateUrl: './profile-card.component.html',
 	styleUrls: ['./profile-card.component.scss']
 })
-export class ProfileCardComponent implements OnInit {
+export class ProfileCardComponent implements OnInit, OnDestroy {
 	name = "Dartegnian L. Velarde";
 	tagline = "Software engineer, web developer, Linux enthusiast, DevOps engineer";
 
@@ -33,6 +33,9 @@ export class ProfileCardComponent implements OnInit {
 	}
 
 	ngOnInit(): void {
+	}
+
+	ngOnDestroy(): void {
 		this.accentSubscription.unsubscribe();
 	}
 

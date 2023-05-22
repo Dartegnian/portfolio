@@ -5,3 +5,9 @@
 	'GRAD' 0,
 	'opsz' 48
 }
+
+.material-symbols-rounded {
+	@include media-breakpoint-down(sm) {
+		font-size: 16px;
+	}
+}

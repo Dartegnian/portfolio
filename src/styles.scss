@@ -18,6 +18,12 @@
     color: #{var(--md-sys-color-inverse-surface-dark)};
 }
 
+html {
+	@include media-breakpoint-down(sm) {
+		font-size: 11px;
+	}
+}
+
 body {
 	font-family: "Poppins", $system-fallback-fonts;
 	margin: 0;

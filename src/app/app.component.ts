@@ -27,7 +27,9 @@ export class AppComponent implements OnInit {
 		if (this.isBrowser) {
 			this.idb.connectToIDB();
 			const accentIndex = (await this.idb.getData("Material You", "themeIndex")) || 0;
-			this.accent.setAccent(accentIndex)
+			if (accentIndex !== "0") {
+				this.accent.setAccent(accentIndex);
+			}
 		}
 	}
 }

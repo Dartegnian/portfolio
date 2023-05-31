@@ -10,7 +10,6 @@ import { UpdateService } from '@services/update.service';
 	styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-	title = "Dartegnian's Portfolio";
 	isBrowser: boolean = false;
 
 	constructor(

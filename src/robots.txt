@@ -1,2 +1,4 @@
 User-agent: *
 Disallow:
+
+Sitemap: https://portfolio.dartegnian.com/sitemap.xml

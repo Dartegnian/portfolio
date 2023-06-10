@@ -17,12 +17,6 @@ export class ThemeSwitcherComponent implements OnInit {
 	constructor(private idb: IdbService, private accent: AccentService) {
 		this.prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 		this.isDarkMode = this.prefersDarkScheme.matches;
-
-		if (this.isDarkMode) {
-			this.setThemeMode("dark");
-		} else {
-			this.setThemeMode("light");
-		}
 	}
 
 	async ngOnInit(): Promise<void> {
@@ -32,6 +26,10 @@ export class ThemeSwitcherComponent implements OnInit {
 		if (this.prefersDarkSchemeFromIdb) {
 			this.themeMode = this.prefersDarkSchemeFromIdb;
 			this.setThemeMode(this.themeMode);
+		} else if (this.isDarkMode && !this.prefersDarkSchemeFromIdb) {
+			this.setThemeMode("dark");
+		} else {
+			this.setThemeMode("light");
 		}
 	}
 

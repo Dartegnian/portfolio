@@ -16,11 +16,16 @@
 
 	&__picture {
 		user-select: none;
+    	height: 100%;
+	}
+
+	&__container {
 		width: 5rem;
 		overflow: hidden;
 		border-radius: 2.5rem;
 		transition: border-radius $theme-transition-speed ease;
 		border: transparent solid 3px;
+
 
 		&--selected {
 			border: #{var(--md-sys-color-primary)} solid 3px;
@@ -33,5 +38,79 @@
 		height: 100%;
 		object-fit: cover;
 		cursor: pointer;
+	}
+
+	&__custom-image {
+		display: flex;
+		position: relative;
+    	width: 100%;
+		max-width: 100%;
+		justify-content: center;
+		align-items: center;
+		@include material-colored--primary;
+	}
+
+	&__file-input {
+		position: absolute;
+		left: 0;
+		top: 0;
+		opacity: 0;
+		width: 100%;
+		height: 100%;
+		cursor: pointer;
+	}
+
+	&__custom-image-container {
+		display: flex;
+		align-items: center;
+		height: 100%;
+		@include material-colored--primary;
+	}
+
+	&__custom-image-img {
+		width: 100%;
+		min-height: 100%;
+		object-fit: cover;
+		cursor: pointer;
+	}
+
+	&__custom-image-delete {
+		@include material-colored--primary;
+		// padding: 1rem 0.5rem;
+		height: 100%;
+		font-weight: bold;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		cursor: pointer;
+	}
+
+	&__file-icon {
+		font-size: 1rem;
+		margin-bottom: 0.5rem;
+
+		@include media-breakpoint-down(lg) {
+			font-size: 1.5rem;
+			margin-right: 0rem;
+		}
+
+		&--close {
+			margin-right: 0rem;
+		}
+	}
+
+	&__file-text {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: $button-padding;
+		font-size: 0.8rem;
+		text-align: center;
+	}
+
+	&__file-select-text {
+		@include media-breakpoint-down(lg) {
+			display: none;
+		}
 	}
 }

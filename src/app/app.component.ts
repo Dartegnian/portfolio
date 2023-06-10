@@ -25,8 +25,15 @@ export class AppComponent implements OnInit {
 	async ngOnInit() {
 		if (this.isBrowser) {
 			this.idb.connectToIDB();
-			const accentIndex = (await this.idb.getData("Material You", "themeIndex")) || 0;
-			if (accentIndex !== "0") {
+			const customImage = await this.idb.getData("Material You", "customImage");
+
+			if (customImage) {
+				this.accent.setCustomImage(customImage, true);
+			}
+
+			const accentIndex = (await this.idb.getData("Material You", "themeIndex")) || 1;
+
+			if (accentIndex !== "1") {
 				this.accent.setAccent(accentIndex);
 			}
 		}

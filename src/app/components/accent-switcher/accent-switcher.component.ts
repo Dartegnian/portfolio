@@ -63,9 +63,7 @@ export class AccentSwitcherComponent implements OnInit, OnDestroy {
 	}
 
 	setCustomImage() {
-		if (this.index !== 0) {
-			this.accent.setCustomImage(this.customImage as string | ArrayBuffer);
-		}
+		this.accent.setCustomImage(this.customImage as string | ArrayBuffer);
 	}
 
 	removeCustomImage() {

@@ -4,19 +4,26 @@
 		<h2 class="hero-banner__subheader">An interactive portfolio website with Material You implementation. Colors dynamically adjust to a selected theme. Choose one below to get started.</h2>
 		<accent-switcher></accent-switcher>
 	</section>
+	<img
+		*ngIf="customImage"
+		[src]="this.customImage"
+		class="hero-banner__img hero-banner__cover--custom-image"
+		[class.hero-banner__img--custom-image-disabled]="activeIndex !== 0"
+		alt="Custom image for material theming"
+	>
 	<responsive-image
 		[imageName]="heroImage + '-min'"
 		class="hero-banner__img hero-banner__img--first-image"
-		[class.hero-banner__img--first-image-disabled]="isSecondHeroImageActive"
+		[class.hero-banner__img--first-image-disabled]="isSecondHeroImageActive || activeIndex === 0"
 		[imageAlt]="'First hero banner ' + heroImage + ' image'"
 		[imageHeight]="576" [imageWidth]="1024"
 		[isLazyLoaded]="false"
 	></responsive-image>
 	<responsive-image
-		*ngIf="secondHeroImage"
+		*ngIf="secondHeroImage && activeIndex !== 0"
 		[imageName]="secondHeroImage + '-min'"
 		class="hero-banner__img hero-banner__img--second-image"
-		[class.hero-banner__img--second-image-disabled]="!isSecondHeroImageActive"
+		[class.hero-banner__img--second-image-disabled]="!isSecondHeroImageActive || activeIndex === 0"
 		[imageAlt]="'Second hero banner ' + heroImage + ' image'"
 		[imageHeight]="576" [imageWidth]="1024"
 		[isLazyLoaded]="false"

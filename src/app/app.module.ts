@@ -7,7 +7,6 @@ import { ProfileCardComponent } from './components/profile-card/profile-card.com
 import { SurfaceTestComponent } from './components/surface-test/surface-test.component';
 import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switcher.component';
 import { ProfileInfoComponent } from './components/profile-info/profile-info.component';
-import { ActiveColorSchemeComponent } from './components/active-color-scheme/active-color-scheme.component';
 import { HeroBannerComponent } from './components/hero-banner/hero-banner.component';
 import { AccentSwitcherComponent } from './components/accent-switcher/accent-switcher.component';
 import { SkillPictureComponent } from './components/skill-picture/skill-picture.component';
@@ -30,7 +29,6 @@ import { OtherSitesComponent } from './components/other-sites/other-sites.compon
     SurfaceTestComponent,
     ThemeSwitcherComponent,
     ProfileInfoComponent,
-    ActiveColorSchemeComponent,
     HeroBannerComponent,
     AccentSwitcherComponent,
     SkillPictureComponent,

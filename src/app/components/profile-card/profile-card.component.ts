@@ -17,6 +17,7 @@ export class ProfileCardComponent implements OnInit, OnDestroy {
 	accentSubscription: Subscription;
 	isSecondCoverImageActive = false;
 	activeIndex: number;
+	customImage: string | ArrayBuffer | null = null;
 
 	constructor(
 		private accent: AccentService
@@ -27,7 +28,8 @@ export class ProfileCardComponent implements OnInit, OnDestroy {
 
 		this.accentSubscription = this.accent.accentSubscription.subscribe(
 			(index: number) => {
-				this.setCoverImage(index)
+				this.setCoverImage(index);
+				this.customImage = this.accent.customImage;
 			}
 		);
 	}
@@ -42,13 +44,14 @@ export class ProfileCardComponent implements OnInit, OnDestroy {
 	setCoverImage(index: number) {
 		if (this.activeIndex !== index) {
 			if (this.isSecondCoverImageActive) {
-				this.coverImage = this.images[index];
+				this.coverImage = index === 0 ? this.images[this.activeIndex] : this.images[index];
 				this.isSecondCoverImageActive = false;
 			} else {
-				this.secondCoverImage = this.images[index];
+				this.secondCoverImage = index === 0 ? this.images[this.activeIndex] as string : this.images[index];
 				this.isSecondCoverImageActive = true;
 			}
 		}
+
 		this.activeIndex = index;
 	}
 }

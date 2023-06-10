@@ -14,7 +14,7 @@
 	<responsive-image
 		[imageName]="heroImage + '-min'"
 		class="hero-banner__img hero-banner__img--first-image"
-		[class.hero-banner__img--first-image-disabled]="isSecondHeroImageActive"
+		[class.hero-banner__img--first-image-disabled]="isSecondHeroImageActive || activeIndex === 0"
 		[imageAlt]="'First hero banner ' + heroImage + ' image'"
 		[imageHeight]="576" [imageWidth]="1024"
 		[isLazyLoaded]="false"
@@ -23,7 +23,7 @@
 		*ngIf="secondHeroImage && activeIndex !== 0"
 		[imageName]="secondHeroImage + '-min'"
 		class="hero-banner__img hero-banner__img--second-image"
-		[class.hero-banner__img--second-image-disabled]="!isSecondHeroImageActive"
+		[class.hero-banner__img--second-image-disabled]="!isSecondHeroImageActive || activeIndex === 0"
 		[imageAlt]="'Second hero banner ' + heroImage + ' image'"
 		[imageHeight]="576" [imageWidth]="1024"
 		[isLazyLoaded]="false"

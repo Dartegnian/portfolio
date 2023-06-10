@@ -14,6 +14,7 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 	accentSubscription: Subscription;
 	isSecondHeroImageActive = false;
 	activeIndex: number;
+	customImage: string | ArrayBuffer | null = null;
 
 	isBrowser: boolean = false;
 
@@ -23,10 +24,12 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 		this.images = this.accent.images;
 		this.heroImage = this.images[this.accent.activeIndex];
 		this.activeIndex = Number(this.accent.activeIndex);
+		this.customImage = this.accent.customImage;
 
 		this.accentSubscription = this.accent.accentSubscription.subscribe(
 			(index: number) => {
-				this.setHeroImage(index)
+				this.setHeroImage(index);
+				this.customImage = this.accent.customImage;
 			}
 		);
 	}
@@ -41,10 +44,10 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 	setHeroImage(index: number) {
 		if (this.activeIndex !== index) {
 			if (this.isSecondHeroImageActive) {
-				this.heroImage = this.images[index];
+				this.heroImage = index === 0 ? this.images[this.activeIndex] : this.images[index];
 				this.isSecondHeroImageActive = false;
 			} else {
-				this.secondHeroImage = this.images[index];
+				this.secondHeroImage = index === 0 ? this.images[this.activeIndex] as string : this.images[index];
 				this.isSecondHeroImageActive = true;
 			}
 			this.activeIndex = index;

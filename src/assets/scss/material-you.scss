@@ -26,8 +26,27 @@
 	line-height: $button-line-height;
 	
 	& > .material-symbols-rounded {
+		font-size: 1rem;
 		margin-right: $icon-margin-right;
 	}
+}
+
+@mixin material-chip {
+	-webkit-tap-highlight-color: transparent;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    position: relative;
+    padding: 8px 16px;
+    height: 32px;
+    gap: 8px;
+    box-sizing: border-box;
+    cursor: pointer;
+    text-align: start;
+    vertical-align: middle;
+	border-radius: 8px;
 }
 
 @mixin material-button--filled-primary {

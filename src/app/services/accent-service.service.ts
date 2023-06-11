@@ -13,8 +13,7 @@ export class AccentService {
 		"custom",
 		"primary",
 		"secondary",
-		"tertiary",
-		"quaternary"
+		"tertiary"
 	];
 	themeMode: "light" | "dark" = "light";
 	accentSubscription: Subject<number>;

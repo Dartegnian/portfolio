@@ -105,6 +105,11 @@
 		text-align: center;
 	}
 
+	&__file-text,
+	&__file-select-text {
+		font-size: 0.8rem;
+	}
+
 	&__file-select-text {
 		@include media-breakpoint-down(lg) {
 			display: none;

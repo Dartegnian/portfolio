@@ -17,7 +17,7 @@
 	overflow: hidden;
 	flex-grow: 1;
 	clip-path: inset(0 round 0rem 0rem  $container-border-radius $container-border-radius);
-	min-height: 50vh;
+	// min-height: 50vh;
 
 	&__text-container {
 		display: flex;
@@ -53,10 +53,10 @@
 
 	&__img {
 		top: 0;
-		right: 0;
-		position: fixed;
+		left: 0;
+		position: absolute;
 		width: auto;
-		height: 39rem;
+		height: 100%;
 		aspect-ratio: 16/9;
 		z-index: -1;
 		-webkit-mask: linear-gradient(to right, transparent 45%, #000);
@@ -67,7 +67,7 @@
 		object-fit: cover;
 		opacity: 40%;
 		max-width: 100%;
-		min-height: 50vh;
+		// min-height: 50vh;
 
 		&--first-image-disabled {
 			opacity: 0;

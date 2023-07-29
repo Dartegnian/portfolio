@@ -2,8 +2,9 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { IdbService } from '@services/idb.service';
 import { Meta } from '@angular/platform-browser';
-import { Theme, argbFromHex, sourceColorFromImage } from "@material/material-color-utilities";
+import { Theme, argbFromHex, themeFromImage } from "@material/material-color-utilities";
 import { themeFromSourceColor, applyTheme } from "@material/material-color-utilities";
+import ColorThief, { RGBColor } from 'colorthief';
 
 @Injectable({
 	providedIn: 'root'
@@ -16,6 +17,7 @@ export class AccentService {
 		"tertiary"
 	];
 	themeMode: "light" | "dark" = "light";
+	themeSubscription: Subject<"light" | "dark">;
 	accentSubscription: Subject<number>;
 	activeIndex = 1;
 
@@ -28,6 +30,7 @@ export class AccentService {
 		private idb: IdbService,
 		private meta: Meta
 	) {
+		this.themeSubscription = new Subject();
 		this.accentSubscription = new Subject();
 		this.customImageSubscription = new Subject();
 	}
@@ -43,6 +46,7 @@ export class AccentService {
 	public setThemeMode(mode: "light" | "dark") {
 		this.themeMode = mode;
 		this.setThemeFromM3();
+		this.themeSubscription.next(mode);
 	}
 
 	public setMetaTagColor() {
@@ -64,30 +68,13 @@ export class AccentService {
 	}
 
 	async setThemeFromM3(element?: HTMLImageElement) {
-		let themeColor = 0;
-		const parentElement = document.getElementById("accent-" + this.images[this.activeIndex]);
-
-		if (parentElement) {
-			const imgElement = parentElement.querySelector("img");
-			if (imgElement) {
-				themeColor = await sourceColorFromImage(imgElement as HTMLImageElement);
-			} else {
-				console.error("No <img> element found within the parent element.");
-				themeColor = argbFromHex("#0099ff");
-			}
-		} else {
-			console.error("Parent element with ID 'main-image' not found.");
+		const theme = await this.setM3ColorAndTarget(
+			"accent-" + this.images[this.activeIndex],
+			document.body
+		);
+		if (theme) {
+			this.themeRawColorData = theme;
 		}
-
-		this.themeRawColorData = themeFromSourceColor(themeColor);
-
-		// Print out the theme as JSON
-		// console.log(JSON.stringify(theme, null, 2));
-
-		// Check if the user has dark mode turned on
-		const systemDark = this.themeMode === "light" ? false : true;
-
-		applyTheme(this.themeRawColorData, { target: document.body, dark: systemDark });
 		this.setMetaTagColor();
 	}
 
@@ -116,5 +103,74 @@ export class AccentService {
 		this.idb.writeToTheme("Material You", {
 			customImage: customImage?.toString() || ""
 		});
+	}
+
+	rgbToHex(rgb: RGBColor): string {
+		const [r, g, b] = rgb.map((color) => Math.round(color).toString(16).padStart(2, '0'));
+		return `#${r}${g}${b}`;
+	}
+
+	getColorFromImage(imgElement: HTMLImageElement): Promise<RGBColor> {
+		if (imgElement.complete) {
+			// If the image is already loaded, directly get the color.
+			const colorThief = new ColorThief();
+			const color: RGBColor = colorThief.getColor(imgElement, 100);
+			return Promise.resolve(color);
+		} else {
+			// If the image is not loaded yet, wait for the 'onload' event to get the color.
+			return new Promise((resolve, reject) => {
+				imgElement.onload = () => {
+					const colorThief = new ColorThief();
+					const color: RGBColor = colorThief.getColor(imgElement, 100);
+					resolve(color);
+				};
+
+				imgElement.onerror = () => {
+					// If there is an error loading the image or getting the color, reject the promise.
+					reject(new Error('Failed to load the image or get the color.'));
+				};
+			});
+		}
+	}
+
+
+	async setM3ColorAndTarget(
+		parentOfImg: string,
+		target: string | HTMLElement
+	) {
+		let theme = null;
+		const parentElement = document.getElementById(parentOfImg);
+		const colorThief = new ColorThief();
+
+		if (parentElement) {
+			const imgElement = parentElement.querySelector("img");
+
+
+			let color = "";
+			if (imgElement) {
+				color = this.rgbToHex(await this.getColorFromImage(imgElement));
+				theme = themeFromSourceColor(argbFromHex(color));
+				// theme = await themeFromImage(imgElement as HTMLImageElement);
+			} else {
+				console.error("No <img> element found within the parent element.");
+				theme = themeFromSourceColor(argbFromHex("#0099ff"));
+			}
+		} else {
+			console.error("Parent element with ID '" + parentOfImg + "' not found.");
+			theme = themeFromSourceColor(argbFromHex("#0099ff"));
+		}
+
+		if (theme) {
+			applyTheme(
+				theme,
+				{
+					target: typeof target === "string" ? document.getElementById(target) as HTMLElement : target,
+					dark: this.themeMode === "light" ? false : true
+				}
+			);
+
+		}
+
+		return theme;
 	}
 }

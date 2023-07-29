@@ -30,6 +30,7 @@
     "@material/material-color-utilities": "^0.2.6",
     "@nguniversal/express-engine": "^16.1.1",
     "bootstrap": "^5.2.3",
+    "colorthief": "^2.4.0",
     "express": "^4.15.2",
     "idb": "^7.1.1",
     "rxjs": "^7.8.1",

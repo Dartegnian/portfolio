@@ -144,9 +144,8 @@ export class AccentService {
 
 		if (parentElement) {
 			const imgElement = parentElement.querySelector("img");
-
-
 			let color = "";
+
 			if (imgElement) {
 				color = this.rgbToHex(await this.getColorFromImage(imgElement));
 				theme = themeFromSourceColor(argbFromHex(color));

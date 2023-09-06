@@ -28,6 +28,12 @@
 		}
 	}
 
+	&__header-text {
+		font-size: 1.5rem;
+		font-weight: 600;
+		margin-bottom: 0rem;
+	}
+
 	&__detail {
 		&:first-of-type {
 			margin-bottom: 2rem;

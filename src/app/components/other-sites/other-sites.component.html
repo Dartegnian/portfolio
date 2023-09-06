@@ -1,27 +1,27 @@
-<article class="other-sites">
+<article class="other-sites" itemscope itemtype="http://schema.org/WebPage">
 	<header class="other-sites__header">
-		<h1 class="other-sites__heading"><span class="other-sites__header-icon material-symbols-rounded">hub</span> Explore dartegnian.com</h1>
-
+		<h1 class="other-sites__heading">
+			<span class="other-sites__header-icon material-symbols-rounded">hub</span>
+			Explore dartegnian.com
+		</h1>
 		<p class="other-sites__tagline">Visit the other websites that I have built and deployed on this domain.</p>
 	</header>
+
 	<section class="other-sites__sites">
-		<article *ngFor="let website of otherSites" class="other-sites__site">
+		<article *ngFor="let website of otherSites" class="other-sites__site" itemprop="hasPart" itemscope
+			itemtype="http://schema.org/WebPageElement">
 			<div>
-				<responsive-image
-					[imageName]="website.image + '-min'"
-					class="other-sites__image"
-					[imageAlt]="website.name + ' website screenshot'"
-				></responsive-image>
+				<responsive-image [imageName]="website.image + '-min'" class="other-sites__image"
+					[imageAlt]="website.name + ' website screenshot'"></responsive-image>
 			</div>
 			<header class="other-sites__site-header">
-				<a [href]="website.link" class="other-sites__site-heading" target="_blank">{{ website.name }}</a>
+				<a [href]="website.link" class="other-sites__site-heading" target="_blank" itemprop="name">{{
+					website.name }}</a>
 			</header>
 			<section class="other-sites__site-content">
-				<span class="other-sites__site-description">{{ website.description }}</span>
+				<span class="other-sites__site-description" itemprop="description">{{ website.description }}</span>
 				<a [href]="website.link" class="other-sites__link" target="_blank">
-					<span class="material-symbols-rounded skill-info__button-icon">
-						open_in_new
-					</span>
+					<span class="material-symbols-rounded skill-info__button-icon">open_in_new</span>
 					Visit site
 				</a>
 			</section>

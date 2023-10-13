@@ -17,6 +17,23 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 	customImage: string | ArrayBuffer | null = null;
 
 	isBrowser: boolean = false;
+	externalIcons = [
+		{
+			icon: "mdi:instagram",
+			text: "Instagram",
+			link: "https://www.instagram.com/dartegnian/"
+		},
+		{
+			icon: "mdi:linkedin",
+			text: "LinkedIn",
+			link: "https://www.linkedin.com/in/dartegnian/"
+		},
+		{
+			icon: "mdi:spotify",
+			text: "Spotify",
+			link: "https://open.spotify.com/user/dartegnian"
+		},
+	];
 
 	constructor(
 		private accent: AccentService

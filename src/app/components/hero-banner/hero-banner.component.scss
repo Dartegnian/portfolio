@@ -88,6 +88,16 @@
 		}
 	}
 
+	&__external-icons {
+		display: flex;
+		margin-top: 4rem;
+		gap: 1rem;
+	}
+
+	&__external-icon-link {
+		color: inherit;
+	}
+
 	&__waves {
 		position: absolute;
 		width: 100%;

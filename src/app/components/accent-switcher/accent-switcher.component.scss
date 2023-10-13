@@ -2,35 +2,47 @@
 
 :host {
 	display: flex;
+	width: 100%;
 }
 
 .accent-switcher {
 	display: flex;
     margin: 2rem 0rem;
-    height: 8rem;
-	gap: 2rem;
+    height: 4rem;
+	gap: 1rem;
+	flex: 1;
+	margin-bottom: 0rem;
 
 	@include media-breakpoint-down(lg) {
 		max-width: 100%;
+		margin-bottom: 0rem;
 	}
 
-	&__picture {
-		user-select: none;
-    	height: 100%;
+	@include media-breakpoint-down(md) {
 	}
 
 	&__container {
-		width: 5rem;
+		display: flex;
+		flex: 1;
+		user-select: none;
 		overflow: hidden;
-		border-radius: 2.5rem;
+		border-radius: 2rem;
 		transition: border-radius $theme-transition-speed ease;
 		border: transparent solid 3px;
 
-
 		&--selected {
 			border: #{var(--md-sys-color-primary)} solid 3px;
-			border-radius: 1.2rem;
+			border-radius: 1rem;
+
+			& > .accent-switcher__picture {
+				transition: filter $theme-transition-speed ease;
+				filter: blur(0px);
+			}
 		}
+	}
+
+	&__picture {
+		transition: filter $theme-transition-speed ease;
 	}
 
 	&__image {
@@ -62,9 +74,8 @@
 
 	&__custom-image-container {
 		display: flex;
-		align-items: center;
 		height: 100%;
-		@include material-colored--primary;
+		width: 100%;
 	}
 
 	&__custom-image-img {
@@ -79,29 +90,25 @@
 		// padding: 1rem 0.5rem;
 		height: 100%;
 		display: flex;
-		flex-direction: column;
 		justify-content: center;
 		align-items: center;
 		cursor: pointer;
-		text-align: center;
 	}
 
 	&__file-icon {
 		font-size: 1rem;
-		margin-bottom: 0.5rem;
+		margin-right: 0.5rem;
 
 		@include media-breakpoint-down(lg) {
 			font-size: 1.5rem;
-			margin-bottom: 0rem;
+			margin-right: 0rem;
 		}
 	}
 
 	&__file-text {
 		display: flex;
-		flex-direction: column;
 		align-items: center;
 		padding: $button-padding;
-		text-align: center;
 	}
 
 	&__file-text,
@@ -114,4 +121,16 @@
 			display: none;
 		}
 	}
+}
+
+.accent-switcher .responsive-image source {
+	filter: blur(12px);
+}
+
+:host.accent-switcher .responsive-image {
+	filter: blur(12px);
+}
+
+.responsive-image {
+	filter: blur(12px);
 }

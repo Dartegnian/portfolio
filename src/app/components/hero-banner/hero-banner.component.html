@@ -3,7 +3,16 @@
 		<h1 class="hero-banner__header">Dartegnian's Portfolio</h1>
 		<h2 class="hero-banner__subheader">An interactive portfolio website with Material You implementation. Colors dynamically adjust to a selected theme. Choose one below to get started.</h2>
 		<accent-switcher></accent-switcher>
+
+		<section class="hero-banner__external-icons">
+			<ng-container
+				*ngFor="let externalIcon of externalIcons"
+				[ngTemplateOutlet]="externalIconElement"
+				[ngTemplateOutletContext]="{externalIcon:externalIcon}"
+			></ng-container>
+		</section>
 	</section>
+
 	<img
 		*ngIf="customImage"
 		[src]="this.customImage"
@@ -28,4 +37,35 @@
 		[imageHeight]="576" [imageWidth]="1024"
 		[isLazyLoaded]="false"
 	></responsive-image>
+
+	<svg class="hero-banner__waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+		<defs>
+			<path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+		</defs>
+		<g class="hero-banner__wave-parallax">
+			<use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+			<use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+			<use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+			<use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+
+		</g>
+	</svg>
 </article>
+
+<ng-template #externalIconElement let-externalIcon="externalIcon">
+	<span
+		class="iconify hero-banner__stack-item"
+	>
+		<a class="hero-banner__external-icon-link" [href]="externalIcon.link" target="_blank">
+			<i
+				class="iconify hero-banner__external-icon"
+				[attr.data-icon]="externalIcon.icon"
+				width="2rem"
+				height="2rem"
+				data-width="2rem"
+				data-height="2rem"
+				[attr.title]="externalIcon.text"
+			></i>
+		</a>
+	</span>
+</ng-template>

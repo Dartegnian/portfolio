@@ -8,15 +8,14 @@
 		[class.accent-switcher__container--selected]="selected == image"
 		*ngFor="let image of images; index as i"
 	>
-		<div *ngIf="image === 'custom'" class="accent-switcher__custom-image accent-switcher__picture">
+		<div *ngIf="image === 'custom'" class="accent-switcher__custom-image">
 			<input id="fileInput" type="file" (change)="onFileSelected($event)" accept="image/*" class="accent-switcher__file-input" *ngIf="!customImage" aria-label="Select an image">
 			<div *ngIf="!customImage" class="accent-switcher__file-text">
 				<span class="material-symbols-rounded accent-switcher__file-icon">upload_file</span>
 				<span class="accent-switcher__file-select-text">Use an image</span>
 			</div>
-			<div [attr.id]="'accent-' + image" class="accent-switcher__custom-image-container">
+			<div *ngIf="customImage" [attr.id]="'accent-' + image" class="accent-switcher__custom-image-container">
 				<img
-					*ngIf="customImage"
 					[src]="customImage"
 					class="accent-switcher__custom-image-img"
 					alt="Custom image for material theming"
@@ -32,10 +31,9 @@
 			role="button" tabindex="0" [attr.aria-label]="'Image preview ' + image + ' theme'"
 
 			[imageName]="image + '-min'"
-			[class.accent-switcher__picture--selected]="selected == image"
 			[imageAlt]="'Image preview ' + image + ' theme'"
-			[imageHeight]="128" [imageWidth]="227.56"
-			[imageBoundary]="256"
+			[imageHeight]="58" [imageWidth]="92"
+			[imageBoundary]="512"
 			[isLazyLoaded]="false"
 		></responsive-image>
 	</div>

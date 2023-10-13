@@ -4,29 +4,34 @@
 	flex-grow: 1;
 	display: flex;
 	align-items: stretch;
+	margin-bottom: 2rem;
 }
 
 .hero-banner {
 	@include material-container--primary;
 
+	// background: linear-gradient(
+	// #{var(--md-sys-color-primary-container)} 50%,
+	// #{var(--md-sys-color-secondary-container)});
+
 	display: flex;
 	padding: $full-container-padding;
 	border-radius: 0rem;
-	margin-bottom: 2rem;
 	position: relative;
 	overflow: hidden;
 	flex-grow: 1;
-	clip-path: inset(0 round 0rem 0rem  $container-border-radius $container-border-radius);
-	// min-height: 50vh;
+	clip-path: inset(0 round 0rem 0rem $container-border-radius $container-border-radius);
+	justify-content: center;
+	align-items: center;
+	min-height: 100vh;
 
 	&__text-container {
 		display: flex;
 		flex-direction: column;
-		width: 50%;
-
-		@include media-breakpoint-down(lg) {
-			width: 75%;
-		}
+		justify-content: center;
+		align-items: center;
+		text-align: center;
+		width: 75%;
 
 		@include media-breakpoint-down(md) {
 			width: 100%;
@@ -54,19 +59,20 @@
 	&__img {
 		top: 0;
 		right: 0;
-		position: absolute;
-		width: auto;
+		position: fixed;
+		width: 100%;
 		height: 100%;
 		aspect-ratio: 16/9;
 		z-index: -1;
-		-webkit-mask: linear-gradient(to right, transparent 45%, #000);
-		mask: linear-gradient(to right, transparent 45%,#000);
+		// -webkit-mask: linear-gradient(to right, transparent 45%, #000);
+		// mask: linear-gradient(to right, transparent 45%, #000);
 		transition: opacity $theme-transition-speed ease;
 		user-select: none;
 		object-position: center;
 		object-fit: cover;
-		opacity: 40%;
+		opacity: 25%;
 		max-width: 100%;
+		filter: blur(10px);
 		// min-height: 50vh;
 
 		&--first-image-disabled {
@@ -80,5 +86,77 @@
 		&--custom-image-disabled {
 			opacity: 0;
 		}
+	}
+
+	&__external-icons {
+		display: flex;
+		margin-top: 4rem;
+		gap: 1rem;
+	}
+
+	&__external-icon-link {
+		color: inherit;
+	}
+
+	&__waves {
+		position: absolute;
+		width: 100%;
+		height: 15vh;
+		margin-bottom: -7px;
+		/*Fix for safari gap*/
+		min-height: 100px;
+		max-height: 150px;
+		bottom: 0;
+		left: 0;
+
+		@include media-breakpoint-down(lg) {
+			height: 75px;
+			min-height: 75px;
+		}
+	}
+
+	&__wave-parallax {
+		& > use {
+			animation: wave-animation 25s cubic-bezier(.55, .5, .45, .5) infinite;
+			transition: fill $theme-transition-speed ease;
+		}
+
+		& > use:nth-child(1) {
+			animation-delay: -2s;
+			animation-duration: 7s;
+			opacity: 0.5;
+			fill: #{var(--md-sys-color-on-primary)};
+		}
+
+		& > use:nth-child(2) {
+			animation-delay: -3s;
+			animation-duration: 10s;
+			opacity: 0.5;
+			fill: #{var(--md-sys-color-secondary)};
+		}
+
+		& > use:nth-child(3) {
+			animation-delay: -4s;
+			animation-duration: 13s;
+			opacity: 0.5;
+			fill: #{var(--md-sys-color-tertiary)};
+		}
+
+		& > use:nth-child(4) {
+			animation-delay: -5s;
+			animation-duration: 20s;
+			opacity: 0.75;
+			fill: #{var(--md-sys-color-primary)};
+		}
+	}
+}
+
+@keyframes wave-animation {
+	0% {
+		transform: translate3d(-90px, 0, 0);
+	}
+
+	100% {
+		transform: translate3d(85px, 0, 0);
 	}
 }

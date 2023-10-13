@@ -56,7 +56,7 @@
 	<span
 		class="iconify hero-banner__stack-item"
 	>
-		<a class="hero-banner__external-icon-link" [href]="externalIcon.link" target="_blank">
+		<a class="hero-banner__external-icon-link" [href]="externalIcon.link" target="_blank" [attr.title]="externalIcon.text">
 			<i
 				class="iconify hero-banner__external-icon"
 				[attr.data-icon]="externalIcon.icon"
@@ -64,7 +64,6 @@
 				height="2rem"
 				data-width="2rem"
 				data-height="2rem"
-				[attr.title]="externalIcon.text"
 			></i>
 		</a>
 	</span>

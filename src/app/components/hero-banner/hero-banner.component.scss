@@ -24,6 +24,11 @@
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
+	transition: min-height $theme-transition-speed ease;
+
+	@include media-breakpoint-down(lg) {
+		min-height: 75vh;
+	}
 
 	&__text-container {
 		display: flex;

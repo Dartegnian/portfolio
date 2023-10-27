@@ -30,6 +30,10 @@
 		min-height: 75vh;
 	}
 
+	@include media-breakpoint-down(md) {
+		min-height: 50vh;
+	}
+
 	&__text-container {
 		display: flex;
 		flex-direction: column;

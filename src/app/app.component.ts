@@ -3,6 +3,7 @@ import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { AccentService } from '@services/accent-service.service';
 import { IdbService } from '@services/idb.service';
 import { UpdateService } from '@services/update.service';
+import { inject } from '@vercel/analytics';
 
 @Component({
 	selector: 'app-root',
@@ -18,8 +19,9 @@ export class AppComponent implements OnInit {
 		@Inject(PLATFORM_ID) private platformId: Object,
 		private sw: UpdateService
 	) {
-		this.isBrowser = isPlatformBrowser(this.platformId);
 		this.sw.checkForUpdates();
+		this.isBrowser = isPlatformBrowser(this.platformId);
+		inject();
 	}
 
 	async ngOnInit() {

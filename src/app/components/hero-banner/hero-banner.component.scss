@@ -24,7 +24,7 @@
 	justify-content: center;
 	align-items: center;
 	min-height: 100vh;
-	transition: min-height $theme-transition-speed ease;
+	transition: min-height $theme-transition-speed ease, background $theme-transition-speed ease, color $theme-transition-speed ease;
 
 	@include media-breakpoint-down(lg) {
 		min-height: 75vh;

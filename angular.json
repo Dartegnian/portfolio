@@ -32,6 +32,7 @@
             "styles": [
 			  "node_modules/bootstrap/dist/css/bootstrap-reboot.min.css",
 			  "node_modules/bootstrap/dist/css/bootstrap-grid.min.css",
+			  "src/assets/css/material-you--primary.css",
               "src/styles.scss"
             ],
 			"stylePreprocessorOptions": {

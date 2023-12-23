@@ -19,9 +19,8 @@ jobs:
           node-version: '18'
           check-latest: true
           cache: 'npm'
-          cache-dependency-path: |
+          cache-dependency-path:
             package-lock.json
-            src/package-lock.json
 
       - name: Bot 🤖 "Updating NPM Packages..."
         run: |

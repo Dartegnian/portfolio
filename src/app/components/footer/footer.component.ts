@@ -8,9 +8,9 @@ import { Component, OnInit } from '@angular/core';
 export class FooterComponent implements OnInit {
 	footerLinks = [
 		{
-			icon: "mail",
-			link: "mailto:contact@dartegnian.com",
-			text: "contact@dartegnian.com"
+			icon: "photo_camera",
+			link: "https://www.instagram.com/dartegnian/",
+			text: "Instagram"
 		},
 		{
 			icon: "public",

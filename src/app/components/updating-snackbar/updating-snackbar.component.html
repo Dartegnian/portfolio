@@ -1,0 +1,8 @@
+<div
+	class="updating-snackbar fade-in--up"
+	#updatingSnackbar
+>
+	<span class="updating-snackbar__loader" *ngIf="isSpinnerShown && !isIconShown"></span>
+	<span class="updating-snackbar__check material-symbols-rounded" *ngIf="isIconShown">{{ iconText }}</span>
+	{{ updateText }}
+</div>

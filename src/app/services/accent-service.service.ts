@@ -152,11 +152,11 @@ export class AccentService {
 				// theme = await themeFromImage(imgElement as HTMLImageElement);
 			} else {
 				console.error("No <img> element found within the parent element.");
-				theme = themeFromSourceColor(argbFromHex("#0099ff"));
+				theme = themeFromSourceColor(argbFromHex("#b0b2bd"));
 			}
 		} else {
 			console.error("Parent element with ID '" + parentOfImg + "' not found.");
-			theme = themeFromSourceColor(argbFromHex("#0099ff"));
+			theme = themeFromSourceColor(argbFromHex("#b0b2bd"));
 		}
 
 		if (theme) {

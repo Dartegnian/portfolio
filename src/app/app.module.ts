@@ -21,6 +21,7 @@ import { environment } from '../environments/environment';
 import { ResponsiveImageComponent } from './components/responsive-image/responsive-image.component';
 import { RouterModule } from '@angular/router';
 import { OtherSitesComponent } from './components/other-sites/other-sites.component';
+import { UpdatingSnackbarComponent } from './components/updating-snackbar/updating-snackbar.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { OtherSitesComponent } from './components/other-sites/other-sites.compon
 	OtherSitesComponent
   ],
   imports: [
+	UpdatingSnackbarComponent,
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
 	CommonModule,

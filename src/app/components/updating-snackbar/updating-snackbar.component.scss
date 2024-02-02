@@ -1,0 +1,73 @@
+@import "material-you";
+
+.updating-snackbar {
+	position: fixed;
+	z-index: 3;
+	bottom: 2rem;
+	left: 50%;
+	transform: translate(-50%, 0);
+
+	@include material-button--filled-tertiary;
+	border-radius: 14px;
+	height: 3.5rem;
+	font-weight: 500;
+	box-shadow: $elevated-shadow;
+
+	&__loader {
+		width: 1.5rem;
+		height: 1.5rem;
+		border: 4px solid #{var(--md-sys-color-on-tertiary)};
+		border-bottom-color: #{var(--md-sys-color-on-tertiary-container)};
+		border-radius: 50%;
+		display: inline-block;
+		box-sizing: border-box;
+		animation: rotation 1s linear infinite;
+		margin-right: 0.5rem;
+	}
+}
+
+.fade-in {
+	&--up {
+		animation: fadeInUp 0.75s ease-in forwards;
+	}
+
+	&--down {
+		animation: fadeInDown 0.75s ease-in forwards;
+	}
+}
+
+@keyframes rotation {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes fadeInUp {
+	from {
+		opacity: 0;
+		transform: translate(-50%, 2rem);
+	}
+
+	to {
+		opacity: 1;
+		transform: translate(-50%, 0);
+		visibility: visible;
+	}
+}
+
+@keyframes fadeInDown {
+	from {
+		opacity: 1;
+		transform: translate(-50%, 0);
+	}
+
+	to {
+		opacity: 0;
+		visibility: hidden;
+		transform: translate(-50%, 2rem);
+	}
+}

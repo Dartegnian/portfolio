@@ -4,13 +4,15 @@
 			<span class="material-symbols-rounded">face</span>
 			<h1 class="profile-info__header-text" itemprop="name">About</h1>
 		</header>
-		<p class="profile-info__description" itemprop="description">{{ description }}</p>
+		<div>
+			<p class="profile-info__description" itemprop="description">{{ description }}</p>
+		</div>
 	</section>
-	<section class="profile-info__detail">
-		<header class="profile-info__header">
+	<section class="profile-info__additional-info">
+		<!-- <header class="profile-info__header">
 			<span class="material-symbols-rounded">person_add</span>
 			Contact
-		</header>
+		</header> -->
 		<div class="profile-info__links">
 			<ng-container *ngTemplateOutlet="links"></ng-container>
 		</div>
@@ -18,6 +20,21 @@
 </article>
 
 <ng-template #links>
+	<section class="profile-info__subsection" *ngFor="let subsection of subsectionList">
+		<div class="profile-info__subsection-header-info">
+			<h2>{{ subsection.header }}</h2><span>{{ subsection.subheader }}</span>
+		</div>
+		<div class="profile-info__subsection-info">
+			<header class="profile-info__header">
+				<span class="material-symbols-rounded">face</span>
+				<h1 class="profile-info__header-text" itemprop="name">About</h1>
+			</header>
+			<a href="" class="profile-info__subsection-link">Link</a>
+		</div>
+	</section>
+</ng-template>
+
+<!-- <ng-template #links>
 	<a *ngFor="let link of contactLinks" href="{{ link.link }}" class="profile-info__link">
 		<div class="profile-info__link-wrapper">
 			<span class="material-symbols-rounded profile-info__contact-icon">
@@ -28,4 +45,4 @@
 			</span>
 		</div>
 	</a>
-</ng-template>
+</ng-template> -->

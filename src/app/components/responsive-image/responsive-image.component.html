@@ -1,4 +1,4 @@
-<picture *ngIf="imageName" class="responsive-image">
+<picture class="responsive-image">
 	<source
 		*ngFor="let format of imageFormats"
 		[attr.srcset]="
@@ -15,10 +15,15 @@
 		[attr.itemprop]="itemProp ? itemProp : null"
 		class="responsive-image__responsive-img"
 	/>
-	<!-- original -->
 	<img
 		src="assets/img/{{ imageName }}-{{ imageBoundary ? imageBoundary : '1024' }}.jpg"
 		class="responsive-image__fallback-img"
+		[attr.srcset]="
+			(imageBoundary === 1024 ? 'assets/img/' + imageName + '-1024.jpg' + ' 1024w, ' : '') +
+			(imageBoundary === 512 || imageBoundary === 1024 ? 'assets/img/' + imageName + '-512.jpg' +' 512w, ' : '') +
+			(imageBoundary === 256 || imageBoundary === 512 || imageBoundary === 1024  ? 'assets/img/' + imageName + '-256.jpg' + ' 256w' : '') +
+			(imageBoundary === undefined ? 'assets/img/' + imageName + '-1024.jpg' + ' 1024w, ' + 'assets/img/' + imageName + '-512.jpg' +' 512w, ' + 'assets/img/' + imageName + '-256.jpg' + ' 256w' : '')
+		"
 		[attr.width]="imageWidth"
 		[attr.height]="imageHeight"
 		[attr.alt]="imageAlt"

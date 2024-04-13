@@ -10,7 +10,7 @@
 
 An interactive portfolio website with [Material You color](https://m3.material.io/) schemes.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.1, kept up-to-date as much as possible.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 14.0.1, and kept up-to-date as much as possible. Currently on Angular 17.
 
 ## Development server
 

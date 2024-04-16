@@ -31,6 +31,7 @@
     "@angular/service-worker": "^17.3.2",
     "@angular/ssr": "^17.3.2",
     "@material/material-color-utilities": "^0.2.7",
+    "@vercel/analytics": "^1.2.2",
     "bootstrap": "^5.3.3",
     "colorthief": "^2.4.0",
     "express": "^4.19.2",

@@ -109,13 +109,13 @@ export class SkillListComponent implements OnInit {
 
 		this.beWebStack = [
 			{
-				icon: "cib:php",
-				text: "PHP"
+				icon: "simple-icons:express",
+				text: "ExpressJS"
 			},
 			{
-				icon: "cib:laravel",
-				text: "Laravel"
-			},
+				icon: "simple-icons:mongodb",
+				text: "MongoDB"
+			}
 		];
 
 		this.generalStack = [

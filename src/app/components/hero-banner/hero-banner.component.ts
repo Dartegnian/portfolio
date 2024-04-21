@@ -17,7 +17,9 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 	customImage: string | ArrayBuffer | null = null;
 
 	siteTitle = "Dartegnian's Portfolio";
-	siteDescription = "An interactive portfolio website with Material You implementation. Colors dynamically adjust to a selected theme. Choose one below to get started.";
+	siteDescription = "An interactive portfolio website with Material You implementation. Colors dynamically adjust to a selected theme. Choose one to get started.";
+
+	ctaTitle = "Welcome to my portfolio!";
 
 	isBrowser: boolean = false;
 	externalIcons = [

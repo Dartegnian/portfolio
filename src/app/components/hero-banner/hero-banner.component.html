@@ -1,8 +1,7 @@
 <article class="hero-banner-cta-container">
 	<section class="hero-banner-cta-container__text-container">
-		<h1 class="hero-banner-cta-container__cta-header">{{ siteTitle }}</h1>
+		<h1 class="hero-banner-cta-container__cta-header">{{ ctaTitle }}</h1>
 		<h1 class="hero-banner-cta-container__subheader">{{ siteDescription }}</h1>
-		<accent-switcher></accent-switcher>
 
 		<section class="hero-banner-cta-container__external-icons">
 			<ng-container
@@ -15,9 +14,10 @@
 </article>
 
 <article class="hero-banner" id="hero-banner">
-	<!-- <section class="hero-banner__text-container">
+	<section class="hero-banner__text-container">
 		<h1 class="hero-banner__header">{{ siteTitle }}</h1>
-	</section> -->
+		<accent-switcher></accent-switcher>
+	</section>
 
 	<img
 		*ngIf="customImage"

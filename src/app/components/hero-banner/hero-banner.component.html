@@ -1,10 +1,10 @@
-<article class="hero-banner" id="hero-banner">
-	<section class="hero-banner__text-container">
-		<h1 class="hero-banner__header">{{ siteTitle }}</h1>
-		<p class="hero-banner__subheader"></p>
+<article class="hero-banner-cta-container">
+	<section class="hero-banner-cta-container__text-container">
+		<h1 class="hero-banner-cta-container__cta-header">{{ siteTitle }}</h1>
+		<h1 class="hero-banner-cta-container__subheader">{{ siteDescription }}</h1>
 		<accent-switcher></accent-switcher>
 
-		<section class="hero-banner__external-icons">
+		<section class="hero-banner-cta-container__external-icons">
 			<ng-container
 				*ngFor="let externalIcon of externalIcons"
 				[ngTemplateOutlet]="externalIconElement"
@@ -12,6 +12,12 @@
 			></ng-container>
 		</section>
 	</section>
+</article>
+
+<article class="hero-banner" id="hero-banner">
+	<!-- <section class="hero-banner__text-container">
+		<h1 class="hero-banner__header">{{ siteTitle }}</h1>
+	</section> -->
 
 	<img
 		*ngIf="customImage"
@@ -54,11 +60,11 @@
 
 <ng-template #externalIconElement let-externalIcon="externalIcon">
 	<span
-		class="iconify hero-banner__stack-item"
+		class="iconify hero-banner-cta-container__stack-item"
 	>
-		<a class="hero-banner__external-icon-link" [href]="externalIcon.link" target="_blank" rel="me" [attr.title]="externalIcon.text">
+		<a class="hero-banner-cta-container__external-icon-link" [href]="externalIcon.link" target="_blank" rel="me" [attr.title]="externalIcon.text">
 			<i
-				class="iconify hero-banner__external-icon"
+				class="iconify hero-banner-cta-container__external-icon"
 				[attr.data-icon]="externalIcon.icon"
 				width="2rem"
 				height="2rem"

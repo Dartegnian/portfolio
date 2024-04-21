@@ -6,7 +6,7 @@
 	padding: 0rem 2rem;
 
 	@include media-breakpoint-down(md) {
-		flex-direction: column-reverse;
+		flex-direction: column;
 	}
 }
 

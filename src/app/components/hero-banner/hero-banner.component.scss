@@ -7,11 +7,15 @@
 	padding: 2rem;
 	gap: 2rem;
 	min-height: 70svh;
+
+	@include media-breakpoint-down(lg) {
+		flex-direction: column-reverse;
+	}
 }
 
 .hero-banner-cta-container {
 	@include material-container--primary;
-	padding: 3.25rem 2.25rem;
+	padding: $full-container-padding;
 	border-radius: $container-border-radius;
 
 	&__text-container {

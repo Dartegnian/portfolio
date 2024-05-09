@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
 	selector: 'other-sites',
 	templateUrl: './other-sites.component.html',
 	styleUrls: ['./other-sites.component.scss']
 })
-export class OtherSitesComponent implements OnInit {
+export class OtherSitesComponent {
 	otherSites: any[];
 
 	constructor() {
@@ -29,6 +29,12 @@ export class OtherSitesComponent implements OnInit {
 				description: "My new blog that's self-hosted and powered by Ghost CMS. Has a custom theme with my standard Material You color scheme."
 			},
 			{
+				name: "Web Stories",
+				link: "https://stories.dartegnian.com",
+				image: "web-stories",
+				description: "Stories from my life, now on the web. Accelerated Mobile Pages (AMPs) built from scratch using Next.js."
+			},
+			{
 				name: "Forever One (WG-Easy)",
 				link: "https://wg.dartegnian.com",
 				image: "wireguard",
@@ -41,8 +47,5 @@ export class OtherSitesComponent implements OnInit {
 				description: "A self-hosted instance of Taiga for the SCRUM management of my own projects and ideas."
 			}
 		];
-	}
-
-	ngOnInit(): void {
 	}
 }

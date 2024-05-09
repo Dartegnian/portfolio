@@ -26,6 +26,8 @@ export class AccentService {
 	customImage: string | ArrayBuffer | null = null;
 	customImageSubscription: Subject<string | ArrayBuffer>;
 
+	isPlaying = false;
+
 	constructor(
 		private idb: IdbService,
 		private meta: Meta
@@ -39,21 +41,29 @@ export class AccentService {
 		index = Number(index);
 		this.activeIndex = index;
 		this.accentSubscription.next(index);
-		this.setThemeFromM3();
 		this.setThemeInIdb(index);
+
+		if (!this.isPlaying) {
+			this.setThemeFromM3();
+		}
 	}
 
 	public setThemeMode(mode: "light" | "dark") {
 		this.themeMode = mode;
-		this.setThemeFromM3();
 		this.themeSubscription.next(mode);
+
+		if (!this.isPlaying) {
+			this.setThemeFromM3();
+		}
 	}
 
-	public setMetaTagColor() {
+	public setMetaTagColor(theme?: Theme) {
+		const primaryColorNumber: number = theme ? theme.schemes[this.themeMode].primaryContainer as number : this.themeRawColorData?.schemes[this.themeMode].primaryContainer as number;
+
 		this.meta.updateTag({
 			name: "theme-color",
 			content: this.argbToRgb(
-				this.themeRawColorData?.schemes[this.themeMode].primaryContainer as number
+				primaryColorNumber
 			)
 		});
 	}
@@ -67,7 +77,7 @@ export class AccentService {
 		});
 	}
 
-	async setThemeFromM3(element?: HTMLImageElement) {
+	async setThemeFromM3() {
 		const theme = await this.setM3ColorAndTarget(
 			"accent-" + this.images[this.activeIndex],
 			document.body
@@ -136,7 +146,8 @@ export class AccentService {
 
 	async setM3ColorAndTarget(
 		parentOfImg: string,
-		target: string | HTMLElement
+		target: string | HTMLElement,
+		isSiteFrameThemed?: boolean
 	) {
 		let theme = null;
 		const parentElement = document.getElementById(parentOfImg);
@@ -167,9 +178,16 @@ export class AccentService {
 					dark: this.themeMode === "light" ? false : true
 				}
 			);
+		}
 
+		if (theme && isSiteFrameThemed) {
+			this.setMetaTagColor(theme);
 		}
 
 		return theme;
+	}
+
+	setIsPlaying(isPlaying: boolean): void {
+		this.isPlaying = isPlaying;
 	}
 }

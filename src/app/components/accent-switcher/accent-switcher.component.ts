@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AccentService } from 'src/app/services/accent-service.service';
 
@@ -7,13 +7,18 @@ import { AccentService } from 'src/app/services/accent-service.service';
 	templateUrl: './accent-switcher.component.html',
 	styleUrls: ['./accent-switcher.component.scss']
 })
-export class AccentSwitcherComponent implements OnInit, OnDestroy {
+export class AccentSwitcherComponent implements OnDestroy {
 	images: Array<string>;
 	selected: string;
 	accentSubscription: Subscription;
 	customImageSubscription: Subscription;
 	customImage: string | ArrayBuffer | null = null;
 	index: number = 1;
+	titleMappings: { [key: string]: string } = {
+		"primary": "Dartegnian Blue",
+		"secondary": "Vibrant Green",
+		"tertiary": "Filling Station Purple",
+	};
 
 	constructor(
 		private accent: AccentService,
@@ -38,9 +43,6 @@ export class AccentSwitcherComponent implements OnInit, OnDestroy {
 				this.index = index;
 			}
 		);
-	}
-
-	ngOnInit(): void {
 	}
 
 	ngOnDestroy(): void {
@@ -68,7 +70,8 @@ export class AccentSwitcherComponent implements OnInit, OnDestroy {
 
 	removeCustomImage() {
 		this.customImage = null;
-		this.accent.setCustomImage(null, true);
+		this.accent.setCustomImage(null);
+		this.changeAccent(1, "primary");
 	}
 
 	private getFileDataUrl(file: File): Promise<string> {

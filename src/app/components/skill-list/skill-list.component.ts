@@ -70,6 +70,10 @@ export class SkillListComponent implements OnInit {
 				text: "React"
 			},
 			{
+				icon: "devicon-plain:nextjs",
+				text: "Next.js"
+			},
+			{
 				icon: "file-icons:jsx-alt",
 				text: "JSX"
 			},
@@ -80,10 +84,6 @@ export class SkillListComponent implements OnInit {
 			{
 				icon: "cib:nuxt-js",
 				text: "Nuxt"
-			},
-			{
-				icon: "cib:wordpress",
-				text: "WordPress"
 			},
 			{
 				icon: "cib:sass-alt",

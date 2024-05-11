@@ -26,6 +26,10 @@ export class SkillListComponent implements OnInit {
 				text: "Linux"
 			},
 			{
+				icon: "cib:amazon-aws",
+				text: "Amazon AWS"
+			},
+			{
 				icon: "fa-brands:jenkins",
 				text: "Jenkins"
 			},
@@ -42,16 +46,24 @@ export class SkillListComponent implements OnInit {
 				text: "Shell scripting"
 			},
 			{
-				icon: "cib:amazon-aws",
-				text: "Amazon EC2"
-			},
-			{
 				icon: "cib:cloudflare",
 				text: "Cloudflare"
 			},
 			{
 				icon: "fa-brands:linode",
 				text: "Linode"
+			},
+			{
+				icon: "bi:gitlab",
+				text: "GitLab"
+			},
+			{
+				icon: "simple-icons:vercel",
+				text: "Vercel"
+			},
+			{
+				icon: "simple-icons:heroku",
+				text: "Heroku"
 			},
 		];
 

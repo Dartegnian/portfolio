@@ -7,12 +7,19 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./skill-list.component.scss']
 })
 export class SkillListComponent implements OnInit {
+	certifications: Array<any>;
 	devOpsStack: Array<any>;
 	feWebStack: Array<any>;
 	beWebStack: Array<any>;
 	generalStack: Array<any>;
 
 	constructor() {
+		this.certifications = [
+			{
+				icon: "cib:amazon-aws",
+				text: "AWS Certified Cloud Practitioner"
+			},
+		];
 		this.devOpsStack = [
 			{
 				icon: "codicon:terminal-linux",

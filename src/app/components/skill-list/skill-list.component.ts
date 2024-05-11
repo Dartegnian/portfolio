@@ -7,16 +7,27 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./skill-list.component.scss']
 })
 export class SkillListComponent implements OnInit {
+	certifications: Array<any>;
 	devOpsStack: Array<any>;
 	feWebStack: Array<any>;
 	beWebStack: Array<any>;
 	generalStack: Array<any>;
 
 	constructor() {
+		this.certifications = [
+			{
+				icon: "cib:amazon-aws",
+				text: "AWS Certified Cloud Practitioner"
+			},
+		];
 		this.devOpsStack = [
 			{
 				icon: "codicon:terminal-linux",
 				text: "Linux"
+			},
+			{
+				icon: "cib:amazon-aws",
+				text: "Amazon AWS"
 			},
 			{
 				icon: "fa-brands:jenkins",
@@ -35,16 +46,24 @@ export class SkillListComponent implements OnInit {
 				text: "Shell scripting"
 			},
 			{
-				icon: "cib:amazon-aws",
-				text: "Amazon EC2"
-			},
-			{
 				icon: "cib:cloudflare",
 				text: "Cloudflare"
 			},
 			{
 				icon: "fa-brands:linode",
 				text: "Linode"
+			},
+			{
+				icon: "bi:gitlab",
+				text: "GitLab"
+			},
+			{
+				icon: "simple-icons:vercel",
+				text: "Vercel"
+			},
+			{
+				icon: "simple-icons:heroku",
+				text: "Heroku"
 			},
 		];
 
@@ -70,6 +89,10 @@ export class SkillListComponent implements OnInit {
 				text: "React"
 			},
 			{
+				icon: "devicon-plain:nextjs",
+				text: "Next.js"
+			},
+			{
 				icon: "file-icons:jsx-alt",
 				text: "JSX"
 			},
@@ -80,10 +103,6 @@ export class SkillListComponent implements OnInit {
 			{
 				icon: "cib:nuxt-js",
 				text: "Nuxt"
-			},
-			{
-				icon: "cib:wordpress",
-				text: "WordPress"
 			},
 			{
 				icon: "cib:sass-alt",

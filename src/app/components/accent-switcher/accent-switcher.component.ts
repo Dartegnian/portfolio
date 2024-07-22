@@ -70,7 +70,7 @@ export class AccentSwitcherComponent implements OnDestroy {
 
 	removeCustomImage() {
 		this.customImage = null;
-		this.accent.setCustomImage(null);
+		this.accent.setCustomImage(null, true);
 		this.changeAccent(1, "primary");
 	}
 

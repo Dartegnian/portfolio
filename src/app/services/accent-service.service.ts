@@ -2,9 +2,7 @@ import { Injectable } from '@angular/core';
 import { Subject } from 'rxjs';
 import { IdbService } from '@services/idb.service';
 import { Meta } from '@angular/platform-browser';
-import { Theme, argbFromHex, themeFromImage } from "@material/material-color-utilities";
-import { themeFromSourceColor, applyTheme } from "@material/material-color-utilities";
-import ColorThief, { RGBColor } from 'colorthief';
+import { Theme, argbFromHex, themeFromImage, themeFromSourceColor, applyTheme } from "@material/material-color-utilities";
 
 @Injectable({
 	providedIn: 'root'
@@ -115,6 +113,7 @@ export class AccentService {
 		});
 	}
 
+	/*
 	rgbToHex(rgb: RGBColor): string {
 		const [r, g, b] = rgb.map((color) => Math.round(color).toString(16).padStart(2, '0'));
 		return `#${r}${g}${b}`;
@@ -141,7 +140,7 @@ export class AccentService {
 				};
 			});
 		}
-	}
+	}*/
 
 
 	async setM3ColorAndTarget(
@@ -151,16 +150,16 @@ export class AccentService {
 	) {
 		let theme = null;
 		const parentElement = document.getElementById(parentOfImg);
-		const colorThief = new ColorThief();
+		// const colorThief = new ColorThief();
 
 		if (parentElement) {
 			const imgElement = parentElement.querySelector("img");
 			let color = "";
 
 			if (imgElement) {
-				color = this.rgbToHex(await this.getColorFromImage(imgElement));
-				theme = themeFromSourceColor(argbFromHex(color));
-				// theme = await themeFromImage(imgElement as HTMLImageElement);
+				// color = this.rgbToHex(await this.getColorFromImage(imgElement));
+				// theme = themeFromSourceColor(argbFromHex(color));
+				theme = await themeFromImage(imgElement as HTMLImageElement);
 			} else {
 				console.error("No <img> element found within the parent element.");
 				theme = themeFromSourceColor(argbFromHex("#b0b2bd"));

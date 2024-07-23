@@ -15,7 +15,7 @@ export class AccentSwitcherComponent implements OnDestroy {
 	customImage: string | ArrayBuffer | null = null;
 	index: number = 1;
 	titleMappings: { [key: string]: string } = {
-		"primary": "Dartegnian Blue",
+		"primary": "Dartegnian Cyan",
 		"secondary": "Vibrant Green",
 		"tertiary": "Filling Station Purple",
 	};

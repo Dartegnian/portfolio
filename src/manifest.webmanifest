@@ -1,8 +1,8 @@
 {
   "name": "Dartegnian's Portfolio",
   "short_name": "Dartegnian's Portfolio",
-  "theme_color": "#1976d2",
-  "background_color": "#cde5ff",
+  "theme_color": "#00639a",
+  "background_color": "#cee5ff",
   "display": "standalone",
   "scope": "./",
   "start_url": "./",

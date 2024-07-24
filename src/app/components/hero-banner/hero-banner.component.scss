@@ -84,16 +84,12 @@
 		filter: blur(10px);
 		// min-height: 50vh;
 
-		&--first-image-disabled {
-			opacity: 0;
-		}
-
-		&--second-image-disabled {
-			opacity: 0;
-		}
-
+		&--first-image-disabled,
+		&--second-image-disabled,
 		&--custom-image-disabled {
 			opacity: 0;
+			user-select: none;
+			pointer-events: none;
 		}
 	}
 

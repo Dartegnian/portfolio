@@ -1,0 +1,6 @@
+{
+	"installCommand": "bun install",
+	"buildCommand": "bun run prerender",
+	"outputDirectory": "dist/dartegnians-portfolio/browser",
+	"trailingSlash": false
+}

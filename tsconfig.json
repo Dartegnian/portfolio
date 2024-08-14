@@ -26,6 +26,9 @@
        "@components/*": [
         "src/app/components/*"
       ],
+      "@interfaces/*": [
+        "src/app/interfaces/*"
+      ],
       "@services/*": [
         "src/app/services/*"
       ]

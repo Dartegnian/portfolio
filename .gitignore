@@ -43,8 +43,8 @@ Thumbs.db
 
 docs/CNAME
 
-*.avif
-*.webp
+# *.avif
+# *.webp
 
-/src/assets/img/*.jpeg
-/src/assets/img/*.jpg
+# /src/assets/img/*.jpeg
+# /src/assets/img/*.jpg

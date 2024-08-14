@@ -1,4 +1,14 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://portfolio.dartegnian.com/sitemap.xml
+Sitemap: https://dartegnian.com/sitemap.xml
+
+#         [NOW PLAYING]
+#
+#            BAHAMA
+#            aespa
+#
+#   0:39  ──O───────────  3:34
+#    ↻      ⊲  Ⅱ  ⊳      ↺
+#     Volume: ▁▂▃▄▅▆▇ 100%
+#

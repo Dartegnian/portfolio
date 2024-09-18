@@ -40,12 +40,12 @@ export class OtherSitesComponent {
 				image: "wireguard",
 				description: "A fork of Emile Nijssen's project WG-Easy for managing a WireGuard VPN instance. This fork implements my standard Material You color scheme."
 			},
-			{
-				name: "Projects (Taiga)",
-				link: "https://projects.dartegnian.com",
-				image: "projects",
-				description: "A self-hosted instance of Taiga for the SCRUM management of my own projects and ideas."
-			}
+			// {
+			// 	name: "Projects (Taiga)",
+			// 	link: "https://projects.dartegnian.com",
+			// 	image: "projects",
+			// 	description: "A self-hosted instance of Taiga for the SCRUM management of my own projects and ideas."
+			// }
 		];
 	}
 }

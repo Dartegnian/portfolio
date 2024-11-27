@@ -35,7 +35,7 @@ export class MetaService {
 			this.updateFavicons(metaTags.favicons);
 		}
 	}
-	
+
 	updateSiteColorMeta(color: string) {
 		this.meta.updateTag({
 			name: "theme-color",
@@ -68,11 +68,11 @@ export class MetaService {
 
 	restoreOriginalSiteInfo() {
 		const metaTags = {
-			description: "The website and home page of Dartegnian Velarde—dartegnian.com. Includes a mood calendar, journal, MBTI, and other info.",
-			keywords: "Dartegnian, Dartegnian Velarde, Velarde Dartegnian, Dartegnian L. Velarde, Portfolio, Landing Page, About Me, Home Page, Mood Calendar, Journal, Web Journal, MBTI",
-			title: "Dartegnian L. Velarde | DevOps Engineer",
-			image: "https://dartegnian.com/assets/img/main-min-1024.jpg",
-			imageAlt: "Material You-style introduction banner for Dartegnian.com",
+			description: "The website and home page of tomasps.com. Includes a mood calendar, journal, MBTI, and other info.",
+			keywords: "Tomas Palma, TomasPS, Portfolio, Landing Page, About Me, Home Page, Mood Calendar, Journal, Web Journal, MBTI",
+			title: "TomasPS | Developer",
+			image: "https://tomasps.com.com/assets/img/main-min-1024.jpg",
+			imageAlt: "Material You-style introduction banner for tomasps.com",
 			favicons: [
 				{ type: "image/png", sizes: "192x192", href: "/assets/icons/icon-192x192.png" },
 				{ type: "image/png", sizes: "32x32", href: "/assets/icons/favicon-32x32.png" },

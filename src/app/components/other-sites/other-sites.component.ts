@@ -11,16 +11,16 @@ export class OtherSitesComponent {
 	constructor() {
 		this.otherSites = [
 			{
-				name: "Dartegnian.com",
-				link: "https://dartegnian.com",
-				image: "main",
+				name: "Tomasps.com",
+				link: "https://tomasps.com",
+				image: "portfolio",
 				description: "My main website and landing page. This essentially features basic information about me as a person and the things I like."
 			},
 			{
-				name: "Portfolio",
-				link: "https://portfolio.dartegnian.com",
-				image: "portfolio",
-				description: "This is essentially my online web portfolio. All my work and career-related info can be found here, as well as my core competencies as a developer."
+				name: "Status",
+				link: "https://status.tomasps.com.com",
+				image: "main",
+				description: "This is essentially my personal status page built with uptimekuma."
 			},
 			{
 				name: "Blog",
@@ -29,17 +29,17 @@ export class OtherSitesComponent {
 				description: "My new blog that's self-hosted and powered by Ghost CMS. Has a custom theme with my standard Material You color scheme."
 			},
 			{
-				name: "Web Stories",
-				link: "https://stories.dartegnian.com",
+				name: "Photography",
+				link: "https://photography.tomasps.com.com",
 				image: "web-stories",
-				description: "Stories from my life, now on the web. Accelerated Mobile Pages (AMPs) built from scratch using Next.js."
+				description: "All my photography work is hosted here. It's on flickr"
 			},
-			{
-				name: "Forever One (WG-Easy)",
-				link: "https://wg.dartegnian.com",
-				image: "wireguard",
-				description: "A fork of Emile Nijssen's project WG-Easy for managing a WireGuard VPN instance. This fork implements my standard Material You color scheme."
-			},
+			// {
+			// 	name: "Placeholder",
+			// 	link: "https://placeholder.com",
+			// 	image: "wireguard",
+			// 	description: "A fork of Emile Nijssen's project WG-Easy for managing a WireGuard VPN instance. This fork implements my standard Material You color scheme."
+			// },
 			// {
 			// 	name: "Projects (Taiga)",
 			// 	link: "https://projects.dartegnian.com",

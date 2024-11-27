@@ -6,7 +6,7 @@
 
 ![Portfolio website screenshot dark purple theme](src/assets/img/screenshot3.png?raw=true "Material You portfolio site screenshot 3")
 
-# Dartegnian's Portfolio
+# TomasPS Portfolio
 
 An interactive portfolio website with [Material You color](https://m3.material.io/) schemes.
 

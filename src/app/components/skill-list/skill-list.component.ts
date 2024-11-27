@@ -7,31 +7,23 @@ import { Component, OnInit } from '@angular/core';
 	styleUrls: ['./skill-list.component.scss']
 })
 export class SkillListComponent implements OnInit {
-	certifications: Array<any>;
+	// certifications: Array<any>;
 	devOpsStack: Array<any>;
 	feWebStack: Array<any>;
 	beWebStack: Array<any>;
 	generalStack: Array<any>;
 
 	constructor() {
-		this.certifications = [
-			{
-				icon: "cib:amazon-aws",
-				text: "AWS Certified Cloud Practitioner"
-			},
-		];
+		// this.certifications = [
+		// 	{
+		// 		icon: "cib:amazon-aws",
+		// 		text: "AWS Certified Cloud Practitioner"
+		// 	},
+		// ];
 		this.devOpsStack = [
 			{
 				icon: "codicon:terminal-linux",
 				text: "Linux"
-			},
-			{
-				icon: "cib:amazon-aws",
-				text: "Amazon AWS"
-			},
-			{
-				icon: "fa-brands:jenkins",
-				text: "Jenkins"
 			},
 			{
 				icon: "simple-icons:sonarqube",
@@ -50,20 +42,12 @@ export class SkillListComponent implements OnInit {
 				text: "Cloudflare"
 			},
 			{
-				icon: "fa-brands:linode",
-				text: "Linode"
-			},
-			{
 				icon: "bi:gitlab",
 				text: "GitLab"
 			},
 			{
 				icon: "simple-icons:vercel",
 				text: "Vercel"
-			},
-			{
-				icon: "simple-icons:heroku",
-				text: "Heroku"
 			},
 		];
 
@@ -75,14 +59,6 @@ export class SkillListComponent implements OnInit {
 			{
 				icon: "cib:typescript",
 				text: "TypeScript"
-			},
-			{
-				icon: "simple-icons:jasmine",
-				text: "Jasmine"
-			},
-			{
-				icon: "file-icons:karma",
-				text: "Karma"
 			},
 			{
 				icon: "fa-brands:react",
@@ -101,16 +77,8 @@ export class SkillListComponent implements OnInit {
 				text: "Vue.js"
 			},
 			{
-				icon: "cib:nuxt-js",
-				text: "Nuxt"
-			},
-			{
 				icon: "cib:sass-alt",
 				text: "Sass"
-			},
-			{
-				icon: "file-icons:bem",
-				text: "B.E.M."
 			},
 			{
 				icon: "fa-brands:html5",
@@ -128,24 +96,12 @@ export class SkillListComponent implements OnInit {
 
 		this.beWebStack = [
 			{
-				icon: "simple-icons:express",
-				text: "ExpressJS"
-			},
-			{
 				icon: "simple-icons:mongodb",
 				text: "MongoDB"
 			}
 		];
 
 		this.generalStack = [
-			{
-				icon: "cib:flutter",
-				text: "Flutter"
-			},
-			{
-				icon: "simple-icons:dart",
-				text: "Dart"
-			},
 			{
 				icon: "cib:git",
 				text: "Git"
@@ -155,32 +111,12 @@ export class SkillListComponent implements OnInit {
 				text: "GitHub"
 			},
 			{
-				icon: "cib:bitbucket",
-				text: "BitBucket"
-			},
-			{
-				icon: "cib:vim",
-				text: "Vim"
-			},
-			{
 				icon: "akar-icons:vscode-fill",
 				text: "VSCode"
 			},
 			{
 				icon: "cib:arch-linux",
 				text: "Arch Linux, btw"
-			},
-			{
-				icon: "cib:jira",
-				text: "Jira"
-			},
-			{
-				icon: "cib:confluence",
-				text: "Confluence"
-			},
-			{
-				icon: "simple-icons:clickup",
-				text: "ClickUp"
 			},
 			{
 				icon: "tabler:seo",

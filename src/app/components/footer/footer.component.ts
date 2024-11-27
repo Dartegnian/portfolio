@@ -9,23 +9,23 @@ export class FooterComponent implements OnInit {
 	footerLinks = [
 		{
 			icon: "photo_camera",
-			link: "https://www.instagram.com/dartegnian/",
-			text: "Instagram"
+			link: "https://photography.tomasps.com",
+			text: "Photograpgy"
 		},
 		{
 			icon: "public",
-			link: "https://dartegnian.com/",
-			text: "https://dartegnian.com"
+			link: "https://tomasps.com/",
+			text: "https://tomasps.com"
 		},
 		{
 			icon: "code",
-			link: "https://github.com/dartegnian",
-			text: "github.com/dartegnian"
+			link: "https://github.com/tresillo2017/portfolio2025",
+			text: "Source Code"
 		},
 		{
 			icon: "work",
-			link: "https://www.linkedin.com/in/dartegnian/",
-			text: "linkedin.com/in/dartegnian"
+			link: "https://www.linkedin.com/in/tomasps/",
+			text: "linkedin.com/in/tomasps/"
 		},
 	];
 

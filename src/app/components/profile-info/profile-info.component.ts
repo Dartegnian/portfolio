@@ -10,28 +10,28 @@ export class ProfileInfoComponent implements OnInit {
 	contactLinks = [
 		{
 			icon: "mail",
-			link: "mailto:contact@dartegnian.com",
-			text: "contact@dartegnian.com"
+			link: "mailto:contact@tomasps.com",
+			text: "contact@tomasps.com"
 		},
 		{
 			icon: "code",
-			link: "https://github.com/dartegnian",
-			text: "github.com/dartegnian"
+			link: "https://github.com/tresillo2017",
+			text: "github.com/tresillo2017"
 		},
 		{
 			icon: "edit",
-			link: "https://blog.dartegnian.com/",
-			text: "https://blog.dartegnian.com"
+			link: "https://blog.tomasps.com/",
+			text: "https://blog.tomasps.com"
 		},
 		{
 			icon: "work",
-			link: "https://www.linkedin.com/in/dartegnian/",
-			text: "linkedin.com/in/dartegnian"
+			link: "https://www.linkedin.com/in/tomasps/",
+			text: "linkedin.com/in/tomasps"
 		},
 	];
 
 	constructor() {
-		this.description = "Hi, I'm Dartegnian Velarde! I’m an agile and determined DevOps engineer with a passion for curating innovative and responsive web applications, with highly-functional knowledge on various aspects of computer programming, web development, and the DevOps process. Communicating well with others, troubleshooting, and fluency in English are some of my other skills. Adaptability and conscientiousness are my predominant traits.";
+		this.description = "Hi, I'm Tomas Palma! I’m an developer with a passion for curating innovative and responsive web applications, with highly-functional knowledge on various aspects of computer programming, web development, and hosting. Communicating well with others, troubleshooting, and fluency in English are some of my other skills.";
 	}
 
 	ngOnInit(): void {

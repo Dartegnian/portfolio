@@ -16,7 +16,7 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 	activeIndex: number;
 	customImage: string | ArrayBuffer | null = null;
 
-	siteTitle = "Dartegnian's Portfolio";
+	siteTitle = "TomasPS Portfolio";
 	siteDescription = "An interactive portfolio website with Material You implementation. Colors dynamically adjust to a selected theme. Choose one below to get started.";
 
 	isBrowser: boolean = false;
@@ -24,17 +24,17 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 		{
 			icon: "mdi:instagram",
 			text: "Instagram",
-			link: "https://www.instagram.com/dartegnian/"
+			link: "https://www.instagram.com/toomas_ps/"
 		},
 		{
 			icon: "mdi:linkedin",
 			text: "LinkedIn",
-			link: "https://www.linkedin.com/in/dartegnian/"
+			link: "https://www.linkedin.com/in/tomasps/"
 		},
 		{
-			icon: "mdi:spotify",
-			text: "Spotify",
-			link: "https://open.spotify.com/user/dartegnian"
+			icon: "mdi:music",
+			text: "Tidal",
+			link: "https://tidal.com/browse/user/195041547"
 		},
 	];
 

@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AccentService } from 'src/app/services/accent-service.service';
+import { LastfmService } from 'src/app/services/lastfm.service';
 
 @Component({
 	selector: 'hero-banner',
@@ -15,6 +16,7 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 	isSecondHeroImageActive = false;
 	activeIndex: number;
 	customImage: string | ArrayBuffer | null = null;
+
 
 	siteTitle = "TomasPS Portfolio";
 	siteDescription = "An interactive portfolio website with Material You implementation. Colors dynamically adjust to a selected theme. Choose one below to get started.";
@@ -38,8 +40,13 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 		},
 	];
 
-	constructor(
-		private accent: AccentService
+  nowListening: any;
+  lastfmSubscription!: Subscription;
+  private refreshInterval: any;
+
+  constructor(
+		private accent: AccentService,
+    private lastfmService: LastfmService
 	) {
 		this.images = this.accent.images;
 		this.heroImage = this.images[this.accent.activeIndex];
@@ -55,12 +62,29 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 	}
 
 	ngOnInit(): void {
-	}
+    this.fetchNowListening();
+    this.refreshInterval = setInterval(() => {
+      this.lastfmSubscription = this.lastfmService.getNowListening('YOUR_LASTFM_USERNAME').subscribe(
+        (data) => {
+          this.nowListening = data;
+        }
+      );
+    }, 60000);
+  }
 
 	ngOnDestroy() {
 		this.accentSubscription.unsubscribe();
-	}
+    this.lastfmSubscription.unsubscribe();
+    clearInterval(this.refreshInterval);
+  }
 
+  fetchNowListening() {
+    this.lastfmSubscription = this.lastfmService.getNowListening('YOUR_LASTFM_USERNAME').subscribe(
+      (data) => {
+        this.nowListening = data;
+      }
+    );
+  }
 	setHeroImage(index: number) {
 		if (this.activeIndex !== index) {
 			if (this.isSecondHeroImageActive) {

@@ -10,6 +10,7 @@
 .hero-banner {
 	@include material-container--primary;
 
+
 	// background: linear-gradient(
 	// #{var(--md-sys-color-primary-container)} 50%,
 	// #{var(--md-sys-color-secondary-container)});
@@ -154,6 +155,32 @@
 			fill: #{var(--md-sys-color-primary)};
 		}
 	}
+}
+
+.now-listening {
+  margin-top: 20px;
+
+  h3 {
+    font-size: 2rem; /* Adjust the size as needed */
+    font-weight: bold;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Adjust the gap as needed */
+
+    p {
+      font-size: 1.5rem; /* Adjust the size as needed */
+      font-weight: bold;
+    }
+  }
+
+  img {
+    width: 100px; /* Adjust the size as needed */
+    height: 100px; /* Adjust the size as needed */
+    object-fit: cover;
+  }
 }
 
 @keyframes wave-animation {

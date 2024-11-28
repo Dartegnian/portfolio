@@ -25,6 +25,9 @@ import { ResponsiveImageComponent } from '@components/responsive-image/responsiv
 import { OtherSitesComponent } from '@components/other-sites/other-sites.component';
 import { UpdatingSnackbarComponent } from '@components/updating-snackbar/updating-snackbar.component';
 
+import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
+
+
 @NgModule({
 	declarations: [
 		AppComponent,
@@ -41,22 +44,23 @@ import { UpdatingSnackbarComponent } from '@components/updating-snackbar/updatin
 		EmailCtaComponent,
 		FooterComponent,
 		ResponsiveImageComponent,
-		OtherSitesComponent
-	],
-	imports: [
-		UpdatingSnackbarComponent,
-		BrowserModule.withServerTransition({ appId: 'serverApp' }),
-		AppRoutingModule,
-		CommonModule,
-		ServiceWorkerModule.register('ngsw-worker.js', {
-			enabled: environment.production,
-			// Register the ServiceWorker as soon as the application is stable
-			// or after 30 seconds (whichever comes first).
-			// registrationStrategy: 'registerWhenStable:30000'
-			registrationStrategy: 'registerImmediately'
-		}),
-		RouterModule
-	],
+		OtherSitesComponent,
+  ],
+  imports: [
+    UpdatingSnackbarComponent,
+    BrowserModule.withServerTransition({appId: 'serverApp'}),
+    AppRoutingModule,
+    CommonModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      // registrationStrategy: 'registerWhenStable:30000'
+      registrationStrategy: 'registerImmediately'
+    }),
+    RouterModule,
+    HttpClientModule
+  ],
 	providers: [],
 	bootstrap: [AppComponent]
 })

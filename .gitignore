@@ -46,5 +46,9 @@ docs/CNAME
 # *.avif
 # *.webp
 
+# .gitignore
+src/environments/environment.ts
+src/environments/environment.prod.ts
+
 # /src/assets/img/*.jpeg
 # /src/assets/img/*.jpg

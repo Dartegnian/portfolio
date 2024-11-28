@@ -27,6 +27,16 @@ export class FooterComponent implements OnInit {
 			link: "https://www.linkedin.com/in/tomasps/",
 			text: "linkedin.com/in/tomasps/"
 		},
+    {
+      icon: "privacy_tip",
+      link: "/privacy-policy",
+      text: "Privacy Policy"
+    },
+    {
+      icon: "policy",
+      link: "/terms-of-service",
+      text: "Terms of Service"
+    }
 	];
 
   constructor() { }

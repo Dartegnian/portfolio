@@ -11,6 +11,14 @@
 				[ngTemplateOutletContext]="{externalIcon:externalIcon}"
 			></ng-container>
 		</section>
+
+    <div class="now-listening">
+      <h3>Now Listening</h3>
+      <div *ngIf="nowListening" class="now-listening__content">
+        <p>{{ nowListening.artist['#text'] }} - {{ nowListening.name }}</p>
+        <img [src]="nowListening.image[2]['#text']" alt="Album Art">
+      </div>
+    </div>
 	</section>
 
 	<img
@@ -66,5 +74,8 @@
 				data-height="2rem"
 			></i>
 		</a>
+
 	</span>
+
+
 </ng-template>

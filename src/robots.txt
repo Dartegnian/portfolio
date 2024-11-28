@@ -1,14 +1,14 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://dartegnian.com/sitemap.xml
+Sitemap: https://tomasps.com/sitemap.xml
 
 #         [NOW PLAYING]
 #
-#            BAHAMA
-#            aespa
+#            Everybody Wants To Rule The World
+#            Tears For Fears
 #
 #   0:39  ──O───────────  3:34
 #    ↻      ⊲  Ⅱ  ⊳      ↺
-#     Volume: ▁▂▃▄▅▆▇ 100%
+#     Volume: ▁▂▃▄▅▆▇ 200%
 #

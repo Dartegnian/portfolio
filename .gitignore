@@ -53,3 +53,4 @@ src/environments/environment.prod.ts
 # /src/assets/img/*.jpeg
 # /src/assets/img/*.jpg
 src/environments/environment.ts
+/src/environments

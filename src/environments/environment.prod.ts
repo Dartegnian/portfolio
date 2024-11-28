@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  // lastfmApiKey: 'your-production-api-key'
+  lastfmApiKey: process.env.['LASTFM_API_KEY']
 };

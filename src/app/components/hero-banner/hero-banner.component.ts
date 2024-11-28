@@ -34,7 +34,7 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 			link: "https://www.linkedin.com/in/tomasps/"
 		},
 		{
-			icon: "mdi:music",
+			icon: "mdi:tidal",
 			text: "Tidal",
 			link: "https://tidal.com/browse/user/195041547"
 		},
@@ -63,13 +63,10 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 
 	ngOnInit(): void {
     this.fetchNowListening();
+
     this.refreshInterval = setInterval(() => {
-      this.lastfmSubscription = this.lastfmService.getNowListening('YOUR_LASTFM_USERNAME').subscribe(
-        (data) => {
-          this.nowListening = data;
-        }
-      );
-    }, 60000);
+      this.fetchNowListening();
+    }, 60000); // 60000 milliseconds = 1 minute
   }
 
 	ngOnDestroy() {
@@ -79,7 +76,7 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
   }
 
   fetchNowListening() {
-    this.lastfmSubscription = this.lastfmService.getNowListening('YOUR_LASTFM_USERNAME').subscribe(
+    this.lastfmSubscription = this.lastfmService.getNowListening('tresillo2017').subscribe(
       (data) => {
         this.nowListening = data;
       }

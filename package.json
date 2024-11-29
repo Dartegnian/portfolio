@@ -5,7 +5,7 @@
     "ng": "ng",
     "prestart": "node src/replace-env.js",
     "start": "bunx gulp compress && ng serve",
-    "prebuild": "bunx gulp compress",
+    "prebuild": "node src/replace-env.js && bunx gulp compress",
     "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -13,7 +13,7 @@
     "serve:ssr": "node dist/dartegnians-portfolio/server/main.js",
     "build:ssr": "ng build --configuration production && ng run dartegnians-portfolio:server",
     "prerender": "ng run dartegnians-portfolio:prerender",
-    "vercel-build": "dotenv-run -- node src/replace-env.js && npm run build:ssr",
+    "vercel-build": "node src/replace-env.js && npm run build:ssr",
     "scully-build": "ng build --configuration production && npx scully --noPrompt --project dartegnians-portfolio --scanRoutes",
     "local": "ng serve --disable-host-check --host 0.0.0.0",
     "local-gulp": "bunx gulp compress && ng serve --disable-host-check"

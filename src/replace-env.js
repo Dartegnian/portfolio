@@ -1,19 +1,30 @@
 const fs = require('fs');
 const path = require('path');
 
-const envFilePath = path.resolve(__dirname, 'src/environments/environment.prod.ts');
+const prodEnvFilePath = path.resolve(__dirname, 'src/environments/environment.prod.ts');
+const devEnvFilePath = path.resolve(__dirname, 'src/environments/environment.ts');
 const apiKey = process.env.LASTFM_API_KEY;
 
 if (!apiKey) {
   throw new Error('LASTFM_API_KEY is not defined');
 }
 
-const envFileContent = `
+const prodEnvFileContent = `
 export const environment = {
   production: true,
   lastfmApiKey: '${apiKey}'
 };
 `;
 
-fs.writeFileSync(envFilePath, envFileContent);
-console.log(`Environment file written to ${envFilePath}`);
+const devEnvFileContent = `
+export const environment = {
+  production: false,
+  lastfmApiKey: '${apiKey}'
+};
+`;
+
+fs.writeFileSync(prodEnvFilePath, prodEnvFileContent);
+console.log(`Production environment file written to ${prodEnvFilePath}`);
+
+fs.writeFileSync(devEnvFilePath, devEnvFileContent);
+console.log(`Development environment file written to ${devEnvFilePath}`);

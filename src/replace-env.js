@@ -1,31 +1,29 @@
-const fs = require('fs');
-const path = require('path');
-require('dotenv').config({ path: path.resolve(__dirname, '.env') }); // Load environment variables from src/.env file
-
-const prodEnvFilePath = path.resolve(__dirname, 'environments/environment.prod.ts');
-const devEnvFilePath = path.resolve(__dirname, 'environments/environment.ts');
-const apiKey = process.env.LASTFM_API_KEY;
-
-if (!apiKey) {
-  throw new Error('LASTFM_API_KEY is not defined');
-}
-
-const prodEnvFileContent = `
-export const environment = {
+const setEnv = () => {
+  const fs = require('fs');
+  const writeFile = fs.writeFile;
+// Configure Angular `environment.ts` file path
+  const targetPath = './src/environments/environment.prod.ts';
+// Load node modules
+  const colors = require('colors');
+  const appVersion = require('../package.json').version;
+  require('dotenv').config({
+    path: 'src/.env'
+  });
+// `environment.ts` file structure
+  const envConfigFile = `export const environment = {
+  lastfmApiKey: '${process.env.LASTFM_API_KEY}',
   production: true,
-  lastfmApiKey: '${apiKey}'
 };
 `;
-
-const devEnvFileContent = `
-export const environment = {
-  production: false,
-  lastfmApiKey: '${apiKey}'
+  console.log(colors.magenta('The file `environment.ts` will be written with the following content: \n'));
+  writeFile(targetPath, envConfigFile, (err) => {
+    if (err) {
+      console.error(err);
+      throw err;
+    } else {
+      console.log(colors.magenta(`Angular environment.ts file generated correctly at ${targetPath} \n`));
+    }
+  });
 };
-`;
 
-fs.writeFileSync(prodEnvFilePath, prodEnvFileContent);
-console.log(`Production environment file written to ${prodEnvFilePath}`);
-
-fs.writeFileSync(devEnvFilePath, devEnvFileContent);
-console.log(`Development environment file written to ${devEnvFilePath}`);
+setEnv();

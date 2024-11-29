@@ -12,8 +12,8 @@
     "dev:ssr": "ng run dartegnians-portfolio:serve-ssr",
     "serve:ssr": "node dist/dartegnians-portfolio/server/main.js",
     "build:ssr": "ng build --configuration production && ng run dartegnians-portfolio:server",
-    "prerender": "node src-replace-env.js && ng run dartegnians-portfolio:prerender",
-    "vercel-build": "node src/replace-env.js && npm run build:ssr",
+    "prerender": "node src/replace-env.js && ng run dartegnians-portfolio:prerender",
+    "vercel-build": "npm run build:ssr",
     "scully-build": "ng build --configuration production && npx scully --noPrompt --project dartegnians-portfolio --scanRoutes",
     "local": "ng serve --disable-host-check --host 0.0.0.0",
     "local-gulp": "bunx gulp compress && ng serve --disable-host-check"

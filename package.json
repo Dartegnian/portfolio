@@ -3,6 +3,7 @@
   "version": "1.6.0",
   "scripts": {
     "ng": "ng",
+    "prestart": "node src/replace-env.js",
     "start": "bunx gulp compress && ng serve",
     "prebuild": "bunx gulp compress",
     "build": "ng build --configuration production",
@@ -32,6 +33,7 @@
     "@angular/ssr": "^18.1.4",
     "@material/material-color-utilities": "^0.3.0",
     "bootstrap": "^5.3.3",
+    "dotenv": "^16.4.5",
     "express": "^4.19.2",
     "idb": "^8.0.0",
     "lastfm": "^0.9.4",

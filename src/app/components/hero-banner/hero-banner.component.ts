@@ -34,7 +34,7 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 			link: "https://www.linkedin.com/in/tomasps/"
 		},
 		{
-			icon: "mdi:tidal",
+			icon: "mdi:music-circle",
 			text: "Tidal",
 			link: "https://tidal.com/browse/user/195041547"
 		},

@@ -1,8 +1,9 @@
 const fs = require('fs');
 const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '.env') }); // Load environment variables from src/.env file
 
-const prodEnvFilePath = path.resolve(__dirname, 'src/environments/environment.prod.ts');
-const devEnvFilePath = path.resolve(__dirname, 'src/environments/environment.ts');
+const prodEnvFilePath = path.resolve(__dirname, 'environments/environment.prod.ts');
+const devEnvFilePath = path.resolve(__dirname, 'environments/environment.ts');
 const apiKey = process.env.LASTFM_API_KEY;
 
 if (!apiKey) {

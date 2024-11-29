@@ -18,19 +18,19 @@ export class OtherSitesComponent {
 			},
 			{
 				name: "Status",
-				link: "https://status.tomasps.com.com",
+				link: "https://status.tomasps.com",
 				image: "main",
 				description: "This is essentially my personal status page built with uptimekuma."
 			},
 			{
 				name: "Blog",
-				link: "https://blog.dartegnian.com",
+				link: "https://blog.tomasps.com",
 				image: "blog",
 				description: "My new blog that's self-hosted and powered by Ghost CMS. Has a custom theme with my standard Material You color scheme."
 			},
 			{
 				name: "Photography",
-				link: "https://photography.tomasps.com.com",
+				link: "https://photography.tomasps.com",
 				image: "web-stories",
 				description: "All my photography work is hosted here. It's on flickr"
 			},

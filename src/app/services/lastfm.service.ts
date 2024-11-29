@@ -15,7 +15,7 @@ export class LastfmService {
   constructor(private http: HttpClient) {}
 
   getNowListening(username: string): Observable<any> {
-    const url = `${this.apiUrl}?method=user.getrecenttracks&user=${username}&api_key=${this.apiKey}&format=json`;
+    const url = `${this.apiUrl}?method=user.getrecenttracks&user=tresillo2017&api_key=${this.apiKey}&format=json`;
     return this.http.get(url).pipe(
       map((response: any) => response.recenttracks.track[0])
     );

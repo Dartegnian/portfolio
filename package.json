@@ -5,7 +5,7 @@
     "ng": "ng",
     "prestart": "node src/replace-env.js",
     "start": "bunx gulp compress && ng serve",
-    "prebuild": "node src/replace-env.js && bunx gulp compress",
+    "prebuild": "bunx gulp compress",
     "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -59,5 +59,8 @@
     "karma-jasmine": "^5.1.0",
     "karma-jasmine-html-reporter": "^2.1.0",
     "typescript": "^5.5.4"
-  }
+  },
+  "trustedDependencies": [
+    "es5-ext"
+  ]
 }

@@ -27,7 +27,8 @@
               "src/favicon.ico",
               "src/assets",
               "src/robots.txt",
-              "src/manifest.webmanifest"
+              "src/manifest.webmanifest",
+              "src/replace-env.js"
             ],
             "styles": [
 			  "node_modules/bootstrap/dist/css/bootstrap-reboot.min.css",
@@ -121,8 +122,7 @@
               "src/favicon.ico",
               "src/assets",
               "src/robots.txt",
-              "src/manifest.webmanifest",
-              "src/replace-env.js"
+              "src/manifest.webmanifest"
             ],
             "styles": [
 			  "node_modules/bootstrap/dist/css/bootstrap-reboot.min.css",

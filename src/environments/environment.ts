@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  lastfmApiKey: 'your-development-api-key'
+  lastfmApiKey: ''
 };
 
 /*

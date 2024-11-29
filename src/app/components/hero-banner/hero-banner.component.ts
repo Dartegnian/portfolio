@@ -42,7 +42,7 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 
   nowListening: any;
   lastfmSubscription!: Subscription;
-  // private refreshInterval: any;
+  refreshIntervalId!: number;
 
   constructor(
 		private accent: AccentService,
@@ -63,17 +63,15 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 
 	ngOnInit(): void {
     this.fetchNowListening();
-    //
-    // this.refreshInterval = setInterval(() => {
-    //   this.fetchNowListening();
-    // }, 60000); // 60000 milliseconds = 1 minute
+    this.refreshIntervalId = window.setInterval(() => this.fetchNowListening(), 60000);
   }
 
 	ngOnDestroy() {
 		this.accentSubscription.unsubscribe();
     this.lastfmSubscription.unsubscribe();
-    // clearInterval(this.refreshInterval);
+    clearInterval(this.refreshIntervalId);
   }
+
 
   fetchNowListening() {
     this.lastfmSubscription = this.lastfmService.getNowListening('tresillo2017').subscribe(

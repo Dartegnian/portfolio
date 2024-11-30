@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import {TranslateService} from "@ngx-translate/core";
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { TranslateService } from "@ngx-translate/core";
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
 	selector: 'profile-info',
@@ -31,15 +32,16 @@ export class ProfileInfoComponent implements OnInit {
 		},
 	];
 
-	constructor( private translate: TranslateService) {
-		// this.description = "Hi, I'm Tomas Palma! I’m an developer with a passion for curating innovative and responsive web applications, with highly-functional knowledge on various aspects of computer programming, web development, and hosting. Communicating well with others, troubleshooting, and fluency in English are some of my other skills.";
-
-	}
+  constructor(
+    private translate: TranslateService,
+    @Inject(PLATFORM_ID) private platformId: Object
+  ) {}
 
 	ngOnInit(): void {
-    this.translate.get('DESCRIPTION').subscribe((res: string) => {
-      this.description = res;
-    });
-	}
-
+    if (isPlatformBrowser(this.platformId)) {
+      this.translate.get('DESCRIPTION').subscribe((res: string) => {
+        this.description = res;
+      });
+    }
+  }
 }

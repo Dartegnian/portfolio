@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { TranslateService } from '@ngx-translate/core';
 import { IdbService } from '@services/idb.service';
 import { AccentService } from '@services/accent-service.service';
+import { isPlatformBrowser } from '@angular/common';
 
 @Component({
   selector: 'translate',
@@ -14,14 +15,22 @@ export class TranslateComponent implements OnInit {
   prefersDarkScheme: MediaQueryList;
   isDarkMode: boolean;
   prefersDarkSchemeFromIdb: 'dark' | 'light' = 'light';
+  isBrowser: boolean = false;
 
   constructor(
     private translate: TranslateService,
     private idb: IdbService,
-    private accent: AccentService
+    private accent: AccentService,
+    @Inject(PLATFORM_ID) private platformId: Object
   ) {
-    this.prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
-    this.isDarkMode = this.prefersDarkScheme.matches;
+    if (isPlatformBrowser(this.platformId)) {
+      this.prefersDarkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+      this.isDarkMode = this.prefersDarkScheme.matches;
+      this.isBrowser = true;
+    } else {
+      this.prefersDarkScheme = { matches: false } as MediaQueryList;
+      this.isDarkMode = false;
+    }
     this.translate.setDefaultLang(this.currentLanguage);
   }
 

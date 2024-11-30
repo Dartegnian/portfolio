@@ -25,13 +25,20 @@ import { ResponsiveImageComponent } from '@components/responsive-image/responsiv
 import { OtherSitesComponent } from '@components/other-sites/other-sites.component';
 import { UpdatingSnackbarComponent } from '@components/updating-snackbar/updating-snackbar.component';
 
-import { HttpClientModule } from '@angular/common/http'; // Import HttpClientModule
+import { HttpClientModule, HttpClient } from '@angular/common/http'; // Import HttpClientModule
 
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import {TranslateComponent} from "@components/translate/translate.component";
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http);
+}
 
 @NgModule({
 	declarations: [
 		AppComponent,
-		ProfileCardComponent,
+    ProfileCardComponent,
 		SurfaceTestComponent,
 		ThemeSwitcherComponent,
 		ProfileInfoComponent,
@@ -45,6 +52,7 @@ import { HttpClientModule } from '@angular/common/http'; // Import HttpClientMod
 		FooterComponent,
 		ResponsiveImageComponent,
 		OtherSitesComponent,
+    TranslateComponent
   ],
   imports: [
     UpdatingSnackbarComponent,
@@ -59,7 +67,14 @@ import { HttpClientModule } from '@angular/common/http'; // Import HttpClientMod
       registrationStrategy: 'registerImmediately'
     }),
     RouterModule,
-    HttpClientModule
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
 	providers: [],
 	bootstrap: [AppComponent]

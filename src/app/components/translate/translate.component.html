@@ -1,0 +1,11 @@
+<button (click)="toggleLanguage()" class="translate">
+  <span class="material-symbols-rounded translate__toggle-icon">
+    <ng-container *ngIf="currentLanguage === 'en'; else spanishMode">
+      language_gb_english
+    </ng-container>
+    <ng-template #spanishMode>
+      language_spanish
+    </ng-template>
+  </span>
+  {{ 'LANGUAGE' | translate }}
+</button>

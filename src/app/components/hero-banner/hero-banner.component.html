@@ -13,7 +13,7 @@
 		</section>
 
     <div class="now-listening">
-      <h3>Now Listening</h3>
+      <h3>{{ 'NOW_LISTENING' | translate }}</h3>
       <div *ngIf="nowListening" class="now-listening__content">
         <p>{{ nowListening.artist['#text'] }} - {{ nowListening.name }}</p>
         <img [src]="nowListening.image[2]['#text']" alt="Album Art">

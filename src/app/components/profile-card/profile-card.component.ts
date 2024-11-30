@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AccentService } from 'src/app/services/accent-service.service';
+import { TranslateService } from '@ngx-translate/core';
 
 @Component({
 	selector: 'profile-card',
@@ -8,9 +9,8 @@ import { AccentService } from 'src/app/services/accent-service.service';
 	styleUrls: ['./profile-card.component.scss']
 })
 export class ProfileCardComponent implements OnInit, OnDestroy {
-	name = "Tomas Palma Sanchez";
-	tagline = "Software engineer, web developer, Linux and Selfhosting enthusiast";
-
+	name: string = "";
+	tagline = "";
 	images: Array<string>;
 	coverImage: string;
 	secondCoverImage: string | undefined;
@@ -20,8 +20,9 @@ export class ProfileCardComponent implements OnInit, OnDestroy {
 	customImage: string | ArrayBuffer | null = null;
 
 	constructor(
-		private accent: AccentService
-	) {
+		private accent: AccentService,
+    private translate: TranslateService
+) {
 		this.images = this.accent.images;
 		this.coverImage = this.images[this.accent.activeIndex];
 		this.activeIndex = Number(this.accent.activeIndex);
@@ -32,6 +33,14 @@ export class ProfileCardComponent implements OnInit, OnDestroy {
 				this.customImage = this.accent.customImage;
 			}
 		);
+
+    this.translate.get('NAME').subscribe((res: string) => {
+      this.name = res;
+    });
+
+    this.translate.get('TAGLINE').subscribe((res: string) => {
+      this.tagline = res;
+    });
 	}
 
 	ngOnInit(): void {

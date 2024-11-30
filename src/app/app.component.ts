@@ -3,6 +3,8 @@ import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { AccentService } from '@services/accent-service.service';
 import { IdbService } from '@services/idb.service';
 import { UpdateService } from '@services/update.service';
+import { TranslateService } from '@ngx-translate/core'; // Assuming you are using ngx-translate for i18n
+
 
 @Component({
 	selector: 'app-root',
@@ -12,15 +14,17 @@ import { UpdateService } from '@services/update.service';
 export class AppComponent implements OnInit {
 	isBrowser: boolean = false;
 
-	constructor(
+
+  constructor(
 		private idb: IdbService,
 		private accent: AccentService,
 		@Inject(PLATFORM_ID) private platformId: Object,
-		private sw: UpdateService
+		private sw: UpdateService,
 	) {
 		this.sw.checkForUpdates();
 		this.isBrowser = isPlatformBrowser(this.platformId);
 	}
+
 
 	async ngOnInit() {
 		if (this.isBrowser) {

@@ -1,0 +1,13 @@
+{
+  "HELLO": "Hello",
+  "LANGUAGE": "Language",
+  "SITE_DESCRIPTION": "An interactive portfolio website with Material You implementation. Colors dynamically adjust to a selected theme. Choose one below to get started.",
+  "NOW_LISTENING": "Now Listening",
+  "TOGGLE_THEME": "Toggle theme",
+  "NAME": "Tomas Palma Sanchez",
+  "TAGLINE": "Software engineer, web developer, Linux and Selfhosting enthusiast",
+  "WEBSITE": "Website",
+  "ABOUT": "About",
+  "CONTACT": "Contact",
+  "DESCRIPTION": "Hi, I'm Tomas Palma! I’m a developer with a passion for curating innovative and responsive web applications, with highly-functional knowledge on various aspects of computer programming, web development, and hosting. Communicating well with others, troubleshooting, and fluency in English are some of my other skills."
+}

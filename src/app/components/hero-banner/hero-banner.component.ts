@@ -2,12 +2,14 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AccentService } from 'src/app/services/accent-service.service';
 import { LastfmService } from 'src/app/services/lastfm.service';
+import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 
 @Component({
 	selector: 'hero-banner',
 	templateUrl: './hero-banner.component.html',
 	styleUrls: ['./hero-banner.component.scss']
 })
+
 export class HeroBannerComponent implements OnInit, OnDestroy {
 	images: Array<string>;
 	heroImage: string;
@@ -19,7 +21,7 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 
 
 	siteTitle = "TomasPS Portfolio";
-	siteDescription = "An interactive portfolio website with Material You implementation. Colors dynamically adjust to a selected theme. Choose one below to get started.";
+  siteDescription: string = '';
 
 	isBrowser: boolean = false;
 	externalIcons = [
@@ -46,7 +48,8 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 
   constructor(
 		private accent: AccentService,
-    private lastfmService: LastfmService
+    private lastfmService: LastfmService,
+    private translate: TranslateService
 	) {
 		this.images = this.accent.images;
 		this.heroImage = this.images[this.accent.activeIndex];
@@ -59,6 +62,14 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 				this.customImage = this.accent.customImage;
 			}
 		);
+
+    this.translate.onLangChange.subscribe((event: LangChangeEvent) => {
+      this.siteDescription = event.translations['SITE_DESCRIPTION'];
+    });
+
+    this.translate.get('SITE_DESCRIPTION').subscribe((res: string) => {
+      this.siteDescription = res;
+    });
 	}
 
 	ngOnInit(): void {

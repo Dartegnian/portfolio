@@ -1,0 +1,33 @@
+@import "material-you";
+
+:host {
+  position: fixed;
+  top: 2rem;
+  right: 15rem; // Adjusted to be next to the theme switcher
+  z-index: 1;
+}
+
+.translate {
+  @include material-button--filled-secondary;
+  border-radius: 14px;
+  height: 3.5rem;
+  font-weight: 500;
+  box-shadow: $elevated-shadow;
+
+  &__toggle-icon-{
+    margin-right: 0.5rem;
+    font-size: 2.5rem; // Increase the font size to make the icon bigger
+  }
+}
+
+.theme-switcher {
+  @include material-button--filled-secondary;
+  border-radius: 14px;
+  height: 3.5rem;
+  font-weight: 500;
+  box-shadow: $elevated-shadow;
+
+  &__toggle-icon {
+    margin-right: 0.5rem;
+  }
+}

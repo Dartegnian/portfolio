@@ -1,19 +1,20 @@
-import { Injectable, Inject, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { Injectable, PLATFORM_ID, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import MetaTags from '@interfaces/meta-tags.interface';
 
 @Injectable({
 	providedIn: 'root'
 })
 export class MetaService {
+	private meta = inject(Meta);
+	private titleService = inject(Title);
+	private platformId = inject<Object>(PLATFORM_ID);
+	private router = inject(Router);
 	isBrowser: boolean = false;
 
-	constructor(
-		private meta: Meta,
-		private titleService: Title,
-		@Inject(PLATFORM_ID) private platformId: Object
-	) {
+	constructor() {
 		this.isBrowser = isPlatformBrowser(this.platformId);
 	}
 
@@ -45,10 +46,10 @@ export class MetaService {
 
 	updateFavicons(favicons: { type: string; sizes: string; href: string }[]) {
 		if (this.isBrowser) {
-			// Remove existing favicons
-			const existingIcons = document.querySelectorAll("link[rel*='icon']");
-			existingIcons.forEach(icon => icon.remove());
-			this.writeFavicons(favicons);
+		// Remove existing favicons
+		const existingIcons = document.querySelectorAll("link[rel*='icon']");
+		existingIcons.forEach(icon => icon.remove());
+		this.writeFavicons(favicons);
 		}
 	}
 
@@ -81,5 +82,28 @@ export class MetaService {
 		};
 
 		this.updateSiteInfoMeta(metaTags);
+	}
+
+	updateCanonicalUrl(): void {
+		// Get the current URL dynamically
+		const url = this.router.url;
+
+		// Use the current host from window.location for both localhost and production
+		const baseUrl = isPlatformBrowser(this.platformId) ? window.location.origin : "https://dartegnian.com";
+		const fullUrl = `${baseUrl}${url}`;
+
+		if (this.isBrowser) {
+			// If it's a browser, update or create the canonical link dynamically
+			let canonicalLink: HTMLLinkElement | null = document.querySelector('link[rel="canonical"]');
+			if (!canonicalLink) {
+				canonicalLink = document.createElement('link');
+				canonicalLink.setAttribute('rel', 'canonical');
+				document.head.appendChild(canonicalLink);
+			}
+			canonicalLink.setAttribute('href', fullUrl);
+		} else {
+			// For SSR, use the Meta service to ensure the canonical tag is rendered server-side
+			this.meta.updateTag({ rel: 'canonical', href: fullUrl }, 'rel=canonical');
+		}
 	}
 }

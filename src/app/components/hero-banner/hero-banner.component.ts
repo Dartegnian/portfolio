@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AccentService } from 'src/app/services/accent-service.service';
 import { ResponsiveImageComponent } from '../responsive-image/responsive-image.component';
@@ -14,6 +14,8 @@ import { AccentSwitcherComponent } from '../accent-switcher/accent-switcher.comp
 	host: {ngSkipHydration: 'true'},
 })
 export class HeroBannerComponent implements OnInit, OnDestroy {
+	private accent = inject(AccentService);
+
 	images: Array<string>;
 	heroImage: string;
 	secondHeroImage: string | undefined;
@@ -44,9 +46,10 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 		},
 	];
 
-	constructor(
-		private accent: AccentService
-	) {
+	/** Inserted by Angular inject() migration for backwards compatibility */
+	constructor(...args: unknown[]);
+
+	constructor() {
 		this.images = this.accent.images;
 		this.heroImage = this.images[this.accent.activeIndex];
 		this.activeIndex = Number(this.accent.activeIndex);

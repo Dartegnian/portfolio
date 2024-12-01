@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, PLATFORM_ID, inject } from '@angular/core';
 import { AccentService } from '@services/accent-service.service';
 import { IdbService } from '@services/idb.service';
 import { UpdateService } from '@services/update.service';
@@ -25,14 +25,17 @@ import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switch
     imports: [ThemeSwitcherComponent, HeroBannerComponent, ProfileCardComponent, ProfileInfoComponent, OtherSitesComponent, SkillPictureComponent, SkillInfoComponent, LifeAtAGlanceComponent, SkillListComponent, EmailCtaComponent, UpdatingSnackbarComponent, FooterComponent, RouterOutlet]
 })
 export class AppComponent implements OnInit {
+	private idb = inject(IdbService);
+	private accent = inject(AccentService);
+	private platformId = inject<Object>(PLATFORM_ID);
+	private sw = inject(UpdateService);
+
 	isBrowser: boolean = false;
 
-	constructor(
-		private idb: IdbService,
-		private accent: AccentService,
-		@Inject(PLATFORM_ID) private platformId: Object,
-		private sw: UpdateService
-	) {
+	/** Inserted by Angular inject() migration for backwards compatibility */
+	constructor(...args: unknown[]);
+
+	constructor() {
 		this.sw.checkForUpdates();
 		this.isBrowser = isPlatformBrowser(this.platformId);
 	}

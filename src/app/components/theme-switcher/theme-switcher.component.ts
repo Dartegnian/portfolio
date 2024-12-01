@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { AccentService } from '@services/accent-service.service';
 import { IdbService } from '@services/idb.service';
 
@@ -11,13 +11,19 @@ import { IdbService } from '@services/idb.service';
     imports: []
 })
 export class ThemeSwitcherComponent implements OnInit {
+	private idb = inject(IdbService);
+	private accent = inject(AccentService);
+
 	themeMode: "dark" | "light" = "light";
 	prefersDarkScheme: MediaQueryList;
 	isDarkMode: boolean;
 	prefersDarkSchemeFromIdb: "dark" | "light" = "light";
 
+	/** Inserted by Angular inject() migration for backwards compatibility */
+	constructor(...args: unknown[]);
 
-	constructor(private idb: IdbService, private accent: AccentService) {
+
+	constructor() {
 		this.prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 		this.isDarkMode = this.prefersDarkScheme.matches;
 	}

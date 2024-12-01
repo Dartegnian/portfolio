@@ -1,4 +1,4 @@
-import { Component, OnDestroy, ChangeDetectorRef } from '@angular/core';
+import { Component, OnDestroy, ChangeDetectorRef, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AccentService } from 'src/app/services/accent-service.service';
 import { ResponsiveImageComponent } from '../responsive-image/responsive-image.component';
@@ -12,6 +12,9 @@ import { ResponsiveImageComponent } from '../responsive-image/responsive-image.c
     imports: [ResponsiveImageComponent]
 })
 export class AccentSwitcherComponent implements OnDestroy {
+	private accent = inject(AccentService);
+	private changeDetectorRef = inject(ChangeDetectorRef);
+
 	images: Array<string>;
 	selected: string;
 	accentSubscription: Subscription;
@@ -24,10 +27,10 @@ export class AccentSwitcherComponent implements OnDestroy {
 		"tertiary": "Filling Station Purple",
 	};
 
-	constructor(
-		private accent: AccentService,
-		private changeDetectorRef: ChangeDetectorRef
-	) {
+	/** Inserted by Angular inject() migration for backwards compatibility */
+	constructor(...args: unknown[]);
+
+	constructor() {
 		this.images = this.accent.images;
 		this.selected = this.images[this.accent.activeIndex];
 		this.customImage = this.accent.customImage;

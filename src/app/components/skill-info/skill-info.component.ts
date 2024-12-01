@@ -1,5 +1,5 @@
 import { isPlatformBrowser } from '@angular/common';
-import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, OnInit, PLATFORM_ID, inject } from '@angular/core';
 
 @Component({
     selector: 'skill-info',
@@ -8,6 +8,8 @@ import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
     standalone: true
 })
 export class SkillInfoComponent implements OnInit {
+	private platformId = inject<Object>(PLATFORM_ID);
+
 	webAttributes = [
 		"focused",
 		"inspired",
@@ -21,9 +23,10 @@ export class SkillInfoComponent implements OnInit {
 	cursorInterval: ReturnType<typeof setTimeout> | undefined;
 	isBrowser: boolean = false;
 
-	constructor(
-		@Inject(PLATFORM_ID) private platformId: Object
-	) {
+	/** Inserted by Angular inject() migration for backwards compatibility */
+	constructor(...args: unknown[]);
+
+	constructor() {
 		this.isBrowser = isPlatformBrowser(this.platformId);
 	}
 

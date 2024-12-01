@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Subject } from 'rxjs';
 import { IdbService } from '@services/idb.service';
 import { Meta } from '@angular/platform-browser';
@@ -8,6 +8,9 @@ import { Theme, argbFromHex, themeFromImage, themeFromSourceColor, applyTheme } 
 	providedIn: 'root'
 })
 export class AccentService {
+	private idb = inject(IdbService);
+	private meta = inject(Meta);
+
 	images = [
 		"custom",
 		"primary",
@@ -26,10 +29,7 @@ export class AccentService {
 
 	isPlaying = false;
 
-	constructor(
-		private idb: IdbService,
-		private meta: Meta
-	) {
+	constructor() {
 		this.themeSubscription = new Subject();
 		this.accentSubscription = new Subject();
 		this.customImageSubscription = new Subject();
@@ -161,11 +161,11 @@ export class AccentService {
 				// theme = themeFromSourceColor(argbFromHex(color));
 				theme = await themeFromImage(imgElement as HTMLImageElement);
 			} else {
-				console.error("No <img> element found within the parent element.");
+				console.log("No <img> element found within the parent element.");
 				theme = themeFromSourceColor(argbFromHex("#b0b2bd"));
 			}
 		} else {
-			console.error("Parent element with ID '" + parentOfImg + "' not found.");
+			console.log("Parent element with ID '" + parentOfImg + "' not found.");
 			theme = themeFromSourceColor(argbFromHex("#b0b2bd"));
 		}
 

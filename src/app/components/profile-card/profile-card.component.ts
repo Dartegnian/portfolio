@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AccentService } from 'src/app/services/accent-service.service';
 import { ResponsiveImageComponent } from '../responsive-image/responsive-image.component';
@@ -12,6 +12,8 @@ import { ResponsiveImageComponent } from '../responsive-image/responsive-image.c
     imports: [ResponsiveImageComponent]
 })
 export class ProfileCardComponent implements OnInit, OnDestroy {
+	private accent = inject(AccentService);
+
 	name = "Dartegnian L. Velarde";
 	tagline = "Software engineer, web developer, Linux enthusiast, DevOps engineer";
 
@@ -23,9 +25,10 @@ export class ProfileCardComponent implements OnInit, OnDestroy {
 	activeIndex: number;
 	customImage: string | ArrayBuffer | null = null;
 
-	constructor(
-		private accent: AccentService
-	) {
+	/** Inserted by Angular inject() migration for backwards compatibility */
+	constructor(...args: unknown[]);
+
+	constructor() {
 		this.images = this.accent.images;
 		this.coverImage = this.images[this.accent.activeIndex];
 		this.activeIndex = Number(this.accent.activeIndex);

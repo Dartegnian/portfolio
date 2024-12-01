@@ -13,5 +13,5 @@
 		"api/index.js": {
 			"includeFiles": "dist/dartegnians-portfolio/**"
 		}
-	},
+	}
 }

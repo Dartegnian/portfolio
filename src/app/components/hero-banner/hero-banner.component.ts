@@ -10,7 +10,8 @@ import { AccentSwitcherComponent } from '../accent-switcher/accent-switcher.comp
     templateUrl: './hero-banner.component.html',
     styleUrls: ['./hero-banner.component.scss'],
     standalone: true,
-    imports: [AccentSwitcherComponent, NgTemplateOutlet, ResponsiveImageComponent]
+    imports: [AccentSwitcherComponent, NgTemplateOutlet, ResponsiveImageComponent],
+	host: {ngSkipHydration: 'true'},
 })
 export class HeroBannerComponent implements OnInit, OnDestroy {
 	images: Array<string>;

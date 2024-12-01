@@ -15,78 +15,68 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/dartegnians-portfolio/browser",
+            "outputPath": "dist/dartegnians-portfolio",
             "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
+            "browser": "src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
+            "allowedCommonJsDependencies": [
+              "rss-parser"
+            ],
             "assets": [
-              "src/favicon.ico",
-              "src/assets",
-              "src/robots.txt",
-              "src/manifest.webmanifest"
+              {
+                "glob": "**/*",
+                "input": "public"
+              },
+              "src/assets"
             ],
             "styles": [
-			  "node_modules/bootstrap/dist/css/bootstrap-reboot.min.css",
-			  "node_modules/bootstrap/dist/css/bootstrap-grid.min.css",
-			  "src/assets/css/material-you--primary.css",
+              "node_modules/bootstrap/dist/css/bootstrap-reboot.min.css",
+              "node_modules/bootstrap/dist/css/bootstrap-grid.min.css",
+              "src/assets/css/material-you--primary.css",
               "src/styles.scss"
             ],
-			"stylePreprocessorOptions": {
-				"includePaths": [
-					"src/assets/scss"
-				]
-			},
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "src/assets/scss"
+              ]
+            },
             "scripts": [],
-            "serviceWorker": true,
-            "ngswConfigPath": "ngsw-config.json"
+            "server": "src/main.server.ts",
+            "prerender": {
+              "discoverRoutes": false,
+              "routesFile": "prerendered-routes.txt"
+            },
+            "ssr": {
+              "entry": "server.ts"
+            }
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
+                  "maximumWarning": "10MB",
+                  "maximumError": "10MB"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "250kb",
-                  "maximumError": "5mb"
-                }
-              ],
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "maximumWarning": "10MB",
+                  "maximumError": "10MB"
                 }
               ],
               "outputHashing": "all",
-              "optimization": {
-                "scripts": true,
-                  "styles": {
-                    "minify": true,
-                    "inlineCritical": false
-                  },
-                  "fonts": true
-              },
-              "sourceMap": false,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true
+              "serviceWorker": "ngsw-config.json"
             },
             "development": {
-              "buildOptimizer": false,
               "optimization": false,
-              "vendorChunk": true,
               "extractLicenses": false,
-              "sourceMap": true,
-              "namedChunks": true
+              "sourceMap": true
             }
           },
           "defaultConfiguration": "production"
@@ -112,116 +102,25 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
             "tsConfig": "tsconfig.spec.json",
-            "karmaConfig": "karma.conf.js",
-            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
-              "src/assets",
-              "src/robots.txt",
-              "src/manifest.webmanifest"
+              "src/assets"
             ],
             "styles": [
-			  "node_modules/bootstrap/dist/css/bootstrap-reboot.min.css",
-			  "node_modules/bootstrap/dist/css/bootstrap-grid.min.css",
-              "src/styles.scss"
+              "src/styles.css"
             ],
             "scripts": []
           }
-        },
-        "server": {
-          "builder": "@angular-devkit/build-angular:server",
-          "options": {
-            "outputPath": "dist/dartegnians-portfolio/server",
-            "main": "server.ts",
-            "tsConfig": "tsconfig.server.json",
-            "stylePreprocessorOptions": {
-              "includePaths": [
-                "src/assets/scss"
-              ]
-            },
-            "inlineStyleLanguage": "scss"
-          },
-          "configurations": {
-            "production": {
-              "outputHashing": "media",
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
-              "optimization": true,
-              "sourceMap": false,
-              "extractLicenses": true,
-              "buildOptimizer": true
-            },
-            "development": {
-              "optimization": false,
-              "sourceMap": true,
-              "extractLicenses": false,
-              "vendorChunk": true,
-              "buildOptimizer": false
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "serve-ssr": {
-          "builder": "@angular-devkit/build-angular:ssr-dev-server",
-          "configurations": {
-            "development": {
-              "browserTarget": "dartegnians-portfolio:build:development",
-              "serverTarget": "dartegnians-portfolio:server:development"
-            },
-            "production": {
-              "browserTarget": "dartegnians-portfolio:build:production",
-              "serverTarget": "dartegnians-portfolio:server:production"
-            }
-          },
-          "defaultConfiguration": "development"
-        },
-        "prerender": {
-          "builder": "@angular-devkit/build-angular:prerender",
-          "options": {
-            "routes": [
-              "/"
-            ]
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "dartegnians-portfolio:build:production",
-              "serverTarget": "dartegnians-portfolio:server:production"
-            },
-            "development": {
-              "browserTarget": "dartegnians-portfolio:build:development",
-              "serverTarget": "dartegnians-portfolio:server:development"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "app-shell": {
-          "builder": "@angular-devkit/build-angular:app-shell",
-          "options": {
-            "route": "shell"
-          },
-          "configurations": {
-            "production": {
-              "browserTarget": "dartegnians-portfolio:build:production",
-              "serverTarget": "dartegnians-portfolio:server:production"
-            },
-            "development": {
-              "browserTarget": "dartegnians-portfolio:build:development",
-              "serverTarget": "dartegnians-portfolio:server:development"
-            }
-          },
-          "defaultConfiguration": "production"
         }
       }
     }
   },
   "cli": {
-    "analytics": false
+    "analytics": "8ce8432c-9b33-4f12-8bc7-9fb39db87f51"
   }
 }

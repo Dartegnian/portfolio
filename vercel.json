@@ -1,6 +1,17 @@
 {
+	"trailingSlash": false,
+	"public": true,
+	"name": "dartegnians-portfolio",
 	"installCommand": "bun install",
-	"buildCommand": "bun run prerender",
-	"outputDirectory": "dist/dartegnians-portfolio/browser",
-	"trailingSlash": false
+	"rewrites": [
+		{
+			"source": "/(.*)",
+			"destination": "/api"
+		}
+	],
+	"functions": {
+		"api/index.js": {
+			"includeFiles": "dist/dartegnians-portfolio/**"
+		}
+	},
 }

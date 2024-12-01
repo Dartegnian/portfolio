@@ -7,7 +7,8 @@ import { NgTemplateOutlet } from '@angular/common';
     templateUrl: './skill-list.component.html',
     styleUrls: ['./skill-list.component.scss'],
     standalone: true,
-    imports: [NgTemplateOutlet]
+    imports: [NgTemplateOutlet],
+	host: {ngSkipHydration: 'true'},
 })
 export class SkillListComponent implements OnInit {
 	certifications: Array<any>;

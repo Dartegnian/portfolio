@@ -2,14 +2,14 @@ import { Component, OnDestroy, ChangeDetectorRef } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AccentService } from 'src/app/services/accent-service.service';
 import { ResponsiveImageComponent } from '../responsive-image/responsive-image.component';
-import { NgIf, NgFor } from '@angular/common';
+
 
 @Component({
     selector: 'accent-switcher',
     templateUrl: './accent-switcher.component.html',
     styleUrls: ['./accent-switcher.component.scss'],
     standalone: true,
-    imports: [NgIf, NgFor, ResponsiveImageComponent]
+    imports: [ResponsiveImageComponent]
 })
 export class AccentSwitcherComponent implements OnDestroy {
 	images: Array<string>;

@@ -1,4 +1,4 @@
-import { isPlatformBrowser, NgIf } from '@angular/common';
+import { isPlatformBrowser } from '@angular/common';
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 import { AccentService } from '@services/accent-service.service';
 import { IdbService } from '@services/idb.service';
@@ -22,7 +22,7 @@ import { ThemeSwitcherComponent } from './components/theme-switcher/theme-switch
     templateUrl: './app.component.html',
     styleUrls: ['./app.component.scss'],
     standalone: true,
-    imports: [NgIf, ThemeSwitcherComponent, HeroBannerComponent, ProfileCardComponent, ProfileInfoComponent, OtherSitesComponent, SkillPictureComponent, SkillInfoComponent, LifeAtAGlanceComponent, SkillListComponent, EmailCtaComponent, UpdatingSnackbarComponent, FooterComponent, RouterOutlet]
+    imports: [ThemeSwitcherComponent, HeroBannerComponent, ProfileCardComponent, ProfileInfoComponent, OtherSitesComponent, SkillPictureComponent, SkillInfoComponent, LifeAtAGlanceComponent, SkillListComponent, EmailCtaComponent, UpdatingSnackbarComponent, FooterComponent, RouterOutlet]
 })
 export class AppComponent implements OnInit {
 	isBrowser: boolean = false;

@@ -1,12 +1,12 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { NgFor } from '@angular/common';
+
 
 @Component({
     selector: 'responsive-image',
     templateUrl: './responsive-image.component.html',
     styleUrls: ['./responsive-image.component.scss'],
     standalone: true,
-    imports: [NgFor]
+    imports: []
 })
 export class ResponsiveImageComponent implements OnInit {
 	@Input() imageName: string = "";

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NgFor, NgTemplateOutlet } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 // import { locate } from '@iconify/json';
 
 @Component({
@@ -7,7 +7,7 @@ import { NgFor, NgTemplateOutlet } from '@angular/common';
     templateUrl: './skill-list.component.html',
     styleUrls: ['./skill-list.component.scss'],
     standalone: true,
-    imports: [NgFor, NgTemplateOutlet]
+    imports: [NgTemplateOutlet]
 })
 export class SkillListComponent implements OnInit {
 	certifications: Array<any>;

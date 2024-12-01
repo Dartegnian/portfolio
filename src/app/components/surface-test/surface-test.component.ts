@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { NgFor, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'surface-test',
     templateUrl: './surface-test.component.html',
     styleUrls: ['./surface-test.component.scss'],
     standalone: true,
-    imports: [NgFor, NgClass]
+    imports: [NgClass]
 })
 export class SurfaceTestComponent implements OnInit {
 	surfaces: Array<Array<String>> = [

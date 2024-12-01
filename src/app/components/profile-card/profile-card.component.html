@@ -1,48 +1,50 @@
 <article class="profile-card">
-	<header class="profile-card__header">
-		<div class="profile-card__cover-container">
-			<img
-				*ngIf="customImage"
-				[src]="this.customImage"
-				class="profile-card__cover profile-card__cover--custom-image"
-				[class.profile-card__cover--custom-image-disabled]="activeIndex !== 0"
-				alt="Custom image for material theming"
-			>
-			<responsive-image
-				[imageName]="coverImage + '-min'"
-				class="profile-card__cover profile-card__cover--first-image"
-				[class.profile-card__cover--first-image-disabled]="isSecondCoverImageActive || activeIndex === 0"
-				[imageAlt]="'First cover photo, ' + coverImage + ' image'"
-			></responsive-image>
-			<responsive-image
-				*ngIf="secondCoverImage && activeIndex !== 0"
-				[imageName]="secondCoverImage + '-min'"
-				class="profile-card__cover profile-card__cover--first-image"
-				[class.profile-card__cover--first-image-disabled]="!isSecondCoverImageActive || activeIndex === 0"
-				[imageAlt]="'First cover photo, ' + secondCoverImage + ' image'"
-			></responsive-image>
-		</div>
-		<div class="profile-card__photo-container">
-			<div class="profile-card__profile-photo">
-				<responsive-image
-					imageName="me-min"
-					class="profile-card__photo"
-					imageAlt="Profile picture"
-					[imageWidth]="120" [imageHeight]="120"
-					itemProp="image"
-					[imageBoundary]="256"
-				></responsive-image>
-			</div>
-		</div>
-	</header>
-	<section class="profile-card__text">
-		<h1 class="profile-card__name">{{ name }}</h1>
-		<span class="profile-card__tagline">{{ tagline }}</span>
-		<a href="https://dartegnian.com" class="profile-card__contact" target="_blank">
-			<span class="material-symbols-rounded profile-card__contact-icon">
-				public
-			</span>
-			Website
-		</a>
-	</section>
+  <header class="profile-card__header">
+    <div class="profile-card__cover-container">
+      @if (customImage) {
+        <img
+          [src]="this.customImage"
+          class="profile-card__cover profile-card__cover--custom-image"
+          [class.profile-card__cover--custom-image-disabled]="activeIndex !== 0"
+          alt="Custom image for material theming"
+          >
+      }
+      <responsive-image
+        [imageName]="coverImage + '-min'"
+        class="profile-card__cover profile-card__cover--first-image"
+        [class.profile-card__cover--first-image-disabled]="isSecondCoverImageActive || activeIndex === 0"
+        [imageAlt]="'First cover photo, ' + coverImage + ' image'"
+      ></responsive-image>
+      @if (secondCoverImage && activeIndex !== 0) {
+        <responsive-image
+          [imageName]="secondCoverImage + '-min'"
+          class="profile-card__cover profile-card__cover--first-image"
+          [class.profile-card__cover--first-image-disabled]="!isSecondCoverImageActive || activeIndex === 0"
+          [imageAlt]="'First cover photo, ' + secondCoverImage + ' image'"
+        ></responsive-image>
+      }
+    </div>
+    <div class="profile-card__photo-container">
+      <div class="profile-card__profile-photo">
+        <responsive-image
+          imageName="me-min"
+          class="profile-card__photo"
+          imageAlt="Profile picture"
+          [imageWidth]="120" [imageHeight]="120"
+          itemProp="image"
+          [imageBoundary]="256"
+        ></responsive-image>
+      </div>
+    </div>
+  </header>
+  <section class="profile-card__text">
+    <h1 class="profile-card__name">{{ name }}</h1>
+    <span class="profile-card__tagline">{{ tagline }}</span>
+    <a href="https://dartegnian.com" class="profile-card__contact" target="_blank">
+      <span class="material-symbols-rounded profile-card__contact-icon">
+        public
+      </span>
+      Website
+    </a>
+  </section>
 </article>

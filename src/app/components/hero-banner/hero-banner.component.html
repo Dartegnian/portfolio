@@ -1,70 +1,73 @@
 <article class="hero-banner" id="hero-banner">
-	<section class="hero-banner__text-container">
-		<h1 class="hero-banner__header">{{ siteTitle }}</h1>
-		<p class="hero-banner__subheader">{{ siteDescription }}</p>
-		<accent-switcher></accent-switcher>
+  <section class="hero-banner__text-container">
+    <h1 class="hero-banner__header">{{ siteTitle }}</h1>
+    <p class="hero-banner__subheader">{{ siteDescription }}</p>
+    <accent-switcher></accent-switcher>
 
-		<section class="hero-banner__external-icons">
-			<ng-container
-				*ngFor="let externalIcon of externalIcons"
-				[ngTemplateOutlet]="externalIconElement"
-				[ngTemplateOutletContext]="{externalIcon:externalIcon}"
-			></ng-container>
-		</section>
-	</section>
+    <section class="hero-banner__external-icons">
+      @for (externalIcon of externalIcons; track externalIcon) {
+        <ng-container
+          [ngTemplateOutlet]="externalIconElement"
+          [ngTemplateOutletContext]="{externalIcon:externalIcon}"
+        ></ng-container>
+      }
+    </section>
+  </section>
 
-	<img
-		*ngIf="customImage"
-		[src]="this.customImage"
-		class="hero-banner__img hero-banner__cover--custom-image"
-		[class.hero-banner__img--custom-image-disabled]="activeIndex !== 0"
-		alt="Custom image for material theming"
-	>
-	<responsive-image
-		[imageName]="heroImage + '-min'"
-		class="hero-banner__img hero-banner__img--first-image"
-		[class.hero-banner__img--first-image-disabled]="isSecondHeroImageActive || activeIndex === 0"
-		[imageAlt]="'First hero banner ' + heroImage + ' image'"
-		[imageHeight]="576" [imageWidth]="1024"
-		[isLazyLoaded]="false"
-	></responsive-image>
-	<responsive-image
-		*ngIf="secondHeroImage && activeIndex !== 0"
-		[imageName]="secondHeroImage + '-min'"
-		class="hero-banner__img hero-banner__img--second-image"
-		[class.hero-banner__img--second-image-disabled]="!isSecondHeroImageActive || activeIndex === 0"
-		[imageAlt]="'Second hero banner ' + heroImage + ' image'"
-		[imageHeight]="576" [imageWidth]="1024"
-		[isLazyLoaded]="false"
-	></responsive-image>
+  @if (customImage) {
+    <img
+      [src]="this.customImage"
+      class="hero-banner__img hero-banner__cover--custom-image"
+      [class.hero-banner__img--custom-image-disabled]="activeIndex !== 0"
+      alt="Custom image for material theming"
+      >
+  }
+  <responsive-image
+    [imageName]="heroImage + '-min'"
+    class="hero-banner__img hero-banner__img--first-image"
+    [class.hero-banner__img--first-image-disabled]="isSecondHeroImageActive || activeIndex === 0"
+    [imageAlt]="'First hero banner ' + heroImage + ' image'"
+    [imageHeight]="576" [imageWidth]="1024"
+    [isLazyLoaded]="false"
+  ></responsive-image>
+  @if (secondHeroImage && activeIndex !== 0) {
+    <responsive-image
+      [imageName]="secondHeroImage + '-min'"
+      class="hero-banner__img hero-banner__img--second-image"
+      [class.hero-banner__img--second-image-disabled]="!isSecondHeroImageActive || activeIndex === 0"
+      [imageAlt]="'Second hero banner ' + heroImage + ' image'"
+      [imageHeight]="576" [imageWidth]="1024"
+      [isLazyLoaded]="false"
+    ></responsive-image>
+  }
 
-	<svg class="hero-banner__waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
-		<defs>
-			<path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
-		</defs>
-		<g class="hero-banner__wave-parallax">
-			<use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
-			<use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
-			<use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
-			<use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+  <svg class="hero-banner__waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+    <defs>
+      <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+    </defs>
+    <g class="hero-banner__wave-parallax">
+      <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+      <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+      <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+      <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
 
-		</g>
-	</svg>
+    </g>
+  </svg>
 </article>
 
 <ng-template #externalIconElement let-externalIcon="externalIcon">
-	<span
-		class="iconify hero-banner__stack-item"
-	>
-		<a class="hero-banner__external-icon-link" [href]="externalIcon.link" target="_blank" rel="me" [attr.title]="externalIcon.text">
-			<i
-				class="iconify hero-banner__external-icon"
-				[attr.data-icon]="externalIcon.icon"
-				width="2rem"
-				height="2rem"
-				data-width="2rem"
-				data-height="2rem"
-			></i>
-		</a>
-	</span>
+  <span
+    class="iconify hero-banner__stack-item"
+    >
+    <a class="hero-banner__external-icon-link" [href]="externalIcon.link" target="_blank" rel="me" [attr.title]="externalIcon.text">
+      <i
+        class="iconify hero-banner__external-icon"
+        [attr.data-icon]="externalIcon.icon"
+        width="2rem"
+        height="2rem"
+        data-width="2rem"
+        data-height="2rem"
+      ></i>
+    </a>
+  </span>
 </ng-template>

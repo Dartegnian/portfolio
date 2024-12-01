@@ -2,14 +2,14 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AccentService } from 'src/app/services/accent-service.service';
 import { ResponsiveImageComponent } from '../responsive-image/responsive-image.component';
-import { NgIf } from '@angular/common';
+
 
 @Component({
     selector: 'profile-card',
     templateUrl: './profile-card.component.html',
     styleUrls: ['./profile-card.component.scss'],
     standalone: true,
-    imports: [NgIf, ResponsiveImageComponent]
+    imports: [ResponsiveImageComponent]
 })
 export class ProfileCardComponent implements OnInit, OnDestroy {
 	name = "Dartegnian L. Velarde";

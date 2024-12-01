@@ -1,35 +1,36 @@
 <picture class="responsive-image">
-	<source
-		*ngFor="let format of imageFormats"
+  @for (format of imageFormats; track format) {
+    <source
 		[attr.srcset]="
 			(imageBoundary === 1024 ? 'assets/img/' + imageName + '-1024.' + format + ' 1024w, ' : '') +
 			(imageBoundary === 512 || imageBoundary === 1024 ? 'assets/img/' + imageName + '-512.' + format +' 512w, ' : '') +
 			(imageBoundary === 256 || imageBoundary === 512 || imageBoundary === 1024  ? 'assets/img/' + imageName + '-256.' + format + ' 256w' : '') +
 			(imageBoundary === undefined ? 'assets/img/' + imageName + '-1024.' + format + ' 1024w, ' + 'assets/img/' + imageName + '-512.' + format +' 512w, ' + 'assets/img/' + imageName + '-256.' + format + ' 256w' : '')
 		"
-		sizes="(max-width: 580px) 256px, (max-width: 768px) 512px, 100vw"
-		type="image/{{ format }}"
-		[attr.width]="imageWidth"
-		[attr.height]="imageHeight"
-		[attr.alt]="imageAlt"
-		[attr.itemprop]="itemProp ? itemProp : null"
-		class="responsive-image__responsive-img"
-	/>
-	<img
-		src="assets/img/{{ imageName }}-{{ imageBoundary ? imageBoundary : '1024' }}.jpg"
-		class="responsive-image__fallback-img"
+      sizes="(max-width: 580px) 256px, (max-width: 768px) 512px, 100vw"
+      type="image/{{ format }}"
+      [attr.width]="imageWidth"
+      [attr.height]="imageHeight"
+      [attr.alt]="imageAlt"
+      [attr.itemprop]="itemProp ? itemProp : null"
+      class="responsive-image__responsive-img"
+      />
+  }
+  <img
+    src="assets/img/{{ imageName }}-{{ imageBoundary ? imageBoundary : '1024' }}.jpg"
+    class="responsive-image__fallback-img"
 		[attr.srcset]="
 			(imageBoundary === 1024 ? 'assets/img/' + imageName + '-1024.jpg' + ' 1024w, ' : '') +
 			(imageBoundary === 512 || imageBoundary === 1024 ? 'assets/img/' + imageName + '-512.jpg' +' 512w, ' : '') +
 			(imageBoundary === 256 || imageBoundary === 512 || imageBoundary === 1024  ? 'assets/img/' + imageName + '-256.jpg' + ' 256w' : '') +
 			(imageBoundary === undefined ? 'assets/img/' + imageName + '-1024.jpg' + ' 1024w, ' + 'assets/img/' + imageName + '-512.jpg' +' 512w, ' + 'assets/img/' + imageName + '-256.jpg' + ' 256w' : '')
 		"
-		[attr.width]="imageWidth"
-		[attr.height]="imageHeight"
-		[attr.alt]="imageAlt"
-		[attr.itemprop]="itemProp ? itemProp : null"
-		[attr.loading]="isLazyLoaded ? 'lazy' : 'eager'"
-    	[attr.decoding]="isLazyLoaded ? 'async' : 'sync'"
-    	[attr.fetchpriority]="isLazyLoaded ? null : 'high'"
-	/>
+    [attr.width]="imageWidth"
+    [attr.height]="imageHeight"
+    [attr.alt]="imageAlt"
+    [attr.itemprop]="itemProp ? itemProp : null"
+    [attr.loading]="isLazyLoaded ? 'lazy' : 'eager'"
+    [attr.decoding]="isLazyLoaded ? 'async' : 'sync'"
+    [attr.fetchpriority]="isLazyLoaded ? null : 'high'"
+    />
 </picture>

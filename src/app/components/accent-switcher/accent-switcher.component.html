@@ -1,40 +1,51 @@
 <article class="accent-switcher">
-	<div class="accent-switcher__container accent-switcher__custom-image-delete" *ngIf="customImage" (click)="removeCustomImage()">
-		<span class="material-symbols-rounded accent-switcher__file-icon accent-switcher__file-icon--close">close</span>
-		<span class="accent-switcher__file-select-text">Clear image</span>
-	</div>
-	<div
-		class="accent-switcher__container"
-		[class.accent-switcher__container--selected]="selected == image"
-		*ngFor="let image of images; index as i"
-	>
-		<div *ngIf="image === 'custom'" class="accent-switcher__custom-image">
-			<input id="fileInput" type="file" (change)="onFileSelected($event)" accept="image/*" class="accent-switcher__file-input" *ngIf="!customImage" aria-label="Select an image">
-			<div *ngIf="!customImage" class="accent-switcher__file-text">
-				<span class="material-symbols-rounded accent-switcher__file-icon">upload_file</span>
-				<span class="accent-switcher__file-select-text">Use an image</span>
-			</div>
-			<div *ngIf="customImage" [attr.id]="'accent-' + image" class="accent-switcher__custom-image-container">
-				<img
-					[src]="customImage"
-					class="accent-switcher__custom-image-img"
-					alt="Custom image for material theming"
-					(click)="setCustomImage()"
-				>
-			</div>
-		</div>
-		<responsive-image
-			*ngIf="image !== 'custom'"
-			[attr.id]="'accent-' + image"
-			class="accent-switcher__picture"
-			(click)="changeAccent(i, image)"
-			role="button" tabindex="0" [attr.aria-label]="'Image preview ' + image + ' theme'"
-
-			[imageName]="image + '-min'"
-			[imageAlt]="'Image preview ' + image + ' theme'"
-			[imageHeight]="58" [imageWidth]="92"
-			[imageBoundary]="512"
-			[isLazyLoaded]="false"
-		></responsive-image>
-	</div>
+  @if (customImage) {
+    <div class="accent-switcher__container accent-switcher__custom-image-delete" (click)="removeCustomImage()">
+      <span class="material-symbols-rounded accent-switcher__file-icon accent-switcher__file-icon--close">close</span>
+      <span class="accent-switcher__file-select-text">Clear image</span>
+    </div>
+  }
+  @for (image of images; track image; let i = $index) {
+    <div
+      class="accent-switcher__container"
+      [class.accent-switcher__container--selected]="selected == image"
+      >
+      @if (image === 'custom') {
+        <div class="accent-switcher__custom-image">
+          @if (!customImage) {
+            <input id="fileInput" type="file" (change)="onFileSelected($event)" accept="image/*" class="accent-switcher__file-input" aria-label="Select an image">
+          }
+          @if (!customImage) {
+            <div class="accent-switcher__file-text">
+              <span class="material-symbols-rounded accent-switcher__file-icon">upload_file</span>
+              <span class="accent-switcher__file-select-text">Use an image</span>
+            </div>
+          }
+          @if (customImage) {
+            <div [attr.id]="'accent-' + image" class="accent-switcher__custom-image-container">
+              <img
+                [src]="customImage"
+                class="accent-switcher__custom-image-img"
+                alt="Custom image for material theming"
+                (click)="setCustomImage()"
+                >
+            </div>
+          }
+        </div>
+      }
+      @if (image !== 'custom') {
+        <responsive-image
+          [attr.id]="'accent-' + image"
+          class="accent-switcher__picture"
+          (click)="changeAccent(i, image)"
+          role="button" tabindex="0" [attr.aria-label]="'Image preview ' + image + ' theme'"
+          [imageName]="image + '-min'"
+          [imageAlt]="'Image preview ' + image + ' theme'"
+          [imageHeight]="58" [imageWidth]="92"
+          [imageBoundary]="512"
+          [isLazyLoaded]="false"
+        ></responsive-image>
+      }
+    </div>
+  }
 </article>

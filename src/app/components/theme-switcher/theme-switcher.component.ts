@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { AccentService } from '@services/accent-service.service';
 import { IdbService } from '@services/idb.service';
-import { NgIf } from '@angular/common';
+
 
 @Component({
     selector: 'theme-switcher',
     templateUrl: './theme-switcher.component.html',
     styleUrls: ['./theme-switcher.component.scss'],
     standalone: true,
-    imports: [NgIf]
+    imports: []
 })
 export class ThemeSwitcherComponent implements OnInit {
 	themeMode: "dark" | "light" = "light";

@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { AfterViewInit, Component, ElementRef, ViewChild } from '@angular/core';
 import { SwUpdate } from '@angular/service-worker';
 import { Subscription } from 'rxjs';
@@ -6,7 +6,7 @@ import { Subscription } from 'rxjs';
 @Component({
 	selector: 'updating-snackbar',
 	standalone: true,
-	imports: [CommonModule],
+	imports: [],
 	templateUrl: './updating-snackbar.component.html',
 	styleUrl: './updating-snackbar.component.scss'
 })

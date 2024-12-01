@@ -1,11 +1,10 @@
 <button (click)="toggleThemeMode()" class="theme-switcher">
-	<span class="material-symbols-rounded theme-swticher__toggle-icon">
-		<ng-container *ngIf="themeMode === 'light'; else lightMode">
-			dark_mode
-		</ng-container>
-		<ng-template #lightMode>
-			light_mode
-		</ng-template>
-	</span>
-	Toggle theme
+  <span class="material-symbols-rounded theme-swticher__toggle-icon">
+    @if (themeMode === 'light') {
+      dark_mode
+    } @else {
+      light_mode
+    }
+  </span>
+  Toggle theme
 </button>

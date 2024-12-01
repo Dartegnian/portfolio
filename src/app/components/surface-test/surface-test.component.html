@@ -1,11 +1,15 @@
 <div class="surfaces">
-	<section class="surfaces__surface-list">
-		<div class="surfaces__surface-group"  *ngFor="let surface of surfaces; index as i">
-			<article *ngFor="let surface of surfaces[i]" [ngClass]="'surfaces__surface surfaces__surface--' + surface">
-				<h1>Surface</h1>
-				<p>This is a surface test for my portfolio.</p>
-				<p><em>{{ surface }}</em></p>
-			</article>
-		</div>
-	</section>
+  <section class="surfaces__surface-list">
+    @for (surface of surfaces; track surface; let i = $index) {
+      <div class="surfaces__surface-group" >
+        @for (surface of surfaces[i]; track surface) {
+          <article [ngClass]="'surfaces__surface surfaces__surface--' + surface">
+            <h1>Surface</h1>
+            <p>This is a surface test for my portfolio.</p>
+            <p><em>{{ surface }}</em></p>
+          </article>
+        }
+      </div>
+    }
+  </section>
 </div>

@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { NgFor, NgTemplateOutlet, NgIf } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 
 @Component({
     selector: 'life-at-a-glance',
     templateUrl: './life-at-a-glance.component.html',
     styleUrls: ['./life-at-a-glance.component.scss'],
     standalone: true,
-    imports: [NgFor, NgTemplateOutlet, NgIf]
+    imports: [NgTemplateOutlet]
 })
 export class LifeAtAGlanceComponent implements OnInit {
 	featureIndex = 0;

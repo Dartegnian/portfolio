@@ -1,31 +1,33 @@
 <article class="profile-info" itemscope itemtype="http://schema.org/Person">
-	<section class="profile-info__detail">
-		<header class="profile-info__header">
-			<span class="material-symbols-rounded">face</span>
-			<h1 class="profile-info__header-text" itemprop="name">About</h1>
-		</header>
-		<p class="profile-info__description" itemprop="description">{{ description }}</p>
-	</section>
-	<section class="profile-info__detail">
-		<header class="profile-info__header">
-			<span class="material-symbols-rounded">person_add</span>
-			Contact
-		</header>
-		<div class="profile-info__links">
-			<ng-container *ngTemplateOutlet="links"></ng-container>
-		</div>
-	</section>
+  <section class="profile-info__detail">
+    <header class="profile-info__header">
+      <span class="material-symbols-rounded">face</span>
+      <h1 class="profile-info__header-text" itemprop="name">About</h1>
+    </header>
+    <p class="profile-info__description" itemprop="description">{{ description }}</p>
+  </section>
+  <section class="profile-info__detail">
+    <header class="profile-info__header">
+      <span class="material-symbols-rounded">person_add</span>
+      Contact
+    </header>
+    <div class="profile-info__links">
+      <ng-container *ngTemplateOutlet="links"></ng-container>
+    </div>
+  </section>
 </article>
 
 <ng-template #links>
-	<a *ngFor="let link of contactLinks" href="{{ link.link }}" class="profile-info__link">
-		<div class="profile-info__link-wrapper">
-			<span class="material-symbols-rounded profile-info__contact-icon">
-				{{ link.icon }}
-			</span>
-			<span class="profile-info__link-text">
-				{{ link.text }}
-			</span>
-		</div>
-	</a>
+  @for (link of contactLinks; track link) {
+    <a href="{{ link.link }}" class="profile-info__link">
+      <div class="profile-info__link-wrapper">
+        <span class="material-symbols-rounded profile-info__contact-icon">
+          {{ link.icon }}
+        </span>
+        <span class="profile-info__link-text">
+          {{ link.text }}
+        </span>
+      </div>
+    </a>
+  }
 </ng-template>

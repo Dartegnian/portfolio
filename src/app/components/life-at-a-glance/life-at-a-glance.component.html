@@ -1,58 +1,62 @@
 <article class="life-at-a-glance">
-	<header class="life-at-a-glance__header">
-		<section class="life-at-a-glance__header-info">
-			<div class="life-at-a-glance__header-text">
-				<h1 class="life-at-a-glance__heading" >My life:</h1>
-				<h1 class="life-at-a-glance__heading" >{{ feature }}</h1>
-			</div>
-			<p
-				*ngFor="let description of features[featureIndex]['description']"
-				class="life-at-a-glance__header-description"
-			>
-				{{ description }}
-			</p>
-		</section>
-		<section class="life-at-a-glance__feature">
-			<div class="life-at-a-glance__feature-actions">
-				<a [href]="features[featureIndex]['link']" target="_blank" class="life-at-a-glance__action" role="button" tabindex="0"><span class="material-symbols-rounded life-at-a-glance__action-icon">link</span></a>
-				<div class="life-at-a-glance__action life-at-a-glance__action--empty"></div>
-				<div (click)="shuffleFeature()" class="life-at-a-glance__action" role="button" tabindex="0"><span class="material-symbols-rounded life-at-a-glance__action-icon">shuffle</span></div>
-				<div class="life-at-a-glance__action life-at-a-glance__action--empty"></div>
-				<div class="life-at-a-glance__action life-at-a-glance__action--center"><span class="material-symbols-rounded life-at-a-glance__action-icon">{{ features[featureIndex]["icon"] }}</span></div>
-				<div class="life-at-a-glance__action life-at-a-glance__action--empty"></div>
-				<div (click)="skipFeature('previous')" class="life-at-a-glance__action" [class.life-at-a-glance__action--disabled]="featureIndex === 1 || featureIndex === 0" role="button" tabindex="0"><span class="material-symbols-rounded life-at-a-glance__action-icon">skip_previous</span></div>
-				<div class="life-at-a-glance__action life-at-a-glance__action--empty"></div>
-				<div (click)="skipFeature('next')" class="life-at-a-glance__action" [class.life-at-a-glance__action--disabled]="featureIndex === features.length - 1" role="button" tabindex="0"><span class="material-symbols-rounded life-at-a-glance__action-icon">skip_next</span></div>
-			</div>
-		</section>
-	</header>
-	<hr/>
-	<section class="life-at-a-glance__cards">
-		<div class="life-at-a-glance__cards-wrapper">
-			<ng-container [ngTemplateOutlet]="glanceCard"></ng-container>
-		</div>
-	</section>
+  <header class="life-at-a-glance__header">
+    <section class="life-at-a-glance__header-info">
+      <div class="life-at-a-glance__header-text">
+        <h1 class="life-at-a-glance__heading" >My life:</h1>
+        <h1 class="life-at-a-glance__heading" >{{ feature }}</h1>
+      </div>
+      @for (description of features[featureIndex]['description']; track description) {
+        <p
+          class="life-at-a-glance__header-description"
+          >
+          {{ description }}
+        </p>
+      }
+    </section>
+    <section class="life-at-a-glance__feature">
+      <div class="life-at-a-glance__feature-actions">
+        <a [href]="features[featureIndex]['link']" target="_blank" class="life-at-a-glance__action" role="button" tabindex="0"><span class="material-symbols-rounded life-at-a-glance__action-icon">link</span></a>
+        <div class="life-at-a-glance__action life-at-a-glance__action--empty"></div>
+        <div (click)="shuffleFeature()" class="life-at-a-glance__action" role="button" tabindex="0"><span class="material-symbols-rounded life-at-a-glance__action-icon">shuffle</span></div>
+        <div class="life-at-a-glance__action life-at-a-glance__action--empty"></div>
+        <div class="life-at-a-glance__action life-at-a-glance__action--center"><span class="material-symbols-rounded life-at-a-glance__action-icon">{{ features[featureIndex]["icon"] }}</span></div>
+        <div class="life-at-a-glance__action life-at-a-glance__action--empty"></div>
+        <div (click)="skipFeature('previous')" class="life-at-a-glance__action" [class.life-at-a-glance__action--disabled]="featureIndex === 1 || featureIndex === 0" role="button" tabindex="0"><span class="material-symbols-rounded life-at-a-glance__action-icon">skip_previous</span></div>
+        <div class="life-at-a-glance__action life-at-a-glance__action--empty"></div>
+        <div (click)="skipFeature('next')" class="life-at-a-glance__action" [class.life-at-a-glance__action--disabled]="featureIndex === features.length - 1" role="button" tabindex="0"><span class="material-symbols-rounded life-at-a-glance__action-icon">skip_next</span></div>
+      </div>
+    </section>
+  </header>
+  <hr/>
+  <section class="life-at-a-glance__cards">
+    <div class="life-at-a-glance__cards-wrapper">
+      <ng-container [ngTemplateOutlet]="glanceCard"></ng-container>
+    </div>
+  </section>
 </article>
 
 <ng-template #glanceCard>
-	<ng-container *ngFor="let feature of features; index as i">
-		<article
-			*ngIf="i !== 0"
-			(click)="setFeature(i)"
-			class="life-at-a-glance__card"
-			[class.life-at-a-glance__card--selected]="featureIndex === i"
-			role="button" tabindex="0"
-		>
-			<header class="life-at-a-glance__card-header">
-				<span *ngIf="feature.isNew" class="life-at-a-glance__card-title-new">New</span>
-				<div class="life-at-a-glance__card-title-thumb">{{ feature.title.charAt(0) }}</div>
-				<h2 class="life-at-a-glance__heading">{{ feature.title }}</h2>
-			</header>
-			<section>
-				<div>
-					<p>{{ feature.shortDescription }}</p>
-				</div>
-			</section>
-		</article>
-	</ng-container>
+  @for (feature of features; track feature; let i = $index) {
+    @if (i !== 0) {
+      <article
+        (click)="setFeature(i)"
+        class="life-at-a-glance__card"
+        [class.life-at-a-glance__card--selected]="featureIndex === i"
+        role="button" tabindex="0"
+        >
+        <header class="life-at-a-glance__card-header">
+          @if (feature.isNew) {
+            <span class="life-at-a-glance__card-title-new">New</span>
+          }
+          <div class="life-at-a-glance__card-title-thumb">{{ feature.title.charAt(0) }}</div>
+          <h2 class="life-at-a-glance__heading">{{ feature.title }}</h2>
+        </header>
+        <section>
+          <div>
+            <p>{{ feature.shortDescription }}</p>
+          </div>
+        </section>
+      </article>
+    }
+  }
 </ng-template>

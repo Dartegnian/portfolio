@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
+import { NgTemplateOutlet, NgFor } from '@angular/common';
 
 @Component({
-	selector: 'profile-info',
-	templateUrl: './profile-info.component.html',
-	styleUrls: ['./profile-info.component.scss']
+    selector: 'profile-info',
+    templateUrl: './profile-info.component.html',
+    styleUrls: ['./profile-info.component.scss'],
+    standalone: true,
+    imports: [NgTemplateOutlet, NgFor]
 })
 export class ProfileInfoComponent implements OnInit {
 	description: string;

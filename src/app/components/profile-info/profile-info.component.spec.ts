@@ -8,8 +8,8 @@ describe('ProfileInfoComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ProfileInfoComponent ]
-    })
+    imports: [ProfileInfoComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(ProfileInfoComponent);

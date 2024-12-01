@@ -1,11 +1,16 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AccentService } from 'src/app/services/accent-service.service';
+import { ResponsiveImageComponent } from '../responsive-image/responsive-image.component';
+import { NgFor, NgTemplateOutlet, NgIf } from '@angular/common';
+import { AccentSwitcherComponent } from '../accent-switcher/accent-switcher.component';
 
 @Component({
-	selector: 'hero-banner',
-	templateUrl: './hero-banner.component.html',
-	styleUrls: ['./hero-banner.component.scss']
+    selector: 'hero-banner',
+    templateUrl: './hero-banner.component.html',
+    styleUrls: ['./hero-banner.component.scss'],
+    standalone: true,
+    imports: [AccentSwitcherComponent, NgFor, NgTemplateOutlet, NgIf, ResponsiveImageComponent]
 })
 export class HeroBannerComponent implements OnInit, OnDestroy {
 	images: Array<string>;

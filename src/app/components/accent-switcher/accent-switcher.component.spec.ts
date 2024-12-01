@@ -8,8 +8,8 @@ describe('AccentSwitcherComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ AccentSwitcherComponent ]
-    })
+    imports: [AccentSwitcherComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(AccentSwitcherComponent);

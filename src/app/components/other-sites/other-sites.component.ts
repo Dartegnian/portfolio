@@ -1,9 +1,13 @@
 import { Component } from '@angular/core';
+import { ResponsiveImageComponent } from '../responsive-image/responsive-image.component';
+import { NgFor } from '@angular/common';
 
 @Component({
-	selector: 'other-sites',
-	templateUrl: './other-sites.component.html',
-	styleUrls: ['./other-sites.component.scss']
+    selector: 'other-sites',
+    templateUrl: './other-sites.component.html',
+    styleUrls: ['./other-sites.component.scss'],
+    standalone: true,
+    imports: [NgFor, ResponsiveImageComponent]
 })
 export class OtherSitesComponent {
 	otherSites: any[];

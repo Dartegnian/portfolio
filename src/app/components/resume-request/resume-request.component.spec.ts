@@ -8,8 +8,8 @@ describe('EmailCtaComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ EmailCtaComponent ]
-    })
+    imports: [EmailCtaComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(EmailCtaComponent);

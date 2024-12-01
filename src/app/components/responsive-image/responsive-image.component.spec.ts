@@ -8,8 +8,8 @@ describe('ResponsiveImageComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ ResponsiveImageComponent ]
-    })
+    imports: [ResponsiveImageComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(ResponsiveImageComponent);

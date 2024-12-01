@@ -8,8 +8,8 @@ describe('SurfaceTestComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ SurfaceTestComponent ]
-    })
+    imports: [SurfaceTestComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(SurfaceTestComponent);

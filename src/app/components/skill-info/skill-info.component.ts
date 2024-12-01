@@ -2,9 +2,10 @@ import { isPlatformBrowser } from '@angular/common';
 import { Component, OnInit, Inject, PLATFORM_ID } from '@angular/core';
 
 @Component({
-	selector: 'skill-info',
-	templateUrl: './skill-info.component.html',
-	styleUrls: ['./skill-info.component.scss']
+    selector: 'skill-info',
+    templateUrl: './skill-info.component.html',
+    styleUrls: ['./skill-info.component.scss'],
+    standalone: true
 })
 export class SkillInfoComponent implements OnInit {
 	webAttributes = [

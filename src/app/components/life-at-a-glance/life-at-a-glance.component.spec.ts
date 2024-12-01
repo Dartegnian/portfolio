@@ -8,8 +8,8 @@ describe('LifeAtAGlanceComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ LifeAtAGlanceComponent ]
-    })
+    imports: [LifeAtAGlanceComponent]
+})
     .compileComponents();
 
     fixture = TestBed.createComponent(LifeAtAGlanceComponent);

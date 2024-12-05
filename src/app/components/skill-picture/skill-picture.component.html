@@ -1,19 +1,19 @@
 <article class="skill-picture">
-	<section class="skill-picture__title">
-		<span class="skill-picture__title-span">
-			<span class="material-symbols-rounded skill-picture__title-icon">
-				badge
-			</span>
-			Web developer
-		</span>
-	</section>
-	<responsive-image
-		[imageName]="'pexels-tranmautritam-251225'"
-		class="skill-picture__photo"
-		[imageAlt]="'Skill picture stock image'"
-		[imageHeight]="432" [imageWidth]="768"
-	></responsive-image>
-	<section class="skill-picture__since">
-		<span>Since <h1 class="skill-picture__since-date">2021</h1></span>
-	</section>
+  <section class="skill-picture__title">
+    <span class="skill-picture__title-span">
+      <span class="material-symbols-rounded skill-picture__title-icon">
+        badge
+      </span>
+      {{ 'WEB_DEVELOPER' | translate }}
+    </span>
+  </section>
+  <responsive-image
+    [imageName]="'pexels-tranmautritam-251225'"
+    class="skill-picture__photo"
+    [imageAlt]="'SKILL_PICTURE_ALT' | translate"
+    [imageHeight]="432" [imageWidth]="768"
+  ></responsive-image>
+  <section class="skill-picture__since">
+    <span>{{ 'SINCE' | translate }} <h1 class="skill-picture__since-date">2021</h1></span>
+  </section>
 </article>

@@ -20,9 +20,11 @@ export class AppComponent implements OnInit {
 		private accent: AccentService,
 		@Inject(PLATFORM_ID) private platformId: Object,
 		private sw: UpdateService,
+    private translate: TranslateService
 	) {
 		this.sw.checkForUpdates();
 		this.isBrowser = isPlatformBrowser(this.platformId);
+    this.translate.setDefaultLang('en');
 	}
 
 

@@ -9,5 +9,92 @@
   "WEBSITE": "Website",
   "ABOUT": "About",
   "CONTACT": "Contact",
-  "DESCRIPTION": "Hi, I'm Tomas Palma! I’m a developer with a passion for curating innovative and responsive web applications, with highly-functional knowledge on various aspects of computer programming, web development, and hosting. Communicating well with others, troubleshooting, and fluency in English are some of my other skills."
+  "DESCRIPTION": "Hi, I'm Tomas Palma! I’m a developer with a passion for curating innovative and responsive web applications, with highly-functional knowledge on various aspects of computer programming, web development, and hosting. Communicating well with others, troubleshooting, and fluency in English are some of my other skills.",
+  "FEATURES": [
+    {
+      "title": "At a glance",
+      "icon": "lightbulb",
+      "link": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "shortDescription": "How did this get here?",
+      "description": ["Click any of the cards below to know the activities I'm involved with my life at the moment. Cards will be updated as I pick up new interests and hobbies."]
+    },
+    {
+      "title": "Development",
+      "icon": "terminal",
+      "link": "https://github.com/tresillo2017",
+      "shortDescription": "Development's always been my thing. Always has and always will be.",
+      "description": ["I've always loved working on personal projects or ideas of mine that involve writing code. Having an opportunity to implement ideas, whether the client's or otherwise, is always exciting.", "These days, I'm working on writing shell scripts for my Linux installation. I use Arch Linux btw."]
+    },
+    {
+      "title": "Relationships",
+      "icon": "sentiment_satisfied",
+      "link": "https://www.instagram.com/toomas_ps/",
+      "shortDescription": "Keeping up with friends is hard, but they're my main source of joy in life.",
+      "description": ["I've spent a great time of my life thinking about what my main source of joy is. Turns out, it was simple: my friends!", "I'm currently involved in many friend groups and, while it's hard to keep up with all of them on a monthly basis, I still try my best. Sometimes, I keep up with friends through Instagram."]
+    },
+    {
+      "title": "Music",
+      "icon": "queue_music",
+      "link": "https://tidal.com/browse/user/195041547",
+      "shortDescription": "Why do I listen to weird genres these days? I'm not sure, but I like 'em.",
+      "description": ["My day isn't really complete without playing a song on loop for hours on end, to be honest. I mostly listen to stuff on tidal and off my local FLAC collection.", "My main genres of music these days are pop, rock and indie"]
+    }
+  ],
+  "MY_LIFE": "My Life",
+  "OTHER_SITES": [
+    {
+      "name": "Tomasps.com",
+      "link": "https://tomasps.com",
+      "image": "portfolio",
+      "description": "My main website and landing page. This essentially features basic information about me as a person and the things I like."
+    },
+    {
+      "name": "Status",
+      "link": "https://status.tomasps.com",
+      "image": "main",
+      "description": "This is essentially my personal status page built with uptimekuma."
+    },
+    {
+      "name": "Blog",
+      "link": "https://blog.tomasps.com",
+      "image": "blog",
+      "description": "My new blog that's self-hosted and powered by Ghost CMS. Has a custom theme with my standard Material You color scheme."
+    },
+    {
+      "name": "Photography",
+      "link": "https://photography.tomasps.com",
+      "image": "web-stories",
+      "description": "All my photography work is hosted here. It's on flickr"
+    }
+  ],
+  "EXPLORE": "Explore tomasps.com",
+  "WEB_INFO": "Visit the other websites that I have built and deployed on this domain.",
+  "VISIT_SITE": "Visit site",
+  "WEB_ATTRIBUTES": ["focused", "inspired", "driven", "oriented", "impassioned"],
+  "IAM": "I am",
+  "WEB_DESCRIPTION_1": "Ever since its inception, the World Wide Web has served as a fundamental mold that brings technologies and infrastructures together. I first started editing HTML templates for my blog and website.",
+  "WEB_DESCRIPTION_2": "My projects include UX design, UI animations, and icon illustration. Being comfortable with code allows me to rapidly prototype and validate experiences. In my spare time I like to take photos of things I see and like.",
+  "VIEW_PHOTOS": "View my photos",
+  "READ_BLOG": "Read my blog",
+  "WEB_DEVELOPER": "Web developer",
+  "SINCE": "Since",
+  "SKILL_PICTURE_ALT": "Skill picture stock image",
+  "RESUME_REQUEST_TEXT": "There are some aspects of my career that are not included in this portfolio, for the sake of my privacy and for brevity. My full details are available on my resume. The omitted details are:",
+  "RESUME_REQUEST_LIST": [
+    "Current workplace",
+    "Previous employments",
+    "Primary tasks in all my employments",
+    "Stacks and tech per employment",
+    "Educational background",
+    "A phone number you may contact"
+  ],
+  "RESUME_REQUEST_PROMPT": "Want a resume instead? Click the button below to send an email.",
+  "RESUME_REQUEST_BUTTON": "Email me",
+  "SKILL_LIST_HEADER": "I am primarily a",
+  "SKILL_LIST_HIGHLIGHT": "Developer",
+  "SKILL_LIST_SUBHEADING": "Who has helped in the development. Here are the technologies I am familiar with.",
+  "DEVOPS": "DevOps",
+  "FRONT_END_WEB": "Front-end Web",
+  "BACK_END_WEB": "Back-end Web",
+  "GENERAL_DEVELOPMENT": "General Development"
 }

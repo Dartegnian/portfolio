@@ -30,31 +30,30 @@ import { HttpClientModule, HttpClient } from '@angular/common/http'; // Import H
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { TranslateComponent } from "@components/translate/translate.component";
-import { NgxSwingingChristmasBallsModule } from 'ngx-swinging-christmas-balls';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        ProfileCardComponent,
-        SurfaceTestComponent,
-        ThemeSwitcherComponent,
-        ProfileInfoComponent,
-        HeroBannerComponent,
-        AccentSwitcherComponent,
-        SkillPictureComponent,
-        SkillInfoComponent,
-        LifeAtAGlanceComponent,
-        SkillListComponent,
-        EmailCtaComponent,
-        FooterComponent,
-        ResponsiveImageComponent,
-        OtherSitesComponent,
-        TranslateComponent
-    ],
+	declarations: [
+		AppComponent,
+    ProfileCardComponent,
+		SurfaceTestComponent,
+		ThemeSwitcherComponent,
+		ProfileInfoComponent,
+		HeroBannerComponent,
+		AccentSwitcherComponent,
+		SkillPictureComponent,
+		SkillInfoComponent,
+		LifeAtAGlanceComponent,
+		SkillListComponent,
+		EmailCtaComponent,
+		FooterComponent,
+		ResponsiveImageComponent,
+		OtherSitesComponent,
+    TranslateComponent
+  ],
   imports: [
     UpdatingSnackbarComponent,
     BrowserModule.withServerTransition({appId: 'serverApp'}),
@@ -75,8 +74,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    }),
-    NgxSwingingChristmasBallsModule
+    })
   ],
 	providers: [],
 	bootstrap: [AppComponent]

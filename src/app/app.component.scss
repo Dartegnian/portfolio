@@ -19,7 +19,7 @@
 		padding: 0rem;
 		border-radius: $container-border-radius;
 	}
-
+	
 	&--themed-secondary {
 		@include material-container--secondary;
 	}
@@ -36,17 +36,17 @@
 	padding: $full-container-padding;
 
 	&__container {
-    display: flex;
-    overflow: hidden;
-    padding: $full-container-padding;
-    overflow: visible;
+		display: flex;
+		overflow: hidden;
+		padding: $full-container-padding;
+		overflow: visible;
 
-    @include media-breakpoint-down(lg) {
-      flex-direction: column;
-    }
+		@include media-breakpoint-down(lg) {
+			flex-direction: column;
+		}
 
-    & > * {
-      flex: 1;
-    }
-  }
+		& > * {
+			flex: 1;
+		}
+	}
 }

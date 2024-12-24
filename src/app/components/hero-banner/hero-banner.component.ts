@@ -4,8 +4,7 @@ import { AccentService } from 'src/app/services/accent-service.service';
 import { LastfmService } from 'src/app/services/lastfm.service';
 import { TranslateService, LangChangeEvent } from '@ngx-translate/core';
 import { isPlatformBrowser } from "@angular/common";
-import JSChristmas from 'jschristmas';
-const christmas = new JSChristmas();
+
 @Component({
   selector: 'hero-banner',
   templateUrl: './hero-banner.component.html',
@@ -79,11 +78,6 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
       this.isBrowser = true;
       this.fetchNowListening();
       this.refreshIntervalId = window.setInterval(() => this.fetchNowListening(), 60000);
-
-      christmas.snowStorm({
-        maxSnowflakes: 200,
-        fallSpeed: 1.25,
-      });
     }
   }
 
@@ -92,7 +86,6 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
     if (this.isBrowser) {
       this.lastfmSubscription.unsubscribe();
       clearInterval(this.refreshIntervalId);
-
     }
   }
 

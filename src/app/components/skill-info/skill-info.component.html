@@ -1,31 +1,31 @@
 <article class="skill-info">
-	<header class="skill-info__header">
-		<span class="skill-info__header-block">
-			<h1 class="skill-info__header-text">
-				<span class="material-symbols-rounded skill-info__header-text-icon">
-					public
-				</span>
-			</h1>
-			<h1 class="skill-info__header-text">I am</h1>
-			<h1 class="skill-info__header-text skill-info__header-text--highlighted">web-{{ webAttribute }}<div class="skill-info__cursor">|</div></h1>
-		</span>
-	</header>
-	<section class="skill-info__text">
-		<p>Ever since its inception, the World Wide Web has served as a fundemental mold that brings technologies and infrastructures together. I first started editing HTML templates for my blog and website.</p>
-		<p>My projects include UX design, UI animations, and icon illustration. Being comfortable with code allows me to rapidly prototype and validate experiences. In my spare time I like to take photos to things I see and like</p>
-	</section>
-	<section class="skill-info__buttons">
-		<a href="https://behance.net/Dartegnian" class="skill-info__button">
-			<span class="material-symbols-rounded skill-info__button-icon">
-				camera
-			</span>
-			View my photos
-		</a>
-		<a href="https://blog.tomasps.com" class="skill-info__button">
-			<span class="material-symbols-rounded skill-info__button-icon">
-				import_contacts
-			</span>
-			Read my blog
-		</a>
-	</section>
+  <header class="skill-info__header">
+    <span class="skill-info__header-block">
+      <h1 class="skill-info__header-text">
+        <span class="material-symbols-rounded skill-info__header-text-icon">
+          public
+        </span>
+      </h1>
+      <h1 class="skill-info__header-text">{{ 'IAM' | translate }}</h1>
+      <h1 class="skill-info__header-text skill-info__header-text--highlighted">web-{{ webAttribute }}<div class="skill-info__cursor">|</div></h1>
+    </span>
+  </header>
+  <section class="skill-info__text">
+    <p>{{ 'WEB_DESCRIPTION_1' | translate }}</p>
+    <p>{{ 'WEB_DESCRIPTION_2' | translate }}</p>
+  </section>
+  <section class="skill-info__buttons">
+    <a href="https://behance.net/Dartegnian" class="skill-info__button">
+      <span class="material-symbols-rounded skill-info__button-icon">
+        camera
+      </span>
+      {{ 'VIEW_PHOTOS' | translate }}
+    </a>
+    <a href="https://blog.tomasps.com" class="skill-info__button">
+      <span class="material-symbols-rounded skill-info__button-icon">
+        import_contacts
+      </span>
+      {{ 'READ_BLOG' | translate }}
+    </a>
+  </section>
 </article>

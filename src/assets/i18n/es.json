@@ -9,5 +9,98 @@
   "WEBSITE": "Sitio web",
   "ABOUT": "Acerca de",
   "CONTACT": "Contacto",
-  "DESCRIPTION": "Hola, soy Tomas Palma! Soy un desarrollador con pasión por crear aplicaciones web innovadoras y receptivas, con conocimientos altamente funcionales en varios aspectos de la programación informática, el desarrollo web y el alojamiento. Comunicarme bien con los demás, solucionar problemas y la fluidez en inglés son algunas de mis otras habilidades."
+  "DESCRIPTION": "Hola, soy Tomas Palma! Soy un desarrollador con pasión por crear aplicaciones web innovadoras y receptivas, con conocimientos altamente funcionales en varios aspectos de la programación informática, el desarrollo web y el alojamiento. Comunicarme bien con los demás, solucionar problemas y la fluidez en inglés son algunas de mis otras habilidades.",
+  "MY_LIFE": "Mi Vida",
+  "FEATURES": [
+    {
+      "title": "A simple vista",
+      "icon": "lightbulb",
+      "link": "https://www.youtube.com/watch?v=dQw4w9WgXcQ",
+      "shortDescription": "¿Cómo llegó esto aquí?",
+      "description": ["Haga clic en cualquiera de las tarjetas a continuación para conocer las actividades en las que estoy involucrado en mi vida en este momento. Las tarjetas se actualizarán a medida que adquiera nuevos intereses y pasatiempos."]
+    },
+    {
+      "title": "Desarrollo",
+      "icon": "terminal",
+      "link": "https://github.com/tresillo2017",
+      "shortDescription": "El desarrollo siempre ha sido lo mío. Siempre lo ha sido y siempre lo será.",
+      "description": ["Siempre me ha encantado trabajar en proyectos personales o ideas mías que impliquen escribir código. Tener la oportunidad de implementar ideas, ya sean del cliente o de otro tipo, siempre es emocionante.", "Estos días, estoy trabajando en escribir scripts de shell para mi instalación de Linux. Por cierto, uso Arch Linux."]
+    },
+    {
+      "title": "Relaciones",
+      "icon": "sentiment_satisfied",
+      "link": "https://www.instagram.com/toomas_ps/",
+      "shortDescription": "Mantenerse al día con los amigos es difícil, pero son mi principal fuente de alegría en la vida.",
+      "description": ["He pasado gran parte de mi vida pensando en cuál es mi principal fuente de alegría. Resulta que era simple: ¡mis amigos!", "Actualmente estoy involucrado en muchos grupos de amigos y, aunque es difícil mantenerse al día con todos ellos mensualmente, aún hago mi mejor esfuerzo. A veces, me mantengo al día con los amigos a través de Instagram."]
+    },
+    {
+      "title": "Música",
+      "icon": "queue_music",
+      "link": "https://tidal.com/browse/user/195041547",
+      "shortDescription": "¿Por qué escucho géneros extraños estos días? No estoy seguro, pero me gustan.",
+      "description": ["Mi día no está realmente completo sin reproducir una canción en bucle durante horas, para ser honesto. Principalmente escucho cosas en tidal y de mi colección local de FLAC.", "Mis principales géneros de música estos días son pop, rock e indie"]
+    }
+  ],
+  "OTHER_SITES": [
+    {
+      "name": "Tomasps.com",
+      "link": "https://tomasps.com",
+      "image": "portfolio",
+      "description": "Mi sitio web principal y página de inicio. Esto presenta información básica sobre mí como persona y las cosas que me gustan."
+    },
+    {
+      "name": "Estado",
+      "link": "https://status.tomasps.com",
+      "image": "main",
+      "description": "Esta es esencialmente mi página de estado personal construida con uptimekuma."
+    },
+    {
+      "name": "Blog",
+      "link": "https://blog.tomasps.com",
+      "image": "blog",
+      "description": "Mi nuevo blog que está autoalojado y funciona con Ghost CMS. Tiene un tema personalizado con mi esquema de color estándar de Material You."
+    },
+    {
+      "name": "Fotografía",
+      "link": "https://photography.tomasps.com",
+      "image": "web-stories",
+      "description": "Todo mi trabajo fotográfico está alojado aquí. Está en flickr"
+    }
+  ],
+  "EXPLORE": "Explora tomasps.com",
+  "WEB_INFO": "Visita los otros sitios web que he construido e implementado en este dominio.",
+  "VISIT_SITE": "Visitar sitio",
+  "WEB_ATTRIBUTES": [
+    "enfocado",
+    "inspirado",
+    "motivado",
+    "orientado",
+    "apasionado"
+  ],
+  "IAM": "Yo soy",
+  "WEB_DESCRIPTION_1": "Desde su creación, la World Wide Web ha servido como un molde fundamental que reúne tecnologías e infraestructuras. Comencé editando plantillas HTML para mi blog y sitio web.",
+  "WEB_DESCRIPTION_2": "Mis proyectos incluyen diseño UX, animaciones UI e ilustración de iconos. Sentirme cómodo con el código me permite crear prototipos y validar experiencias rápidamente. En mi tiempo libre me gusta tomar fotos de cosas que veo y me gustan.",
+  "VIEW_PHOTOS": "Ver mis fotos",
+  "READ_BLOG": "Leer mi blog",
+  "WEB_DEVELOPER": "Desarrollador web",
+  "SINCE": "Desde",
+  "SKILL_PICTURE_ALT": "Imagen de stock de habilidades",
+  "RESUME_REQUEST_TEXT": "Hay algunos aspectos de mi carrera que no están incluidos en este portafolio, por el bien de mi privacidad y por brevedad. Mis detalles completos están disponibles en mi currículum. Los detalles omitidos son:",
+  "RESUME_REQUEST_LIST": [
+    "Lugar de trabajo actual",
+    "Empleos anteriores",
+    "Tareas principales en todos mis empleos",
+    "Stacks y tecnología por empleo",
+    "Antecedentes educativos",
+    "Un número de teléfono al que puede contactar"
+  ],
+  "RESUME_REQUEST_PROMPT": "¿Prefieres un currículum? Haz clic en el botón de abajo para enviar un correo electrónico.",
+  "RESUME_REQUEST_BUTTON": "Envíame un correo",
+  "SKILL_LIST_HEADER": "Soy principalmente un",
+  "SKILL_LIST_HIGHLIGHT": "Desarrollador",
+  "SKILL_LIST_SUBHEADING": "Quien ha ayudado en el desarrollo. Aquí están las tecnologías con las que estoy familiarizado.",
+  "DEVOPS": "DevOps",
+  "FRONT_END_WEB": "Desarrollo Front-end",
+  "BACK_END_WEB": "Desarrollo Back-end",
+  "GENERAL_DEVELOPMENT": "Desarrollo General"
 }

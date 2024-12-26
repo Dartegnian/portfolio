@@ -69,11 +69,11 @@ export class MetaService {
 
 	restoreOriginalSiteInfo() {
 		const metaTags = {
-			description: "The website and home page of Dartegnian Velarde—dartegnian.com. Includes a mood calendar, journal, MBTI, and other info.",
-			keywords: "Dartegnian, Dartegnian Velarde, Velarde Dartegnian, Dartegnian L. Velarde, Portfolio, Home Page, About Me, Home Page, Mood Calendar, Journal, Web Journal, MBTI",
-			title: "Dartegnian L. Velarde | DevOps Engineer",
-			image: "https://dartegnian.com/assets/img/main-min-1024.jpg",
-			imageAlt: "Material You-style introduction banner for Dartegnian.com",
+			description: "Dartegnian Velarde's interactive portfolio website with Material You color schemes. Built with Angular, TypeScript, and uses Sass.",
+			keywords: "Dartegnian, Dartegnian Velarde, Velarde Dartegnian, Dartegnian L. Velarde, Portfolio, Online Portfolio",
+			title: "Dartegnian's Portfolio",
+			image: "https://portfolio.dartegnian.com/assets/img/portfolio-min-1024.jpg",
+			imageAlt: "Material You-style introduction banner for Dartegnian's Portfolio",
 			favicons: [
 				{ type: "image/png", sizes: "192x192", href: "/assets/icons/icon-192x192.png" },
 				{ type: "image/png", sizes: "32x32", href: "/assets/icons/favicon-32x32.png" },
@@ -89,7 +89,7 @@ export class MetaService {
 		const url = this.router.url;
 
 		// Use the current host from window.location for both localhost and production
-		const baseUrl = isPlatformBrowser(this.platformId) ? window.location.origin : "https://dartegnian.com";
+		const baseUrl = isPlatformBrowser(this.platformId) ? window.location.origin : "https://portfolio.dartegnian.com";
 		const fullUrl = `${baseUrl}${url}`;
 
 		if (this.isBrowser) {

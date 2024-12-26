@@ -9,7 +9,8 @@ import { LoadingCircleComponent } from "@components/loading-circle/loading-circl
     selector: 'updating-snackbar',
     imports: [LoadingCircleComponent],
     templateUrl: './updating-snackbar.component.html',
-    styleUrl: './updating-snackbar.component.scss'
+    styleUrl: './updating-snackbar.component.scss',
+	standalone: true
 })
 export class UpdatingSnackbarComponent implements AfterViewInit, OnDestroy {
 	private sw = inject(SwUpdate);

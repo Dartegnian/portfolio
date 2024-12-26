@@ -7,7 +7,8 @@ import { IdbService } from '@services/idb.service';
     selector: 'theme-switcher',
     templateUrl: './theme-switcher.component.html',
     styleUrls: ['./theme-switcher.component.scss'],
-    imports: []
+    imports: [],
+	standalone: true
 })
 export class ThemeSwitcherComponent implements OnInit {
 	private idb = inject(IdbService);

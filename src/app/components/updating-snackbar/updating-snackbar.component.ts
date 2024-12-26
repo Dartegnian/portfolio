@@ -6,11 +6,10 @@ import { Subscription } from 'rxjs';
 import { LoadingCircleComponent } from "@components/loading-circle/loading-circle.component";
 
 @Component({
-	selector: 'updating-snackbar',
-	standalone: true,
-	imports: [LoadingCircleComponent],
-	templateUrl: './updating-snackbar.component.html',
-	styleUrl: './updating-snackbar.component.scss'
+    selector: 'updating-snackbar',
+    imports: [LoadingCircleComponent],
+    templateUrl: './updating-snackbar.component.html',
+    styleUrl: './updating-snackbar.component.scss'
 })
 export class UpdatingSnackbarComponent implements AfterViewInit, OnDestroy {
 	private sw = inject(SwUpdate);
@@ -84,7 +83,7 @@ export class UpdatingSnackbarComponent implements AfterViewInit, OnDestroy {
 
 				if (!this.sw.isEnabled) {
 					this.iconText = "report";
-				this.updateText = "Updates unavailable";
+					this.updateText = "Updates unavailable";
 					console.log("Service worker disabled")
 					this.isSpinnerShown = false;
 					setTimeout(() => {

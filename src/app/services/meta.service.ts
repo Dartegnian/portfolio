@@ -70,7 +70,7 @@ export class MetaService {
 	restoreOriginalSiteInfo() {
 		const metaTags = {
 			description: "The website and home page of Dartegnian Velarde—dartegnian.com. Includes a mood calendar, journal, MBTI, and other info.",
-			keywords: "Dartegnian, Dartegnian Velarde, Velarde Dartegnian, Dartegnian L. Velarde, Portfolio, Landing Page, About Me, Home Page, Mood Calendar, Journal, Web Journal, MBTI",
+			keywords: "Dartegnian, Dartegnian Velarde, Velarde Dartegnian, Dartegnian L. Velarde, Portfolio, Home Page, About Me, Home Page, Mood Calendar, Journal, Web Journal, MBTI",
 			title: "Dartegnian L. Velarde | DevOps Engineer",
 			image: "https://dartegnian.com/assets/img/main-min-1024.jpg",
 			imageAlt: "Material You-style introduction banner for Dartegnian.com",

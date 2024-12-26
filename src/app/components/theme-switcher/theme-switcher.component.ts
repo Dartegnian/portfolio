@@ -1,44 +1,48 @@
-import { Component, OnInit, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, Injector, OnInit, PLATFORM_ID, afterNextRender, inject } from '@angular/core';
 import { AccentService } from '@services/accent-service.service';
 import { IdbService } from '@services/idb.service';
-
 
 @Component({
     selector: 'theme-switcher',
     templateUrl: './theme-switcher.component.html',
     styleUrls: ['./theme-switcher.component.scss'],
-    standalone: true,
     imports: []
 })
 export class ThemeSwitcherComponent implements OnInit {
 	private idb = inject(IdbService);
 	private accent = inject(AccentService);
+	private platformId = inject<Object>(PLATFORM_ID);
+	private readonly injector = inject(Injector);
 
 	themeMode: "dark" | "light" = "light";
-	prefersDarkScheme: MediaQueryList;
-	isDarkMode: boolean;
+	prefersDarkScheme: MediaQueryList | null | undefined;
+	isDarkMode: boolean | undefined;
 	prefersDarkSchemeFromIdb: "dark" | "light" = "light";
-
-	/** Inserted by Angular inject() migration for backwards compatibility */
-	constructor(...args: unknown[]);
-
+	isBrowser: boolean = false;
 
 	constructor() {
-		this.prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-		this.isDarkMode = this.prefersDarkScheme.matches;
+		this.isBrowser = isPlatformBrowser(this.platformId);
+
+		if (this.isBrowser) {
+			this.prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+			this.isDarkMode = this.prefersDarkScheme!.matches;
+		}
 	}
 
 	async ngOnInit(): Promise<void> {
-		this.idb.connectToIDB();
-		this.prefersDarkSchemeFromIdb = (await this.idb.getData("Material You", "preferredColorScheme"));
+		if (this.isBrowser) {
+			this.idb.connectToIDB();
+			this.prefersDarkSchemeFromIdb = (await this.idb.getData("Material You", "preferredColorScheme"));
 
-		if (this.prefersDarkSchemeFromIdb) {
-			this.themeMode = this.prefersDarkSchemeFromIdb;
-			this.setThemeMode(this.themeMode);
-		} else if (this.isDarkMode && !this.prefersDarkSchemeFromIdb) {
-			this.setThemeMode("dark");
-		} else {
-			this.setThemeMode("light");
+			if (this.prefersDarkSchemeFromIdb) {
+				this.themeMode = this.prefersDarkSchemeFromIdb;
+				this.setThemeMode(this.themeMode);
+			} else if (this.isDarkMode && !this.prefersDarkSchemeFromIdb) {
+				this.setThemeMode("dark");
+			} else {
+				this.setThemeMode("light");
+			}
 		}
 	}
 

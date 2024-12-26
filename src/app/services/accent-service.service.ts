@@ -28,11 +28,13 @@ export class AccentService {
 	customImageSubscription: Subject<string | ArrayBuffer>;
 
 	isPlaying = false;
+	isPlayingSubscription: Subject<boolean>;
 
 	constructor() {
 		this.themeSubscription = new Subject();
 		this.accentSubscription = new Subject();
 		this.customImageSubscription = new Subject();
+		this.isPlayingSubscription = new Subject();
 	}
 
 	public setAccent(index: number) {
@@ -142,7 +144,6 @@ export class AccentService {
 		}
 	}*/
 
-
 	async setM3ColorAndTarget(
 		parentOfImg: string,
 		target: string | HTMLElement,
@@ -188,5 +189,6 @@ export class AccentService {
 
 	setIsPlaying(isPlaying: boolean): void {
 		this.isPlaying = isPlaying;
+		this.isPlayingSubscription.next(isPlaying);
 	}
 }

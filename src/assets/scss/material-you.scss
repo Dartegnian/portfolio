@@ -15,7 +15,6 @@
 }
 
 @mixin material-button {
-	@include theme-transition();
 	display: flex;
 	align-items: center;
 	justify-content: center;

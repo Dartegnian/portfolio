@@ -1,0 +1,15 @@
+FROM node:22
+
+# Set directories
+WORKDIR /app
+COPY . /app
+
+# Install packages and prerender images
+RUN npm i
+RUN npm run generate-images
+
+# Expose the port Angular CLI runs on
+EXPOSE 4200
+
+# Start the application
+CMD ["npm", "run local"]

@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --disable-host-check --host 0.0.0.0",
-    "generate-images": "bunx gulp compress",
+    "generate-images": "npx gulp compress",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
@@ -15,7 +15,11 @@
     "prerender": "ng run dartegnians-portfolio:prerender",
     "scully-build": "ng build --configuration production && npx scully --noPrompt --project dartegnians-portfolio --scanRoutes",
     "local": "ng serve --disable-host-check --host 0.0.0.0",
-    "local-gulp": "bunx gulp compress && ng serve --disable-host-check"
+    "local-gulp": "npx gulp compress && ng serve --disable-host-check",
+    "docker-build-dev": "docker build -t dartegnians-portfolio-dev -f ./docker/Dockerfile.dev .",
+    "docker-run-dev": "docker-compose -f docker/docker-compose.dev.yml up",
+    "docker-build-prod": "docker build -t dartegnians-portfolio -f docker/Dockerfile.prod .",
+    "docker-run-prod": "docker-compose -f docker/docker-compose.yml up"
   },
   "private": true,
   "dependencies": {

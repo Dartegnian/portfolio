@@ -1,0 +1,8 @@
+services:
+  dartegnians-portfolio:
+    image: dartegnians-portfolio-dev
+    command: npm run local
+    volumes:
+      - ../:/app/
+    ports:
+      - "4200:4200"

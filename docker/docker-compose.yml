@@ -1,0 +1,5 @@
+services:
+  dartegnians-portfolio:
+    image: dartegnians-portfolio
+    ports:
+      - "4200:80"

@@ -5,7 +5,6 @@ import { NgTemplateOutlet } from '@angular/common';
     selector: 'life-at-a-glance',
     templateUrl: './life-at-a-glance.component.html',
     styleUrls: ['./life-at-a-glance.component.scss'],
-    standalone: true,
     imports: [NgTemplateOutlet]
 })
 export class LifeAtAGlanceComponent implements OnInit {

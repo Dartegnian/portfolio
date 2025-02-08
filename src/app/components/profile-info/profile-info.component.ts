@@ -5,7 +5,6 @@ import { NgTemplateOutlet } from '@angular/common';
     selector: 'profile-info',
     templateUrl: './profile-info.component.html',
     styleUrls: ['./profile-info.component.scss'],
-    standalone: true,
     imports: [NgTemplateOutlet]
 })
 export class ProfileInfoComponent implements OnInit {

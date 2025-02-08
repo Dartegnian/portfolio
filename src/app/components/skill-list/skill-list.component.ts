@@ -6,7 +6,6 @@ import { NgTemplateOutlet } from '@angular/common';
     selector: 'skill-list',
     templateUrl: './skill-list.component.html',
     styleUrls: ['./skill-list.component.scss'],
-    standalone: true,
     imports: [NgTemplateOutlet],
 	host: {ngSkipHydration: 'true'},
 })

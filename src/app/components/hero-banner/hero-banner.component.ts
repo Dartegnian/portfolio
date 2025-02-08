@@ -9,7 +9,6 @@ import { AccentSwitcherComponent } from '../accent-switcher/accent-switcher.comp
     selector: 'hero-banner',
     templateUrl: './hero-banner.component.html',
     styleUrls: ['./hero-banner.component.scss'],
-    standalone: true,
     imports: [AccentSwitcherComponent, NgTemplateOutlet, ResponsiveImageComponent],
 	host: {ngSkipHydration: 'true'},
 })

@@ -5,7 +5,6 @@ import { NgClass } from '@angular/common';
     selector: 'surface-test',
     templateUrl: './surface-test.component.html',
     styleUrls: ['./surface-test.component.scss'],
-    standalone: true,
     imports: [NgClass]
 })
 export class SurfaceTestComponent implements OnInit {

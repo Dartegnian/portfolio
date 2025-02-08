@@ -8,7 +8,6 @@ import { ResponsiveImageComponent } from '../responsive-image/responsive-image.c
     selector: 'profile-card',
     templateUrl: './profile-card.component.html',
     styleUrls: ['./profile-card.component.scss'],
-    standalone: true,
     imports: [ResponsiveImageComponent]
 })
 export class ProfileCardComponent implements OnInit, OnDestroy {

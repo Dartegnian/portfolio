@@ -10,6 +10,7 @@ export class UpdateService {
 	private updates = inject(SwUpdate, { optional: true });
 	private platformId = inject<Object>(PLATFORM_ID);
 
+	public hasInitiallyCheckedForUpdates = false;
 
 	constructor() {
 		// Ensure this runs only in the browser
@@ -44,5 +45,9 @@ export class UpdateService {
 				}, 1250)
 			);
 		}
+	}
+
+	setHasCheckedForUpdates(hasChecked: boolean) {
+		this.hasInitiallyCheckedForUpdates = hasChecked;
 	}
 }

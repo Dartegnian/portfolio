@@ -24,6 +24,7 @@ export const appConfig: ApplicationConfig = {
 };
 
 const siteConfig = {
+	LASTFM_API_KEY: "",
 };
 
 export default siteConfig;

@@ -1,10 +1,6 @@
 <button (click)="toggleThemeMode()" class="theme-switcher">
-  <span class="material-symbols-rounded theme-swticher__toggle-icon">
-    @if (themeMode === 'light') {
-      dark_mode
-    } @else {
-      light_mode
-    }
-  </span>
-  Toggle theme
+	<span class="material-symbols-rounded theme-switcher__toggle-icon">
+		{{ themeIcon }}
+	</span>
+	Toggle theme
 </button>

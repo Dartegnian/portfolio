@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AccentSwitcherComponent } from './accent-switcher.component';
+import { AccentSwitcherComponent } from '@components/accent-switcher.component';
 
 describe('AccentSwitcherComponent', () => {
   let component: AccentSwitcherComponent;

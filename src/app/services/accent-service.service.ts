@@ -1,8 +1,10 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable, PLATFORM_ID, inject } from '@angular/core';
 import { Subject } from 'rxjs';
 import { IdbService } from '@services/idb.service';
 import { Meta } from '@angular/platform-browser';
 import { Theme, argbFromHex, themeFromImage, themeFromSourceColor, applyTheme } from "@material/material-color-utilities";
+import { NowPlayingService } from '@services/now-playing.service';
+import { isPlatformBrowser } from '@angular/common';
 
 @Injectable({
 	providedIn: 'root'
@@ -10,6 +12,7 @@ import { Theme, argbFromHex, themeFromImage, themeFromSourceColor, applyTheme } 
 export class AccentService {
 	private idb = inject(IdbService);
 	private meta = inject(Meta);
+	private nowPlayingService = inject(NowPlayingService);
 
 	images = [
 		"custom",
@@ -17,33 +20,60 @@ export class AccentService {
 		"secondary",
 		"tertiary"
 	];
-	themeMode: "light" | "dark" = "light";
-	themeSubscription: Subject<"light" | "dark">;
-	accentSubscription: Subject<number>;
+	themeMode: "light" | "dark";
+	themeSubscription: Subject<"light" | "dark"> = new Subject();
+	accentSubscription: Subject<number> = new Subject();
 	activeIndex = 1;
 
 	themeRawColorData: Theme | undefined;
 
 	customImage: string | ArrayBuffer | null = null;
-	customImageSubscription: Subject<string | ArrayBuffer>;
+	customImageSubscription: Subject<string | ArrayBuffer> = new Subject();
 
-	isPlaying = false;
-	isPlayingSubscription: Subject<boolean>;
+	private platformId = inject<Object>(PLATFORM_ID);
+	isBrowser: boolean = isPlatformBrowser(this.platformId);
 
-	constructor() {
-		this.themeSubscription = new Subject();
-		this.accentSubscription = new Subject();
-		this.customImageSubscription = new Subject();
-		this.isPlayingSubscription = new Subject();
+	get isPlaying(): boolean {
+		return this.nowPlayingService.isPlaying;
 	}
 
-	public setAccent(index: number) {
+	constructor() {
+		if (this.isBrowser) {
+			this.themeMode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+			this.idb.connectToIDB();
+			this.fetchDataFromIdb();
+		} else {
+			this.themeMode = "light";
+		}
+	}
+
+	fetchDataFromIdb() {
+		this.idb.getData("Material You", "themeIndex").then(
+			(accentIndex: string) => {
+				if (accentIndex !== "1" && accentIndex !== null) {
+					this.setAccent(Number(accentIndex), true);
+				}
+			}
+		);
+
+		this.idb.getData("Material You", "preferredColorScheme").then(
+			(preferredScheme) => {
+				if (preferredScheme) {
+					this.setThemeMode(preferredScheme);
+				} else {
+					this.setThemeMode(window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light")
+				}
+			}
+		);
+	}
+
+	public setAccent(index: number, noTriggerAccent?: boolean) {
 		index = Number(index);
 		this.activeIndex = index;
 		this.accentSubscription.next(index);
 		this.setThemeInIdb(index);
 
-		if (!this.isPlaying) {
+		if (!this.isPlaying && !noTriggerAccent) {
 			this.setThemeFromM3();
 		}
 	}
@@ -52,9 +82,17 @@ export class AccentService {
 		this.themeMode = mode;
 		this.themeSubscription.next(mode);
 
+		const isDark = mode === "dark";
+		document.body.classList.toggle("dark-theme", isDark);
+		document.body.classList.toggle("light-theme", !isDark);
+
 		if (!this.isPlaying) {
 			this.setThemeFromM3();
 		}
+
+		this.idb.writeToTheme("Material You", {
+			preferredColorScheme: mode,
+		});
 	}
 
 	public setMetaTagColor(theme?: Theme) {
@@ -102,12 +140,12 @@ export class AccentService {
 	setCustomImage(customImage: string | ArrayBuffer | null, noTriggerAccent?: boolean) {
 		this.customImage = customImage;
 
-		if (!noTriggerAccent) {
-			this.setAccent(0);
-		}
-
 		if (customImage) {
 			this.customImageSubscription.next(customImage);
+		}
+
+		if (!noTriggerAccent) {
+			this.setAccent(0);
 		}
 
 		this.idb.writeToTheme("Material You", {
@@ -166,7 +204,7 @@ export class AccentService {
 				theme = themeFromSourceColor(argbFromHex("#b0b2bd"));
 			}
 		} else {
-			console.log("Parent element with ID '" + parentOfImg + "' not found.");
+			console.error("Parent element with ID '" + parentOfImg + "' not found.");
 			theme = themeFromSourceColor(argbFromHex("#b0b2bd"));
 		}
 
@@ -185,10 +223,5 @@ export class AccentService {
 		}
 
 		return theme;
-	}
-
-	setIsPlaying(isPlaying: boolean): void {
-		this.isPlaying = isPlaying;
-		this.isPlayingSubscription.next(isPlaying);
 	}
 }

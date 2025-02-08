@@ -4,30 +4,33 @@ import { AfterViewInit, Component, ElementRef, OnDestroy, PLATFORM_ID, ViewChild
 import { SwUpdate } from '@angular/service-worker';
 import { Subscription } from 'rxjs';
 import { LoadingCircleComponent } from "@components/loading-circle/loading-circle.component";
+import { UpdateService } from '@services/update.service';
 
 @Component({
     selector: 'updating-snackbar',
     imports: [LoadingCircleComponent],
     templateUrl: './updating-snackbar.component.html',
-    styleUrl: './updating-snackbar.component.scss',
-	standalone: true
+    styleUrl: './updating-snackbar.component.scss'
 })
 export class UpdatingSnackbarComponent implements AfterViewInit, OnDestroy {
 	private sw = inject(SwUpdate);
 	private platformId = inject<Object>(PLATFORM_ID);
+	private updateService = inject(UpdateService);
 
-	hasCheckedForUpdate = false;
 	isSpinnerShown = true;
 	updateSubscription: Subscription | undefined;
-	updateText = "Updating app...";
+	updateText = "Checking for updates";
 	iconText = "";
-	isFadingUp = true;
+	isBrowser: boolean = isPlatformBrowser(this.platformId);
+
+	get hasInitiallyCheckedForUpdates(): boolean {
+		return this.updateService.hasInitiallyCheckedForUpdates;
+	}
+
+	isFadingUp = !this.hasInitiallyCheckedForUpdates ? true : false;
 	isFadingDown = false;
-	isBrowser: boolean = false;
 
 	constructor() {
-		this.isBrowser = isPlatformBrowser(this.platformId);
-
 		if (this.isBrowser) {
 			this.updateSubscription = this.sw.versionUpdates.subscribe(event => {
 				switch (event.type) {
@@ -37,7 +40,7 @@ export class UpdatingSnackbarComponent implements AfterViewInit, OnDestroy {
 						this.isFadingUp = true;
 						// this.isSpinnerShown = true;
 						this.updateText = "Update found! Updating..."
-						this.sw.activateUpdate().then(() => {
+						// this.sw.activateUpdate().then(() => {
 							// this.isIconShown = true;
 							// this.iconText = "task_alt";
 							// this.updateText = "App updated!";
@@ -46,7 +49,7 @@ export class UpdatingSnackbarComponent implements AfterViewInit, OnDestroy {
 							// setTimeout(() => {
 							// 	this.updatingSnackbar.nativeElement.classList.add("fade-in--down");
 							// }, 1000);
-						});
+						// });
 						break;
 					case 'VERSION_READY':
 						// Update is ready to be used.
@@ -61,7 +64,7 @@ export class UpdatingSnackbarComponent implements AfterViewInit, OnDestroy {
 						// Update installation failed.
 						this.isSpinnerShown = false;
 						this.iconText = "report";
-						this.updateText = "Update failed. Check console and send a bug report.";
+						this.updateText = "Update failed! Check console and send a bug report.";
 						console.error('Update failed:', event.error);
 						break;
 					case 'NO_NEW_VERSION_DETECTED':
@@ -72,6 +75,12 @@ export class UpdatingSnackbarComponent implements AfterViewInit, OnDestroy {
 							this.isFadingDown = true;
 						}, 4000);
 						break;
+				}
+
+				if (!this.hasInitiallyCheckedForUpdates) {
+					setTimeout(() => {
+						this.updateService.setHasCheckedForUpdates(true);
+					}, 5000);
 				}
 			});
 		}
@@ -89,6 +98,7 @@ export class UpdatingSnackbarComponent implements AfterViewInit, OnDestroy {
 					this.isSpinnerShown = false;
 					setTimeout(() => {
 						this.isFadingDown = true;
+						this.updateService.setHasCheckedForUpdates(true);
 					}, 2500);
 				}
 			}, 1000);

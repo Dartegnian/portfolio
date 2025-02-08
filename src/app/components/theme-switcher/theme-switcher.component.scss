@@ -2,9 +2,9 @@
 
 :host {
 	position: fixed;
-	top: 2rem;
 	right: 2rem;
-	z-index: 1;
+	z-index: 3;
+	transition: top 0.3s ease;
 }
 
 .theme-switcher {
@@ -15,6 +15,7 @@
 	box-shadow: $elevated-shadow;
 
 	&__toggle-icon {
-		margin-right: 0.5rem;
+		max-width: 24px;
+		overflow: hidden;
 	}
 }

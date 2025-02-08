@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { ResponsiveImageComponent } from '../responsive-image/responsive-image.component';
 
+import { ResponsiveImageComponent } from '@components/responsive-image/responsive-image.component';
 
 @Component({
     selector: 'other-sites',
     templateUrl: './other-sites.component.html',
     styleUrls: ['./other-sites.component.scss'],
-    standalone: true,
     imports: [ResponsiveImageComponent]
 })
 export class OtherSitesComponent {
@@ -18,7 +17,7 @@ export class OtherSitesComponent {
 				name: "Dartegnian.com",
 				link: "https://dartegnian.com",
 				image: "main",
-				description: "My main website and landing page. This essentially features basic information about me as a person and the things I like."
+				description: "My main website and home page. This essentially features basic information about me as a person and the things I like."
 			},
 			{
 				name: "Portfolio",

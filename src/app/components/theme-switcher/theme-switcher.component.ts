@@ -1,81 +1,106 @@
+import { Component, OnInit, Inject, HostBinding, HostListener, inject } from '@angular/core';
+import { Router } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
-import { Component, Injector, OnInit, PLATFORM_ID, afterNextRender, inject } from '@angular/core';
+import { PLATFORM_ID } from '@angular/core';
 import { AccentService } from '@services/accent-service.service';
 import { IdbService } from '@services/idb.service';
 
 @Component({
-    selector: 'theme-switcher',
-    templateUrl: './theme-switcher.component.html',
-    styleUrls: ['./theme-switcher.component.scss'],
-    imports: [],
-	standalone: true
+	selector: 'theme-switcher',
+	templateUrl: './theme-switcher.component.html',
+	styleUrls: ['./theme-switcher.component.scss'],
 })
 export class ThemeSwitcherComponent implements OnInit {
 	private idb = inject(IdbService);
 	private accent = inject(AccentService);
 	private platformId = inject<Object>(PLATFORM_ID);
-	private readonly injector = inject(Injector);
+	private router = inject(Router);
+	private readonly isBrowser = isPlatformBrowser(this.platformId);
+	isHomePage: boolean = false;
 
-	themeMode: "dark" | "light" = "light";
-	prefersDarkScheme: MediaQueryList | null | undefined;
-	isDarkMode: boolean | undefined;
-	prefersDarkSchemeFromIdb: "dark" | "light" = "light";
-	isBrowser: boolean = false;
+	/**
+	 * The `top` style we apply to `:host`.
+	 * We bind to it via @HostBinding('style.top').
+	 */
+	@HostBinding('style.top') top: string = '';
 
-	constructor() {
-		this.isBrowser = isPlatformBrowser(this.platformId);
+	constructor() {}
 
+	ngOnInit(): void {
+		// Detect if current route is home:
+		const url = this.router.url;
+		this.isHomePage = (url === '/' || url.startsWith('/home'));
+
+		/**
+		 * If in the browser, do an initial scroll-based evaluation.
+		 * If on the server (SSR), pick a default.
+		 */
 		if (this.isBrowser) {
-			this.prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-			this.isDarkMode = this.prefersDarkScheme!.matches;
+			this.updateTopValue();
+		} else {
+			// SSR fallback: set a static top so server-side render has no error
+			this.top = this.isHomePage ? '2rem' : 'calc(2rem + 88px)';
 		}
 	}
 
-	async ngOnInit(): Promise<void> {
-		if (this.isBrowser) {
-			this.idb.connectToIDB();
-			this.prefersDarkSchemeFromIdb = (await this.idb.getData("Material You", "preferredColorScheme"));
+	/**
+	 * Use Angular's HostListener for window scroll. 
+	 * No raw add/removeEventListener calls, and it only runs in the browser.
+	 */
+	@HostListener('window:scroll', [])
+	onWindowScroll(): void {
+		if (!this.isBrowser) return;
+		this.updateTopValue();
+	}
 
-			if (this.prefersDarkSchemeFromIdb) {
-				this.themeMode = this.prefersDarkSchemeFromIdb;
-				this.setThemeMode(this.themeMode);
-			} else if (this.isDarkMode && !this.prefersDarkSchemeFromIdb) {
-				this.setThemeMode("dark");
-			} else {
-				this.setThemeMode("light");
-			}
+	/**
+	 * Applies the scroll logic:
+	 *  - Home Page: always "2rem"
+	 *  - Other Pages: 
+	 *      if scrollY > 88 => "2rem"
+	 *      else => "calc(2rem + 88px)"
+	 */
+	private updateTopValue(): void {
+		if (this.isHomePage) {
+			this.top = '2rem';
+			return;
 		}
+
+		const scrollY = window.scrollY; // or: document.documentElement.scrollTop
+		const threshold = 80; // size of your header
+
+		if (scrollY > threshold) {
+			this.top = '2rem';
+		} else {
+			this.top = 'calc(2rem + 88px)';
+		}
+	}
+
+	// -------------------------------------------------
+	// THEME LOGIC
+	// -------------------------------------------------
+	get themeMode(): string {
+		return this.accent.themeMode;
+	}
+
+	get themeIcon(): string {
+		return this.themeMode === 'light' ? 'dark_mode' : 'light_mode';
 	}
 
 	toggleThemeMode() {
-		if (this.themeMode === "light") {
-			this.setThemeMode("dark");
-		} else {
-			this.setThemeMode("light");
-		}
+		this.setThemeMode(this.themeMode === "light" ? "dark" : "light");
 	}
 
 	setThemeMode(mode: "light" | "dark") {
-		switch (mode) {
-			case "light":
-				document.body.classList.toggle("dark-theme", false);
-				document.body.classList.toggle("light-theme", true);
-				this.themeMode = "light";
-				break;
-			case "dark":
-				document.body.classList.toggle("dark-theme", true);
-				document.body.classList.toggle("light-theme", false);
-				this.themeMode = "dark";
-				break;
-			default:
-				console.error("Invalid theme");
-		}
+		const isDark = mode === "dark";
 
-		this.accent.setThemeMode(this.themeMode);
+		document.body.classList.toggle("dark-theme", isDark);
+		document.body.classList.toggle("light-theme", !isDark);
+
+		this.accent.setThemeMode(mode);
 
 		this.idb.writeToTheme("Material You", {
-			preferredColorScheme: this.themeMode,
+			preferredColorScheme: mode,
 		});
 	}
-
 }

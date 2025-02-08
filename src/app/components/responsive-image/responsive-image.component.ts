@@ -5,7 +5,6 @@ import { Component, Input, OnInit } from '@angular/core';
     selector: 'responsive-image',
     templateUrl: './responsive-image.component.html',
     styleUrls: ['./responsive-image.component.scss'],
-    standalone: true,
     imports: []
 })
 export class ResponsiveImageComponent implements OnInit {

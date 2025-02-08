@@ -1,4 +1,4 @@
-import { isPlatformBrowser } from '@angular/common';
+import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import { Injectable, PLATFORM_ID, inject } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
@@ -12,6 +12,7 @@ export class MetaService {
 	private titleService = inject(Title);
 	private platformId = inject<Object>(PLATFORM_ID);
 	private router = inject(Router);
+	private document = inject(DOCUMENT);
 	isBrowser: boolean = false;
 
 	constructor() {
@@ -69,11 +70,11 @@ export class MetaService {
 
 	restoreOriginalSiteInfo() {
 		const metaTags = {
-			description: "Dartegnian Velarde's interactive portfolio website with Material You color schemes. Built with Angular, TypeScript, and uses Sass.",
-			keywords: "Dartegnian, Dartegnian Velarde, Velarde Dartegnian, Dartegnian L. Velarde, Portfolio, Online Portfolio",
-			title: "Dartegnian's Portfolio",
-			image: "https://portfolio.dartegnian.com/assets/img/portfolio-min-1024.jpg",
-			imageAlt: "Material You-style introduction banner for Dartegnian's Portfolio",
+			description: "The website and home page of Dartegnian Velarde—dartegnian.com. Includes a mood calendar, journal, MBTI, and other info.",
+			keywords: "Dartegnian, Dartegnian Velarde, Velarde Dartegnian, Dartegnian L. Velarde, Portfolio, Home Page, About Me, Home Page, Mood Calendar, Journal, Web Journal, MBTI",
+			title: "Dartegnian L. Velarde | DevOps Engineer",
+			image: "https://dartegnian.com/assets/img/main-min-1024.jpg",
+			imageAlt: "Material You-style introduction banner for Dartegnian.com",
 			favicons: [
 				{ type: "image/png", sizes: "192x192", href: "/assets/icons/icon-192x192.png" },
 				{ type: "image/png", sizes: "32x32", href: "/assets/icons/favicon-32x32.png" },
@@ -89,7 +90,7 @@ export class MetaService {
 		const url = this.router.url;
 
 		// Use the current host from window.location for both localhost and production
-		const baseUrl = isPlatformBrowser(this.platformId) ? window.location.origin : "https://portfolio.dartegnian.com";
+		const baseUrl = isPlatformBrowser(this.platformId) ? window.location.origin : "https://dartegnian.com";
 		const fullUrl = `${baseUrl}${url}`;
 
 		if (this.isBrowser) {
@@ -105,5 +106,26 @@ export class MetaService {
 			// For SSR, use the Meta service to ensure the canonical tag is rendered server-side
 			this.meta.updateTag({ rel: 'canonical', href: fullUrl }, 'rel=canonical');
 		}
+	}
+
+	writeJsonLd(jsonLdObject: Object): void {
+		// Check if a script already exists
+		let scriptTag = this.document.head.querySelector("#structured-data");
+		if (!scriptTag) {
+			scriptTag = this.document.createElement("script");
+			scriptTag.setAttribute("type", "application/ld+json");
+			scriptTag.setAttribute("id", "structured-data");
+			this.document.head.appendChild(scriptTag);
+		}
+		scriptTag.textContent = JSON.stringify(jsonLdObject);
+
+		// NEW: Create a <script> element
+		// const scriptEl = this.document.createElement("script");
+		// scriptEl.setAttribute("type", "application/ld+json");
+		// scriptEl.setAttribute("id", "structured-data");
+		// scriptEl.textContent = JSON.stringify(jsonLdObject);
+	
+		// // Append to <head> (or <body>, if you prefer)
+		// this.document.head.appendChild(scriptEl);
 	}
 }

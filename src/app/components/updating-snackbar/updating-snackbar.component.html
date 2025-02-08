@@ -1,4 +1,10 @@
-<div class="updating-snackbar" [class.fade-in--down]="isFadingDown" [class.fade-in--up]="isFadingUp" #updatingSnackbar>
+<div
+	#updatingSnackbar
+	class="updating-snackbar"
+	[class.fade-in--down]="isFadingDown"
+	[class.fade-in--up]="isFadingUp"
+	[class.updating-snackbar--hidden]="hasInitiallyCheckedForUpdates"
+>
 	@if (isSpinnerShown) {
 		<app-loading-circle></app-loading-circle>
 	} @else {

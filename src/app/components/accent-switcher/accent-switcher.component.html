@@ -8,32 +8,30 @@
   @for (image of images; track image; let i = $index) {
     <div
       class="accent-switcher__container"
-      [class.accent-switcher__container--selected]="selected == image"
+      [class.accent-switcher__container--selected]="activeIndex == image"
       >
       @if (image === 'custom') {
         <div class="accent-switcher__custom-image">
-          @if (!customImage) {
+          @if (this.customImage === null) {
             <input id="fileInput" type="file" (change)="onFileSelected($event)" accept="image/*" class="accent-switcher__file-input" aria-label="Select an image">
-          }
-          @if (!customImage) {
-            <div class="accent-switcher__file-text">
-              <span class="material-symbols-rounded accent-switcher__file-icon">upload_file</span>
-              <span class="accent-switcher__file-select-text">Use an image</span>
-            </div>
-          }
-          @if (customImage) {
+
+			<div class="accent-switcher__file-text">
+				<span class="material-symbols-rounded accent-switcher__file-icon">upload_file</span>
+				<span class="accent-switcher__file-select-text">Use an image</span>
+			</div>
+          } @else {
             <div [attr.id]="'accent-' + image" class="accent-switcher__custom-image-container">
               <img
                 [src]="customImage"
                 class="accent-switcher__custom-image-img"
                 alt="Custom image for material theming"
                 (click)="setCustomImage()"
+                title="Material You Custom Image"
                 >
             </div>
           }
         </div>
-      }
-      @if (image !== 'custom') {
+      } @else {
         <responsive-image
           [attr.id]="'accent-' + image"
           class="accent-switcher__picture"
@@ -43,7 +41,8 @@
           [imageAlt]="'Image preview ' + image + ' theme'"
           [imageHeight]="58" [imageWidth]="92"
           [imageBoundary]="512"
-          [isLazyLoaded]="false"
+          [isLazyLoaded]="true"
+          [attr.title]="titleMappings[image]"
         ></responsive-image>
       }
     </div>

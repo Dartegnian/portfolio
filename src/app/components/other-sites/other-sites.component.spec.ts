@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { BuiltWebsitesComponent } from './other-sites.component';
+import { BuiltWebsitesComponent } from '@components/other-sites.component';
 
 describe('BuiltWebsitesComponent', () => {
   let component: BuiltWebsitesComponent;

@@ -12,6 +12,11 @@
 	height: 3.5rem;
 	font-weight: 500;
 	box-shadow: $elevated-shadow;
+
+	&--hidden {
+		visibility: hidden;
+		transform: translate(-50%, 2rem);
+	}
 }
 
 .fade-in {

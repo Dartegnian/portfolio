@@ -1,11 +1,15 @@
 import { TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AppComponent],
-    }).compileComponents();
+    imports: [
+        RouterTestingModule,
+        AppComponent
+    ],
+}).compileComponents();
   });
 
   it('should create the app', () => {
@@ -14,16 +18,16 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have the 'dartegnian-dot-com' title`, () => {
+  it(`should have as title 'portfolio.dartegnian.com'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
-    expect(app.title).toEqual('dartegnian-dot-com');
+    expect(app.title).toEqual('portfolio.dartegnian.com');
   });
 
   it('should render title', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('h1')?.textContent).toContain('Hello, dartegnian-dot-com');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('portfolio.dartegnian.com app is running!');
   });
 });

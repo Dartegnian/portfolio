@@ -1,18 +1,19 @@
-import { Component, OnDestroy, ChangeDetectorRef, inject, PLATFORM_ID, AfterContentInit, OnInit } from '@angular/core';
+import { Component, OnDestroy, ChangeDetectorRef, inject, PLATFORM_ID, OnInit, AfterViewChecked } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 import { Subscription } from 'rxjs';
-import { AccentService } from 'src/app/services/accent-service.service';
 
 import { ResponsiveImageComponent } from '@components/responsive-image/responsive-image.component';
+
+import { AccentService } from '@services/accent-service.service';
 import { IdbService } from '@services/idb.service';
-import { isPlatformBrowser } from '@angular/common';
 
 @Component({
-    selector: 'accent-switcher',
-    templateUrl: './accent-switcher.component.html',
-    styleUrls: ['./accent-switcher.component.scss'],
-    imports: [ResponsiveImageComponent]
+	selector: 'accent-switcher',
+	templateUrl: './accent-switcher.component.html',
+	styleUrls: ['./accent-switcher.component.scss'],
+	imports: [ResponsiveImageComponent]
 })
-export class AccentSwitcherComponent implements OnInit, AfterContentInit, OnDestroy {
+export class AccentSwitcherComponent implements OnInit, AfterViewChecked, OnDestroy {
 	private idb = inject(IdbService);
 	private accent = inject(AccentService);
 	private changeDetectorRef = inject(ChangeDetectorRef);
@@ -20,6 +21,7 @@ export class AccentSwitcherComponent implements OnInit, AfterContentInit, OnDest
 	private platformId = inject<Object>(PLATFORM_ID);
 	isBrowser: boolean = isPlatformBrowser(this.platformId);
 
+	private hasAppliedTheme = false;
 	customImageSubscription: Subscription;
 	customImage: string | ArrayBuffer | null = null;
 	titleMappings: { [key: string]: string } = {
@@ -48,17 +50,19 @@ export class AccentSwitcherComponent implements OnInit, AfterContentInit, OnDest
 		if (this.isBrowser) {
 			const customImage = await this.idb.getData("Material You", "customImage");
 			if (customImage) {
-					this.customImage = customImage;
-					this.accent.setCustomImage(customImage, true);
+				this.customImage = customImage;
+				this.accent.setCustomImage(customImage, true);
 			}
 		}
 	}
 
-	async ngAfterContentInit(): Promise<void> {
-		if (this.isBrowser && !this.accent.isPlaying) {
-			setTimeout(async () => {
-				await this.accent.setThemeFromM3();		
-			}, 100);
+	async ngAfterViewChecked(): Promise<void> {
+		if (this.isBrowser && !this.accent.isPlaying && this.activeIndex === "custom") {
+			const parentEl = document.getElementById("accent-custom");
+			if (parentEl && !this.hasAppliedTheme) {
+				this.hasAppliedTheme = true;
+				this.accent.setThemeFromM3();
+			}
 		}
 	}
 

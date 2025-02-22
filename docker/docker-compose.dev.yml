@@ -1,5 +1,5 @@
 services:
-  dartegnians-portfolio:
+  app:
     image: dartegnians-portfolio-dev
     command: npm run local
     volumes:

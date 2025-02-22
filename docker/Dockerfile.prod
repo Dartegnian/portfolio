@@ -7,17 +7,32 @@ COPY . /app
 
 # Install packages and prerender images
 RUN npm i
+RUN npm run generate-images
 RUN npm run build
 
 
-# Stage 2: Serve via Nginx
-FROM nginx:mainline
+# Stage 2: Serve the application using Node (Angular Universal)
+FROM node:22 AS serve
 
-# Expose the port Nginx runs on
-EXPOSE 80
+WORKDIR /app
 
-# Only copy built files into Nginx
-COPY --from=build /app/dist/dartegnian-dot-com/browser /usr/share/nginx/html
+# Copy the entire built output so the folder structure remains intact.
+COPY --from=build /app/dist/dartegnians-portfolio /app/dist/dartegnians-portfolio
 
-# Keep Nginx running
-CMD ["nginx", "-g", "daemon off;"]
+# Copy the API folder from the build stage
+COPY --from=build /app/api /app/api
+
+# Copy the container-only entry file from the docker folder.
+COPY docker/container-entry.mjs /app/container-entry.mjs
+
+# Copy package manifest so we can install production dependencies.
+COPY --from=build /app/package*.json ./
+
+# Install only production dependencies (like express)
+RUN npm install --production
+
+# Expose the SSR port
+EXPOSE 4000
+
+# Use the container-only entry file to bootstrap the app
+CMD ["node", "--experimental-specifier-resolution=node", "container-entry.mjs"]

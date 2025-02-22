@@ -1,6 +1,6 @@
 import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import siteConfig from '@utils/app-config';
+import siteConfig from '@utils/app.config';
 import { Subject } from 'rxjs';
 
 @Injectable({

@@ -14,7 +14,7 @@ export class ProfileCardComponent implements OnInit, OnDestroy {
 	private accent = inject(AccentService);
 
 	name = "Dartegnian L. Velarde";
-	tagline = "Software engineer, web developer, Linux enthusiast, DevOps engineer";
+	tagline = "IT senior developer, web developer, Linux enthusiast";
 
 	images: Array<string>;
 	coverImage: string;

@@ -33,7 +33,7 @@ export class ProfileInfoComponent implements OnInit {
 	];
 
 	constructor() {
-		this.description = "Hi, I'm Dartegnian Velarde! I’m an agile and determined DevOps engineer with a passion for curating innovative and responsive web applications, with highly-functional knowledge on various aspects of computer programming, web development, and the DevOps process. Communicating well with others, troubleshooting, and fluency in English are some of my other skills. Adaptability and conscientiousness are my predominant traits.";
+		this.description = "Hi, I'm Dartegnian Velarde! I'm an agile and determined IT senior developer with a passion for curating innovative and responsive web applications, with highly-functional knowledge on various aspects of computer programming, web development, and the DevOps process. Communicating well with others, troubleshooting, and fluency in English are some of my other skills. Adaptability and conscientiousness are my predominant traits.";
 	}
 
 	ngOnInit(): void {

@@ -34,6 +34,7 @@ export class NowPlayingService {
 		},
 		"url": ""
 	};
+	nowPlayingDataSubscription: Subject<{ [key: string]: any } | null> = new Subject();
 
 	constructor() {
 		this.nowPlayingUrl = `https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&user=dartegnian&api_key=${siteConfig.LASTFM_API_KEY}&format=json&limit=1`;
@@ -55,6 +56,7 @@ export class NowPlayingService {
 
 	public setNowPlayingData(data: { [key: string]: any } | null) {
 		this.nowPlayingData = data;
+		this.nowPlayingDataSubscription.next(data);
 	}
 
 	public setSongLink(link: string | null) {

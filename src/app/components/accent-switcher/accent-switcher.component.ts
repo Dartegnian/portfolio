@@ -1,4 +1,4 @@
-import { Component, OnDestroy, ChangeDetectorRef, inject, PLATFORM_ID, OnInit, AfterViewChecked } from '@angular/core';
+import { Component, OnDestroy, ChangeDetectorRef, inject, PLATFORM_ID, AfterViewChecked, AfterViewInit } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Subscription } from 'rxjs';
 
@@ -13,7 +13,7 @@ import { IdbService } from '@services/idb.service';
 	styleUrls: ['./accent-switcher.component.scss'],
 	imports: [ResponsiveImageComponent]
 })
-export class AccentSwitcherComponent implements OnInit, AfterViewChecked, OnDestroy {
+export class AccentSwitcherComponent implements AfterViewInit, AfterViewChecked, OnDestroy {
 	private idb = inject(IdbService);
 	private accent = inject(AccentService);
 	private changeDetectorRef = inject(ChangeDetectorRef);
@@ -46,14 +46,10 @@ export class AccentSwitcherComponent implements OnInit, AfterViewChecked, OnDest
 		);
 	}
 
-	async ngOnInit(): Promise<void> {
-		if (this.isBrowser) {
-			const customImage = await this.idb.getData("Material You", "customImage");
-			if (customImage) {
-				this.customImage = customImage;
-				this.accent.setCustomImage(customImage, true);
-			}
-		}
+	ngAfterViewInit() {
+		setTimeout(() => {
+			this.customImage = this.accent.customImage;
+		}, 0);
 	}
 
 	async ngAfterViewChecked(): Promise<void> {

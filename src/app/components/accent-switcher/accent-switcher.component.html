@@ -12,14 +12,7 @@
       >
       @if (image === 'custom') {
         <div class="accent-switcher__custom-image">
-          @if (this.customImage === null) {
-            <input id="fileInput" type="file" (change)="onFileSelected($event)" accept="image/*" class="accent-switcher__file-input" aria-label="Select an image">
-
-			<div class="accent-switcher__file-text">
-				<span class="material-symbols-rounded accent-switcher__file-icon">upload_file</span>
-				<span class="accent-switcher__file-select-text">Use an image</span>
-			</div>
-          } @else {
+          @if (this.customImage) {
             <div [attr.id]="'accent-' + image" class="accent-switcher__custom-image-container">
               <img
                 [src]="customImage"
@@ -29,6 +22,13 @@
                 title="Material You Custom Image"
                 >
             </div>
+          } @else {
+			<input id="fileInput" type="file" (change)="onFileSelected($event)" accept="image/*" class="accent-switcher__file-input" aria-label="Select an image">
+
+			<div class="accent-switcher__file-text">
+				<span class="material-symbols-rounded accent-switcher__file-icon">upload_file</span>
+				<span class="accent-switcher__file-select-text">Use an image</span>
+			</div>
           }
         </div>
       } @else {

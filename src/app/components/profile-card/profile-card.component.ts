@@ -22,10 +22,10 @@ export class ProfileCardComponent implements OnInit, OnDestroy {
 	accentSubscription: Subscription;
 	isSecondCoverImageActive = false;
 	activeIndex: number;
-	customImage: string | ArrayBuffer | null = null;
 
-	/** Inserted by Angular inject() migration for backwards compatibility */
-	constructor(...args: unknown[]);
+	get customImage() {
+		return this.accent.customImage;
+	}
 
 	constructor() {
 		this.images = this.accent.images;
@@ -35,7 +35,6 @@ export class ProfileCardComponent implements OnInit, OnDestroy {
 		this.accentSubscription = this.accent.accentSubscription.subscribe(
 			(index: number) => {
 				this.setCoverImage(index);
-				this.customImage = this.accent.customImage;
 			}
 		);
 	}

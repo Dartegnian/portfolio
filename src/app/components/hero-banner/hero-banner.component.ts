@@ -21,7 +21,6 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 	accentSubscription: Subscription;
 	isSecondHeroImageActive = false;
 	activeIndex: number;
-	customImage: string | ArrayBuffer | null = null;
 
 	siteTitle = "Dartegnian's Portfolio";
 	siteDescription = "An interactive portfolio website with Material You implementation. Colors dynamically adjust to a selected theme. Choose one below to get started.";
@@ -45,19 +44,18 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 		},
 	];
 
-	/** Inserted by Angular inject() migration for backwards compatibility */
-	constructor(...args: unknown[]);
+	get customImage() {
+		return this.accent.customImage;
+	}
 
 	constructor() {
 		this.images = this.accent.images;
 		this.heroImage = this.images[this.accent.activeIndex];
 		this.activeIndex = Number(this.accent.activeIndex);
-		this.customImage = this.accent.customImage;
 
 		this.accentSubscription = this.accent.accentSubscription.subscribe(
 			(index: number) => {
 				this.setHeroImage(index);
-				this.customImage = this.accent.customImage;
 			}
 		);
 	}

@@ -1,23 +1,67 @@
 <footer class="footer">
-  <header class="footer__scroll-header">
-    <a class="footer__scroll-to-top-container" href="#hero-banner">
-      <span class="footer__scroll-icon material-symbols-rounded">
-        keyboard_double_arrow_up
-      </span>
-    </a>
-  </header>
-  <section class="footer__links">
-    @for (link of footerLinks; track link) {
-      <a href="{{ link.link }}" class="footer__link" title="{{ link.text }}" target="_blank">
-        <div class="footer__link-wrapper">
-          <span class="material-symbols-rounded theme-swticher__toggle-icon">
-            {{ link.icon }}
-          </span>
-        </div>
-      </a>
-    }
-  </section>
-  <section class="footer__text">
-    <p>Developed and designed by <span class="footer__author">Dartegnian</span></p>
-  </section>
+	<div class="footer__scroll-header">
+		<div class="footer__scroll-to-top-container" (click)="scrollToTop()">
+			<span class="footer__scroll-icon material-symbols-rounded">
+				keyboard_double_arrow_up
+			</span>
+		</div>
+	</div>
+	<div class="footer__wave-container">
+		<svg class="footer__waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto">
+			<defs>
+			  <path id="gentle-wave" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z" />
+			</defs>
+			<g class="footer__wave-parallax">
+			  <use xlink:href="#gentle-wave" x="48" y="0" fill="rgba(255,255,255,0.7" />
+			  <use xlink:href="#gentle-wave" x="48" y="3" fill="rgba(255,255,255,0.5)" />
+			  <use xlink:href="#gentle-wave" x="48" y="5" fill="rgba(255,255,255,0.3)" />
+			  <use xlink:href="#gentle-wave" x="48" y="7" fill="#fff" />
+		
+			</g>
+		  </svg>
+	</div>
+	@if (isBrowser) {
+		<accent-switcher class="footer__accent-switcher"></accent-switcher>
+	}
+	<section class="footer__site-information">
+		<div class="footer__main-site">
+			<h2 class="footer__title">Dartegnian.com</h2>
+			<p class="footer__subheader">My portfolio is part of the domain dartegnian.com</p>
+			<section class="footer__links">
+				<nav aria-label="Footer navigation" class="footer__site-links">
+					<ul class="footer__links-list">
+						@for (link of siteLinks; track link) {
+							<li class="footer__links-list-item">
+								<a [href]="link.link" class="footer__links-link">
+									<span class="footer__link-icon material-symbols-rounded">{{ link.icon }}</span>
+									<span class="footer__link-text">{{ link.text }}</span>
+								</a>
+							</li>
+						}
+					</ul>
+				</nav>
+			</section>
+		</div>
+
+		<div class="footer__other-sites">
+			<h3 class="footer__other-title">My other profiles</h3>
+			<section class="footer__links">
+				<nav aria-label="Footer navigation" class="footer__site-links">
+					<ul class="footer__links-list footer__links-list--full-list">
+						@for (link of footerLinks; track link) {
+							<li class="footer__links-list-item">
+								<a [href]="link.link" class="footer__links-link">
+									<span class="footer__link-icon footer__link-icon--other-links material-symbols-rounded">{{ link.icon }}</span>
+									<span class="footer__link-text footer__link-text--other-links">{{ link.text }}</span>
+								</a>
+							</li>
+						}
+					</ul>
+				</nav>
+			</section>
+		</div>
+	</section>
+	<section class="footer__text">
+		<p class="footer__subheader">Dartegnian.com © 2025</p>
+	</section>
 </footer>

@@ -3,6 +3,7 @@
   "version": "2.0.0",
   "scripts": {
     "ng": "ng",
+    "dev": "ng serve --disable-host-check --host 0.0.0.0",
     "start": "ng serve --disable-host-check --host 0.0.0.0",
     "generate-images": "npx gulp compress",
     "build": "ng build",

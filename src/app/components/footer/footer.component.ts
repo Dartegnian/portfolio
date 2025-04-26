@@ -50,9 +50,9 @@ export class FooterComponent {
 			text: "Behance"
 		},
 		{
-			icon: "school",
-			link: "https://scholar.google.com/citations?user=SPHbv8EAAAAJ",
-			text: "Google Scholar"
+			icon: "swap_vert",
+			link: "https://www.reddit.com/user/dartegnian/",
+			text: "Reddit"
 		},
 	];
 

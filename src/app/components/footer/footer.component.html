@@ -59,7 +59,29 @@
 					</ul>
 				</nav>
 			</section>
+				<!-- @for (link of footerLinks; track link) {
+					<a [href]="link.link" class="footer__link" title="{{ link.text }}" target="_blank"
+						[attr.rel]="link.text === 'Mastodon' ? 'me' : ''">
+						<div class="footer__link-wrapper">
+							<span class="footer__title-icon material-symbols-rounded">
+								{{ link.icon }}
+							</span>
+						</div>
+					</a>
+				} -->
 		</div>
+		<!-- <nav aria-label="Footer navigation" class="footer__site-links">
+			<ul class="footer__links-list">
+				@for (link of siteLinks; track link) {
+					<li class="footer__links-list-item">
+						<a [href]="link.link" class="footer__links-link">
+							<span class="footer__link-icon material-symbols-rounded">{{ link.icon }}</span>
+							<span class="footer__link-text">{{ link.text }}</span>
+						</a>
+					</li>
+				}
+			</ul>
+		</nav> -->
 	</section>
 	<section class="footer__text">
 		<p class="footer__subheader">Dartegnian.com © 2025</p>

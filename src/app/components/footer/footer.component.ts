@@ -58,7 +58,7 @@ export class FooterComponent {
 
 	siteLinks = [
 		{
-			icon: "edit_note",
+			icon: "globe_asia",
 			link: "https://dartegnian.com",
 			text: "Home"
 		},

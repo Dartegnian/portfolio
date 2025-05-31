@@ -37,12 +37,12 @@ export class OtherSitesComponent {
 				image: "web-stories",
 				description: "Stories from my life, now on the web. Accelerated Mobile Pages (AMPs) built from scratch using Next.js."
 			},
-			{
-				name: "Forever One (WG-Easy)",
-				link: "https://wg.dartegnian.com",
-				image: "wireguard",
-				description: "A fork of Emile Nijssen's project WG-Easy for managing a WireGuard VPN instance. This fork implements my standard Material You color scheme."
-			},
+			// {
+			// 	name: "Forever One (WG-Easy)",
+			// 	link: "https://wg.dartegnian.com",
+			// 	image: "wireguard",
+			// 	description: "A fork of Emile Nijssen's project WG-Easy for managing a WireGuard VPN instance. This fork implements my standard Material You color scheme."
+			// },
 			// {
 			// 	name: "Projects (Taiga)",
 			// 	link: "https://projects.dartegnian.com",

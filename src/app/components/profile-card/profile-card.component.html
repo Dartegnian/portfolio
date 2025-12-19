@@ -1,9 +1,9 @@
 <article class="profile-card">
   <header class="profile-card__header">
     <div class="profile-card__cover-container">
-      @if (customImage()) {
+      @if (customImageSrc(); as img) {
         <img
-          [src]="this.customImage()"
+          [src]="img"
           class="profile-card__cover profile-card__cover--custom-image"
           [class.profile-card__cover--custom-image-disabled]="activeIndex() !== 0"
           alt="Custom image for material theming"

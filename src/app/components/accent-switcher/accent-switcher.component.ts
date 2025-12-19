@@ -1,4 +1,4 @@
-import { Component, computed, effect, inject, signal, PLATFORM_ID, afterNextRender, Injector } from '@angular/core';
+import { Component, computed, effect, inject, PLATFORM_ID, afterNextRender, Injector } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
 import { ResponsiveImageComponent } from '@components/responsive-image/responsive-image.component';
@@ -22,7 +22,7 @@ export class AccentSwitcherComponent {
   readonly activeIndex = computed(() => this.accent.activeKey());
   readonly customImage = computed(() => this.accent.customImage());
 
-  private readonly hasAppliedTheme = signal(false);
+  private lastThemeRecalcToken: string | null = null;
 
   titleMappings: { [key: string]: string } = {
     primary: 'Dartegnian Blue',
@@ -34,18 +34,20 @@ export class AccentSwitcherComponent {
     effect(() => {
       if (!this.isBrowser) return;
 
-      const isCustom = this.activeIndex() === 'custom';
-      const okToApply = isCustom;
+      const mode = this.accent.themeMode();
+      const key = this.accent.activeKey();
+      const custom = this.accent.customImage();
 
-      if (!okToApply) {
-        this.hasAppliedTheme.set(false);
-        return;
-      }
+      const customToken =
+        typeof custom === 'string' ? custom : custom instanceof ArrayBuffer ? 'arraybuffer' : 'none';
+      const token = `${mode}:${key}:${key === 'custom' ? customToken : ''}`;
 
-      if (!this.hasAppliedTheme()) {
-        this.hasAppliedTheme.set(true);
-        afterNextRender(() => this.accent.setThemeFromM3(), {injector: this.injector});
-      }
+      if (this.lastThemeRecalcToken === token) return;
+      this.lastThemeRecalcToken = token;
+
+      if (key === 'custom' && !custom) return;
+
+      afterNextRender(() => this.accent.setThemeFromM3(), { injector: this.injector });
     });
   }
 

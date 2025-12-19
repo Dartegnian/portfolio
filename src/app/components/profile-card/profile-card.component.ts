@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, inject, computed, effect, PLATFORM_ID } from '@angular/core';
+import { Component, PLATFORM_ID, computed, effect, inject } from '@angular/core';
 import { AccentService } from 'src/app/services/accent-service.service';
 import { ResponsiveImageComponent } from '../responsive-image/responsive-image.component';
 import { isPlatformBrowser } from '@angular/common';
@@ -11,20 +11,23 @@ import { isPlatformBrowser } from '@angular/common';
     imports: [ResponsiveImageComponent]
 })
 export class ProfileCardComponent {
-	private accent = inject(AccentService);
-	private platformId = inject<Object>(PLATFORM_ID);
+	private readonly accent = inject(AccentService);
+	private readonly platformId = inject<Object>(PLATFORM_ID);
 
 	name = "Dartegnian L. Velarde";
 	tagline = "IT senior developer, web developer, Linux enthusiast";
 
 	readonly images: Array<string> = [...this.accent.images];
-	coverImage: string = this.images[this.accent.activeIndex()];
+	private currentIndex: number = this.accent.activeIndex() === 0 ? 1 : this.accent.activeIndex();
+	coverImage: string = this.images[this.currentIndex];
 	secondCoverImage: string | undefined;
 	isSecondCoverImageActive = false;
 	readonly activeIndex = computed(() => this.accent.activeIndex());
-	readonly customImage = computed(() => this.accent.customImage());
-	private currentIndex: number = this.accent.activeIndex();
-	isBrowser: boolean = isPlatformBrowser(this.platformId);
+	readonly customImageSrc = computed(() => {
+		const img = this.accent.customImage();
+		return typeof img === 'string' ? img : null;
+	});
+	readonly isBrowser = isPlatformBrowser(this.platformId);
 
 	constructor() {
 		if (!this.isBrowser) return;
@@ -41,7 +44,7 @@ export class ProfileCardComponent {
 				this.coverImage = index === 0 ? this.images[this.currentIndex] : this.images[index];
 				this.isSecondCoverImageActive = false;
 			} else {
-				this.secondCoverImage = index === 0 ? this.images[this.currentIndex] as string : this.images[index];
+				this.secondCoverImage = index === 0 ? this.images[this.currentIndex] : this.images[index];
 				this.isSecondCoverImageActive = true;
 			}
 		}

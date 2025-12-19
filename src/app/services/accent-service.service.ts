@@ -206,7 +206,7 @@ export class AccentService {
 		this.activeIndex.set(next);
 		try { localStorage.setItem('m3ThemeIndex', String(next)); } catch { }
 
-		if (!!noTrigger) void this.setThemeFromM3();
+		if (!noTrigger) void this.setThemeFromM3();
 		this.writeThemeIndex(next);
 	}
 
@@ -214,6 +214,10 @@ export class AccentService {
 		this.themeMode.set(mode);
 		this.applyThemeModeClass(mode);
 		try { localStorage.setItem('m3ThemeMode', mode); } catch { }
+
+		if (!noTrigger) {
+			void this.setThemeFromM3();
+		}
 
 		this.idb.writeToTheme('Material You', { preferredColorScheme: mode });
 	}

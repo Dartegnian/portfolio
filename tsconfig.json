@@ -27,8 +27,17 @@
       "@components/*": [
         "src/app/components/*"
       ],
+      "@data/*": [
+        "src/app/data/*"
+      ],
+      "@directives/*": [
+        "src/app/directives/*"
+      ],
       "@interfaces/*": [
         "src/app/interfaces/*"
+      ],
+      "@modules/*": [
+        "src/app/modules/*"
       ],
       "@pages/*": [
         "src/app/pages/*"

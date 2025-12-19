@@ -2,7 +2,7 @@ const { src, dest } = require('gulp');
 const sharpResponsive = require('gulp-sharp-responsive');
 
 const compress = () =>
-	src("images/*.{png,jpg}")
+	src("images/**.{png,jpg}")
 		.pipe(
 			sharpResponsive({
 				formats: [
@@ -26,3 +26,4 @@ const compress = () =>
 module.exports = {
 	compress
 };
+

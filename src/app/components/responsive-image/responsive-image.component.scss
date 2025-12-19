@@ -9,14 +9,10 @@
 	flex-grow: 1;
 	justify-content: center;
 
-	&__fallback-img,
-	&__responsive-img {
+	&__img {
 		height: 100%;
 		object-fit: cover;
 		object-position: center;
-	}
-
-	&__fallback-img {
 		width: 100%;
 	}
 }

@@ -27,6 +27,7 @@ export class MetaService {
 		this.meta.updateTag({ property: 'og:image', content: metaTags.image });
 		this.meta.updateTag({ property: 'og:image:secure_url', content: metaTags.image });
 		this.meta.updateTag({ property: 'og:image:alt', content: metaTags.imageAlt });
+		this.meta.updateTag({ name: 'twitter:card', content: 'summary_large_image' });
 		this.meta.updateTag({ name: 'twitter:title', content: metaTags.title });
 		this.meta.updateTag({ name: 'twitter:description', content: metaTags.description });
 		this.meta.updateTag({ name: 'twitter:image', content: metaTags.image });
@@ -48,7 +49,7 @@ export class MetaService {
 	updateFavicons(favicons: { type: string; sizes: string; href: string }[]) {
 		if (this.isBrowser) {
 		// Remove existing favicons
-		const existingIcons = document.querySelectorAll("link[rel*='icon']");
+		const existingIcons = this.document.querySelectorAll("link[rel*='icon']");
 		existingIcons.forEach(icon => icon.remove());
 		this.writeFavicons(favicons);
 		}
@@ -58,23 +59,23 @@ export class MetaService {
 		if (this.isBrowser) {
 			// Add new favicons
 			favicons.forEach(favicon => {
-				const link: HTMLLinkElement = document.createElement('link');
+				const link: HTMLLinkElement = this.document.createElement('link');
 				link.rel = 'icon';
 				link.type = favicon.type;
 				link.setAttribute('sizes', favicon.sizes); // Use setAttribute to handle read-only properties
 				link.href = favicon.href;
-				document.getElementsByTagName('head')[0].appendChild(link);
+				this.document.getElementsByTagName('head')[0].appendChild(link);
 			});
 		}
 	}
 
 	restoreOriginalSiteInfo() {
 		const metaTags = {
-			description: "Dartegnian Velarde's interactive portfolio website with Material You color schemes. Built with Angular, TypeScript, and uses Sass.",
-			keywords: "Dartegnian, Dartegnian Velarde, Web portfolio, Portfolio, Portfolio website",
-			title: "Dartegnian's Portfolio",
-			image: "https://portfolio.dartegnian.com/assets/img/portfolio-min-1024.jpg",
-			imageAlt: "Material You-style introduction banner for Dartegnian's Portfolio",
+			description: "The website and home page of Dartegnian Velarde—dartegnian.com. Includes a mood calendar with real journal entries for each day since January 2023, plus MBTI and other info.",
+			keywords: "Dartegnian, Dartegnian Velarde, Velarde Dartegnian, Dartegnian L. Velarde, Portfolio, Home Page, About Me, Home Page, Mood Calendar, Journal, Web Journal, MBTI",
+			title: "Dartegnian L. Velarde",
+			image: "https://dartegnian.com/assets/img/main-min-1024.jpg",
+			imageAlt: "Material You-style introduction banner for Dartegnian.com",
 			favicons: [
 				{ type: "image/png", sizes: "192x192", href: "/assets/icons/icon-192x192.png" },
 				{ type: "image/png", sizes: "32x32", href: "/assets/icons/favicon-32x32.png" },
@@ -85,27 +86,27 @@ export class MetaService {
 		this.updateSiteInfoMeta(metaTags);
 	}
 
-	updateCanonicalUrl(): void {
-		// Get the current URL dynamically
-		const url = this.router.url;
+	updateCanonicalUrl(canonicalPath?: string): string {
+		const path = canonicalPath ?? this.router.url;
+		const normalizedPath = path.startsWith('/') ? path : `/${path}`;
+		const origin =
+			(this.document as any)?.location?.origin ??
+			(this.isBrowser ? window.location.origin : 'https://dartegnian.com');
+		const fullUrl = `${origin}${normalizedPath}`;
 
-		// Use the current host from window.location for both localhost and production
-		const baseUrl = isPlatformBrowser(this.platformId) ? window.location.origin : "https://dartegnian.com";
-		const fullUrl = `${baseUrl}${url}`;
-
-		if (this.isBrowser) {
-			// If it's a browser, update or create the canonical link dynamically
-			let canonicalLink: HTMLLinkElement | null = document.querySelector('link[rel="canonical"]');
-			if (!canonicalLink) {
-				canonicalLink = document.createElement('link');
-				canonicalLink.setAttribute('rel', 'canonical');
-				document.head.appendChild(canonicalLink);
-			}
-			canonicalLink.setAttribute('href', fullUrl);
-		} else {
-			// For SSR, use the Meta service to ensure the canonical tag is rendered server-side
-			this.meta.updateTag({ rel: 'canonical', href: fullUrl }, 'rel=canonical');
+		let canonicalLink = this.document.head.querySelector('link[rel="canonical"]') as HTMLLinkElement | null;
+		if (!canonicalLink) {
+			canonicalLink = this.document.createElement('link');
+			canonicalLink.setAttribute('rel', 'canonical');
+			this.document.head.appendChild(canonicalLink);
 		}
+		canonicalLink.setAttribute('href', fullUrl);
+
+		// Keep share previews consistent too.
+		this.meta.updateTag({ property: 'og:url', content: fullUrl });
+		this.meta.updateTag({ name: 'twitter:url', content: fullUrl });
+
+		return fullUrl;
 	}
 
 	writeJsonLd(jsonLdObject: Object): void {

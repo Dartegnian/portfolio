@@ -1,21 +1,21 @@
 <article class="accent-switcher">
-  @if (customImage) {
+  @if (customImage(); as img) {
     <div class="accent-switcher__container accent-switcher__custom-image-delete" (click)="removeCustomImage()">
       <span class="material-symbols-rounded accent-switcher__file-icon accent-switcher__file-icon--close">close</span>
       <span class="accent-switcher__file-select-text">Clear image</span>
     </div>
   }
-  @for (image of images; track image; let i = $index) {
-    <div
-      class="accent-switcher__container"
-      [class.accent-switcher__container--selected]="activeIndex == image"
-      >
+	@for (image of images(); track image; let i = $index) {
+	    <div
+	      class="accent-switcher__container"
+	      [class.accent-switcher__container--selected]="activeIndex() === image"
+	      (click)="image !== 'custom' && changeAccent(i, image)"
+	      >
       @if (image === 'custom') {
         <div class="accent-switcher__custom-image">
-          @if (this.customImage) {
+          @if (customImage(); as img) {
             <div [attr.id]="'accent-' + image" class="accent-switcher__custom-image-container">
-              <img
-                [src]="customImage"
+              <img [src]="img"
                 class="accent-switcher__custom-image-img"
                 alt="Custom image for material theming"
                 (click)="setCustomImage()"
@@ -31,14 +31,13 @@
 			</div>
           }
         </div>
-      } @else {
-        <responsive-image
-          [attr.id]="'accent-' + image"
-          class="accent-switcher__picture"
-          (click)="changeAccent(i, image)"
-          role="button" tabindex="0" [attr.aria-label]="'Image preview ' + image + ' theme'"
-          [imageName]="image + '-min'"
-          [imageAlt]="'Image preview ' + image + ' theme'"
+	      } @else {
+	        <responsive-image
+	          [attr.id]="'accent-' + image"
+	          class="accent-switcher__picture"
+	          role="button" tabindex="0" [attr.aria-label]="'Image preview ' + image + ' theme'"
+	          [imageName]="image + '-min'"
+	          [imageAlt]="'Image preview ' + image + ' theme'"
           [imageHeight]="58" [imageWidth]="92"
           [imageBoundary]="512"
           [isLazyLoaded]="true"

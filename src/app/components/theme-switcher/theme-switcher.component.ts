@@ -1,9 +1,8 @@
-import { Component, OnInit, Inject, HostBinding, HostListener, inject } from '@angular/core';
+import { Component, OnInit, HostBinding, HostListener, inject } from '@angular/core';
 import { Router } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
 import { PLATFORM_ID } from '@angular/core';
 import { AccentService } from '@services/accent-service.service';
-import { IdbService } from '@services/idb.service';
 
 @Component({
 	selector: 'theme-switcher',
@@ -11,7 +10,6 @@ import { IdbService } from '@services/idb.service';
 	styleUrls: ['./theme-switcher.component.scss'],
 })
 export class ThemeSwitcherComponent implements OnInit {
-	private idb = inject(IdbService);
 	private accent = inject(AccentService);
 	private platformId = inject<Object>(PLATFORM_ID);
 	private router = inject(Router);
@@ -79,8 +77,8 @@ export class ThemeSwitcherComponent implements OnInit {
 	// -------------------------------------------------
 	// THEME LOGIC
 	// -------------------------------------------------
-	get themeMode(): string {
-		return this.accent.themeMode;
+	get themeMode(): "light" | "dark" {
+		return this.accent.themeMode();
 	}
 
 	get themeIcon(): string {
@@ -92,15 +90,6 @@ export class ThemeSwitcherComponent implements OnInit {
 	}
 
 	setThemeMode(mode: "light" | "dark") {
-		const isDark = mode === "dark";
-
-		document.body.classList.toggle("dark-theme", isDark);
-		document.body.classList.toggle("light-theme", !isDark);
-
 		this.accent.setThemeMode(mode);
-
-		this.idb.writeToTheme("Material You", {
-			preferredColorScheme: mode,
-		});
 	}
 }

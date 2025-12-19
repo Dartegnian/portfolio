@@ -1,4 +1,4 @@
-import { Component, OnInit, OnDestroy, inject } from '@angular/core';
+import { Component, OnInit, OnDestroy, inject, computed } from '@angular/core';
 import { Subscription } from 'rxjs';
 import { AccentService } from 'src/app/services/accent-service.service';
 import { ResponsiveImageComponent } from '../responsive-image/responsive-image.component';
@@ -12,15 +12,15 @@ import { AccentSwitcherComponent } from '../accent-switcher/accent-switcher.comp
     imports: [AccentSwitcherComponent, NgTemplateOutlet, ResponsiveImageComponent],
 	host: {ngSkipHydration: 'true'},
 })
-export class HeroBannerComponent implements OnInit, OnDestroy {
+export class HeroBannerComponent {
 	private accent = inject(AccentService);
 
-	images: Array<string>;
-	heroImage: string;
-	secondHeroImage: string | undefined;
-	accentSubscription: Subscription;
-	isSecondHeroImageActive = false;
-	activeIndex: number;
+	secondCoverImage: string | undefined;
+	isSecondCoverImageActive = false;
+
+	readonly images = computed(() => this.accent.images); // string[]
+	readonly currentIndex = computed(() => this.accent.activeKey());
+	readonly coverImage = computed(() => this.accent.customImage());
 
 	siteTitle = "Dartegnian's Portfolio";
 	siteDescription = "An interactive portfolio website with Material You implementation. Colors dynamically adjust to a selected theme. Choose one below to get started.";
@@ -44,39 +44,39 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 		},
 	];
 
-	get customImage() {
-		return this.accent.customImage;
-	}
-
 	constructor() {
-		this.images = this.accent.images;
-		this.heroImage = this.images[this.accent.activeIndex];
-		this.activeIndex = Number(this.accent.activeIndex);
 
-		this.accentSubscription = this.accent.accentSubscription.subscribe(
-			(index: number) => {
-				this.setHeroImage(index);
-			}
-		);
+		// this.accentSubscription = this.accent.accentSubscription.subscribe(
+		// 	(index: number) => {
+		// 		this.setHeroImage(index);
+		// 	}
+		// );
 	}
 
-	ngOnInit(): void {
-	}
+	// setHeroImage(index: number) {
+	// 	if (this.activeIndex !== index) {
+	// 		if (this.isSecondHeroImageActive) {
+	// 			this.heroImage = index === 0 ? this.images[this.activeIndex] : this.images[index];
+	// 			this.isSecondHeroImageActive = false;
+	// 		} else {
+	// 			this.secondHeroImage = index === 0 ? this.images[this.activeIndex] as string : this.images[index];
+	// 			this.isSecondHeroImageActive = true;
+	// 		}
+	// 		this.activeIndex = index;
+	// 	}
+	// }
 
-	ngOnDestroy() {
-		this.accentSubscription.unsubscribe();
-	}
-
-	setHeroImage(index: number) {
-		if (this.activeIndex !== index) {
-			if (this.isSecondHeroImageActive) {
-				this.heroImage = index === 0 ? this.images[this.activeIndex] : this.images[index];
-				this.isSecondHeroImageActive = false;
+	setCoverImage(index: number) {
+		if (this.currentIndex() !== index) {
+			if (this.isSecondCoverImageActive) {
+				this.coverImage = index === 0 ? this.images[this.currentIndex] : this.images[index];
+				this.isSecondCoverImageActive = false;
 			} else {
-				this.secondHeroImage = index === 0 ? this.images[this.activeIndex] as string : this.images[index];
-				this.isSecondHeroImageActive = true;
+				this.secondCoverImage = index === 0 ? this.images[this.currentIndex] as string : this.images[index];
+				this.isSecondCoverImageActive = true;
 			}
-			this.activeIndex = index;
 		}
+
+		this.currentIndex = index;
 	}
 }

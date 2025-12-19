@@ -1,6 +1,6 @@
 import { isPlatformBrowser, ViewportScroller } from '@angular/common';
 import { Component, inject, PLATFORM_ID } from '@angular/core';
-import { AccentSwitcherComponent } from "../accent-switcher/accent-switcher.component";
+import { AccentSwitcherComponent } from "@components/accent-switcher/accent-switcher.component";
 
 @Component({
 	selector: 'app-footer',

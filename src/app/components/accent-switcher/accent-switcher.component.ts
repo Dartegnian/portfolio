@@ -1,109 +1,91 @@
-import { Component, OnDestroy, ChangeDetectorRef, inject, PLATFORM_ID, AfterViewChecked, AfterViewInit } from '@angular/core';
+import { Component, computed, effect, inject, PLATFORM_ID, afterNextRender, Injector } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
-import { Subscription } from 'rxjs';
 
 import { ResponsiveImageComponent } from '@components/responsive-image/responsive-image.component';
-
 import { AccentService } from '@services/accent-service.service';
-import { IdbService } from '@services/idb.service';
 
 @Component({
-	selector: 'accent-switcher',
-	templateUrl: './accent-switcher.component.html',
-	styleUrls: ['./accent-switcher.component.scss'],
-	imports: [ResponsiveImageComponent]
+  selector: 'accent-switcher',
+  templateUrl: './accent-switcher.component.html',
+  styleUrls: ['./accent-switcher.component.scss'],
+  imports: [ResponsiveImageComponent],
 })
-export class AccentSwitcherComponent implements AfterViewInit, AfterViewChecked, OnDestroy {
-	private idb = inject(IdbService);
-	private accent = inject(AccentService);
-	private changeDetectorRef = inject(ChangeDetectorRef);
+export class AccentSwitcherComponent {
+  private readonly accent = inject(AccentService);
+  private readonly injector = inject(Injector);
 
-	private platformId = inject<Object>(PLATFORM_ID);
-	isBrowser: boolean = isPlatformBrowser(this.platformId);
+  private platformId = inject<Object>(PLATFORM_ID);
+  isBrowser = isPlatformBrowser(this.platformId);
 
-	private hasAppliedTheme = false;
-	customImageSubscription: Subscription;
-	customImage: string | ArrayBuffer | null = null;
-	titleMappings: { [key: string]: string } = {
-		"primary": "Dartegnian Blue",
-		"secondary": "Vibrant Green",
-		"tertiary": "Filling Station Purple",
-	};
+  // keep names used by template
+  readonly images = computed(() => this.accent.images); // string[]
+  readonly activeIndex = computed(() => this.accent.activeKey());
+  readonly customImage = computed(() => this.accent.customImage());
 
-	get images() {
-		return this.accent.images;
-	}
+  private lastThemeRecalcToken: string | null = null;
 
-	get activeIndex() {
-		return this.images[this.accent.activeIndex];
-	}
+  titleMappings: { [key: string]: string } = {
+    primary: 'Dartegnian Blue',
+    secondary: 'Vibrant Green',
+    tertiary: 'Filling Station Purple',
+  };
 
-	constructor() {
-		this.customImageSubscription = this.accent.customImageSubscription.subscribe(
-			(image: string | ArrayBuffer) => {
-				this.customImage = image;
-			}
-		);
-	}
+  constructor() {
+    effect(() => {
+      if (!this.isBrowser) return;
 
-	ngAfterViewInit() {
-		setTimeout(() => {
-			this.customImage = this.accent.customImage;
-		}, 0);
-	}
+      const mode = this.accent.themeMode();
+      const key = this.accent.activeKey();
+      const custom = this.accent.customImage();
 
-	async ngAfterViewChecked(): Promise<void> {
-		if (this.isBrowser && !this.accent.isPlaying && this.activeIndex === "custom") {
-			const parentEl = document.getElementById("accent-custom");
-			if (parentEl && !this.hasAppliedTheme) {
-				this.hasAppliedTheme = true;
-				this.accent.setThemeFromM3();
-			}
-		}
-	}
+      const customToken =
+        typeof custom === 'string' ? custom : custom instanceof ArrayBuffer ? 'arraybuffer' : 'none';
+      const token = `${mode}:${key}:${key === 'custom' ? customToken : ''}`;
 
-	ngOnDestroy(): void {
-		this.customImageSubscription.unsubscribe();
-	}
+      if (this.lastThemeRecalcToken === token) return;
+      this.lastThemeRecalcToken = token;
 
-	changeAccent(image: number, imageName: string): void {
-		if (imageName !== this.activeIndex) {
-			this.accent.setAccent(image);
-		}
-	}
+      if (key === 'custom' && !custom) return;
 
-	async onFileSelected(event: any) {
-		const file = event.target.files[0];
-		this.customImage = await this.getFileDataUrl(file);
-		this.changeDetectorRef.detectChanges();
-		this.setCustomImage();
-	}
+      afterNextRender(() => this.accent.setThemeFromM3(), { injector: this.injector });
+    });
+  }
 
-	setCustomImage() {
-		this.accent.setCustomImage(this.customImage as string | ArrayBuffer);
-	}
+  changeAccent(imageIndex: number, imageName: string): void {
+    if (imageName !== this.activeIndex()) {
+      this.accent.setAccent(imageIndex);
+    }
+  }
 
-	removeCustomImage() {
-		this.customImage = null;
-		this.accent.setCustomImage(null, true);
-		if (this.accent.activeIndex === 0) {
-			this.changeAccent(1, "primary");
-		}
-	}
+  // your template calls this, so keep it
+  setCustomImage(): void {
+    if (this.accent.customImage()) {
+      this.accent.setAccent(0);
+    }
+  }
 
-	private getFileDataUrl(file: File): Promise<string> {
-		return new Promise((resolve, reject) => {
-			const reader = new FileReader();
+  async onFileSelected(event: any) {
+    const file: File | undefined = event?.target?.files?.[0];
+    if (!file) return;
 
-			reader.onload = (event: any) => {
-				resolve(event.target.result);
-			};
+    const dataUrl = await this.getFileDataUrl(file);
+    this.accent.setCustomImage(dataUrl);
+  }
 
-			reader.onerror = (event: any) => {
-				reject(event.target.error);
-			};
+  removeCustomImage() {
+    this.accent.setCustomImage(null, true);
 
-			reader.readAsDataURL(file);
-		});
-	}
+    if (this.accent.activeIndex() === 0) {
+      this.changeAccent(1, 'primary');
+    }
+  }
+
+  private getFileDataUrl(file: File): Promise<string> {
+    return new Promise((resolve, reject) => {
+      const reader = new FileReader();
+      reader.onload = (e: any) => resolve(e.target.result);
+      reader.onerror = (e: any) => reject(e.target.error);
+      reader.readAsDataURL(file);
+    });
+  }
 }

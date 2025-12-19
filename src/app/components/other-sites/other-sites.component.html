@@ -12,8 +12,13 @@
       <article class="other-sites__site" itemprop="hasPart" itemscope
         itemtype="http://schema.org/WebPageElement">
         <div>
-          <responsive-image [imageName]="website.image + '-min'" class="other-sites__image"
-          [imageAlt]="website.name + ' website screenshot'"></responsive-image>
+          <responsive-image
+            [imageName]="website.image + '-min'"
+            class="other-sites__image"
+            [imageAlt]="website.name + ' website screenshot'"
+            [imageBoundary]="512"
+            [sizes]="'(max-width: 580px) 256px, 402px'"
+          ></responsive-image>
         </div>
         <header class="other-sites__site-header">
           <a [href]="website.link" class="other-sites__site-heading" target="_blank" itemprop="name">{{

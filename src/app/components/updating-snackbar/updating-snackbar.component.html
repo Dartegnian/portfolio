@@ -1,16 +1,16 @@
 <div
 	#updatingSnackbar
 	class="updating-snackbar"
-	[class.fade-in--down]="isFadingDown"
-	[class.fade-in--up]="isFadingUp"
-	[class.updating-snackbar--hidden]="hasInitiallyCheckedForUpdates"
+	[class.fade-in--down]="isFadingDown()"
+	[class.fade-in--up]="isFadingUp()"
+	[class.updating-snackbar--hidden]="hasInitiallyCheckedForUpdates()"
 >
-	@if (isSpinnerShown) {
+	@if (isSpinnerShown()) {
 		<app-loading-circle></app-loading-circle>
 	} @else {
 	<span class="updating-snackbar__check material-symbols-rounded">{{
-		iconText
+		iconText()
 		}}</span>
 	}
-	{{ updateText }}
+	{{ updateText() }}
 </div>

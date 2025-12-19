@@ -1,7 +1,7 @@
-import { Component, OnInit, OnDestroy, inject } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, PLATFORM_ID, computed, effect, inject } from '@angular/core';
 import { AccentService } from 'src/app/services/accent-service.service';
 import { ResponsiveImageComponent } from '../responsive-image/responsive-image.component';
+import { isPlatformBrowser } from '@angular/common';
 
 
 @Component({
@@ -10,53 +10,45 @@ import { ResponsiveImageComponent } from '../responsive-image/responsive-image.c
     styleUrls: ['./profile-card.component.scss'],
     imports: [ResponsiveImageComponent]
 })
-export class ProfileCardComponent implements OnInit, OnDestroy {
-	private accent = inject(AccentService);
+export class ProfileCardComponent {
+	private readonly accent = inject(AccentService);
+	private readonly platformId = inject<Object>(PLATFORM_ID);
 
 	name = "Dartegnian L. Velarde";
 	tagline = "IT senior developer, web developer, Linux enthusiast";
 
-	images: Array<string>;
-	coverImage: string;
+	readonly images: Array<string> = [...this.accent.images];
+	private currentIndex: number = this.accent.activeIndex() === 0 ? 1 : this.accent.activeIndex();
+	coverImage: string = this.images[this.currentIndex];
 	secondCoverImage: string | undefined;
-	accentSubscription: Subscription;
 	isSecondCoverImageActive = false;
-	activeIndex: number;
-
-	get customImage() {
-		return this.accent.customImage;
-	}
+	readonly activeIndex = computed(() => this.accent.activeIndex());
+	readonly customImageSrc = computed(() => {
+		const img = this.accent.customImage();
+		return typeof img === 'string' ? img : null;
+	});
+	readonly isBrowser = isPlatformBrowser(this.platformId);
 
 	constructor() {
-		this.images = this.accent.images;
-		this.coverImage = this.images[this.accent.activeIndex];
-		this.activeIndex = Number(this.accent.activeIndex);
+		if (!this.isBrowser) return;
 
-		this.accentSubscription = this.accent.accentSubscription.subscribe(
-			(index: number) => {
-				this.setCoverImage(index);
-			}
-		);
-	}
-
-	ngOnInit(): void {
-	}
-
-	ngOnDestroy(): void {
-		this.accentSubscription.unsubscribe();
+		effect(() => {
+			const index = this.accent.activeIndex();
+			this.setCoverImage(index);
+		});
 	}
 
 	setCoverImage(index: number) {
-		if (this.activeIndex !== index) {
+		if (this.currentIndex !== index) {
 			if (this.isSecondCoverImageActive) {
-				this.coverImage = index === 0 ? this.images[this.activeIndex] : this.images[index];
+				this.coverImage = index === 0 ? this.images[this.currentIndex] : this.images[index];
 				this.isSecondCoverImageActive = false;
 			} else {
-				this.secondCoverImage = index === 0 ? this.images[this.activeIndex] as string : this.images[index];
+				this.secondCoverImage = index === 0 ? this.images[this.currentIndex] : this.images[index];
 				this.isSecondCoverImageActive = true;
 			}
 		}
 
-		this.activeIndex = index;
+		this.currentIndex = index;
 	}
 }

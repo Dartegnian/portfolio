@@ -1,1 +1,0 @@
-export default import('../dist/dartegnians-portfolio/server/server.mjs').then(module => module.app());

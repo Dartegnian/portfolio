@@ -19,14 +19,24 @@ export function app(): express.Express {
 
   // Example Express Rest API endpoints
   // server.get('/api/**', (req, res) => { });
-  // Serve static files from /browser
-  server.get('**', express.static(browserDistFolder, {
+
+  // Serve static files from /browser (hashed assets can be long cached).
+  // Avoid serving or caching HTML here so SSR stays authoritative.
+  server.use(express.static(browserDistFolder, {
     maxAge: '1y',
-    index: 'index.html',
+    immutable: true,
+    index: false,
+    setHeaders: (res, path) => {
+      if (path.endsWith('.html')) {
+        res.setHeader('Cache-Control', 'no-cache');
+      }
+    }
   }));
 
   // All regular routes use the Angular engine
-  server.get('**', (req, res, next) => {
+  // Express 5 (path-to-regexp v8) no longer supports string wildcards like `*` or `/*`.
+  // Use a RegExp to match all routes.
+  server.get(/.*/, (req, res, next) => {
     const { protocol, originalUrl, baseUrl, headers } = req;
 
     commonEngine
@@ -37,7 +47,10 @@ export function app(): express.Express {
         publicPath: browserDistFolder,
         providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
       })
-      .then((html) => res.send(html))
+      .then((html) => {
+        res.setHeader('Cache-Control', 'no-store');
+        res.send(html);
+      })
       .catch((err) => next(err));
   });
 

@@ -3,6 +3,7 @@
 	"public": true,
 	"name": "dartegnians-portfolio",
 	"installCommand": "bun install",
+	"framework": "angular",
 	"rewrites": [
 		{
 			"source": "/(.*)",
@@ -10,7 +11,7 @@
 		}
 	],
 	"functions": {
-		"api/index.js": {
+		"api/index.mjs": {
 			"includeFiles": "dist/dartegnians-portfolio/**"
 		}
 	}

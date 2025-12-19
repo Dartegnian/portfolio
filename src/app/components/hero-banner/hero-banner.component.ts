@@ -1,8 +1,7 @@
-import { Component, OnInit, OnDestroy, inject } from '@angular/core';
-import { Subscription } from 'rxjs';
+import { Component, PLATFORM_ID, computed, effect, inject } from '@angular/core';
+import { isPlatformBrowser, NgTemplateOutlet } from '@angular/common';
 import { AccentService } from 'src/app/services/accent-service.service';
 import { ResponsiveImageComponent } from '../responsive-image/responsive-image.component';
-import { NgTemplateOutlet } from '@angular/common';
 import { AccentSwitcherComponent } from '../accent-switcher/accent-switcher.component';
 
 @Component({
@@ -12,20 +11,27 @@ import { AccentSwitcherComponent } from '../accent-switcher/accent-switcher.comp
     imports: [AccentSwitcherComponent, NgTemplateOutlet, ResponsiveImageComponent],
 	host: {ngSkipHydration: 'true'},
 })
-export class HeroBannerComponent implements OnInit, OnDestroy {
-	private accent = inject(AccentService);
+export class HeroBannerComponent {
+	private readonly accent = inject(AccentService);
+	private readonly platformId = inject<Object>(PLATFORM_ID);
+	readonly isBrowser = isPlatformBrowser(this.platformId);
 
-	images: Array<string>;
-	heroImage: string;
-	secondHeroImage: string | undefined;
-	accentSubscription: Subscription;
-	isSecondHeroImageActive = false;
-	activeIndex: number;
+	secondCoverImage: string | undefined;
+	isSecondCoverImageActive = false;
+
+	readonly images: Array<string> = [...this.accent.images];
+	private currentIndex: number = this.accent.activeIndex() === 0 ? 1 : this.accent.activeIndex();
+	coverImage: string = this.images[this.currentIndex];
+
+	readonly activeIndex = computed(() => this.accent.activeIndex());
+	readonly customImageSrc = computed(() => {
+		const img = this.accent.customImage();
+		return typeof img === 'string' ? img : null;
+	});
 
 	siteTitle = "Dartegnian's Portfolio";
 	siteDescription = "An interactive portfolio website with Material You implementation. Colors dynamically adjust to a selected theme. Choose one below to get started.";
 
-	isBrowser: boolean = false;
 	externalIcons = [
 		{
 			icon: "mdi:instagram",
@@ -44,39 +50,26 @@ export class HeroBannerComponent implements OnInit, OnDestroy {
 		},
 	];
 
-	get customImage() {
-		return this.accent.customImage;
-	}
-
 	constructor() {
-		this.images = this.accent.images;
-		this.heroImage = this.images[this.accent.activeIndex];
-		this.activeIndex = Number(this.accent.activeIndex);
+		if (!this.isBrowser) return;
 
-		this.accentSubscription = this.accent.accentSubscription.subscribe(
-			(index: number) => {
-				this.setHeroImage(index);
-			}
-		);
+		effect(() => {
+			const index = this.accent.activeIndex();
+			this.setCoverImage(index);
+		});
 	}
 
-	ngOnInit(): void {
-	}
-
-	ngOnDestroy() {
-		this.accentSubscription.unsubscribe();
-	}
-
-	setHeroImage(index: number) {
-		if (this.activeIndex !== index) {
-			if (this.isSecondHeroImageActive) {
-				this.heroImage = index === 0 ? this.images[this.activeIndex] : this.images[index];
-				this.isSecondHeroImageActive = false;
+	setCoverImage(index: number) {
+		if (this.currentIndex !== index) {
+			if (this.isSecondCoverImageActive) {
+				this.coverImage = index === 0 ? this.images[this.currentIndex] : this.images[index];
+				this.isSecondCoverImageActive = false;
 			} else {
-				this.secondHeroImage = index === 0 ? this.images[this.activeIndex] as string : this.images[index];
-				this.isSecondHeroImageActive = true;
+				this.secondCoverImage = index === 0 ? this.images[this.currentIndex] : this.images[index];
+				this.isSecondCoverImageActive = true;
 			}
-			this.activeIndex = index;
 		}
+
+		this.currentIndex = index;
 	}
 }

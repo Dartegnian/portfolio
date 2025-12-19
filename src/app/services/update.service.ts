@@ -1,7 +1,8 @@
-import { Injectable, PLATFORM_ID, inject } from '@angular/core';
+import { Injectable, PLATFORM_ID, effect, inject, signal } from '@angular/core';
 import { SwUpdate, VersionReadyEvent } from '@angular/service-worker';
 import { isPlatformBrowser } from '@angular/common';
-import { filter, interval, map } from 'rxjs';
+import { toSignal } from '@angular/core/rxjs-interop';
+import { filter } from 'rxjs/operators';
 
 @Injectable({
 	providedIn: 'root'
@@ -10,29 +11,32 @@ export class UpdateService {
 	private updates = inject(SwUpdate, { optional: true });
 	private platformId = inject<Object>(PLATFORM_ID);
 
-	public hasInitiallyCheckedForUpdates = false;
+	readonly hasInitiallyCheckedForUpdates = signal(false);
+	private readonly isBrowser = isPlatformBrowser(this.platformId);
+	private readonly versionReady = this.updates && this.isBrowser
+		? toSignal<VersionReadyEvent>(
+			this.updates.versionUpdates.pipe(
+				filter((evt: { type: string; }): evt is VersionReadyEvent => evt.type === 'VERSION_READY'),
+			),
+			{ initialValue: null },
+		)
+		: signal<VersionReadyEvent | null>(null);
 
 	constructor() {
 		// Ensure this runs only in the browser
-		if (isPlatformBrowser(this.platformId) && this.updates && this.updates.isEnabled) {
-			interval(60000).subscribe(() => this.updates!.checkForUpdate());
+		if (this.isBrowser && this.updates && this.updates.isEnabled) {
+			setInterval(() => void this.updates!.checkForUpdate(), 60000);
+
+			effect(() => {
+				if (!this.versionReady()) return;
+				this.promptUser();
+			});
 		}
 	}
 
 	public checkForUpdates(): void {
-		if (isPlatformBrowser(this.platformId) && this.updates) {
-			this.updates.versionUpdates
-				.pipe(
-					filter((evt: { type: string; }): evt is VersionReadyEvent => evt.type === 'VERSION_READY'),
-					map(evt => ({
-						type: 'UPDATE_AVAILABLE',
-						current: evt.currentVersion,
-						available: evt.latestVersion,
-					}))
-				)
-				.subscribe(() => {
-					this.promptUser();
-				});
+		if (this.isBrowser && this.updates && this.updates.isEnabled) {
+			void this.updates.checkForUpdate();
 		}
 	}
 
@@ -48,6 +52,6 @@ export class UpdateService {
 	}
 
 	setHasCheckedForUpdates(hasChecked: boolean) {
-		this.hasInitiallyCheckedForUpdates = hasChecked;
+		this.hasInitiallyCheckedForUpdates.set(hasChecked);
 	}
 }

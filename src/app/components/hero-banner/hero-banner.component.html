@@ -14,28 +14,28 @@
     </section>
   </section>
 
-  @if (customImage) {
+  @if (customImageSrc(); as img) {
     <img
-      [src]="this.customImage"
+      [src]="img"
       class="hero-banner__img hero-banner__cover--custom-image"
-      [class.hero-banner__img--custom-image-disabled]="activeIndex !== 0"
+      [class.hero-banner__img--custom-image-disabled]="activeIndex() !== 0"
       alt="Custom image for material theming"
       >
   }
   <responsive-image
-    [imageName]="heroImage + '-min'"
+    [imageName]="coverImage + '-min'"
     class="hero-banner__img hero-banner__img--first-image"
-    [class.hero-banner__img--first-image-disabled]="isSecondHeroImageActive || activeIndex === 0"
-    [imageAlt]="'First hero banner ' + heroImage + ' image'"
+    [class.hero-banner__img--first-image-disabled]="isSecondCoverImageActive || activeIndex() === 0"
+    [imageAlt]="'First hero banner ' + coverImage + ' image'"
     [imageHeight]="576" [imageWidth]="1024"
     [isLazyLoaded]="false"
   ></responsive-image>
-  @if (secondHeroImage && activeIndex !== 0) {
+  @if (secondCoverImage && activeIndex() !== 0) {
     <responsive-image
-      [imageName]="secondHeroImage + '-min'"
+      [imageName]="secondCoverImage + '-min'"
       class="hero-banner__img hero-banner__img--second-image"
-      [class.hero-banner__img--second-image-disabled]="!isSecondHeroImageActive || activeIndex === 0"
-      [imageAlt]="'Second hero banner ' + heroImage + ' image'"
+      [class.hero-banner__img--second-image-disabled]="!isSecondCoverImageActive || activeIndex() === 0"
+      [imageAlt]="'Second hero banner ' + secondCoverImage + ' image'"
       [imageHeight]="576" [imageWidth]="1024"
       [isLazyLoaded]="false"
     ></responsive-image>
